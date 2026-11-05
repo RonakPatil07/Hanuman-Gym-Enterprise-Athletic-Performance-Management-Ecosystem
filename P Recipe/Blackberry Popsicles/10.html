@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackberry Greek Yogurt Popsicles - Hanuman Gym Nutrition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../shared/design-tokens.css">
+    <link rel="stylesheet" href="../../shared/site-header.css">
+    <link rel="stylesheet" href="../../shared/site-footer.css">
+    <link rel="stylesheet" href="../recipe-details-premium.css">
+    <script src="../../shared/site-header.js" defer></script>
+    <script src="../../shared/site-footer.js" defer></script>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="recipe-page-container">
+        <!-- Topbar -->
+        <div class="recipe-topbar">
+            <a href="../recipes.html" class="recipe-back-btn">
+                <i class="fa-solid fa-arrow-left"></i> <span>Back to Recipes</span>
+            </a>
+            <div class="recipe-actions-quick">
+                <button type="button" class="btn-recipe-action" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> <span>Print Recipe</span>
+                </button>
+                <button type="button" class="btn-recipe-action" onclick="alert('Recipe saved to your My Space nutrition bookmarks!')">
+                    <i class="fa-solid fa-bookmark"></i> <span>Save Recipe</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Compact Hero Banner -->
+        <header class="recipe-hero-card">
+            <span class="recipe-category-pill"><i class="fa-solid fa-ice-cream text-gold"></i> High-Protein Post-Workout Treat</span>
+            <h1 class="recipe-title">Blackberry Greek Yogurt Popsicles</h1>
+            <p class="recipe-intro-text">Cool, creamy, and antioxidant-rich! Fresh organic blackberries blended with protein-dense Greek yogurt, raw honey, and pure vanilla extract for a clean, guilt-free recovery snack.</p>
+
+            <div class="recipe-quick-metrics-strip">
+                <div class="metric-pill">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Prep: <strong>10 Mins</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-snowflake"></i>
+                    <span>Freeze: <strong>4 Hours</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Yield: <strong>6 Popsicles</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Calories: <strong>120 kcal</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-drumstick-bite"></i>
+                    <span>Protein: <strong>8g</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main 2-Column Grid -->
+        <div class="recipe-main-grid">
+            <!-- Left Column: Story, Image & Process Steps -->
+            <div class="recipe-content-col">
+                <div class="recipe-featured-img-box">
+                    <img src="images/oo.jpg" alt="Blackberry Popsicles preparation" onerror="this.src='../images/recipe-hero.svg'">
+                </div>
+
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-kitchen-set"></i> Preparation Steps</h3>
+                    </div>
+                    <div class="recipe-steps-list">
+                        <div class="recipe-step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-text">
+                                <h4>Prep Fresh Berries</h4>
+                                <p>Rinse fresh blackberries thoroughly in cold water and gently pat dry with paper towels.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-text">
+                                <h4>Blend Berry-Yogurt Swirl</h4>
+                                <p>In a high-speed blender, combine blackberries, Greek yogurt, wildflower honey, lemon juice, and vanilla extract. Blend until creamy and smooth.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-text">
+                                <h4>Pour into Molds</h4>
+                                <p>Pour the purple berry mixture into silicone popsicle molds, leaving ¼-inch headspace at the top for freezing expansion.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-text">
+                                <h4>Freeze & Unmold</h4>
+                                <p>Insert wooden popsicle sticks and freeze for at least 4–6 hours until completely solid. Run warm water over molds for 5 seconds to release easily.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Ingredients & Macros -->
+            <aside class="recipe-sidebar-col">
+                <!-- Ingredients Card -->
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-basket-shopping"></i> Ingredients</h3>
+                        <span style="font-size:12px; color:#888;">6 Popsicles</span>
+                    </div>
+                    <div class="ingredients-checklist">
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Fresh Blackberries</span>
+                            </div>
+                            <span class="ingredient-amount-badge">2 Cups</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Whole Milk Greek Yogurt</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 Cup</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Raw Wildflower Honey</span>
+                            </div>
+                            <span class="ingredient-amount-badge">3 tbsp</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Fresh Lemon Juice</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 tsp</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Pure Vanilla Extract</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 tsp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Macro Breakdown Card -->
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-chart-pie"></i> Macro Profile</h3>
+                    </div>
+                    <div class="macro-grid">
+                        <div class="macro-box">
+                            <span class="macro-label">Calories</span>
+                            <span class="macro-val text-gold">120 kcal</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Protein</span>
+                            <span class="macro-val">8g</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Carbs</span>
+                            <span class="macro-val">18g</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Healthy Fats</span>
+                            <span class="macro-val">2.5g</span>
+                        </div>
+                    </div>
+
+                    <!-- Macro Ratio Bar -->
+                    <div class="macro-ratio-bar">
+                        <div class="macro-bar-seg macro-bar-protein" style="width: 25%;" title="Protein 25%"></div>
+                        <div class="macro-bar-seg macro-bar-carbs" style="width: 60%;" title="Carbs 60%"></div>
+                        <div class="macro-bar-seg macro-bar-fats" style="width: 15%;" title="Fats 15%"></div>
+                    </div>
+                    <div class="macro-legend">
+                        <span><i class="macro-dot" style="background:#B3DD24;"></i> 25% Protein</span>
+                        <span><i class="macro-dot" style="background:#3ECF8E;"></i> 60% Carbs</span>
+                        <span><i class="macro-dot" style="background:#FF6384;"></i> 15% Fat</span>
+                    </div>
+
+                    <!-- Meal Prep & Storage Box -->
+                    <div class="meal-prep-box">
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-snowflake"></i>
+                            <span>Freezer</span>
+                            <strong>3 Months</strong>
+                        </div>
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-leaf"></i>
+                            <span>Fridge</span>
+                            <strong>Freeze Only</strong>
+                        </div>
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-ice-cream"></i>
+                            <span>Serve</span>
+                            <strong>Frozen</strong>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Master Interactive Recipe Engine -->
+    <script src="../recipe-interactive.js"></script>
+</body>
+</html>

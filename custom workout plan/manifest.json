@@ -1,0 +1,16 @@
+﻿{
+  "name": "FitPhysique Custom Workout Plan",
+  "short_name": "FitPhysique",
+  "description": "Personalized 12-Week Gym Workout Periodization & Real-time Workout Logger",
+  "start_url": "./workout-plan.html",
+  "display": "standalone",
+  "background_color": "#0b0c10",
+  "theme_color": "#d4af37",
+  "icons": [
+    {
+      "src": "./hero.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

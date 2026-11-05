@@ -1,0 +1,781 @@
+/**
+ * ==============================================================================
+ * Hanuman Gym - Comprehensive Exercise & Movement Academy Database
+ * Complete technical form cues, muscle targets, equipment & video paths
+ * ==============================================================================
+ */
+
+(function (global) {
+    const EXERCISE_DATA = {
+        chest: [
+            {
+                name: "Barbell Bench Press",
+                category: "chest",
+                equipment: "Barbell",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Pectoralis Major (Mid & Lower)",
+                secondaryMuscles: "Anterior Deltoids, Triceps Brachii",
+                duration: "8:45",
+                video: "Barbell Bench Press.mp4",
+                description: "The foundational upper-body pressing movement for maximum pectoral mass and horizontal pushing strength.",
+                formCues: [
+                    "Lie flat, retract your scapulae and plant your feet firmly into the floor.",
+                    "Grip bar slightly wider than shoulder-width with wrists stacked straight over forearms.",
+                    "Unrack, lower the bar under control to mid-chest with elbows tucked at a 45° angle.",
+                    "Drive the bar explosively upward while keeping your glutes and upper back tight on the bench."
+                ],
+                commonMistakes: [
+                    "Flaring elbows at 90 degrees (excessive rotator cuff strain).",
+                    "Bouncing the bar aggressively off the sternum.",
+                    "Lifting glutes off the bench during the press drive."
+                ]
+            },
+            {
+                name: "Incline Barbell Press",
+                category: "chest",
+                equipment: "Barbell",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Clavicular Pectoral (Upper Chest)",
+                secondaryMuscles: "Front Deltoids, Triceps",
+                duration: "8:30",
+                video: "Incline bench press.mp4",
+                description: "Angled pressing variation targeting upper pectoral recruitment and shoulder strength.",
+                formCues: [
+                    "Set bench angle between 30° and 45° for optimal upper chest activation.",
+                    "Lower the bar smoothly toward the upper chest just below the collarbone.",
+                    "Press directly upward in a slight natural arc over the shoulders."
+                ],
+                commonMistakes: [
+                    "Setting bench angle too high (>50°), turning it into a shoulder press.",
+                    "Excessive lower back arching to compensate for heavy load."
+                ]
+            },
+            {
+                name: "Incline Dumbbell Press",
+                category: "chest",
+                equipment: "Dumbbell",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Upper Pectorals",
+                secondaryMuscles: "Anterior Delts, Triceps",
+                duration: "6:30",
+                video: "Dumbell bench press.mp4",
+                description: "Allows free range of motion and joint-friendly unilateral pressing to fix muscular imbalances.",
+                formCues: [
+                    "Kick dumbbells to shoulders and lie back with chest high.",
+                    "Press dumbbells up and inward in a smooth converging arc without clanking weights.",
+                    "Lower slowly until you feel a deep, comfortable stretch in the upper pec fibers."
+                ],
+                commonMistakes: [
+                    "Dropping elbows too low below the shoulders.",
+                    "Banging the dumbbells together at lockout."
+                ]
+            },
+            {
+                name: "Dumbbell Flyes",
+                category: "chest",
+                equipment: "Dumbbell",
+                difficulty: "Beginner",
+                mechanics: "Isolation",
+                primaryMuscles: "Sternal Pectoralis Major",
+                secondaryMuscles: "Anterior Deltoids",
+                duration: "6:45",
+                video: "Dumbell flyes.mp4",
+                description: "Classic chest isolation movement emphasizing deep stretch and horizontal adduction.",
+                formCues: [
+                    "Maintain a slight, fixed bend in elbows throughout the entire arc of motion.",
+                    "Open arms wide like hugging a large tree until you feel a chest stretch.",
+                    "Squeeze pecs hard at top position to contract the inner chest fibers."
+                ],
+                commonMistakes: [
+                    "Bending and straightening elbows turning the fly into a press.",
+                    "Over-stretching below bench level putting shoulder joint in jeopardy."
+                ]
+            },
+            {
+                name: "Cable Chest Flyes",
+                category: "chest",
+                equipment: "Cable",
+                difficulty: "Advanced",
+                mechanics: "Isolation",
+                primaryMuscles: "Pectoralis Major",
+                secondaryMuscles: "Coracobrachialis, Front Deltoids",
+                duration: "7:20",
+                video: "cable chest flyes.mp4",
+                description: "Delivers uninterrupted continuous tension across the full horizontal range of motion.",
+                formCues: [
+                    "Set pulleys at chest height, step forward into a staggered stance.",
+                    "Drive hands together in a wide hugging motion, squeezing pecs for 1 second.",
+                    "Control the eccentric return slowly to maintain constant fiber tension."
+                ],
+                commonMistakes: [
+                    "Using body momentum/swinging torso to pull the cables.",
+                    "Letting shoulders roll forward during the contraction."
+                ]
+            },
+            {
+                name: "Smith Machine Incline Press",
+                category: "chest",
+                equipment: "Machine",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Upper Pectorals",
+                secondaryMuscles: "Front Deltoids, Triceps",
+                duration: "7:15",
+                video: "Smith Press.mp4",
+                description: "Fixed bar path allows safe, stable upper chest overload without requiring a spotter.",
+                formCues: [
+                    "Position bench so bar aligns directly with upper clavicle.",
+                    "Unrack with a twist of the wrists and lower with 3-second control.",
+                    "Press up explosively to full extension without locking out elbows aggressively."
+                ],
+                commonMistakes: [
+                    "Setting bench too far forward causing unnatural shoulder extension.",
+                    "Letting wrists bend backward excessively."
+                ]
+            },
+            {
+                name: "Push-ups",
+                category: "chest",
+                equipment: "Bodyweight",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Chest, Core Stability",
+                secondaryMuscles: "Triceps, Anterior Deltoids, Serratus",
+                duration: "7:00",
+                video: "push ups.mp4",
+                description: "The gold-standard functional calisthenics movement for chest and core integration.",
+                formCues: [
+                    "Create a rigid plank from head to heels with glutes and abs squeezed tight.",
+                    "Hands shoulder-width apart, fingers slightly spread.",
+                    "Lower until chest hovers 1 inch above the floor, then push through palm heels."
+                ],
+                commonMistakes: [
+                    "Sagging hips or piking buttocks upward.",
+                    "Flaring elbows wide causing rotator cuff impingement."
+                ]
+            }
+        ],
+
+        biceps: [
+            {
+                name: "Barbell Bicep Curls",
+                category: "biceps",
+                equipment: "Barbell",
+                difficulty: "Beginner",
+                mechanics: "Isolation",
+                primaryMuscles: "Biceps Brachii (Short & Long Head)",
+                secondaryMuscles: "Brachialis, Forearm Flexors",
+                duration: "6:15",
+                video: "Barbell bicep curls.mp4",
+                description: "The king of arm mass builders allowing progressive overload and maximum tension.",
+                formCues: [
+                    "Stand tall with feet shoulder-width, elbows pinned strictly by your sides.",
+                    "Supinate grip and curl bar upward toward shoulders without swinging hips.",
+                    "Squeeze biceps hard at the peak contraction for 1 second before lowering under control."
+                ],
+                commonMistakes: [
+                    "Swinging torso back and forth using hip momentum.",
+                    "Letting elbows drift far forward removing tension from the biceps."
+                ]
+            },
+            {
+                name: "Hammer Curls",
+                category: "biceps",
+                equipment: "Dumbbell",
+                difficulty: "Beginner",
+                mechanics: "Isolation",
+                primaryMuscles: "Brachialis & Brachioradialis",
+                secondaryMuscles: "Biceps Long Head",
+                duration: "5:45",
+                video: "Hammer curl.mp4",
+                description: "Neutral-grip curl that widens arm thickness and builds crushing grip strength.",
+                formCues: [
+                    "Hold dumbbells with palms facing each other (neutral grip).",
+                    "Keep wrists rigid and curl dumbbells smoothly toward upper chest.",
+                    "Lower slowly for a full 2-second negative stretch."
+                ],
+                commonMistakes: [
+                    "Alternating dumbbells with sloppy torso twisting.",
+                    "Flipping wrists into supination mid-curl."
+                ]
+            },
+            {
+                name: "Concentration Curls",
+                category: "biceps",
+                equipment: "Dumbbell",
+                difficulty: "Intermediate",
+                mechanics: "Isolation",
+                primaryMuscles: "Biceps Peak (Long Head)",
+                secondaryMuscles: "Brachialis",
+                duration: "6:00",
+                video: "concentration curls.mp4",
+                description: "Strict seated isolation exercise that eliminates all body sway for high peak activation.",
+                formCues: [
+                    "Sit on a bench, brace back of tricep against inner thigh.",
+                    "Curl dumbbell upward toward face while keeping elbow anchored firmly.",
+                    "Focus entirely on peak contraction squeeze at the top."
+                ],
+                commonMistakes: [
+                    "Pushing shoulder into knee to leverage weight up.",
+                    "Cutting range of motion short at the bottom stretch."
+                ]
+            },
+            {
+                name: "Cable Bicep Curls",
+                category: "biceps",
+                equipment: "Cable",
+                difficulty: "Advanced",
+                mechanics: "Isolation",
+                primaryMuscles: "Biceps Brachii",
+                secondaryMuscles: "Forearm Flexors",
+                duration: "7:10",
+                video: "cable bicep curls.mp4",
+                description: "Constant cable resistance eliminates dead spots at the bottom and top of the curl.",
+                formCues: [
+                    "Attach straight bar or EZ-attachment to low cable pulley.",
+                    "Step back slightly, keep elbows glued to ribs, and curl with controlled cadence.",
+                    "Resist the downward pull on the eccentric phase."
+                ],
+                commonMistakes: [
+                    "Leaning back to leverage heavy cable stack.",
+                    "Speeding through reps without pausing at the contraction."
+                ]
+            }
+        ],
+
+        triceps: [
+            {
+                name: "Close-Grip Bench Press",
+                category: "triceps",
+                equipment: "Barbell",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Triceps Brachii (All 3 Heads)",
+                secondaryMuscles: "Inner Pectorals, Front Deltoids",
+                duration: "8:30",
+                video: "Close grip bench press.mp4",
+                description: "Heavy compound power movement delivering massive overload to triceps.",
+                formCues: [
+                    "Grip bar shoulder-width apart (hands about 12-14 inches apart).",
+                    "Keep elbows tucked tightly alongside ribcage as you lower the bar to lower chest.",
+                    "Lock out triceps forcefully at the top of the press."
+                ],
+                commonMistakes: [
+                    "Gripping bar too narrow (<6 inches), causing severe wrist strain.",
+                    "Flaring elbows wide transferring load to shoulders."
+                ]
+            },
+            {
+                name: "Tricep Dips",
+                category: "triceps",
+                equipment: "Bodyweight",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Triceps Lateral & Medial Heads",
+                secondaryMuscles: "Chest, Anterior Delts",
+                duration: "6:45",
+                video: "tricep dips.mp4",
+                description: "High-yield bodyweight arm builder that builds rock-solid lockout strength.",
+                formCues: [
+                    "Grip parallel bars, keep torso upright (vertical) to isolate triceps over chest.",
+                    "Lower until upper arms are parallel to floor (90° elbow bend).",
+                    "Drive straight down through palms to full arm extension."
+                ],
+                commonMistakes: [
+                    "Leaning far forward converting movement into a chest dip.",
+                    "Dipping too deep below 90° straining the anterior shoulder capsule."
+                ]
+            },
+            {
+                name: "Bench Tricep Dips",
+                category: "triceps",
+                equipment: "Bodyweight",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Triceps Brachii",
+                secondaryMuscles: "Front Delts, Chest",
+                duration: "6:00",
+                video: "tricep bench dips.mp4",
+                description: "Accessible bodyweight movement for high-rep pump and tricep hypertrophy.",
+                formCues: [
+                    "Sit on edge of bench, hands gripping the edge alongside hips.",
+                    "Slide hips forward off bench and lower until elbows bend to 90 degrees.",
+                    "Push straight down through palms to full lockout."
+                ],
+                commonMistakes: [
+                    "Letting hips drift too far away from the bench straining shoulders.",
+                    "Shrugging shoulders up toward ears."
+                ]
+            },
+            {
+                name: "Overhead Tricep Extension",
+                category: "triceps",
+                equipment: "Dumbbell",
+                difficulty: "Intermediate",
+                mechanics: "Isolation",
+                primaryMuscles: "Triceps Long Head",
+                secondaryMuscles: "Core Stabilizers",
+                duration: "7:00",
+                video: "overhead tricep extension.mp4",
+                description: "Places triceps long head under maximum stretch for full horseshoe arm development.",
+                formCues: [
+                    "Hold dumbbell overhead with both hands cupping the inner weight plate.",
+                    "Keep upper arms vertical and close to ears.",
+                    "Lower weight behind head strictly by bending at elbows, then press to lockout."
+                ],
+                commonMistakes: [
+                    "Flaring elbows outwards away from head.",
+                    "Arching lower back under heavy loads."
+                ]
+            },
+            {
+                name: "Diamond Push-ups",
+                category: "triceps",
+                equipment: "Bodyweight",
+                difficulty: "Advanced",
+                mechanics: "Compound",
+                primaryMuscles: "Triceps Brachii, Inner Chest",
+                secondaryMuscles: "Core, Anterior Delts",
+                duration: "5:30",
+                video: "Diamond push up.mp4",
+                description: "High-intensity calisthenic variation with close hand triangle placement.",
+                formCues: [
+                    "Form a diamond/triangle with index fingers and thumbs under center of chest.",
+                    "Maintain tight plank posture throughout movement.",
+                    "Lower chest to touch hands, then push straight up."
+                ],
+                commonMistakes: [
+                    "Letting hips drop or sagging lower back.",
+                    "Placing hands too far above head level."
+                ]
+            }
+        ],
+
+        shoulders: [
+            {
+                name: "Military Press",
+                category: "shoulders",
+                equipment: "Barbell",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Anterior & Lateral Deltoids",
+                secondaryMuscles: "Triceps, Upper Traps, Core",
+                duration: "9:15",
+                video: "Military Press.mp4",
+                description: "The premier vertical pressing strength test for complete deltoid development.",
+                formCues: [
+                    "Stand with feet shoulder-width, brace glutes and core.",
+                    "Bar rests on front clavicles with wrists stacked over forearms.",
+                    "Press bar vertically in a straight line, pulling head back slightly to clear the chin.",
+                    "Lock out overhead with bar centered directly over mid-foot."
+                ],
+                commonMistakes: [
+                    "Hyperextending lower spine under heavy loads.",
+                    "Using leg drive on a strict military press."
+                ]
+            },
+            {
+                name: "Lateral Raises",
+                category: "shoulders",
+                equipment: "Dumbbell",
+                difficulty: "Beginner",
+                mechanics: "Isolation",
+                primaryMuscles: "Lateral Deltoids (Side Delts)",
+                secondaryMuscles: "Trapezius",
+                duration: "6:20",
+                video: "Lateral Raises.mp4",
+                description: "Crucial movement for building 3D capped shoulder width and the classic V-taper.",
+                formCues: [
+                    "Slight forward torso lean (10-15°), dumbbells in front of thighs.",
+                    "Lead with elbows, raising arms out to sides until parallel to floor.",
+                    "Pour water gesture slightly with pinkies higher than thumbs at peak."
+                ],
+                commonMistakes: [
+                    "Shrugging traps upward instead of isolating side delts.",
+                    "Swinging torso and bouncing knees to throw weights up."
+                ]
+            },
+            {
+                name: "Rear Delt Flyes",
+                category: "shoulders",
+                equipment: "Dumbbell",
+                difficulty: "Intermediate",
+                mechanics: "Isolation",
+                primaryMuscles: "Posterior Deltoids (Rear Delts)",
+                secondaryMuscles: "Rhomboids, Middle Trapezius",
+                duration: "7:00",
+                video: "Rear Delt Flyes.mp4",
+                description: "Balances shoulder posture and completes the posterior shoulder development.",
+                formCues: [
+                    "Hinge at hips to nearly 90° torso angle, back flat.",
+                    "Raise dumbbells outward and back in a sweeping reverse fly arc.",
+                    "Squeeze rear deltoids firmly without excessive scapular pinch."
+                ],
+                commonMistakes: [
+                    "Standing too upright turning it into a lateral raise.",
+                    "Using heavy weights and jerky shoulder shrugs."
+                ]
+            },
+            {
+                name: "Arnold Press",
+                category: "shoulders",
+                equipment: "Dumbbell",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Anterior & Medial Deltoids",
+                secondaryMuscles: "Triceps, Upper Traps",
+                duration: "8:00",
+                video: "Arnold Press.mp4",
+                description: "Rotational overhead press invented by Arnold Schwarzenegger for complete deltoid recruitment.",
+                formCues: [
+                    "Start with dumbbells at chest height, palms facing your chest.",
+                    "As you press upward, rotate palms outward so they face forward at the top.",
+                    "Reverse rotation smoothly as you lower weights back to starting position."
+                ],
+                commonMistakes: [
+                    "Rotating wrists erratically instead of in smooth sync with the press.",
+                    "Locking out aggressively and losing shoulder tension."
+                ]
+            }
+        ],
+
+        back: [
+            {
+                name: "Deadlifts",
+                category: "back",
+                equipment: "Barbell",
+                difficulty: "Advanced",
+                mechanics: "Compound",
+                primaryMuscles: "Entire Posterior Chain (Erectors, Lats, Traps)",
+                secondaryMuscles: "Glutes, Hamstrings, Forearms, Core",
+                duration: "10:30",
+                video: "deadlift.mp4",
+                description: "The ultimate total-body pulling power movement for thick spinal erectors and back density.",
+                formCues: [
+                    "Stand with bar over mid-foot, shins 1 inch away.",
+                    "Hinge and grip bar, wedge hips down, pull chest tall to take slack out of the bar.",
+                    "Drive floor away through heels, keeping bar dragged tight against shins and thighs.",
+                    "Stand tall with neutral spine and strong glute lockout."
+                ],
+                commonMistakes: [
+                    "Rounding the lumbar spine under load.",
+                    "Letting the bar drift away forward from body line."
+                ]
+            },
+            {
+                name: "Lat Pulldowns",
+                category: "back",
+                equipment: "Cable",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Latissimus Dorsi (Lats)",
+                secondaryMuscles: "Biceps, Rear Delts, Rhomboids",
+                duration: "7:45",
+                video: "Lat pulldown.mp4",
+                description: "Essential vertical pulling movement for upper back width and winged lats.",
+                formCues: [
+                    "Grip bar wider than shoulders, secure thighs snugly under knee pads.",
+                    "Depress scapulae down first, then pull bar down to upper clavicle.",
+                    "Drive elbows straight down and back, squeezing lats for 1 second."
+                ],
+                commonMistakes: [
+                    "Leaning back excessively into a horizontal row.",
+                    "Pulling bar behind the neck (high risk to cervical spine and shoulders)."
+                ]
+            },
+            {
+                name: "Pull-ups",
+                category: "back",
+                equipment: "Bodyweight",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Latissimus Dorsi, Teres Major",
+                secondaryMuscles: "Biceps, Forearms, Core",
+                duration: "8:00",
+                video: "pull ups.mp4",
+                description: "The ultimate functional vertical pulling test of relative bodyweight strength.",
+                formCues: [
+                    "Overhand grip slightly wider than shoulders, dead hang with engaged shoulders.",
+                    "Drive elbows down toward hips while pulling chest toward the bar.",
+                    "Clear chin over bar smoothly, pause, and lower to a full controlled extension."
+                ],
+                commonMistakes: [
+                    "Kicking legs (kipping) to generate false momentum.",
+                    "Not achieving full bottom stretch or full chin-over-bar top."
+                ]
+            },
+            {
+                name: "Landmine Rows",
+                category: "back",
+                equipment: "Barbell",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Middle Back, Rhomboids, Lats",
+                secondaryMuscles: "Erectors, Biceps, Core",
+                duration: "8:15",
+                video: "Landmine rows.mp4",
+                description: "Fixed pivot angle allows heavy horizontal rowing with reduced lower-back torque.",
+                formCues: [
+                    "Straddle bar with V-handle positioned under collar, hinge at 45° angle.",
+                    "Keep flat back, pull V-handle to ribcage squeezing shoulder blades.",
+                    "Lower smoothly allowing lats to stretch fully."
+                ],
+                commonMistakes: [
+                    "Jerking torso upright during pull.",
+                    "Rounding upper spine."
+                ]
+            },
+            {
+                name: "Double-Arm Dumbbell Rows",
+                category: "back",
+                equipment: "Dumbbell",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Lats, Rhomboids, Trapezius",
+                secondaryMuscles: "Biceps, Posterior Delts",
+                duration: "7:15",
+                video: "double arm dumbell rows.mp4",
+                description: "Builds dense mid-back thickness and fixes left-right strength discrepancies.",
+                formCues: [
+                    "Hinge at hips with 45° flat torso, dumbbells hanging straight down.",
+                    "Pull dumbbells up toward pockets, leading with elbows.",
+                    "Squeeze shoulder blades together firmly at the top."
+                ],
+                commonMistakes: [
+                    "Using jerky arm curl motion instead of back contraction.",
+                    "Looking up straining the cervical neck."
+                ]
+            },
+            {
+                name: "Cable Straight-Arm Pulldowns",
+                category: "back",
+                equipment: "Cable",
+                difficulty: "Intermediate",
+                mechanics: "Isolation",
+                primaryMuscles: "Latissimus Dorsi (Teres Major)",
+                secondaryMuscles: "Triceps Long Head, Core",
+                duration: "6:30",
+                video: "cable straight arm.mp4",
+                description: "Pure lat isolation movement without bicep involvement for high mind-muscle connection.",
+                formCues: [
+                    "Stand facing high pulley with straight bar or rope, slight forward hip hinge.",
+                    "Keep arms nearly straight (slight elbow unlock) and sweep bar in an arc down to thighs.",
+                    "Squeeze lats aggressively at the bottom, then control the return upward."
+                ],
+                commonMistakes: [
+                    "Bending elbows and turning exercise into a tricep pushdown.",
+                    "Swinging torso up and down."
+                ]
+            },
+            {
+                name: "Seated Cable Rows",
+                category: "back",
+                equipment: "Cable",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Middle Back, Rhomboids, Lats",
+                secondaryMuscles: "Biceps, Posterior Deltoids",
+                duration: "7:30",
+                video: "back2.mp4",
+                description: "Horizontal pulling foundation for thick mid-back musculature and posture correction.",
+                formCues: [
+                    "Sit tall with knees slightly bent, feet braced on footrests.",
+                    "Pull handle toward belly button while retracting shoulder blades.",
+                    "Hold peak squeeze for 1 second before extending arms under control."
+                ],
+                commonMistakes: [
+                    "Rocking torso backward and forward excessively.",
+                    "Rounding shoulders at the stretch."
+                ]
+            }
+        ],
+
+        legs: [
+            {
+                name: "Barbell Squats",
+                category: "legs",
+                equipment: "Barbell",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Quadriceps, Gluteus Maximus",
+                secondaryMuscles: "Hamstrings, Adductors, Core, Calves",
+                duration: "11:00",
+                video: "Squats.mp4",
+                description: "The undisputed king of all lower-body compound strength and mass builders.",
+                formCues: [
+                    "Bar placed across upper traps, feet shoulder-width with toes angled 15-30° out.",
+                    "Brace deep intra-abdominal breath, break at hips and knees simultaneously.",
+                    "Descend until hip crease is below top of knees (parallel or deeper).",
+                    "Drive straight up through mid-foot, driving knees out in line with toes."
+                ],
+                commonMistakes: [
+                    "Knees caving inward (valgus collapse) on the ascent.",
+                    "Heels lifting off the floor during descent.",
+                    "Rounding lower back (butt wink) in the bottom hole."
+                ]
+            },
+            {
+                name: "Romanian Deadlifts",
+                category: "legs",
+                equipment: "Barbell",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Hamstrings & Glutes",
+                secondaryMuscles: "Erectors, Lats, Grip",
+                duration: "8:45",
+                video: "Romanian Deadlifts.mp4",
+                description: "Targeted hip-hinge exercise for hamstring length, thickness, and posterior athletic power.",
+                formCues: [
+                    "Stand upright with bar against thighs, slight unlock in knees.",
+                    "Push hips straight back like trying to touch a wall behind you.",
+                    "Lower bar strictly along shins until you feel a deep hamstring stretch, then squeeze glutes to return."
+                ],
+                commonMistakes: [
+                    "Bending knees excessively turning it into a squat.",
+                    "Letting bar drift away from shins placing shear force on lumbar."
+                ]
+            },
+            {
+                name: "Bulgarian Split Squats",
+                category: "legs",
+                equipment: "Dumbbell",
+                difficulty: "Advanced",
+                mechanics: "Compound",
+                primaryMuscles: "Quadriceps & Gluteus Maximus",
+                secondaryMuscles: "Hamstrings, Adductors, Core Stabilizers",
+                duration: "8:30",
+                video: "Bulgarian split squat.mp4",
+                description: "High-intensity unilateral movement for single-leg balance, quad size, and glute hypertrophy.",
+                formCues: [
+                    "Place rear foot laces-down on bench behind you, front foot 2-3 feet ahead.",
+                    "Lower straight down until front thigh is parallel to floor and rear knee hovers above ground.",
+                    "Drive through front heel to return to top position."
+                ],
+                commonMistakes: [
+                    "Front foot placed too close to bench causing heel lift.",
+                    "Losing balance and twisting hips out of square."
+                ]
+            },
+            {
+                name: "Leg Press",
+                category: "legs",
+                equipment: "Machine",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Quadriceps",
+                secondaryMuscles: "Glutes, Hamstrings",
+                duration: "8:15",
+                video: "Leg Press.mp4",
+                description: "Allows heavy leg overload with complete back support and zero spinal loading.",
+                formCues: [
+                    "Place feet shoulder-width on platform, keep lower back and hips firmly against pad.",
+                    "Release safety levers and lower platform smoothly until knees reach 90°.",
+                    "Press platform back up through heels without locking knees forcefully at top."
+                ],
+                commonMistakes: [
+                    "Allowing pelvis/tailbone to curl off the seat at the bottom.",
+                    "Snapping knees into hyperextension at the lockout."
+                ]
+            },
+            {
+                name: "Walking Lunges",
+                category: "legs",
+                equipment: "Dumbbell",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Quads, Glutes, Hamstrings",
+                secondaryMuscles: "Calves, Core",
+                duration: "7:30",
+                video: "Walking Lunges.mp4",
+                description: "Dynamic functional leg movement building hip stability and unilateral leg power.",
+                formCues: [
+                    "Take a long step forward, lowering rear knee until it gently kisses the floor.",
+                    "Keep front shin near vertical and torso upright.",
+                    "Drive through front heel directly into the next step."
+                ],
+                commonMistakes: [
+                    "Short stepping causing front knee to overshoot toes excessively.",
+                    "Banging rear knee hard into the ground."
+                ]
+            }
+        ],
+
+        glutes: [
+            {
+                name: "Barbell Hip Thrusts",
+                category: "glutes",
+                equipment: "Barbell",
+                difficulty: "Intermediate",
+                mechanics: "Compound",
+                primaryMuscles: "Gluteus Maximus",
+                secondaryMuscles: "Hamstrings, Adductors, Core",
+                duration: "9:00",
+                video: "Hip thrust.mp4",
+                description: "The #1 scientifically proven exercise for direct horizontal glute recruitment and power.",
+                formCues: [
+                    "Sit with upper back against bench pad, barbell with pad resting across hips.",
+                    "Feet flat, shoulder-width apart, shins vertical at top lockout.",
+                    "Drive through heels extending hips toward ceiling until thighs and torso form a straight line.",
+                    "Hold top glute squeeze for a full 2 seconds with ribs kept down."
+                ],
+                commonMistakes: [
+                    "Arching lower back and looking up instead of keeping chin tucked and ribs down.",
+                    "Placing feet too far forward (hamstring dominance) or too close (quad dominance)."
+                ]
+            }
+        ],
+
+        abs: [
+            {
+                name: "Planks",
+                category: "abs",
+                equipment: "Bodyweight",
+                difficulty: "Beginner",
+                mechanics: "Compound",
+                primaryMuscles: "Transverse Abdominis, Rectus Abdominis",
+                secondaryMuscles: "Obliques, Glutes, Shoulders",
+                duration: "5:00",
+                video: "Planks.mp4",
+                description: "Isometric foundation exercise for core stiffness, spine health, and posture support.",
+                formCues: [
+                    "Rest on forearms with elbows directly under shoulders.",
+                    "Tuck pelvis under (posterior pelvic tilt) and squeeze glutes hard.",
+                    "Pull elbows toward toes isometrically to maximize abdominal brace."
+                ],
+                commonMistakes: [
+                    "Sagging hips down causing lower back extension.",
+                    "Holding breath instead of diaphragmatic controlled breathing."
+                ]
+            }
+        ],
+
+        forearms: [
+            {
+                name: "Barbell Wrist Curls",
+                category: "forearms",
+                equipment: "Barbell",
+                difficulty: "Beginner",
+                mechanics: "Isolation",
+                primaryMuscles: "Forearm Flexors & Extensors",
+                secondaryMuscles: "Hand Grip Strength",
+                duration: "5:30",
+                video: null,
+                description: "Builds thick, muscular forearms and increases raw grip stability on deadlifts and pull-ups.",
+                formCues: [
+                    "Rest forearms on bench with wrists hanging over edge.",
+                    "Curl bar upward with wrists, squeeze at top, and lower down letting bar roll into fingers.",
+                    "Control the eccentric phase smoothly without jerky motions."
+                ],
+                commonMistakes: [
+                    "Using excessively heavy weight straining wrist tendons.",
+                    "Lifting forearms off the bench support."
+                ]
+            }
+        ]
+    };
+
+    global.GYM_EXERCISES_DATA = EXERCISE_DATA;
+})(typeof window !== "undefined" ? window : this);

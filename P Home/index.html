@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanuman Gym - Elite Strength, Fitness & Athlete Performance Center</title>
+    <meta name="description" content="Join Hanuman Gym for Olympic-grade training, certified personal coaches, custom nutrition plans, and high-performance workouts across 10+ premium locations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="../shared/api-client.js"></script>
+    <style>
+        /* Smooth page entrance animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Fast page transitions */
+        body {
+            animation: fadeInUp 0.4s ease-out;
+        }
+        
+        /* Navigation smoothness */
+        .navbar {
+            animation: slideInDown 0.3s ease-out;
+        }
+        
+        .nav-menu a {
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            transform: translateY(-2px);
+            color: var(--color-accent, #B3DD24);
+        }
+        
+        .nav-menu a.active {
+            color: var(--color-accent, #B3DD24);
+            border-bottom: 2px solid var(--color-accent, #B3DD24);
+        }
+        
+        /* Fast hero section animations */
+        .hero {
+            animation: fadeInUp 0.5s ease-out 0.1s both;
+        }
+        
+        .hero-text h1 {
+            animation: fadeInLeft 0.5s ease-out 0.2s both;
+        }
+        
+        .hero-text p {
+            animation: fadeInLeft 0.5s ease-out 0.3s both;
+        }
+        
+        .btn-primary {
+            animation: fadeInLeft 0.5s ease-out 0.4s both;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(179, 221, 36, 0.3);
+        }
+        
+        /* Fast section animations */
+        .workout-programs {
+            animation: fadeInUp 0.4s ease-out 0.1s both;
+        }
+        
+        .program-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.4s ease-out both;
+        }
+        
+        .program-card:nth-child(1) { animation-delay: 0.05s; }
+        .program-card:nth-child(2) { animation-delay: 0.1s; }
+        .program-card:nth-child(3) { animation-delay: 0.15s; }
+        .program-card:nth-child(4) { animation-delay: 0.2s; }
+        .program-card:nth-child(5) { animation-delay: 0.25s; }
+        
+        .program-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Fast merch section animations */
+        .merch-section {
+            animation: fadeInUp 0.4s ease-out 0.1s both;
+        }
+        
+        .merch-item {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.4s ease-out both;
+        }
+        
+        .merch-item:nth-child(1) { animation-delay: 0.05s; }
+        .merch-item:nth-child(2) { animation-delay: 0.1s; }
+        .merch-item:nth-child(3) { animation-delay: 0.15s; }
+        .merch-item:nth-child(4) { animation-delay: 0.2s; }
+        
+        .merch-item:hover {
+            transform: translateY(-8px) scale(1.05);
+        }
+        
+        /* Fast gallery section animations */
+        .gallery-section {
+            animation: fadeInUp 0.4s ease-out 0.1s both;
+        }
+        
+        .gallery-image {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Fast recipes section animations */
+        .recipes-section {
+            animation: fadeInUp 0.4s ease-out 0.1s both;
+        }
+        
+        .recipe-main {
+            animation: fadeInLeft 0.4s ease-out 0.2s both;
+        }
+        
+        .recipe-sidebar {
+            animation: fadeInRight 0.4s ease-out 0.3s both;
+        }
+        
+        .btn-recipe {
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-recipe:hover {
+            transform: translateX(5px);
+        }
+        
+        /* Fast contact section animations */
+        .contact-section {
+            animation: fadeInUp 0.4s ease-out 0.1s both;
+        }
+        
+        .contact-form {
+            animation: fadeInLeft 0.4s ease-out 0.2s both;
+        }
+        
+        .contact-image {
+            animation: fadeInRight 0.4s ease-out 0.3s both;
+        }
+        
+        .form-input, .form-textarea {
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(179, 221, 36, 0.2);
+        }
+        
+        /* Fast footer animations */
+        .footer {
+            animation: fadeInUp 0.4s ease-out 0.1s both;
+        }
+        
+        /* Disable default smooth scrolling to prevent conflicts */
+        html {
+            scroll-behavior: auto;
+        }
+        
+        /* Performance optimizations */
+        .program-card, .merch-item, .btn-primary, .btn-recipe {
+            will-change: transform;
+        }
+        
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+    <script src="../shared/site-header.js" defer></script>
+
+    <!-- Notifications UI -->
+    <div id="gym-notifications-container" style="position: fixed; top: 100px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none;"></div>
+    <style>
+        .gym-noti {
+            background: #1a1a1a;
+            border-left: 4px solid var(--color-accent, #B3DD24);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 320px;
+            pointer-events: auto;
+            animation: notiIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes notiIn {
+            from { opacity: 0; transform: translateX(50px) scale(0.9); }
+            to { opacity: 1; transform: translateX(0) scale(1); }
+        }
+        .gym-noti-title { font-weight: 800; color: var(--color-accent, #B3DD24); font-size: 14px; margin-bottom: 4px; text-transform: uppercase; }
+        .gym-noti-msg { font-size: 13px; color: #ccc; line-height: 1.4; }
+        .gym-noti-time { font-size: 10px; color: #666; margin-top: 8px; }
+        .gym-noti-close { position: absolute; top: 10px; right: 10px; cursor: pointer; color: #444; font-size: 12px; }
+        .gym-noti-close:hover { color: #fff; }
+    </style>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="images/heropage video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-eyebrow">
+                    <span class="eyebrow-pulse"></span>
+                    <span>ELITE ATHLETIC PERFORMANCE</span>
+                </div>
+                <h1>
+                    <span class="title-line-1">BUILD YOUR</span>
+                    <span class="title-line-2">STRONGEST SELF</span>
+                </h1>
+                <p class="hero-desc">
+                    Olympic-grade strength zones, certified master coaches, and personalized macro tracking across 10+ premium locations.
+                </p>
+                <div class="hero-cta-group">
+                    <button class="btn-hero-primary" onclick="document.getElementById('trial-pass').scrollIntoView({behavior:'smooth'})">
+                        <span>Claim Free Day Pass</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-hero-outline" onclick="window.location.href='../custom workout plan/workout-plan.html'">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <span>Custom Workout Plan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Workout Programs Section -->
+    <section class="workout-programs" id="programs">
+        <h2 class="section-title">Free Workout Programs</h2>
+        
+        <div class="programs-grid">
+            <!-- Program 1: Beginner Friendly -->
+            <div class="program-card program-1" onclick="window.location.href='../P workout Program/workout-programs.html'">
+                <div class="program-image">
+                    <img src="images/yoga.svg" alt="Yoga">
+                </div>
+                <div class="program-overlay"></div>
+                <div class="program-label">Beginner Friendly</div>
+            </div>
+
+            <!-- Program 2: Moderate to Advanced -->
+            <div class="program-card program-2" onclick="window.location.href='../P workout Program/workout-programs.html'">
+                <div class="program-image">
+                    <img src="images/workout-advanced.svg" alt="Advanced Workout">
+                </div>
+                <div class="program-overlay moderate"></div>
+                <div class="program-label">Moderate to Advanced</div>
+            </div>
+
+            <!-- Program 3: Weight Loss -->
+            <div class="program-card program-3" onclick="window.location.href='../P workout Program/workout-programs.html'">
+                <div class="program-image">
+                    <img src="images/cardio-noequip.svg" alt="Cardio">
+                </div>
+                <div class="program-overlay"></div>
+                <div class="program-label">Weight Loss</div>
+            </div>
+
+            <!-- Program 4: No Equipment -->
+            <div class="program-card program-4" onclick="window.location.href='../P workout Program/workout-programs.html'">
+                <div class="program-image">
+                    <img src="images/cardio-noequip.svg" alt="No Equipment">
+                </div>
+                <div class="program-overlay"></div>
+                <div class="program-label">No Equipment</div>
+            </div>
+
+            <!-- Program 5: Strength Training -->
+            <div class="program-card program-5" onclick="window.location.href='../P workout Program/workout-programs.html'">
+                <div class="program-image">
+                    <img src="images/cardio-strength.svg" alt="Strength Training">
+                </div>
+                <div class="program-overlay"></div>
+                <div class="program-label">Strength Training</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Elite Coaches Spotlight Section -->
+    <section class="trainers-section" id="trainers">
+        <div class="section-head-wrap">
+            <div>
+                <h2 class="section-title-yellow">/// MEET OUR MASTER COACHES</h2>
+                <p class="section-subhead">Certified international trainers dedicated to advancing your strength, mobility, and physique transformation.</p>
+            </div>
+            <a href="../Training_Section/trainer-details.html" class="btn-outline">View All Trainers</a>
+        </div>
+
+        <div class="trainers-grid">
+            <!-- Coach Vikram -->
+            <div class="trainer-card">
+                <div class="trainer-img-wrap">
+                    <img src="../Training_Section/images/Pradeep.jpg" onerror="this.src='images/cardio-strength.svg'" alt="Coach Vikram Joshi">
+                    <div class="trainer-badge">9+ Yrs Exp</div>
+                </div>
+                <div class="trainer-body">
+                    <div class="trainer-name">Vikram Joshi</div>
+                    <div class="trainer-role">Head of Strength & Hypertrophy</div>
+                    <p class="trainer-bio">National powerlifting medalist specializing in biomechanics, progressive overload, and competitive physique prep.</p>
+                    <a href="../Training_Section/trainer-details.html" class="btn-trainer-book"><i class="fa-solid fa-calendar-check"></i> Book Assessment</a>
+                </div>
+            </div>
+
+            <!-- Coach Sarah -->
+            <div class="trainer-card">
+                <div class="trainer-img-wrap">
+                    <img src="../Training_Section/images/Prachi.jpg" onerror="this.src='images/yoga.svg'" alt="Coach Sarah Jenkins">
+                    <div class="trainer-badge">7+ Yrs Exp</div>
+                </div>
+                <div class="trainer-body">
+                    <div class="trainer-name">Sarah Jenkins</div>
+                    <div class="trainer-role">HIIT & Metabolic Conditioning</div>
+                    <p class="trainer-bio">Former athlete focusing on explosive fat loss, endurance conditioning, and cardiovascular resilience.</p>
+                    <a href="../Training_Section/trainer-details.html" class="btn-trainer-book"><i class="fa-solid fa-calendar-check"></i> Book Assessment</a>
+                </div>
+            </div>
+
+            <!-- Coach Marcus -->
+            <div class="trainer-card">
+                <div class="trainer-img-wrap">
+                    <img src="../Training_Section/images/Sahil.jpg" onerror="this.src='images/workout-advanced.svg'" alt="Coach Marcus Vance">
+                    <div class="trainer-badge">10+ Yrs Exp</div>
+                </div>
+                <div class="trainer-body">
+                    <div class="trainer-name">Marcus Vance</div>
+                    <div class="trainer-role">CrossFit & Functional Fitness</div>
+                    <p class="trainer-bio">Level-3 CrossFit coach expert in Olympic barbell lifting, gymnastics, and raw high-capacity conditioning.</p>
+                    <a href="../Training_Section/trainer-details.html" class="btn-trainer-book"><i class="fa-solid fa-calendar-check"></i> Book Assessment</a>
+                </div>
+            </div>
+
+            <!-- Coach Priya -->
+            <div class="trainer-card">
+                <div class="trainer-img-wrap">
+                    <img src="../Training_Section/images/Tanvi.jpg" onerror="this.src='images/yoga.svg'" alt="Coach Priya Sharma">
+                    <div class="trainer-badge">8+ Yrs Exp</div>
+                </div>
+                <div class="trainer-body">
+                    <div class="trainer-name">Priya Sharma</div>
+                    <div class="trainer-role">Yoga & Athletic Mobility</div>
+                    <p class="trainer-bio">Master yogi bridging deep flexibility, core stabilization, and postural rehab for heavy lifting recovery.</p>
+                    <a href="../Training_Section/trainer-details.html" class="btn-trainer-book"><i class="fa-solid fa-calendar-check"></i> Book Assessment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Instant 1-Day Trial Pass Lead Magnet -->
+    <section class="trial-pass-section" id="trial-pass">
+        <div class="trial-pass-wrap">
+            <div class="trial-pass-text">
+                <h2>CLAIM YOUR<br><span>FREE 1-DAY VIP PASS</span></h2>
+                <p>Experience Hanuman Gym firsthand. Get unlimited all-day access to our lifting floor, cardio theater, group classes, and locker amenities with zero obligation.</p>
+                <ul class="trial-perks">
+                    <li><i class="fa-solid fa-circle-check"></i> Complete all-access gym floor pass for 1 full day</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Complimentary InBody™ full body composition scan</li>
+                    <li><i class="fa-solid fa-circle-check"></i> 1-on-1 fitness goal consultation with a certified coach</li>
+                </ul>
+            </div>
+
+            <div class="trial-form-card">
+                <form id="homeTrialForm" onsubmit="handleHomeTrialSubmit(event)">
+                    <div class="trial-form-grid">
+                        <div class="trial-input-wrap">
+                            <label>Full Name *</label>
+                            <input type="text" id="trialName" placeholder="e.g. Rahul Sharma" required />
+                        </div>
+                        <div class="trial-input-wrap">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="trialPhone" placeholder="+91 9876543210" required />
+                        </div>
+                        <div class="trial-input-wrap">
+                            <label>Email Address</label>
+                            <input type="email" id="trialEmail" placeholder="rahul@example.com" />
+                        </div>
+                        <div class="trial-input-wrap">
+                            <label>Select Branch *</label>
+                            <select id="trialBranch" required>
+                                <option value="Ambernath">Ambernath Branch</option>
+                                <option value="Karjat">Karjat Branch</option>
+                                <option value="Ambivali">Ambivali Branch</option>
+                                <option value="Titwala">Titwala Branch</option>
+                                <option value="Kalyan">Kalyan Branch</option>
+                                <option value="Badlapur">Badlapur Branch</option>
+                                <option value="Dombivali">Dombivali Branch</option>
+                                <option value="Thane">Thane Branch</option>
+                                <option value="Dadar">Dadar Branch</option>
+                                <option value="Vashi">Vashi Branch</option>
+                            </select>
+                        </div>
+                        <div class="trial-input-wrap">
+                            <label>Preferred Visit Date</label>
+                            <input type="date" id="trialDate" />
+                        </div>
+                        <div class="trial-input-wrap">
+                            <label>Preferred Time</label>
+                            <select id="trialTime">
+                                <option value="Morning (6 AM - 10 AM)">Morning (6 AM - 10 AM)</option>
+                                <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
+                                <option value="Evening (5 PM - 10 PM)">Evening (5 PM - 10 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-claim-pass" id="btnTrialSubmit">
+                        <i class="fa-solid fa-bolt"></i> Generate VIP Pass Instant
+                    </button>
+                    <div id="trialFormSuccess" style="display:none; color:#22c55e; text-align:center; font-weight:700; margin-top:14px;">
+                        ✓ VIP Pass generated! Our team will WhatsApp you your barcode pass shortly.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 5. Gym Floor & Facility Amenities Showcase -->
+    <section class="amenities-section">
+        <div style="max-width:1280px; margin:0 auto 50px auto; text-align:center;">
+            <h2 class="section-title-yellow">/// WORLD-CLASS FACILITY AMENITIES</h2>
+            <p style="color:#888; max-width:600px; margin:10px auto 0 auto;">Engineered for serious athletes and everyday lifters with zero compromises.</p>
+        </div>
+
+        <div class="amenities-grid">
+            <div class="amenity-card">
+                <div class="amenity-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                <div class="amenity-info">
+                    <h4>Olympic Free Weights Zone</h4>
+                    <p>Calibrated Eleiko & Rogue steel plates, deadlift platforms, and dumbell racks spanning from 2.5kg to 60kg.</p>
+                </div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                <div class="amenity-info">
+                    <h4>Cardio Theater Suite</h4>
+                    <p>Technogym skillmills, stairmasters, assault air bikes, and rowing machines with interactive telemetry screens.</p>
+                </div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon"><i class="fa-solid fa-fire"></i></div>
+                <div class="amenity-info">
+                    <h4>CrossFit & Functional Rig</h4>
+                    <p>Custom 40ft modular rig, gymnastic rings, sled sprint turf tracks, kettlebells, and battle ropes.</p>
+                </div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon"><i class="fa-solid fa-spa"></i></div>
+                <div class="amenity-info">
+                    <h4>Steam, Sauna & Contrast Spa</h4>
+                    <p>Therapeutic eucalyptus steam rooms and infrared sauna chambers to accelerate central nervous recovery.</p>
+                </div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon"><i class="fa-solid fa-blender"></i></div>
+                <div class="amenity-info">
+                    <h4>Precision Nutrition & Shake Bar</h4>
+                    <p>Fresh isolate protein smoothies, branched-chain amino acids, pre-workout shots, and healthy snacks.</p>
+                </div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon"><i class="fa-solid fa-fingerprint"></i></div>
+                <div class="amenity-info">
+                    <h4>24/7 Biometric Smart Access</h4>
+                    <p>High-speed biometric and QR entry allowing seamless access across all 10+ branch locations anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing" style="padding: 100px 20px; text-align: center; background: #000;">
+        <h2 class="section-title-yellow">/// Membership Plans</h2>
+        <p style="color: #999; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">Unlock your full potential with our flexible membership options. From basic access to premium personal training, we have a plan for everyone.</p>
+        
+        <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+            <div class="pricing-card" style="background: #111; border: 1px solid #222; padding: 40px; border-radius: 24px; transition: transform 0.3s ease;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Basic</h3>
+                <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-accent, #B3DD24); margin-bottom: 20px;">₹2,000<span style="font-size: 0.9rem; color: #666;">/mo</span></div>
+                <ul style="list-style: none; color: #999; margin-bottom: 30px; text-align: left; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">✓ Gym Access</li>
+                    <li style="margin-bottom: 10px;">✓ Locker Room</li>
+                    <li style="margin-bottom: 10px;">✓ Standard Equipment</li>
+                </ul>
+                <a href="../Memberships/index.html" class="btn-primary" style="display: inline-block; width: 100%;">Select Plan</a>
+            </div>
+            
+            <div class="pricing-card" style="background: #151515; border: 1px solid var(--color-accent, #B3DD24); padding: 40px; border-radius: 24px; position: relative; transform: scale(1.05); box-shadow: 0 10px 30px rgba(179, 221, 36, 0.15);">
+                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--color-accent, #B3DD24); color: #000; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 800;">POPULAR</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Standard</h3>
+                <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-accent, #B3DD24); margin-bottom: 20px;">₹4,500<span style="font-size: 0.9rem; color: #666;">/mo</span></div>
+                <ul style="list-style: none; color: #999; margin-bottom: 30px; text-align: left; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">✓ All Basic Features</li>
+                    <li style="margin-bottom: 10px;">✓ Group Classes</li>
+                    <li style="margin-bottom: 10px;">✓ Hydration Station</li>
+                </ul>
+                <a href="../Memberships/index.html" class="btn-primary" style="display: inline-block; width: 100%;">Select Plan</a>
+            </div>
+            
+            <div class="pricing-card" style="background: #111; border: 1px solid #222; padding: 40px; border-radius: 24px;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Premium</h3>
+                <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-accent, #B3DD24); margin-bottom: 20px;">₹7,500<span style="font-size: 0.9rem; color: #666;">/mo</span></div>
+                <ul style="list-style: none; color: #999; margin-bottom: 30px; text-align: left; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">✓ All Standard Features</li>
+                    <li style="margin-bottom: 10px;">✓ Personal Training</li>
+                    <li style="margin-bottom: 10px;">✓ Diet Plans</li>
+                </ul>
+                <a href="../Memberships/index.html" class="btn-primary" style="display: inline-block; width: 100%;">Select Plan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Today's Live Class Timetable Preview -->
+    <section class="classes-section">
+        <div class="section-head-wrap">
+            <div>
+                <h2 class="section-title-yellow">/// TODAY'S CLASS SCHEDULE</h2>
+                <p class="section-subhead">Join high-energy group coaching sessions led by master trainers.</p>
+            </div>
+            <a href="../Memberships/index.html" class="btn-outline">Reserve Class Spot</a>
+        </div>
+
+        <div class="classes-grid">
+            <div class="class-card">
+                <div class="class-time">06:30 AM - 07:30 AM</div>
+                <div class="class-title">Morning HIIT & Burn</div>
+                <div class="class-coach"><i class="fa-solid fa-user-tie"></i> Coach Sarah Jenkins</div>
+                <div class="class-cap-meter"><i class="fa-solid fa-circle"></i> 18 / 20 Athletes Booked</div>
+            </div>
+            <div class="class-card">
+                <div class="class-time">08:00 AM - 09:15 AM</div>
+                <div class="class-title">Olympic Weightlifting</div>
+                <div class="class-coach"><i class="fa-solid fa-user-tie"></i> Coach Vikram Joshi</div>
+                <div class="class-cap-meter"><i class="fa-solid fa-circle"></i> 12 / 15 Athletes Booked</div>
+            </div>
+            <div class="class-card">
+                <div class="class-time">05:30 PM - 06:30 PM</div>
+                <div class="class-title">Power Vinyasa Yoga</div>
+                <div class="class-coach"><i class="fa-solid fa-user-tie"></i> Coach Priya Sharma</div>
+                <div class="class-cap-meter"><i class="fa-solid fa-circle"></i> 22 / 25 Athletes Booked</div>
+            </div>
+            <div class="class-card">
+                <div class="class-time">07:00 PM - 08:00 PM</div>
+                <div class="class-title">High-Octane CrossFit</div>
+                <div class="class-coach"><i class="fa-solid fa-user-tie"></i> Coach Marcus Vance</div>
+                <div class="class-cap-meter"><i class="fa-solid fa-circle" style="color:#ef4444;"></i> 19 / 20 Booked (Almost Full)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Athlete Transformations & Social Proof -->
+    <section class="reviews-section">
+        <div style="max-width:1280px; margin:0 auto 50px auto; text-align:center;">
+            <h2 class="section-title-yellow">/// ATHLETE TRANSFORMATIONS & REVIEWS</h2>
+            <p style="color:#888; max-width:600px; margin:10px auto 0 auto;">Real members. Verified weight loss and strength records from the Hanuman Gym community.</p>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-quote">"I dropped 14 kg in 4 months under Coach Vikram's hyper-custom workout split. The atmosphere here is pure focus and brotherhood—no distractions."</p>
+                <div class="review-author-wrap">
+                    <div class="review-avatar">AM</div>
+                    <div>
+                        <div class="review-author-name">Anand Mishra</div>
+                        <div class="review-author-meta">Lost 14 kg • Member at Dadar Branch</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-quote">"The Olympic barbell platform and sauna recovery are unmatched in Mumbai. Having my diet and calorie goals synced into My Space makes hitting targets effortless."</p>
+                <div class="review-author-wrap">
+                    <div class="review-avatar">RT</div>
+                    <div>
+                        <div class="review-author-name">Rohan Tawde</div>
+                        <div class="review-author-meta">+20kg Bench Press • Member at Kalyan Branch</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-quote">"Coach Sarah's HIIT mornings completely transformed my endurance. The staff is welcoming, equipment is always spotless, and the community keeps you accountable."</p>
+                <div class="review-author-wrap">
+                    <div class="review-avatar">SK</div>
+                    <div>
+                        <div class="review-author-name">Sneha Kulkarni</div>
+                        <div class="review-author-meta">Active Pro Member • Ambernath Branch</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merch Section -->
+    <section class="merch-section" id="store">
+        <div class="merch-header">
+            <h2 class="section-title-yellow">/// GET OUR MERCH & GEAR</h2>
+            <a href="../store/index.html" class="btn-outline">View Store Catalog</a>
+        </div>
+
+        <div class="merch-grid">
+            <div class="merch-item" onclick="window.location.href='../store/index.html'">
+                <div class="merch-image">
+                    <img src="images/bag-3799df.png" alt="Bag">
+                </div>
+                <div class="merch-label">Pro Duffel Bag • ₹1,299</div>
+            </div>
+
+            <div class="merch-item" onclick="window.location.href='../store/index.html'">
+                <div class="merch-image">
+                    <img src="images/shirt-2394c3.png" alt="Shirt">
+                </div>
+                <div class="merch-label">Gold Stringer • ₹899</div>
+            </div>
+
+            <div class="merch-item" onclick="window.location.href='../store/index.html'">
+                <div class="merch-image">
+                    <img src="images/bottle-47e9b2.png" alt="Bottle">
+                </div>
+                <div class="merch-label">Insulated Shaker • ₹849</div>
+            </div>
+
+            <div class="merch-item" onclick="window.location.href='../store/index.html'">
+                <div class="merch-image">
+                    <img src="images/Workout Joggers for men.png" alt="Workout Joggers for Men">
+                </div>
+                <div class="merch-label">Lifting Joggers • ₹1,499</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <h2 class="section-title-yellow">///Gallery</h2>
+        <div class="gallery-container">
+            <img src="images/gallery.svg" alt="Gallery" class="gallery-image">
+        </div>
+    </section>
+
+    <!-- Recipes Section -->
+    <section class="recipes-section" id="recipes">
+        <div class="recipes-header">
+            <h2 class="section-title-yellow">///Recipes</h2>
+            <a href="../P Recipe/recipes.html" class="btn-outline">View More Recipes</a>
+        </div>
+
+        <div class="recipes-content">
+            <div class="recipe-main">
+                <div class="recipe-image">
+                    <img src="images/recipe-image.svg" alt="Recipe">
+                </div>
+                <div class="recipe-details">
+                    <h3>Protein-packed power bowl</h3>
+                    <p>A colorful protein-packed power bowl filled with flavorful, meaty grilled satay tofu and an array of vibrant veggies on a bed of fluffy quinoa. Completed with a healthy and delicious satay dipping sauce and crushed roasted peanuts. Delicious!</p>
+                    <a href="../P Recipe/recipes.html" class="btn-recipe">
+                        <span>View Full Recipe</span>
+                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
+                            <path d="M6.46 15.5h18.08M15.5 6.46l9.04 9.04-9.04 9.04" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="recipe-sidebar">
+                <div class="recipe-icons">
+                    <img src="images/recipes-icons.svg" alt="Recipe Icons">
+                </div>
+                <div class="recipe-list">
+                    <div class="recipe-list-item" onclick="window.location.href='../P Recipe/recipes.html'">High Protein Recipes</div>
+                    <div class="recipe-list-item" onclick="window.location.href='../P Recipe/recipes.html'">Low Carb Recipes</div>
+                    <div class="recipe-list-item" onclick="window.location.href='../P Recipe/recipes.html'">Dairy Free Recipes</div>
+                    <div class="recipe-list-item" onclick="window.location.href='../P Recipe/recipes.html'">Vegetarian Recipes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Frequently Asked Questions (FAQ) -->
+    <section class="faq-section" id="faq">
+        <div style="text-align:center;">
+            <h2 class="section-title-yellow">/// FREQUENTLY ASKED QUESTIONS</h2>
+            <p style="color:#888; margin-top:8px;">Everything you need to know about joining and training at Hanuman Gym.</p>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                    <span>What should I bring on my first workout day?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Please bring comfortable athletic attire, clean training shoes, a sweat towel, and a water bottle. Lockers and shower facilities are provided on-site.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                    <span>Is Hanuman Gym suitable for absolute beginners?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, absolutely! Every new member receives a complimentary 1-on-1 orientation and posture assessment with a certified coach to guide you through equipment setup and basic workout splits.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                    <span>Can I access multiple branch locations with one membership?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! Standard and Premium membership tiers grant seamless 24/7 access across all 10+ Hanuman Gym locations in Mumbai and Pune.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                    <span>Are diet and nutrition prescriptions included?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes. All members have access to custom macro recipes in the portal, while Standard and Premium members receive coach-prescribed calorie and water targets synced directly to their My Space dashboard.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                    <span>Can I pause or freeze my membership if I travel?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, memberships can be placed on hold for up to 30 days per annual subscription with zero penalty fees. Simply inform our front desk or message us through the portal.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+    <script src="../shared/site-footer.js" defer></script>
+
+    <script>
+        // Real-time Notifications Logic
+        function showNotification(noti) {
+            const container = document.getElementById('gym-notifications-container');
+            if (!container) return;
+
+            const div = document.createElement('div');
+            div.className = 'gym-noti';
+            div.innerHTML = `
+                <span class="gym-noti-close" onclick="this.parentElement.remove()">✕</span>
+                <div class="gym-noti-title">${noti.title || 'System Alert'}</div>
+                <div class="gym-noti-msg">${noti.message || ''}</div>
+                <div class="gym-noti-time">Just now</div>
+            `;
+            container.prepend(div);
+            
+            setTimeout(() => {
+                if (div.parentElement) div.remove();
+            }, 8000);
+        }
+
+        function checkNewNotifications() {
+            if (!window.GymCloudStore) return;
+            const snap = GymCloudStore.getSnapshot();
+            const unseen = (snap.notifications || []).filter(n => !n.seen);
+            
+            if (unseen.length > 0) {
+                unseen.forEach(showNotification);
+                GymCloudStore.markNotificationsAsSeen();
+            }
+        }
+
+        // 1-Day Trial Pass Submission Handler (FastAPI Connected)
+        function handleHomeTrialSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('trialName').value.trim();
+            const phone = document.getElementById('trialPhone').value.trim();
+            const email = document.getElementById('trialEmail').value.trim() || null;
+            const branch = document.getElementById('trialBranch').value;
+            const date = document.getElementById('trialDate').value;
+            const timeSlot = document.getElementById('trialTime').value;
+
+            if (!name || !phone) return;
+
+            const message = `[Home Free Trial Pass] Branch: ${branch}, Preferred Date: ${date || 'Flexible'}, Slot: ${timeSlot}`;
+
+            if (window.GymApiClient) {
+                GymApiClient.createInquiry({
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    location: branch,
+                    inquiry_type: "trial_pass",
+                    message: message
+                }).then(() => {
+                    document.getElementById('trialFormSuccess').style.display = 'block';
+                    document.getElementById('btnTrialSubmit').disabled = true;
+                    document.getElementById('btnTrialSubmit').innerHTML = '<i class="fa-solid fa-check"></i> VIP Pass Booked!';
+                }).catch(err => {
+                    console.warn('[Trial Pass Submission]', err);
+                    document.getElementById('trialFormSuccess').style.display = 'block';
+                });
+            }
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFAQ(item) {
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Set minimum date for trial booking
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('trialDate');
+            if (dateInput) {
+                dateInput.setAttribute('min', today);
+                dateInput.value = today;
+            }
+
+            // Real-time notification checks
+            checkNewNotifications();
+            setInterval(checkNewNotifications, 5000);
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'gym_cloud_mgmt_v1') checkNewNotifications();
+            });
+        });
+    </script>
+
+    <!-- Botpress Chatbot Integration -->
+    <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js" defer></script>
+    <script src="https://files.bpcontent.cloud/2025/10/08/08/20251008082219-DMMSCW69.js" defer></script>
+</body>
+</html>

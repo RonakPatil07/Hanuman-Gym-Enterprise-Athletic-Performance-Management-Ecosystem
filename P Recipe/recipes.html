@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes & Athlete Fuel — Hanuman Gym</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="recipes-style.css">
+    <script src="../shared/site-header.js" defer></script>
+    <script src="../shared/site-footer.js" defer></script>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <!-- Hero Section with Featured Recipe -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Featured Athlete Fuel</h1>
+            
+            <div class="hero-main">
+                <div class="featured-recipe">
+                    <div class="recipe-image-main">
+                        <img src="images/recipe-hero.svg" alt="Protein-packed power bowl">
+                    </div>
+                    
+                    <div class="recipe-details">
+                        <span class="card-badge-timing" style="position:static; margin-bottom:12px; display:inline-flex;">
+                            <i class="fa-solid fa-bolt text-gold"></i> High-Protein Power Fuel
+                        </span>
+                        <h2>Protein-Packed Satay Buddha Bowl</h2>
+                        <p>A colorful powerhouse bowl loaded with marinated grilled satay tofu, crisp seasonal greens, edamame, and fluffy golden quinoa. Drizzled with an authentic peanut-lime recovery dressing.</p>
+                        
+                        <div class="card-macros-strip" style="max-width:380px; margin-bottom:24px;">
+                            <div class="card-macro-item">
+                                <span class="macro-k">Calories</span>
+                                <span class="macro-v gold">490 kcal</span>
+                            </div>
+                            <div class="card-macro-item">
+                                <span class="macro-k">Protein</span>
+                                <span class="macro-v">22g</span>
+                            </div>
+                            <div class="card-macro-item">
+                                <span class="macro-k">Carbs</span>
+                                <span class="macro-v">58g</span>
+                            </div>
+                            <div class="card-macro-item">
+                                <span class="macro-k">Healthy Fat</span>
+                                <span class="macro-v">18g</span>
+                            </div>
+                        </div>
+
+                        <a href="recipe-view.html?id=thai-buddha-bowl" class="view-recipe-btn">
+                            <span>View Full Recipe</span>
+                            <img src="images/recipe-arrow.svg" alt="Arrow">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recipe Navigation -->
+                <div class="recipe-nav">
+                    <div class="recipe-nav-icons">
+                        <img src="images/recipe-nav-icons.svg" alt="Recipe categories">
+                    </div>
+                    <div class="recipe-nav-links">
+                        <a href="#high-protein">High Protein Recipes</a>
+                        <a href="#low-carb">Low Carb Recipes</a>
+                        <a href="#dairy-free">Dairy Free Recipes</a>
+                        <a href="#vegetarian">Vegetarian Recipes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Instant Filter Hub -->
+    <section class="recipe-filter-hub">
+        <!-- Goal-Based Macro & Calorie Matcher -->
+        <div class="goal-matcher-strip">
+            <div class="goal-matcher-info">
+                <i class="fa-solid fa-crosshairs text-gold"></i>
+                <div>
+                    <h4>Goal-Based Macro Matcher</h4>
+                    <p>Select your current athletic phase to instantly highlight matching dishes.</p>
+                </div>
+            </div>
+            <div class="goal-phase-buttons">
+                <button type="button" class="goal-phase-btn active" data-goal="all"><i class="fa-solid fa-layer-group"></i> All Phases</button>
+                <button type="button" class="goal-phase-btn" data-goal="cut"><i class="fa-solid fa-scissors"></i> Cut / Shred (&le;350 kcal)</button>
+                <button type="button" class="goal-phase-btn" data-goal="bulk"><i class="fa-solid fa-dumbbell"></i> Muscle Bulk (&ge;450 kcal)</button>
+                <button type="button" class="goal-phase-btn" data-goal="pre-workout"><i class="fa-solid fa-bolt"></i> Pre-Workout Fast Carbs</button>
+                <button type="button" class="goal-phase-btn" data-goal="post-workout"><i class="fa-solid fa-shield-heart"></i> Post-Workout Recovery</button>
+            </div>
+        </div>
+
+        <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="recipe-search-input" class="recipe-search-input" placeholder="Search by meal name, ingredients (chicken, salmon, steak, shake, oats)..." autocomplete="off">
+        </div>
+
+        <div class="recipe-filter-chips">
+            <span class="filter-chip active" data-filter="all"><i class="fa-solid fa-utensils"></i> All Recipes</span>
+            <span class="filter-chip" data-filter="high-protein"><i class="fa-solid fa-drumstick-bite"></i> High Protein (&gt;20g)</span>
+            <span class="filter-chip" data-filter="low-carb"><i class="fa-solid fa-bacon"></i> Low Carb / Keto</span>
+            <span class="filter-chip" data-filter="dairy-free"><i class="fa-solid fa-seedling"></i> Dairy Free</span>
+            <span class="filter-chip" data-filter="vegetarian"><i class="fa-solid fa-leaf"></i> Vegetarian</span>
+            <span class="filter-chip" data-filter="quick-prep"><i class="fa-regular fa-clock"></i> Quick Prep (&le;15 mins)</span>
+            <span class="filter-chip" data-filter="pre-workout"><i class="fa-solid fa-bolt"></i> Pre-Workout</span>
+            <span class="filter-chip" data-filter="post-workout"><i class="fa-solid fa-shield-heart"></i> Post-Workout</span>
+        </div>
+
+        <div class="recipe-results-strip">
+            <span>Showing <span id="recipe-results-count">25</span> chef-crafted fitness recipes</span>
+            <span style="font-size:12px; color:#666;"><i class="fa-solid fa-basket-shopping text-gold"></i> Click "+ Basket" to aggregate weekly grocery lists</span>
+        </div>
+    </section>
+
+    <!-- Dynamic Category Sections -->
+    <div id="recipe-sections-container">
+        <!-- High Protein Section -->
+        <section id="high-protein" class="recipe-category" data-cat="high-protein">
+            <div class="category-header">
+                <h2>High Protein & Anabolic Meals</h2>
+                <p>Start your day right and maximize muscle synthesis with high-yield protein bowls and breakfast fuel.</p>
+            </div>
+            <div class="recipe-grid" id="grid-high-protein">
+                <!-- Injected via JSON -->
+            </div>
+        </section>
+
+        <!-- Low Carb Section -->
+        <section id="low-carb" class="recipe-category" data-cat="low-carb">
+            <div class="category-header">
+                <h2>Low Carb & Keto Recipes</h2>
+                <p>High-protein, low-glycemic meals designed to fuel lean muscle retention and accelerated fat loss.</p>
+            </div>
+            <div class="recipe-grid" id="grid-low-carb">
+                <!-- Injected via JSON -->
+            </div>
+        </section>
+
+        <!-- Dairy Free Section -->
+        <section id="dairy-free" class="recipe-category" data-cat="dairy-free">
+            <div class="category-header">
+                <h2>Dairy Free & Clean Fuel</h2>
+                <p>Clean, lactose-free energy bowls, tacos, and refreshing athlete recovery treats.</p>
+            </div>
+            <div class="recipe-grid" id="grid-dairy-free">
+                <!-- Injected via JSON -->
+            </div>
+        </section>
+
+        <!-- Vegetarian Section -->
+        <section id="vegetarian" class="recipe-category" data-cat="vegetarian">
+            <div class="category-header">
+                <h2>Vegetarian & Plant-Powered Recipes</h2>
+                <p>Wholesome, fiber-rich plant bowls engineered for daily vitality, gut health, and training endurance.</p>
+            </div>
+            <div class="recipe-grid" id="grid-vegetarian">
+                <!-- Injected via JSON -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Dynamic Empty State (Shown when filters match 0 results) -->
+    <div id="recipe-empty-state" class="recipe-empty-state" style="max-width:1440px; margin:20px auto 60px; padding:60px 40px;">
+        <i class="fa-solid fa-utensils"></i>
+        <h3>No Matching Recipes Found</h3>
+        <p>We couldn't find any recipes matching your current search or filter combination.</p>
+        <button type="button" class="btn-reset-filters" onclick="resetAllFilters()">Reset All Filters</button>
+    </div>
+
+    <!-- Targeted Nutrition Blueprint CTA -->
+    <section class="nutrition-cta-section">
+        <div class="nutrition-cta-card">
+            <div class="nutrition-cta-text">
+                <h2>/// ATHLETE MACRO & NUTRITION BLUEPRINT</h2>
+                <p>Unlock peak performance and rapid physique transformation. Get personalized caloric targets, calculated macro splits, and bespoke meal strategies engineered by certified Hanuman coaches.</p>
+            </div>
+            <div class="nutrition-cta-actions">
+                <a href="../custom workout plan/workout-plan.html" class="btn-cta-primary">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Generate AI Plan</span>
+                </a>
+                <a href="../Memberships/index.html#trainers" class="btn-cta-secondary">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Book Nutrition Coach</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    
+    <!-- Master Recipes Data & Interactive Engine -->
+    <script src="data/recipes-data.js"></script>
+    <script src="recipe-interactive.js"></script>
+
+    <!-- JSON Loader & Live Filter Engine -->
+    <script>
+    let allRecipes = [];
+    let activeFilter = 'all';
+    let activeGoal = 'all';
+    const searchInput = document.getElementById('recipe-search-input');
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const goalBtns = document.querySelectorAll('.goal-phase-btn');
+    const resultsCountEl = document.getElementById('recipe-results-count');
+    const emptyStateEl = document.getElementById('recipe-empty-state');
+
+    function createRecipeCardHtml(r) {
+        const timingIcon = r.timing === 'pre-workout' ? 'fa-bolt' : (r.timing === 'post-workout' ? 'fa-shield-heart' : 'fa-leaf');
+        const timingLabel = r.timingLabel || (r.timing === 'pre-workout' ? 'Pre-Workout' : (r.timing === 'post-workout' ? 'Post-Workout' : 'Clean Energy'));
+        const dietTag = r.dietTags && r.dietTags.length ? r.dietTags.join(' • ') : 'Athlete Approved';
+
+        const topVisualHtml = r.image ? `
+            <div class="recipe-card-img-wrap">
+                <img src="${r.image}" alt="${r.title}" loading="lazy">
+                <span class="card-badge-timing"><i class="fa-solid ${timingIcon}"></i> ${timingLabel}</span>
+                <div class="recipe-time-badge">
+                    <i class="fa-regular fa-clock text-gold"></i>
+                    <span>${r.time} mins</span>
+                </div>
+            </div>
+        ` : `
+            <div class="recipe-card-img-placeholder-black">
+                <span class="card-badge-timing"><i class="fa-solid ${timingIcon}"></i> ${timingLabel}</span>
+                <div class="recipe-time-badge">
+                    <i class="fa-regular fa-clock text-gold"></i>
+                    <span>${r.time} mins</span>
+                </div>
+                <i class="fa-solid fa-utensils placeholder-icon"></i>
+                <span class="placeholder-label">Chef Crafted • High Protein</span>
+            </div>
+        `;
+
+        return `
+            <div class="recipe-card" 
+                 data-id="${r.id}"
+                 data-name="${r.title}" 
+                 data-category="${r.category}" 
+                 data-protein="${r.protein}" 
+                 data-calories="${r.calories}" 
+                 data-time="${r.time}" 
+                 data-goal="${r.goalPhase || 'all'}"
+                 data-timing="${r.timing || ''}" 
+                 data-tags="${(r.dietTags || []).join(',')}">
+                ${topVisualHtml}
+                <div class="recipe-card-body">
+                    <h3 class="recipe-card-title">${r.title}</h3>
+                    <div class="card-macros-strip">
+                        <div class="card-macro-item">
+                            <span class="macro-k">Calories</span>
+                            <span class="macro-v gold">${r.calories}</span>
+                        </div>
+                        <div class="card-macro-item">
+                            <span class="macro-k">Protein</span>
+                            <span class="macro-v">${r.protein}g</span>
+                        </div>
+                        <div class="card-macro-item">
+                            <span class="macro-k">Carbs</span>
+                            <span class="macro-v">${r.carbs}g</span>
+                        </div>
+                        <div class="card-macro-item">
+                            <span class="macro-k">Fats</span>
+                            <span class="macro-v">${r.fats}g</span>
+                        </div>
+                    </div>
+                    <div class="card-diet-tag">
+                        <i class="fa-solid fa-check"></i> ${dietTag}
+                    </div>
+                    <div class="recipe-card-actions">
+                        <a href="recipe-view.html?id=${r.id}" class="view-recipe-btn-small">
+                            <span>View Recipe</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <button type="button" class="btn-card-basket-add" title="Add to Weekly Meal Prep Basket" onclick="addToBasketQuick('${r.id}')">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </button>
+                        <button type="button" class="btn-card-save-quick" title="Save Bookmark" style="${isSavedRecipe(r.title, r.id) ? 'color:#B3DD24; border-color:#B3DD24;' : ''}" onclick="quickBookmark(this, '${r.title.replace(/'/g, "\\'")}', 'recipe-view.html?id=${r.id}')">
+                            <i class="${isSavedRecipe(r.title, r.id) ? 'fa-solid fa-bookmark' : 'fa-regular fa-bookmark'}"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function isSavedRecipe(title, id) {
+        try {
+            const saved = JSON.parse(localStorage.getItem('gym_saved_recipes') || '[]');
+            return saved.some(s => s.title === title || (s.url && s.url.includes(`id=${id}`)));
+        } catch (e) {
+            return false;
+        }
+    }
+
+    async function loadRecipesCatalog() {
+        try {
+            if (window.GYM_RECIPES_DATA && Array.isArray(window.GYM_RECIPES_DATA)) {
+                allRecipes = window.GYM_RECIPES_DATA;
+            } else {
+                const res = await fetch('data/recipes.json');
+                if (!res.ok) throw new Error('Failed to load recipes.json');
+                allRecipes = await res.json();
+            }
+
+            // Distribute into category grids
+            const gridHighProtein = document.getElementById('grid-high-protein');
+            const gridLowCarb = document.getElementById('grid-low-carb');
+            const gridDairyFree = document.getElementById('grid-dairy-free');
+            const gridVegetarian = document.getElementById('grid-vegetarian');
+
+            let hp = '', lc = '', df = '', veg = '';
+
+            allRecipes.forEach(r => {
+                const cardHtml = createRecipeCardHtml(r);
+                if (r.category === 'high-protein') {
+                    hp += cardHtml;
+                } else if (r.category === 'low-carb') {
+                    lc += cardHtml;
+                } else if (r.category === 'dairy-free') {
+                    df += cardHtml;
+                } else if (r.category === 'vegetarian') {
+                    veg += cardHtml;
+                } else {
+                    hp += cardHtml;
+                }
+            });
+
+            if (gridHighProtein) gridHighProtein.innerHTML = hp;
+            if (gridLowCarb) gridLowCarb.innerHTML = lc;
+            if (gridDairyFree) gridDairyFree.innerHTML = df;
+            if (gridVegetarian) gridVegetarian.innerHTML = veg;
+
+            if (resultsCountEl) resultsCountEl.textContent = allRecipes.length;
+
+            applyFilters();
+        } catch (err) {
+            console.error('Error rendering recipe catalog:', err);
+        }
+    }
+
+    function applyFilters() {
+        const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+        const recipeCards = document.querySelectorAll('.recipe-card');
+        const categorySections = document.querySelectorAll('.recipe-category');
+        let visibleCount = 0;
+
+        recipeCards.forEach(card => {
+            const name = (card.dataset.name || '').toLowerCase();
+            const category = (card.dataset.category || '').toLowerCase();
+            const tags = (card.dataset.tags || '').toLowerCase();
+            const timing = (card.dataset.timing || '').toLowerCase();
+            const goal = (card.dataset.goal || '').toLowerCase();
+            const protein = parseFloat(card.dataset.protein) || 0;
+            const calories = parseFloat(card.dataset.calories) || 0;
+            const time = parseFloat(card.dataset.time) || 0;
+
+            let matchesSearch = !query || name.includes(query) || tags.includes(query) || category.includes(query);
+            let matchesChip = true;
+            let matchesGoal = true;
+
+            // Filter Chips
+            if (activeFilter === 'high-protein') {
+                matchesChip = protein >= 20 || category.includes('high-protein');
+            } else if (activeFilter === 'low-carb') {
+                matchesChip = category.includes('low-carb') || tags.includes('keto');
+            } else if (activeFilter === 'dairy-free') {
+                matchesChip = category.includes('dairy-free') || tags.includes('dairy-free');
+            } else if (activeFilter === 'vegetarian') {
+                matchesChip = category.includes('vegetarian') || tags.includes('vegetarian');
+            } else if (activeFilter === 'quick-prep') {
+                matchesChip = time <= 15 || tags.includes('quick-prep');
+            } else if (activeFilter === 'pre-workout') {
+                matchesChip = timing.includes('pre-workout') || tags.includes('pre-workout');
+            } else if (activeFilter === 'post-workout') {
+                matchesChip = timing.includes('post-workout') || tags.includes('post-workout');
+            }
+
+            // Goal-Based Matcher
+            if (activeGoal === 'cut') {
+                matchesGoal = calories <= 350 || category.includes('low-carb') || goal === 'cut';
+            } else if (activeGoal === 'bulk') {
+                matchesGoal = calories >= 450 || goal === 'bulk';
+            } else if (activeGoal === 'pre-workout') {
+                matchesGoal = timing.includes('pre-workout') || goal === 'pre-workout';
+            } else if (activeGoal === 'post-workout') {
+                matchesGoal = timing.includes('post-workout') || goal === 'post-workout';
+            }
+
+            if (matchesSearch && matchesChip && matchesGoal) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (resultsCountEl) {
+            resultsCountEl.textContent = visibleCount;
+        }
+
+        categorySections.forEach(section => {
+            const hasVisible = Array.from(section.querySelectorAll('.recipe-card')).some(c => c.style.display !== 'none');
+            section.style.display = hasVisible ? 'block' : 'none';
+        });
+
+        if (emptyStateEl) {
+            emptyStateEl.style.display = visibleCount === 0 ? 'flex' : 'none';
+        }
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+    }
+
+    filterChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            filterChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            activeFilter = chip.dataset.filter || 'all';
+            applyFilters();
+        });
+    });
+
+    goalBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            goalBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeGoal = btn.dataset.goal || 'all';
+            applyFilters();
+        });
+    });
+
+    function resetAllFilters() {
+        if (searchInput) searchInput.value = '';
+        activeFilter = 'all';
+        activeGoal = 'all';
+        filterChips.forEach(c => c.classList.toggle('active', c.dataset.filter === 'all'));
+        goalBtns.forEach(b => b.classList.toggle('active', b.dataset.goal === 'all'));
+        applyFilters();
+    }
+
+    function addToBasketQuick(id) {
+        const recipe = allRecipes.find(r => r.id === id);
+        if (recipe && window.HanumanInteractive && window.HanumanInteractive.addToBasket) {
+            window.HanumanInteractive.addToBasket(recipe);
+        }
+    }
+
+    function quickBookmark(btn, title, url) {
+        let saved = [];
+        try {
+            saved = JSON.parse(localStorage.getItem('gym_saved_recipes') || '[]');
+        } catch (e) {
+            saved = [];
+        }
+
+        const idx = saved.findIndex(item => item.title === title);
+        const icon = btn.querySelector('i');
+
+        if (idx >= 0) {
+            saved.splice(idx, 1);
+            localStorage.setItem('gym_saved_recipes', JSON.stringify(saved));
+            if (icon) {
+                icon.className = 'fa-regular fa-bookmark';
+                btn.style.color = '#CCCCCC';
+                btn.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            }
+            if (window.HanumanInteractive && window.HanumanInteractive.showToast) {
+                window.HanumanInteractive.showToast(`Removed "${title}" from bookmarks`, 'fa-bookmark', 'gold');
+            }
+        } else {
+            saved.push({
+                title: title,
+                url: url,
+                savedAt: new Date().toISOString()
+            });
+            localStorage.setItem('gym_saved_recipes', JSON.stringify(saved));
+            if (icon) {
+                icon.className = 'fa-solid fa-bookmark';
+                btn.style.color = '#B3DD24';
+                btn.style.borderColor = '#B3DD24';
+            }
+            if (window.HanumanInteractive && window.HanumanInteractive.showToast) {
+                window.HanumanInteractive.showToast(`Saved "${title}" to bookmarks!`, 'fa-bookmark', 'gold');
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadRecipesCatalog);
+    </script>
+</body>
+</html>

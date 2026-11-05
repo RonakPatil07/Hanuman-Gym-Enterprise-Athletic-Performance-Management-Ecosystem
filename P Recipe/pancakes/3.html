@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluffy Homemade Pancakes Recipe - Hanuman Gym Nutrition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../shared/design-tokens.css">
+    <link rel="stylesheet" href="../../shared/site-header.css">
+    <link rel="stylesheet" href="../../shared/site-footer.css">
+    <link rel="stylesheet" href="../recipe-details-premium.css">
+    <script src="../../shared/site-header.js" defer></script>
+    <script src="../../shared/site-footer.js" defer></script>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="recipe-page-container">
+        <!-- Topbar -->
+        <div class="recipe-topbar">
+            <a href="../recipes.html" class="recipe-back-btn">
+                <i class="fa-solid fa-arrow-left"></i> <span>Back to Recipes</span>
+            </a>
+            <div class="recipe-actions-quick">
+                <button type="button" class="btn-recipe-action" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> <span>Print Recipe</span>
+                </button>
+                <button type="button" class="btn-recipe-action" onclick="alert('Recipe saved to your My Space nutrition bookmarks!')">
+                    <i class="fa-solid fa-bookmark"></i> <span>Save Recipe</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Compact Hero Banner -->
+        <header class="recipe-hero-card">
+            <span class="recipe-category-pill"><i class="fa-solid fa-fire text-gold"></i> Pre-Workout Fuel</span>
+            <h1 class="recipe-title">Fluffy Homemade Protein Pancakes</h1>
+            <p class="recipe-intro-text">Soft, golden, and melt-in-your-mouth delicious! Light and airy on the inside with crisp golden edges, perfectly balanced for slow-burning carbs and high energy before training.</p>
+
+            <div class="recipe-quick-metrics-strip">
+                <div class="metric-pill">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Prep: <strong>10 Mins</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <span>Cook: <strong>10 Mins</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Yield: <strong>4 Servings</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Calories: <strong>320 kcal</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-drumstick-bite"></i>
+                    <span>Protein: <strong>18g</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main 2-Column Grid -->
+        <div class="recipe-main-grid">
+            <!-- Left Column: Story, Image & Process Steps -->
+            <div class="recipe-content-col">
+                <div class="recipe-featured-img-box">
+                    <img src="images/oo.jpg" alt="Fluffy Homemade Pancakes cooking process" onerror="this.src='../images/recipe-hero.svg'">
+                </div>
+
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-kitchen-set"></i> Cooking Instructions</h3>
+                    </div>
+                    <div class="recipe-steps-list">
+                        <div class="recipe-step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-text">
+                                <h4>Whisk Dry Ingredients</h4>
+                                <p>In a large mixing bowl, whisk together whole wheat or all-purpose flour, organic cane sugar, baking powder, and a pinch of salt.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-text">
+                                <h4>Combine Wet Elements</h4>
+                                <p>In a separate jug, whisk whole milk (or oat milk), large egg, melted grass-fed butter, and vanilla extract until smooth and blended.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-text">
+                                <h4>Fold Gently (Do Not Overmix)</h4>
+                                <p>Pour wet mix into dry ingredients and gently fold until just combined. Small lumps are okay and help keep the pancakes extra fluffy!</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-text">
+                                <h4>Griddle & Flip</h4>
+                                <p>Heat a lightly buttered griddle to medium. Pour ¼ cup batter per pancake. Flip when bubbles form on top (about 2 min) and cook until golden brown.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Ingredients & Macros -->
+            <aside class="recipe-sidebar-col">
+                <!-- Ingredients Card -->
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-basket-shopping"></i> Ingredients</h3>
+                        <span style="font-size:12px; color:#888;">4 Servings</span>
+                    </div>
+                    <div class="ingredients-checklist">
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">All-Purpose / Oat Flour</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 Cup</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Milk / Almond Milk</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 Cup</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Large Egg</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 Large</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Melted Butter</span>
+                            </div>
+                            <span class="ingredient-amount-badge">2 tbsp</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Baking Powder & Sugar</span>
+                            </div>
+                            <span class="ingredient-amount-badge">2 tsp / 2 tbsp</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Pure Vanilla Extract</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 tsp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Macro Breakdown Card -->
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-chart-pie"></i> Macro Profile</h3>
+                    </div>
+                    <div class="macro-grid">
+                        <div class="macro-box">
+                            <span class="macro-label">Calories</span>
+                            <span class="macro-val text-gold">320 kcal</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Protein</span>
+                            <span class="macro-val">18g</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Carbs</span>
+                            <span class="macro-val">46g</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Healthy Fats</span>
+                            <span class="macro-val">8g</span>
+                        </div>
+                    </div>
+
+                    <!-- Macro Ratio Bar -->
+                    <div class="macro-ratio-bar">
+                        <div class="macro-bar-seg macro-bar-protein" style="width: 23%;" title="Protein 23%"></div>
+                        <div class="macro-bar-seg macro-bar-carbs" style="width: 57%;" title="Carbs 57%"></div>
+                        <div class="macro-bar-seg macro-bar-fats" style="width: 20%;" title="Fats 20%"></div>
+                    </div>
+                    <div class="macro-legend">
+                        <span><i class="macro-dot" style="background:#B3DD24;"></i> 23% Protein</span>
+                        <span><i class="macro-dot" style="background:#3ECF8E;"></i> 57% Carbs</span>
+                        <span><i class="macro-dot" style="background:#FF6384;"></i> 20% Fat</span>
+                    </div>
+
+                    <!-- Meal Prep & Storage Box -->
+                    <div class="meal-prep-box">
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-snowflake"></i>
+                            <span>Freezer</span>
+                            <strong>2 Months</strong>
+                        </div>
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-leaf"></i>
+                            <span>Fridge</span>
+                            <strong>4 Days</strong>
+                        </div>
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-fire"></i>
+                            <span>Reheat</span>
+                            <strong>Toaster 1m</strong>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Master Interactive Recipe Engine -->
+    <script src="../recipe-interactive.js"></script>
+</body>
+</html>

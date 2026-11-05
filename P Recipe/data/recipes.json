@@ -1,0 +1,2003 @@
+[
+  {
+    "id": "french-toast",
+    "title": "Classic Golden French Toast",
+    "category": "high-protein",
+    "categoryLabel": "High-Energy Breakfast",
+    "timing": "pre-workout",
+    "timingLabel": "Pre-Workout Fuel",
+    "time": 15,
+    "prepTime": "5 Mins",
+    "cookTime": "10 Mins",
+    "servings": 4,
+    "calories": 340,
+    "protein": 16,
+    "carbs": 42,
+    "fats": 12,
+    "dietTags": [
+      "High Protein",
+      "Pre-Workout",
+      "Breakfast"
+    ],
+    "image": "images/recipe-featured-2.svg",
+    "description": "A delicious, protein-boosted morning classic! Thick artisan slices soaked in a rich vanilla-cinnamon egg custard, cooked to golden perfection with a crispy edge and melt-in-your-mouth center.",
+    "ingredients": [
+      {
+        "name": "Thick Artisan White / Brioche Bread",
+        "amount": "250g"
+      },
+      {
+        "name": "Whole Milk / Almond Milk",
+        "amount": "250ml"
+      },
+      {
+        "name": "Fresh Whole Eggs",
+        "amount": "3 Large"
+      },
+      {
+        "name": "Vanilla Extract & Cinnamon",
+        "amount": "1 tsp each"
+      },
+      {
+        "name": "Grass-Fed Butter",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "Sea Salt",
+        "amount": "1 pinch"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Whisk the Custard Batter",
+        "text": "In a wide shallow bowl, whisk together whole eggs, fresh milk, vanilla extract, ground cinnamon, and a pinch of salt until completely smooth and velvety."
+      },
+      {
+        "step": 2,
+        "title": "Soak the Bread Slices",
+        "text": "Place thick-cut brioche or white bread slices into the egg mixture for 20\u201330 seconds per side, allowing the custard to absorb deeply without becoming overly soggy."
+      },
+      {
+        "step": 3,
+        "title": "Sear in Skillet",
+        "text": "Melt 1 tsp of butter over medium heat in a non-stick skillet. Cook soaked slices for 2\u20133 minutes per side until golden brown and crispy around the edges.",
+        "timerMinutes": 3
+      },
+      {
+        "step": 4,
+        "title": "Garnish & Serve",
+        "text": "Stack warm French toast slices and top with fresh berries, a drizzle of pure maple syrup or honey, and an optional dusting of cinnamon."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "1 Month",
+      "fridge": "3 Days",
+      "reheat": "Toaster/Pan"
+    },
+    "macroRatios": {
+      "protein": 20,
+      "carbs": 50,
+      "fats": 30
+    },
+    "athleteBenefit": "Fast-absorbing complex glycogen replenisher combined with whole egg amino acids to sustain intra-workout muscular stamina.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "pancakes",
+    "title": "Fluffy Homemade Protein Pancakes",
+    "category": "high-protein",
+    "categoryLabel": "Pre-Workout Fuel",
+    "timing": "pre-workout",
+    "timingLabel": "Pre-Workout Fuel",
+    "time": 20,
+    "prepTime": "10 Mins",
+    "cookTime": "10 Mins",
+    "servings": 4,
+    "calories": 320,
+    "protein": 18,
+    "carbs": 46,
+    "fats": 8,
+    "dietTags": [
+      "High Protein",
+      "Pre-Workout",
+      "Breakfast"
+    ],
+    "image": "images/recipe-featured-1.svg",
+    "description": "Soft, golden, and melt-in-your-mouth delicious! Light and airy on the inside with crisp golden edges, perfectly balanced for slow-burning carbs and high energy before training.",
+    "ingredients": [
+      {
+        "name": "Rolled Oats / Oat Flour",
+        "amount": "150g"
+      },
+      {
+        "name": "Vanilla Whey / Plant Protein Powder",
+        "amount": "1 Scoop (30g)"
+      },
+      {
+        "name": "Egg Whites",
+        "amount": "3 Large"
+      },
+      {
+        "name": "Unsweetened Almond Milk",
+        "amount": "150ml"
+      },
+      {
+        "name": "Baking Powder & Cinnamon",
+        "amount": "1 tsp"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Blend Ingredients",
+        "text": "Add oat flour, protein powder, egg whites, almond milk, and baking powder into a blender. Blend on high for 30 seconds until a smooth batter forms."
+      },
+      {
+        "step": 2,
+        "title": "Heat Griddle",
+        "text": "Preheat a non-stick skillet over medium-low heat and lightly grease with coconut oil or cooking spray."
+      },
+      {
+        "step": 3,
+        "title": "Cook Pancakes",
+        "text": "Pour 1/4 cup of batter per pancake onto the hot skillet. Cook until small bubbles form on top (about 2 minutes), then flip and cook for another 1-2 minutes until golden.",
+        "timerMinutes": 2
+      },
+      {
+        "step": 4,
+        "title": "Serve with Toppings",
+        "text": "Plate the warm pancakes, top with sliced bananas, fresh blueberries, and a drizzle of sugar-free maple syrup."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "2 Months",
+      "fridge": "4 Days",
+      "reheat": "Toaster 1m"
+    },
+    "macroRatios": {
+      "protein": 23,
+      "carbs": 57,
+      "fats": 20
+    },
+    "athleteBenefit": "Slow-burning beta-glucan oat carbohydrates paired with whey isolate for steady, crash-free glucose delivery during intense lifting.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "garden-salad",
+    "title": "Fresh Garden Protein Salad",
+    "category": "high-protein",
+    "categoryLabel": "Lean Cleanse",
+    "timing": "clean-energy",
+    "timingLabel": "Lean Cleanse",
+    "time": 10,
+    "prepTime": "10 Mins",
+    "cookTime": "0 Mins",
+    "servings": 2,
+    "calories": 210,
+    "protein": 14,
+    "carbs": 18,
+    "fats": 9,
+    "dietTags": [
+      "Vegetarian",
+      "High Fiber",
+      "Quick Prep"
+    ],
+    "image": "images/recipe-featured-3.svg",
+    "description": "A crisp, hydrating salad packed with crisp greens, edamame, cherry tomatoes, cucumbers, and crumbled feta cheese, finished with a zesty lemon-herb vinaigrette.",
+    "ingredients": [
+      {
+        "name": "Mixed Baby Greens & Spinach",
+        "amount": "150g"
+      },
+      {
+        "name": "Shelled Edamame / Chickpeas",
+        "amount": "100g"
+      },
+      {
+        "name": "Cherry Tomatoes & Persian Cucumbers",
+        "amount": "100g"
+      },
+      {
+        "name": "Crumbled Low-Fat Feta Cheese",
+        "amount": "40g"
+      },
+      {
+        "name": "Cold-Pressed Extra Virgin Olive Oil",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "Fresh Lemon Juice & Sea Salt",
+        "amount": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Wash and Prep Greens",
+        "text": "Wash and spin dry mixed baby greens and spinach. Place them into a large serving bowl."
+      },
+      {
+        "step": 2,
+        "title": "Chop Vegetables",
+        "text": "Slice cherry tomatoes in half and dice the Persian cucumbers into bite-sized half-moons."
+      },
+      {
+        "step": 3,
+        "title": "Whisk Dressing",
+        "text": "In a small ramekin, whisk extra virgin olive oil, fresh lemon juice, sea salt, black pepper, and dried oregano."
+      },
+      {
+        "step": 4,
+        "title": "Toss and Garnish",
+        "text": "Add edamame, tomatoes, cucumbers, and crumbled feta to the bowl. Drizzle with the dressing and gently toss."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "3 Days",
+      "reheat": "Keep Crisp"
+    },
+    "macroRatios": {
+      "protein": 25,
+      "carbs": 35,
+      "fats": 40
+    },
+    "athleteBenefit": "High in bioavailable nitrates, potassium, and magnesium to enhance cellular hydration and vascular nitric oxide dilation.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "classic-meatballs",
+    "title": "Classic Meatballs in Tomato Sauce",
+    "category": "low-carb",
+    "categoryLabel": "Post-Workout Recovery",
+    "timing": "post-workout",
+    "timingLabel": "Post-Workout Recovery",
+    "time": 25,
+    "prepTime": "10 Mins",
+    "cookTime": "15 Mins",
+    "servings": 4,
+    "calories": 440,
+    "protein": 36,
+    "carbs": 22,
+    "fats": 18,
+    "dietTags": [
+      "High Protein",
+      "Low Carb",
+      "Keto Friendly"
+    ],
+    "image": "images/lowcarb-1.svg",
+    "description": "Tender, seasoned lean ground beef meatballs simmered in a slow-cooked garlic, basil, and San Marzano tomato marinara. Optimal for muscle glycogen replenishment and post-lift recovery.",
+    "ingredients": [
+      {
+        "name": "Lean Ground Beef (90/10) or Ground Turkey",
+        "amount": "500g"
+      },
+      {
+        "name": "San Marzano Crushed Tomatoes",
+        "amount": "400g"
+      },
+      {
+        "name": "Fresh Grated Parmesan",
+        "amount": "40g"
+      },
+      {
+        "name": "Whole Egg",
+        "amount": "1 Large"
+      },
+      {
+        "name": "Garlic, Parsley & Dried Oregano",
+        "amount": "3 Cloves / 2 tbsp"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Season and Form Meatballs",
+        "text": "In a bowl, mix ground beef, parmesan, whole egg, minced garlic, chopped parsley, salt, and pepper. Roll into 12 even meatballs."
+      },
+      {
+        "step": 2,
+        "title": "Brown in Skillet",
+        "text": "Heat 1 tsp olive oil over medium-high heat. Sear meatballs for 2 minutes on each side until nicely browned.",
+        "timerMinutes": 2
+      },
+      {
+        "step": 3,
+        "title": "Simmer in Marinara",
+        "text": "Pour crushed tomatoes and oregano over the meatballs. Reduce heat to low, cover, and simmer for 15 minutes.",
+        "timerMinutes": 15
+      },
+      {
+        "step": 4,
+        "title": "Garnish & Serve",
+        "text": "Serve hot garnished with fresh basil and an extra dusting of parmesan alongside roasted zucchini or whole grain pasta."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "3 Months",
+      "fridge": "5 Days",
+      "reheat": "Stove / Micro"
+    },
+    "macroRatios": {
+      "protein": 40,
+      "carbs": 25,
+      "fats": 35
+    },
+    "athleteBenefit": "Rich in natural creatine, heme iron, and bioavailable beef aminos to accelerate myofibrillar protein synthesis post-workout.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "grazing-platter",
+    "title": "Mediterranean Grazing Platter",
+    "category": "low-carb",
+    "categoryLabel": "Keto Friendly",
+    "timing": "clean-energy",
+    "timingLabel": "Keto Friendly",
+    "time": 15,
+    "prepTime": "15 Mins",
+    "cookTime": "0 Mins",
+    "servings": 3,
+    "calories": 380,
+    "protein": 24,
+    "carbs": 16,
+    "fats": 22,
+    "dietTags": [
+      "Low Carb",
+      "Keto",
+      "Quick Prep"
+    ],
+    "image": "images/lowcarb-3.svg",
+    "description": "An authentic high-protein Mediterranean grazing spread featuring prosciutto, kalamata olives, marinated artichoke hearts, sharp feta cheese, and roasted almonds.",
+    "ingredients": [
+      {
+        "name": "Prosciutto di Parma / Lean Turkey Breast",
+        "amount": "150g"
+      },
+      {
+        "name": "Kalamata Olives & Stuffed Green Olives",
+        "amount": "80g"
+      },
+      {
+        "name": "Greek Feta Cheese & Marinated Artichokes",
+        "amount": "100g"
+      },
+      {
+        "name": "Roasted Salted Almonds / Walnuts",
+        "amount": "40g"
+      },
+      {
+        "name": "Cucumber Slices & Bell Pepper Strips",
+        "amount": "150g"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Prepare Board",
+        "text": "Arrange a large wooden platter or serving board."
+      },
+      {
+        "step": 2,
+        "title": "Assemble Proteins",
+        "text": "Roll prosciutto slices and turkey breast, placing them in the center of the board."
+      },
+      {
+        "step": 3,
+        "title": "Add Healthy Fats & Crunch",
+        "text": "Place small bowls of olives, artichoke hearts, cubed feta, and roasted almonds around the meat."
+      },
+      {
+        "step": 4,
+        "title": "Fill with Fresh Veggies",
+        "text": "Fill remaining spaces with crisp cucumber rounds and bell pepper spears. Serve chilled."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "4 Days",
+      "reheat": "Chilled"
+    },
+    "macroRatios": {
+      "protein": 25,
+      "carbs": 35,
+      "fats": 40
+    },
+    "athleteBenefit": "High in heart-healthy monounsaturated oleic acids and anti-inflammatory polyphenols for joint and hormonal support.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "pan-seared-steak",
+    "title": "Pan-Seared Steak with Red Wine Reduction",
+    "category": "low-carb",
+    "categoryLabel": "High-Anabolic Feast",
+    "timing": "post-workout",
+    "timingLabel": "High-Anabolic Feast",
+    "time": 20,
+    "prepTime": "5 Mins",
+    "cookTime": "15 Mins",
+    "servings": 2,
+    "calories": 540,
+    "protein": 48,
+    "carbs": 12,
+    "fats": 32,
+    "dietTags": [
+      "High Protein",
+      "Low Carb",
+      "Keto"
+    ],
+    "image": "images/lowcarb-2.svg",
+    "description": "Prime grass-fed sirloin seared with garlic, fresh rosemary, and grass-fed butter, paired with tender broccolini and a savory red wine demi-glaze.",
+    "ingredients": [
+      {
+        "name": "Grass-Fed Sirloin / Ribeye Steak",
+        "amount": "400g"
+      },
+      {
+        "name": "Fresh Rosemary & Thyme Sprigs",
+        "amount": "3 Sprigs"
+      },
+      {
+        "name": "Grass-Fed Butter",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "Garlic Cloves (Crushed)",
+        "amount": "4 Cloves"
+      },
+      {
+        "name": "Fresh Broccolini / Baby Potatoes",
+        "amount": "200g"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Bring to Room Temp",
+        "text": "Take steaks out of the fridge 20 minutes prior to cooking. Pat completely dry and season generously with coarse sea salt and black pepper.",
+        "timerMinutes": 20
+      },
+      {
+        "step": 2,
+        "title": "Sear in Cast Iron",
+        "text": "Heat a heavy cast iron skillet over high heat until smoking. Add 1 tsp avocado oil, then lay steaks in. Sear 3\u20134 minutes without moving.",
+        "timerMinutes": 4
+      },
+      {
+        "step": 3,
+        "title": "Butter Basting",
+        "text": "Flip steak. Add butter, crushed garlic, and rosemary sprigs to the pan. Tilt the skillet and baste the steak continuously for 2 minutes for medium-rare.",
+        "timerMinutes": 2
+      },
+      {
+        "step": 4,
+        "title": "Rest & Slice",
+        "text": "Transfer steaks to a cutting board to rest for 5 minutes before slicing against the grain. Serve with steamed broccolini.",
+        "timerMinutes": 5
+      }
+    ],
+    "mealPrep": {
+      "freezer": "2 Months",
+      "fridge": "3 Days",
+      "reheat": "Pan Sear 2m"
+    },
+    "macroRatios": {
+      "protein": 48,
+      "carbs": 12,
+      "fats": 40
+    },
+    "athleteBenefit": "Packed with zinc, B-vitamins, and leucine to trigger the mTOR anabolic pathway and support natural testosterone production.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "thai-buddha-bowl",
+    "title": "Thai Peanut Satay Buddha Bowl",
+    "category": "dairy-free",
+    "categoryLabel": "Plant Power",
+    "timing": "pre-workout",
+    "timingLabel": "100% Plant Power",
+    "time": 25,
+    "prepTime": "15 Mins",
+    "cookTime": "10 Mins",
+    "servings": 2,
+    "calories": 490,
+    "protein": 22,
+    "carbs": 58,
+    "fats": 18,
+    "dietTags": [
+      "Dairy-Free",
+      "Vegetarian",
+      "High Protein"
+    ],
+    "image": "images/dairyfree-1.svg",
+    "description": "A nutrient-rich power bowl with grilled satay tofu, edamame, shredded purple cabbage, shredded carrots, and fluffy quinoa dressed in a savory peanut lime vinaigrette.",
+    "ingredients": [
+      {
+        "name": "Extra-Firm Organic Tofu (Pressed & Cubed)",
+        "amount": "300g"
+      },
+      {
+        "name": "Cooked Tricolor Quinoa",
+        "amount": "200g"
+      },
+      {
+        "name": "Natural Creamy Peanut Butter",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "Soy Sauce / Tamari & Lime Juice",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "Shredded Red Cabbage & Carrots",
+        "amount": "150g"
+      },
+      {
+        "name": "Crushed Roasted Peanuts",
+        "amount": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Crisp the Tofu",
+        "text": "Toss cubed tofu with 1 tsp soy sauce and 1 tsp cornstarch. Pan sear in a non-stick skillet over medium-high heat until golden brown on all sides (8 mins).",
+        "timerMinutes": 8
+      },
+      {
+        "step": 2,
+        "title": "Whisk Peanut Dressing",
+        "text": "In a bowl, whisk peanut butter, warm water, tamari, lime juice, maple syrup, and minced garlic until smooth and pourable."
+      },
+      {
+        "step": 3,
+        "title": "Build the Bowls",
+        "text": "Divide cooked quinoa between two bowls. Top with crispy tofu, shredded cabbage, carrots, edamame, and cucumber slices."
+      },
+      {
+        "step": 4,
+        "title": "Drizzle & Garnish",
+        "text": "Generously drizzle with peanut satay sauce, sprinkle with crushed roasted peanuts and fresh cilantro."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "5 Days",
+      "reheat": "Serve Cold/Warm"
+    },
+    "macroRatios": {
+      "protein": 22,
+      "carbs": 48,
+      "fats": 30
+    },
+    "athleteBenefit": "Complete plant protein profile containing all 9 essential amino acids with healthy peanut fats for lasting energy.",
+    "goalPhase": "bulk",
+    "goalLabel": "\ud83e\udd69 Clean Muscle Bulk"
+  },
+  {
+    "id": "sweet-potato-tacos",
+    "title": "Sweet Potato and Chickpea Tacos",
+    "category": "dairy-free",
+    "categoryLabel": "Complex Carbs",
+    "timing": "clean-energy",
+    "timingLabel": "Complex Carbs",
+    "time": 30,
+    "prepTime": "10 Mins",
+    "cookTime": "20 Mins",
+    "servings": 3,
+    "calories": 410,
+    "protein": 18,
+    "carbs": 62,
+    "fats": 11,
+    "dietTags": [
+      "Dairy-Free",
+      "Vegetarian",
+      "High Fiber"
+    ],
+    "image": "images/dairyfree-3.svg",
+    "description": "Crispy roasted cumin-spiced sweet potatoes and hearty chickpeas served in warm corn tortillas with smashed avocado, pickled red onions, and fresh cilantro.",
+    "ingredients": [
+      {
+        "name": "Sweet Potatoes (Diced into Small Cubes)",
+        "amount": "300g"
+      },
+      {
+        "name": "Cooked Chickpeas (Drained & Rinsed)",
+        "amount": "250g"
+      },
+      {
+        "name": "Corn Tortillas",
+        "amount": "6 Small"
+      },
+      {
+        "name": "Ripe Hass Avocado",
+        "amount": "1 Medium"
+      },
+      {
+        "name": "Smoked Paprika, Cumin & Garlic Powder",
+        "amount": "1 tsp each"
+      },
+      {
+        "name": "Fresh Lime & Pickled Red Onions",
+        "amount": "To taste"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Roast Potatoes & Chickpeas",
+        "text": "Preheat oven to 400\u00b0F (200\u00b0C). Toss diced sweet potatoes and chickpeas with olive oil, paprika, cumin, and sea salt. Roast for 20 minutes until tender and caramelized.",
+        "timerMinutes": 20
+      },
+      {
+        "step": 2,
+        "title": "Warm Tortillas",
+        "text": "Heat corn tortillas on a dry skillet for 30 seconds per side until pliable."
+      },
+      {
+        "step": 3,
+        "title": "Assemble Tacos",
+        "text": "Spread mashed avocado onto each warm tortilla. Spoon roasted sweet potatoes and chickpeas over top."
+      },
+      {
+        "step": 4,
+        "title": "Finish with Toppings",
+        "text": "Garnish with pickled red onions, cilantro, and a squeeze of fresh lime juice."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "1 Month",
+      "fridge": "4 Days",
+      "reheat": "Skillet 2m"
+    },
+    "macroRatios": {
+      "protein": 20,
+      "carbs": 55,
+      "fats": 25
+    },
+    "athleteBenefit": "Low-glycemic slow carbs and prebiotic plant fibers that replenish liver glycogen without insulin spikes.",
+    "goalPhase": "post-workout",
+    "goalLabel": "\ud83d\udee1\ufe0f Anabolic Recovery"
+  },
+  {
+    "id": "blackberry-popsicles",
+    "title": "Antioxidant Blackberry Recovery Popsicles",
+    "category": "dairy-free",
+    "categoryLabel": "Recovery Treat",
+    "timing": "clean-energy",
+    "timingLabel": "Recovery Treat",
+    "time": 10,
+    "prepTime": "10 Mins",
+    "cookTime": "Freeze 4h",
+    "servings": 6,
+    "calories": 120,
+    "protein": 8,
+    "carbs": 18,
+    "fats": 2.5,
+    "dietTags": [
+      "Dairy-Free",
+      "Quick Prep",
+      "Post-Workout"
+    ],
+    "image": "images/dairyfree-2.svg",
+    "description": "A refreshing electrolyte-packed post-workout frozen treat blending whole wild blackberries, coconut water, lime juice, and unflavored collagen / plant protein.",
+    "ingredients": [
+      {
+        "name": "Fresh Wild Blackberries / Blueberries",
+        "amount": "300g"
+      },
+      {
+        "name": "Pure Coconut Water",
+        "amount": "200ml"
+      },
+      {
+        "name": "Raw Honey / Pure Maple Syrup",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "Fresh Lime Juice",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "Plant Protein or Collagen Powder",
+        "amount": "30g"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Blend Ingredients",
+        "text": "Combine fresh blackberries, coconut water, honey, lime juice, and protein powder in a high-speed blender. Blend until smooth."
+      },
+      {
+        "step": 2,
+        "title": "Pour into Molds",
+        "text": "Pour the mixture into popsicle molds, leaving 1/4 inch space at the top for expansion."
+      },
+      {
+        "step": 3,
+        "title": "Insert Sticks & Freeze",
+        "text": "Insert popsicle sticks and freeze for at least 4 hours (or overnight) until completely solid."
+      },
+      {
+        "step": 4,
+        "title": "Unmold and Enjoy",
+        "text": "Run warm water over the mold exterior for 10 seconds to release popsicles effortlessly."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "3 Months",
+      "fridge": "Freeze Only",
+      "reheat": "Frozen"
+    },
+    "macroRatios": {
+      "protein": 25,
+      "carbs": 60,
+      "fats": 15
+    },
+    "athleteBenefit": "Packed with anthocyanin antioxidants and natural coconut electrolytes to fight exercise-induced oxidative stress.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "caprese-salad",
+    "title": "Panzanella Caprese Salad",
+    "category": "vegetarian",
+    "categoryLabel": "Fresh & Crisp",
+    "timing": "clean-energy",
+    "timingLabel": "Fresh & Crisp",
+    "time": 15,
+    "prepTime": "15 Mins",
+    "cookTime": "0 Mins",
+    "servings": 2,
+    "calories": 310,
+    "protein": 15,
+    "carbs": 32,
+    "fats": 14,
+    "dietTags": [
+      "Vegetarian",
+      "Quick Prep",
+      "Mediterranean"
+    ],
+    "image": "images/vegetarian-1.svg",
+    "description": "Tuscan-style bread salad featuring crusty toasted whole grain sourdough chunks, heirloom tomatoes, fresh basil ribbons, and mini buffalo mozzarella pearls.",
+    "ingredients": [
+      {
+        "name": "Toasted Sourdough / Artisan Bread Cubes",
+        "amount": "120g"
+      },
+      {
+        "name": "Ripe Heirloom Tomatoes (Chopped)",
+        "amount": "250g"
+      },
+      {
+        "name": "Mini Fresh Mozzarella Pearls",
+        "amount": "100g"
+      },
+      {
+        "name": "Fresh Sweet Basil Leaves",
+        "amount": "1 Cup"
+      },
+      {
+        "name": "Aged Balsamic Glaze & Extra Virgin Olive Oil",
+        "amount": "2 tbsp each"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Toast Bread Cubes",
+        "text": "Toss bread cubes with 1 tsp olive oil and toast in a 375\u00b0F oven for 8 minutes until crunchy.",
+        "timerMinutes": 8
+      },
+      {
+        "step": 2,
+        "title": "Salt Tomatoes",
+        "text": "Chop heirloom tomatoes into chunks, place in a bowl, and season with sea salt for 5 minutes to release flavorful juices.",
+        "timerMinutes": 5
+      },
+      {
+        "step": 3,
+        "title": "Combine Ingredients",
+        "text": "Add toasted bread cubes, mozzarella pearls, and torn fresh basil to the tomato bowl."
+      },
+      {
+        "step": 4,
+        "title": "Dress and Serve",
+        "text": "Drizzle with olive oil and aged balsamic glaze. Toss well and let stand 5 minutes before serving so the bread absorbs the juices.",
+        "timerMinutes": 5
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "2 Days",
+      "reheat": "Fresh Tossed"
+    },
+    "macroRatios": {
+      "protein": 25,
+      "carbs": 45,
+      "fats": 30
+    },
+    "athleteBenefit": "Rich in lycopene and organic dairy casein proteins for sustained cellular recovery and tissue repair.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "stuffed-avocado",
+    "title": "Stuffed Mediterranean Avocado",
+    "category": "vegetarian",
+    "categoryLabel": "Healthy Fats",
+    "timing": "clean-energy",
+    "timingLabel": "Healthy Fats",
+    "time": 15,
+    "prepTime": "15 Mins",
+    "cookTime": "0 Mins",
+    "servings": 2,
+    "calories": 260,
+    "protein": 9,
+    "carbs": 18,
+    "fats": 19,
+    "dietTags": [
+      "Vegetarian",
+      "Low Carb",
+      "Keto Friendly"
+    ],
+    "image": "images/vegetarian-3.svg",
+    "description": "Ripe creamy Hass avocado halves generously stuffed with diced Persian cucumbers, kalamata olives, cherry tomatoes, crumbled feta, and fresh oregano vinaigrette.",
+    "ingredients": [
+      {
+        "name": "Ripe Hass Avocados (Halved & Pitted)",
+        "amount": "2 Large"
+      },
+      {
+        "name": "Persian Cucumbers & Diced Tomatoes",
+        "amount": "100g"
+      },
+      {
+        "name": "Crumbled Low-Fat Feta Cheese",
+        "amount": "50g"
+      },
+      {
+        "name": "Sliced Kalamata Olives",
+        "amount": "30g"
+      },
+      {
+        "name": "Extra Virgin Olive Oil & Fresh Lime",
+        "amount": "1 tbsp each"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Halve Avocados",
+        "text": "Slice avocados in half lengthwise, remove pits, and scoop out a small spoonful from the center to create a larger pocket."
+      },
+      {
+        "step": 2,
+        "title": "Toss Salad Filling",
+        "text": "In a small bowl, combine diced cucumber, cherry tomatoes, sliced olives, and scooped avocado with olive oil, lime juice, salt, and oregano."
+      },
+      {
+        "step": 3,
+        "title": "Fill Avocado Cups",
+        "text": "Mound the Mediterranean salad generously into each avocado half."
+      },
+      {
+        "step": 4,
+        "title": "Top with Feta & Serve",
+        "text": "Sprinkle with crumbled feta cheese and serve immediately with lime wedges."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "1-2 Days",
+      "reheat": "Lime/Lemon"
+    },
+    "macroRatios": {
+      "protein": 18,
+      "carbs": 32,
+      "fats": 50
+    },
+    "athleteBenefit": "Provides clean monounsaturated fats and essential potassium to prevent muscular cramping during heavy lifts.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "kale-chickpea-salad",
+    "title": "Tuscan Kale & Crispy Chickpeas",
+    "category": "vegetarian",
+    "categoryLabel": "Superfood Bowl",
+    "timing": "clean-energy",
+    "timingLabel": "Superfood Bowl",
+    "time": 20,
+    "prepTime": "10 Mins",
+    "cookTime": "10 Mins",
+    "servings": 2,
+    "calories": 290,
+    "protein": 14,
+    "carbs": 34,
+    "fats": 11,
+    "dietTags": [
+      "Vegetarian",
+      "High Fiber",
+      "Superfood"
+    ],
+    "image": "images/vegetarian-2.svg",
+    "description": "Tender massaged Lacinato kale tossed with spiced roasted chickpeas, toasted sunflower seeds, and a creamy lemon-tahini garlic dressing.",
+    "ingredients": [
+      {
+        "name": "Fresh Lacinato / Tuscan Kale (Stemmed & Chopped)",
+        "amount": "200g"
+      },
+      {
+        "name": "Crispy Spiced Chickpeas (Roasted)",
+        "amount": "150g"
+      },
+      {
+        "name": "Raw Sesame Tahini",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "Fresh Lemon Juice & Garlic",
+        "amount": "2 tbsp / 1 Clove"
+      },
+      {
+        "name": "Toasted Sunflower / Pumpkin Seeds",
+        "amount": "25g"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Massage the Kale",
+        "text": "Wash, de-stem, and chop kale. Place in a bowl with 1/2 tsp olive oil and a pinch of salt. Massage with your hands for 2 minutes until dark green and tender.",
+        "timerMinutes": 2
+      },
+      {
+        "step": 2,
+        "title": "Whisk Tahini Dressing",
+        "text": "Whisk tahini, warm water, fresh lemon juice, grated garlic, and sea salt until smooth and velvety."
+      },
+      {
+        "step": 3,
+        "title": "Toss Salad",
+        "text": "Pour tahini dressing over massaged kale. Add roasted chickpeas and toasted sunflower seeds."
+      },
+      {
+        "step": 4,
+        "title": "Garnish & Serve",
+        "text": "Toss thoroughly and serve with cracked black pepper and nutritional yeast for an extra savory boost."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "4 Days",
+      "reheat": "Tahini Dressing"
+    },
+    "macroRatios": {
+      "protein": 22,
+      "carbs": 48,
+      "fats": 30
+    },
+    "athleteBenefit": "Loaded with sulfur-rich sulforaphane, iron, and calcium to promote oxygenation and reduce systemic inflammation.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "teriyaki-chicken-rice",
+    "title": "Anabolic Teriyaki Chicken & Jasmine Rice Bowl",
+    "category": "high-protein",
+    "categoryLabel": "Muscle Mass & Bulking",
+    "timing": "post-workout",
+    "timingLabel": "Post-Workout Anabolic Fuel",
+    "time": 20,
+    "prepTime": "8 Mins",
+    "cookTime": "12 Mins",
+    "servings": 3,
+    "calories": 520,
+    "protein": 46,
+    "carbs": 62,
+    "fats": 10,
+    "dietTags": [
+      "High Protein",
+      "Post-Workout",
+      "Clean Bulk"
+    ],
+    "image": "",
+    "description": "Tender grilled chicken breast glazed in a homemade ginger-teriyaki reduction, served atop steamed fragrant jasmine rice and tender steamed broccoli florets.",
+    "ingredients": [
+      {
+        "name": "Skinless Boneless Chicken Breast (Cubed)",
+        "amount": "450g"
+      },
+      {
+        "name": "Steamed White Jasmine Rice",
+        "amount": "300g"
+      },
+      {
+        "name": "Low-Sodium Tamari / Soy Sauce",
+        "amount": "3 tbsp"
+      },
+      {
+        "name": "Pure Honey & Fresh Ginger",
+        "amount": "1.5 tbsp / 1 tsp"
+      },
+      {
+        "name": "Steamed Broccoli Florets & Sesame Seeds",
+        "amount": "200g"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Sear Chicken",
+        "text": "Heat a non-stick skillet over medium-high heat with 1 tsp sesame oil. Add cubed chicken and cook for 6-8 minutes until golden and cooked through.",
+        "timerMinutes": 8
+      },
+      {
+        "step": 2,
+        "title": "Glaze in Teriyaki",
+        "text": "In a bowl, mix tamari, honey, garlic, ginger, and 1 tsp cornstarch. Pour into the skillet over hot chicken and simmer for 1-2 minutes until sauce thickens and glazes the meat.",
+        "timerMinutes": 2
+      },
+      {
+        "step": 3,
+        "title": "Plate with Rice & Greens",
+        "text": "Scoop warm jasmine rice into meal prep bowls, top with teriyaki chicken and steamed broccoli."
+      },
+      {
+        "step": 4,
+        "title": "Garnish",
+        "text": "Garnish with toasted sesame seeds and sliced green onions."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "2 Months",
+      "fridge": "5 Days",
+      "reheat": "Microwave 2m"
+    },
+    "macroRatios": {
+      "protein": 38,
+      "carbs": 50,
+      "fats": 12
+    },
+    "athleteBenefit": "The gold standard bodybuilding ratio (46g protein : 62g clean carbs) for maximum post-workout muscle anabolism.",
+    "goalPhase": "bulk",
+    "goalLabel": "\ud83e\udd69 Clean Muscle Bulk"
+  },
+  {
+    "id": "grilled-salmon-asparagus",
+    "title": "Wild Salmon Fillet with Garlic Asparagus & Quinoa",
+    "category": "high-protein",
+    "categoryLabel": "Lean Gains & Omega-3",
+    "timing": "post-workout",
+    "timingLabel": "Lean Gains & Omega-3",
+    "time": 20,
+    "prepTime": "5 Mins",
+    "cookTime": "15 Mins",
+    "servings": 2,
+    "calories": 480,
+    "protein": 42,
+    "carbs": 30,
+    "fats": 22,
+    "dietTags": [
+      "High Protein",
+      "Omega-3",
+      "Gluten-Free"
+    ],
+    "image": "",
+    "description": "Pan-seared wild salmon with a golden crust, rich in anti-inflammatory Omega-3 fatty acids, served with tender garlic-buttered asparagus and fluffy quinoa.",
+    "ingredients": [
+      {
+        "name": "Fresh Wild Salmon Fillets",
+        "amount": "360g (2 Fillets)"
+      },
+      {
+        "name": "Fresh Asparagus Spears (Trimmed)",
+        "amount": "200g"
+      },
+      {
+        "name": "Cooked Golden Quinoa",
+        "amount": "150g"
+      },
+      {
+        "name": "Grass-Fed Butter & Minced Garlic",
+        "amount": "1 tbsp / 2 Cloves"
+      },
+      {
+        "name": "Lemon Wedges & Fresh Dill",
+        "amount": "To taste"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Season Salmon",
+        "text": "Pat salmon fillets dry with paper towels. Season skin and flesh with coarse sea salt, black pepper, and garlic powder."
+      },
+      {
+        "step": 2,
+        "title": "Sear in Skillet",
+        "text": "Heat 1 tsp olive oil in a skillet over medium-high heat. Place salmon skin-side down and cook undisturbed for 4-5 minutes until skin is super crispy. Flip and cook for 2-3 minutes.",
+        "timerMinutes": 5
+      },
+      {
+        "step": 3,
+        "title": "Saut\u00e9 Asparagus",
+        "text": "In the same skillet, push salmon to the side, add butter, minced garlic, and asparagus spears. Saut\u00e9 for 3-4 minutes until bright green and tender-crisp.",
+        "timerMinutes": 4
+      },
+      {
+        "step": 4,
+        "title": "Serve with Quinoa",
+        "text": "Serve salmon hot over a bed of fluffy quinoa with asparagus and fresh lemon wedges."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "1 Month",
+      "fridge": "3 Days",
+      "reheat": "Pan Warm 3m"
+    },
+    "macroRatios": {
+      "protein": 36,
+      "carbs": 26,
+      "fats": 38
+    },
+    "athleteBenefit": "High in anti-inflammatory EPA/DHA Omega-3s to reduce delayed onset muscle soreness (DOMS) and accelerate joint recovery.",
+    "goalPhase": "bulk",
+    "goalLabel": "\ud83e\udd69 Clean Muscle Bulk"
+  },
+  {
+    "id": "whey-banana-oat-shake",
+    "title": "Titan Whey Banana & Peanut Butter Recovery Shake",
+    "category": "high-protein",
+    "categoryLabel": "Post-Workout Anabolic Shake",
+    "timing": "post-workout",
+    "timingLabel": "Instant Post-Workout Window",
+    "time": 5,
+    "prepTime": "5 Mins",
+    "cookTime": "0 Mins",
+    "servings": 1,
+    "calories": 420,
+    "protein": 38,
+    "carbs": 48,
+    "fats": 10,
+    "dietTags": [
+      "High Protein",
+      "Post-Workout",
+      "Quick Prep"
+    ],
+    "image": "",
+    "description": "The ultimate post-workout anabolic recovery shake: Premium Whey Isolate blended with sweet ripe bananas, rolled oats, natural peanut butter, and creamy almond milk.",
+    "ingredients": [
+      {
+        "name": "Chocolate or Vanilla Whey Isolate",
+        "amount": "1.5 Scoops (45g)"
+      },
+      {
+        "name": "Ripe Medium Banana",
+        "amount": "1 Whole"
+      },
+      {
+        "name": "Quick Rolled Oats",
+        "amount": "40g"
+      },
+      {
+        "name": "Natural Peanut Butter",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "Unsweetened Almond Milk & Ice Cubes",
+        "amount": "300ml"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Add Ingredients to Blender",
+        "text": "Pour almond milk into the blender first, followed by rolled oats, banana, peanut butter, whey isolate powder, and a handful of ice cubes."
+      },
+      {
+        "step": 2,
+        "title": "Blend on High",
+        "text": "Blend on high speed for 45-60 seconds until completely smooth, thick, and frothy."
+      },
+      {
+        "step": 3,
+        "title": "Serve Immediately",
+        "text": "Pour into a shaker bottle or tall glass and consume within 45 minutes of training for rapid muscle recovery.",
+        "timerMinutes": 5
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "24 Hours",
+      "reheat": "Shake & Drink"
+    },
+    "macroRatios": {
+      "protein": 38,
+      "carbs": 46,
+      "fats": 16
+    },
+    "athleteBenefit": "Rapidly absorbed whey protein isolate + potassium-rich fast carbs for immediate 30-minute post-lift recovery window.",
+    "goalPhase": "post-workout",
+    "goalLabel": "\ud83d\udee1\ufe0f Anabolic Recovery"
+  },
+  {
+    "id": "beef-broccoli-rice",
+    "title": "Anabolic Sliced Beef & Tender Broccoli Stir-Fry",
+    "category": "high-protein",
+    "categoryLabel": "Muscle Mass & Bulking",
+    "timing": "post-workout",
+    "timingLabel": "Post-Workout Power",
+    "time": 20,
+    "prepTime": "8 Mins",
+    "cookTime": "12 Mins",
+    "servings": 3,
+    "calories": 510,
+    "protein": 44,
+    "carbs": 52,
+    "fats": 14,
+    "dietTags": [
+      "High Protein",
+      "Post-Workout",
+      "Clean Bulk"
+    ],
+    "image": "",
+    "description": "Tender strips of lean flank steak flash-seared with fresh broccoli crowns in a rich garlic-ginger soy glaze over steamed brown or jasmine rice.",
+    "ingredients": [
+      {
+        "name": "Lean Flank Steak (Thinly Sliced)",
+        "amount": "450g"
+      },
+      {
+        "name": "Fresh Broccoli Crowns (Cut into Florets)",
+        "amount": "300g"
+      },
+      {
+        "name": "Steamed White or Brown Rice",
+        "amount": "300g"
+      },
+      {
+        "name": "Low-Sodium Soy Sauce & Oyster Sauce",
+        "amount": "2 tbsp each"
+      },
+      {
+        "name": "Garlic, Fresh Ginger & Sesame Oil",
+        "amount": "3 Cloves / 1 tbsp"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Flash Sear Beef",
+        "text": "Heat a wok or skillet over high heat with 1 tsp sesame oil. Sear beef strips for 2-3 minutes until browned. Transfer to a plate.",
+        "timerMinutes": 3
+      },
+      {
+        "step": 2,
+        "title": "Steam Fry Broccoli",
+        "text": "Add broccoli florets and 3 tbsp water to the hot skillet, cover and steam for 3 minutes until vibrant green.",
+        "timerMinutes": 3
+      },
+      {
+        "step": 3,
+        "title": "Toss in Sauce",
+        "text": "Return beef to the wok, pour in whisked soy sauce, oyster sauce, ginger, and garlic. Stir-fry for 1 minute until glazed."
+      },
+      {
+        "step": 4,
+        "title": "Plate and Serve",
+        "text": "Divide warm rice into bowls, spoon beef and broccoli over top, and finish with sesame seeds."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "2 Months",
+      "fridge": "5 Days",
+      "reheat": "Microwave 2m"
+    },
+    "macroRatios": {
+      "protein": 38,
+      "carbs": 42,
+      "fats": 20
+    },
+    "athleteBenefit": "High-yield dietary iron and zinc from lean beef with brassica indoles to optimize hormonal balance and muscle growth.",
+    "goalPhase": "bulk",
+    "goalLabel": "\ud83e\udd69 Clean Muscle Bulk"
+  },
+  {
+    "id": "protein-overnight-oats",
+    "title": "Triple Berry Protein Power Overnight Oats",
+    "category": "high-protein",
+    "categoryLabel": "Pre-Workout Fuel",
+    "timing": "pre-workout",
+    "timingLabel": "Sustained Energy",
+    "time": 5,
+    "prepTime": "5 Mins",
+    "cookTime": "Chill Overnight",
+    "servings": 2,
+    "calories": 380,
+    "protein": 32,
+    "carbs": 48,
+    "fats": 7,
+    "dietTags": [
+      "High Protein",
+      "Breakfast",
+      "Meal Prep"
+    ],
+    "image": "",
+    "description": "High-fiber rolled oats soaked in vanilla protein almond milk, layered with chia seeds, wild blueberries, strawberries, and Greek yogurt.",
+    "ingredients": [
+      {
+        "name": "Old Fashioned Rolled Oats",
+        "amount": "100g"
+      },
+      {
+        "name": "Vanilla Whey / Plant Protein Powder",
+        "amount": "2 Scoops (60g)"
+      },
+      {
+        "name": "Unsweetened Vanilla Almond Milk",
+        "amount": "250ml"
+      },
+      {
+        "name": "Chia Seeds",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "Fresh Berries (Blueberries & Raspberries)",
+        "amount": "100g"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Mix Dry & Wet",
+        "text": "In a mason jar or meal prep bowl, combine rolled oats, protein powder, chia seeds, and almond milk. Stir thoroughly until no lumps remain."
+      },
+      {
+        "step": 2,
+        "title": "Layer Berries",
+        "text": "Fold in half the fresh berries, cover with lid, and refrigerate overnight (at least 6 hours)."
+      },
+      {
+        "step": 3,
+        "title": "Top & Enjoy",
+        "text": "In the morning, stir and top with remaining fresh berries and a sprinkle of cinnamon."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "5 Days",
+      "reheat": "Serve Chilled"
+    },
+    "macroRatios": {
+      "protein": 35,
+      "carbs": 50,
+      "fats": 15
+    },
+    "athleteBenefit": "Overnight enzymatic pre-digestion increases nutrient absorption and delivers sustained morning energy without bloating.",
+    "goalPhase": "pre-workout",
+    "goalLabel": "\u26a1 Pre-Workout Fuel"
+  },
+  {
+    "id": "lemon-herb-chicken",
+    "title": "Mediterranean Lemon Herb Chicken & Sweet Potato",
+    "category": "high-protein",
+    "categoryLabel": "Post-Workout Recovery",
+    "timing": "post-workout",
+    "timingLabel": "Lean Gains",
+    "time": 25,
+    "prepTime": "10 Mins",
+    "cookTime": "15 Mins",
+    "servings": 3,
+    "calories": 450,
+    "protein": 48,
+    "carbs": 38,
+    "fats": 10,
+    "dietTags": [
+      "High Protein",
+      "Gluten-Free",
+      "Clean Eats"
+    ],
+    "image": "",
+    "description": "Juicy grilled chicken breast marinated in fresh lemon juice, rosemary, and garlic, paired with roasted sweet potato wedges and steamed green beans.",
+    "ingredients": [
+      {
+        "name": "Chicken Breasts (Butterflied)",
+        "amount": "500g"
+      },
+      {
+        "name": "Roasted Sweet Potato Wedges",
+        "amount": "300g"
+      },
+      {
+        "name": "Fresh Rosemary, Oregano & Garlic",
+        "amount": "2 tbsp / 3 Cloves"
+      },
+      {
+        "name": "Fresh Lemon Juice & Zest",
+        "amount": "2 Lemons"
+      },
+      {
+        "name": "Steamed French Green Beans",
+        "amount": "200g"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Marinate Chicken",
+        "text": "In a shallow dish, combine chicken breasts with lemon juice, zest, chopped rosemary, garlic, salt, and 1 tsp olive oil. Marinate for 15 minutes.",
+        "timerMinutes": 15
+      },
+      {
+        "step": 2,
+        "title": "Grill to Perfection",
+        "text": "Grill on medium-high heat for 5-6 minutes per side until internal temperature reaches 165\u00b0F (74\u00b0C).",
+        "timerMinutes": 6
+      },
+      {
+        "step": 3,
+        "title": "Assemble Meal Prep",
+        "text": "Slice grilled chicken and divide into meal prep containers alongside sweet potato wedges and steamed green beans."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "2 Months",
+      "fridge": "5 Days",
+      "reheat": "Microwave 2m"
+    },
+    "macroRatios": {
+      "protein": 45,
+      "carbs": 35,
+      "fats": 20
+    },
+    "athleteBenefit": "Ultra-lean 48g single-serving bioavailable protein with citric acid for enhanced mineral bioavailability and lean gains.",
+    "goalPhase": "bulk",
+    "goalLabel": "\ud83e\udd69 Clean Muscle Bulk"
+  },
+  {
+    "id": "egg-white-turkey-scramble",
+    "title": "Iron Man 6-Egg White & Lean Turkey Scramble",
+    "category": "low-carb",
+    "categoryLabel": "Fat Loss & Shred",
+    "timing": "pre-workout",
+    "timingLabel": "Pure Lean Protein",
+    "time": 10,
+    "prepTime": "3 Mins",
+    "cookTime": "7 Mins",
+    "servings": 1,
+    "calories": 280,
+    "protein": 38,
+    "carbs": 6,
+    "fats": 9,
+    "dietTags": [
+      "Low Carb",
+      "Keto",
+      "High Protein",
+      "Quick Prep"
+    ],
+    "image": "",
+    "description": "Ultra-lean high-protein breakfast scramble with 6 liquid egg whites, extra-lean ground turkey, fresh baby spinach, and sliced avocado.",
+    "ingredients": [
+      {
+        "name": "Liquid Egg Whites",
+        "amount": "200ml (6 Egg Whites)"
+      },
+      {
+        "name": "Cooked Lean Ground Turkey (93/7)",
+        "amount": "100g"
+      },
+      {
+        "name": "Baby Spinach & Diced Bell Peppers",
+        "amount": "100g"
+      },
+      {
+        "name": "Ripe Hass Avocado (Sliced)",
+        "amount": "1/4 Avocado"
+      },
+      {
+        "name": "Black Pepper & Sea Salt",
+        "amount": "To taste"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Saut\u00e9 Veggies & Turkey",
+        "text": "Heat a non-stick pan over medium heat with cooking spray. Add cooked ground turkey, diced peppers, and spinach until wilted."
+      },
+      {
+        "step": 2,
+        "title": "Pour Egg Whites",
+        "text": "Pour in egg whites. Gently stir with a spatula for 2-3 minutes until soft curds form and eggs are fully set.",
+        "timerMinutes": 3
+      },
+      {
+        "step": 3,
+        "title": "Garnish & Serve",
+        "text": "Slide onto a plate, top with sliced avocado and your favorite hot sauce."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "3 Days",
+      "reheat": "Microwave 1m"
+    },
+    "macroRatios": {
+      "protein": 55,
+      "carbs": 10,
+      "fats": 35
+    },
+    "athleteBenefit": "Zero-sugar, ultra-pure 38g protein with less than 6g carbohydrates\u2014ideal for aggressive cutting and contest prep.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "crispy-tofu-soba",
+    "title": "Crispy Sesame Tofu & Edamame Soba Noodle Bowl",
+    "category": "vegetarian",
+    "categoryLabel": "Plant-Powered Athlete",
+    "timing": "pre-workout",
+    "timingLabel": "Plant Endurance",
+    "time": 20,
+    "prepTime": "8 Mins",
+    "cookTime": "12 Mins",
+    "servings": 2,
+    "calories": 420,
+    "protein": 28,
+    "carbs": 54,
+    "fats": 12,
+    "dietTags": [
+      "Vegetarian",
+      "High Protein",
+      "Plant-Based"
+    ],
+    "image": "",
+    "description": "Buckwheat soba noodles tossed in a toasted sesame-tamari sauce with crispy golden tofu cubes, shelled edamame, and steamed snow peas.",
+    "ingredients": [
+      {
+        "name": "Extra-Firm Organic Tofu",
+        "amount": "300g"
+      },
+      {
+        "name": "Japanese Buckwheat Soba Noodles",
+        "amount": "150g"
+      },
+      {
+        "name": "Shelled Steamed Edamame",
+        "amount": "100g"
+      },
+      {
+        "name": "Toasted Sesame Oil & Tamari",
+        "amount": "1.5 tbsp each"
+      },
+      {
+        "name": "Sliced Scallions & Sesame Seeds",
+        "amount": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Boil Soba",
+        "text": "Cook soba noodles in boiling water for 4 minutes. Drain and rinse under cold water to stop cooking.",
+        "timerMinutes": 4
+      },
+      {
+        "step": 2,
+        "title": "Pan Fry Tofu",
+        "text": "Cube tofu and pan fry in 1 tsp sesame oil until crispy and golden on all sides."
+      },
+      {
+        "step": 3,
+        "title": "Toss and Serve",
+        "text": "Toss soba noodles with tamari, sesame oil, edamame, and crispy tofu. Garnish with scallions and sesame seeds."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "4 Days",
+      "reheat": "Serve Cold/Warm"
+    },
+    "macroRatios": {
+      "protein": 28,
+      "carbs": 50,
+      "fats": 22
+    },
+    "athleteBenefit": "Rutin antioxidants from buckwheat noodles combined with plant isoflavones to support circulation and cardiovascular stamina.",
+    "goalPhase": "pre-workout",
+    "goalLabel": "\u26a1 Pre-Workout Fuel"
+  },
+  {
+    "id": "avocado-tuna-boats",
+    "title": "Keto Avocado & Wild Albacore Tuna Protein Boats",
+    "category": "low-carb",
+    "categoryLabel": "Keto Shred",
+    "timing": "clean-energy",
+    "timingLabel": "Keto Energy",
+    "time": 8,
+    "prepTime": "8 Mins",
+    "cookTime": "0 Mins",
+    "servings": 2,
+    "calories": 320,
+    "protein": 35,
+    "carbs": 8,
+    "fats": 18,
+    "dietTags": [
+      "Low Carb",
+      "Keto",
+      "High Protein",
+      "Quick Prep"
+    ],
+    "image": "",
+    "description": "Wild albacore tuna mixed with Greek yogurt, Dijon mustard, capers, and celery, spooned into fresh ripe avocado halves.",
+    "ingredients": [
+      {
+        "name": "Wild Albacore White Tuna (in Water)",
+        "amount": "2 Cans (240g)"
+      },
+      {
+        "name": "Ripe Hass Avocados (Halved)",
+        "amount": "2 Large"
+      },
+      {
+        "name": "Plain Non-Fat Greek Yogurt",
+        "amount": "2 tbsp"
+      },
+      {
+        "name": "Dijon Mustard & Diced Celery",
+        "amount": "1 tsp / 2 tbsp"
+      },
+      {
+        "name": "Lemon Juice, Sea Salt & Paprika",
+        "amount": "To taste"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Drain & Flake Tuna",
+        "text": "Drain tuna cans completely. In a bowl, flake tuna with a fork and mix with Greek yogurt, Dijon mustard, celery, and lemon juice."
+      },
+      {
+        "step": 2,
+        "title": "Fill Avocado Halves",
+        "text": "Mound the tuna salad generously into each pitted avocado half."
+      },
+      {
+        "step": 3,
+        "title": "Season & Enjoy",
+        "text": "Dust with smoked paprika, sea salt, and fresh cracked pepper."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "2 Days",
+      "reheat": "Chilled"
+    },
+    "macroRatios": {
+      "protein": 45,
+      "carbs": 10,
+      "fats": 45
+    },
+    "athleteBenefit": "Zero-carb high-protein keto powerhouse providing pure omega-3 fatty acids and selenium for thyroid and metabolic health.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "chocolate-peanut-protein-bowl",
+    "title": "Dark Chocolate & Peanut Butter Crunch Protein Bowl",
+    "category": "high-protein",
+    "categoryLabel": "Post-Workout Treat",
+    "timing": "post-workout",
+    "timingLabel": "Anabolic Dessert",
+    "time": 5,
+    "prepTime": "5 Mins",
+    "cookTime": "0 Mins",
+    "servings": 1,
+    "calories": 350,
+    "protein": 30,
+    "carbs": 36,
+    "fats": 10,
+    "dietTags": [
+      "High Protein",
+      "Post-Workout",
+      "Quick Prep"
+    ],
+    "image": "",
+    "description": "Thick chocolate protein pudding made with Greek yogurt and whey isolate, topped with sliced bananas, cacao nibs, and a melted peanut butter drizzle.",
+    "ingredients": [
+      {
+        "name": "Plain Greek Yogurt (0% Fat)",
+        "amount": "200g"
+      },
+      {
+        "name": "Chocolate Whey Isolate",
+        "amount": "1 Scoop (30g)"
+      },
+      {
+        "name": "Unsweetened Cacao Powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "Natural Peanut Butter (Warmed)",
+        "amount": "1 tbsp"
+      },
+      {
+        "name": "Sliced Banana & Cacao Nibs",
+        "amount": "1/2 Banana / 1 tsp"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Whip Protein Base",
+        "text": "In a bowl, vigorously mix Greek yogurt, chocolate whey isolate, and cacao powder until completely smooth and velvety."
+      },
+      {
+        "step": 2,
+        "title": "Add Crunch & Fruit",
+        "text": "Arrange sliced banana coins and cacao nibs on top."
+      },
+      {
+        "step": 3,
+        "title": "Drizzle & Serve",
+        "text": "Drizzle warm peanut butter across the top and enjoy immediately."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "2 Days",
+      "reheat": "Chilled"
+    },
+    "macroRatios": {
+      "protein": 38,
+      "carbs": 40,
+      "fats": 22
+    },
+    "athleteBenefit": "Antioxidant-dense raw cacao flavonoids boost endorphins and blood flow, while casein-rich yogurt feeds muscles overnight.",
+    "goalPhase": "post-workout",
+    "goalLabel": "\ud83d\udee1\ufe0f Anabolic Recovery"
+  },
+  {
+    "id": "chimichurri-flank-steak",
+    "title": "Argentine Chimichurri Flank Steak with Roasted Veggies",
+    "category": "low-carb",
+    "categoryLabel": "Anabolic Feast",
+    "timing": "post-workout",
+    "timingLabel": "High-Anabolic Fuel",
+    "time": 20,
+    "prepTime": "8 Mins",
+    "cookTime": "12 Mins",
+    "servings": 3,
+    "calories": 460,
+    "protein": 45,
+    "carbs": 14,
+    "fats": 24,
+    "dietTags": [
+      "High Protein",
+      "Low Carb",
+      "Keto"
+    ],
+    "image": "",
+    "description": "Grilled marinated flank steak sliced thin and drenched in an authentic zesty parsley-garlic chimichurri herb sauce, served with roasted zucchini and peppers.",
+    "ingredients": [
+      {
+        "name": "Lean Flank Steak",
+        "amount": "500g"
+      },
+      {
+        "name": "Fresh Flat-Leaf Parsley & Oregano",
+        "amount": "1 Cup / 1 tbsp"
+      },
+      {
+        "name": "Garlic, Red Wine Vinegar & Olive Oil",
+        "amount": "3 Cloves / 2 tbsp / 2 tbsp"
+      },
+      {
+        "name": "Red Chili Flakes & Sea Salt",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "Sliced Zucchini & Bell Peppers",
+        "amount": "300g"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Whisk Chimichurri",
+        "text": "Finely mince parsley and garlic. Stir together with red wine vinegar, olive oil, red pepper flakes, salt, and black pepper."
+      },
+      {
+        "step": 2,
+        "title": "Sear Steak",
+        "text": "Grill or sear flank steak on high heat for 4-5 minutes per side for medium-rare. Let rest 5 minutes.",
+        "timerMinutes": 5
+      },
+      {
+        "step": 3,
+        "title": "Slice & Spoon Sauce",
+        "text": "Slice steak thinly against the grain. Spoon generous spoonfuls of chimichurri sauce over the beef alongside roasted vegetables."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "2 Months",
+      "fridge": "4 Days",
+      "reheat": "Pan Warm 2m"
+    },
+    "macroRatios": {
+      "protein": 42,
+      "carbs": 12,
+      "fats": 46
+    },
+    "athleteBenefit": "Garlic allicin and raw parsley vitamin C maximize iron absorption and boost immune resilience during intense training blocks.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "greek-yogurt-parfait",
+    "title": "Probiotic Greek Yogurt & Granola Muscle Parfait",
+    "category": "high-protein",
+    "categoryLabel": "Pre-Workout Fuel",
+    "timing": "pre-workout",
+    "timingLabel": "Fast Digesting",
+    "time": 5,
+    "prepTime": "5 Mins",
+    "cookTime": "0 Mins",
+    "servings": 1,
+    "calories": 290,
+    "protein": 26,
+    "carbs": 32,
+    "fats": 5,
+    "dietTags": [
+      "High Protein",
+      "Breakfast",
+      "Quick Prep"
+    ],
+    "image": "",
+    "description": "Layers of thick non-fat Greek yogurt with raw honey, artisan protein granola, fresh raspberries, and a dusting of chia seeds.",
+    "ingredients": [
+      {
+        "name": "Non-Fat Plain Greek Yogurt",
+        "amount": "200g"
+      },
+      {
+        "name": "High-Protein Oat Granola",
+        "amount": "30g"
+      },
+      {
+        "name": "Fresh Raspberries & Blueberries",
+        "amount": "80g"
+      },
+      {
+        "name": "Raw Honey",
+        "amount": "1 tsp"
+      },
+      {
+        "name": "Chia Seeds",
+        "amount": "1 tsp"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Layer Yogurt",
+        "text": "Spoon half of the Greek yogurt into a glass or bowl."
+      },
+      {
+        "step": 2,
+        "title": "Add Fruit & Crunch",
+        "text": "Layer half the berries and granola, then repeat with the remaining yogurt, berries, and granola."
+      },
+      {
+        "step": 3,
+        "title": "Drizzle Honey",
+        "text": "Top with a drizzle of raw honey and a sprinkle of chia seeds. Enjoy immediately."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "Not Rec.",
+      "fridge": "3 Days",
+      "reheat": "Serve Chilled"
+    },
+    "macroRatios": {
+      "protein": 36,
+      "carbs": 48,
+      "fats": 16
+    },
+    "athleteBenefit": "Live active probiotic cultures strengthen the gut microbiome, improving protein assimilation and nutrient uptake.",
+    "goalPhase": "cut",
+    "goalLabel": "\u2702\ufe0f Fat Loss / Shred"
+  },
+  {
+    "id": "turkey-sweet-potato-chili",
+    "title": "Slow-Simmered Lean Turkey & Sweet Potato Power Chili",
+    "category": "high-protein",
+    "categoryLabel": "Muscle Mass & Bulking",
+    "timing": "post-workout",
+    "timingLabel": "Post-Workout Recovery",
+    "time": 30,
+    "prepTime": "10 Mins",
+    "cookTime": "20 Mins",
+    "servings": 4,
+    "calories": 480,
+    "protein": 42,
+    "carbs": 50,
+    "fats": 12,
+    "dietTags": [
+      "High Protein",
+      "Meal Prep",
+      "Gluten-Free"
+    ],
+    "image": "",
+    "description": "A comforting, high-protein chili loaded with lean ground turkey, cubed sweet potatoes, black beans, fire-roasted tomatoes, and smoky chipotle spices.",
+    "ingredients": [
+      {
+        "name": "Lean Ground Turkey (93/7)",
+        "amount": "500g"
+      },
+      {
+        "name": "Sweet Potatoes (Diced Small)",
+        "amount": "300g"
+      },
+      {
+        "name": "Black Beans (Drained & Rinsed)",
+        "amount": "1 Can (400g)"
+      },
+      {
+        "name": "Fire-Roasted Crushed Tomatoes",
+        "amount": "1 Can (400g)"
+      },
+      {
+        "name": "Chili Powder, Cumin, Garlic & Smoked Paprika",
+        "amount": "1 tbsp each"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Brown Turkey",
+        "text": "In a large pot, brown ground turkey over medium heat until fully cooked. Drain any excess liquid."
+      },
+      {
+        "step": 2,
+        "title": "Add Spices & Potatoes",
+        "text": "Stir in diced sweet potatoes, chili powder, cumin, smoked paprika, and minced garlic. Cook for 2 minutes until fragrant.",
+        "timerMinutes": 2
+      },
+      {
+        "step": 3,
+        "title": "Simmer",
+        "text": "Add crushed tomatoes, black beans, and 1 cup of low-sodium chicken broth. Bring to a boil, reduce heat, cover, and simmer for 20 minutes until sweet potatoes are tender.",
+        "timerMinutes": 20
+      },
+      {
+        "step": 4,
+        "title": "Portion for Meal Prep",
+        "text": "Divide into meal prep containers and top with fresh cilantro and avocado."
+      }
+    ],
+    "mealPrep": {
+      "freezer": "3 Months",
+      "fridge": "6 Days",
+      "reheat": "Microwave 2m"
+    },
+    "macroRatios": {
+      "protein": 36,
+      "carbs": 44,
+      "fats": 20
+    },
+    "athleteBenefit": "A balanced 42g protein power bowl rich in beta-carotene, black bean resistant starch, and thermogenic capsaicin.",
+    "goalPhase": "bulk",
+    "goalLabel": "\ud83e\udd69 Clean Muscle Bulk"
+  }
+]

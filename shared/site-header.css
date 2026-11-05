@@ -1,0 +1,483 @@
+/* Authoritative Global Header Styles — Black + White + Lime (#B3DD24) */
+:root {
+  --header-height: 80px;
+  --bg-dark: #000000;
+  --header-border: #363636;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid var(--color-border, #363636);
+  height: var(--header-height);
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  transition: all 0.25s var(--ease-canonical);
+}
+
+.site-header:hover {
+  background: #000000;
+  border-bottom-color: var(--color-border, #363636);
+}
+
+.site-nav-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: 1720px !important;
+  margin: 0 auto !important;
+  padding: 0 28px !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  gap: 16px !important;
+}
+
+/* LEFT: BRANDING */
+.site-header-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.2s ease !important;
+}
+
+.site-header-brand:hover {
+  transform: scale(1.02);
+}
+
+.site-logo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.site-logo img {
+  width: 44px !important;
+  height: 44px !important;
+  object-fit: cover !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  border: 1.5px solid var(--color-accent, #B3DD24) !important;
+  transition: all 0.25s ease !important;
+}
+
+.site-header-brand:hover .site-logo img {
+  border-color: #FFFFFF !important;
+  box-shadow: 0 0 14px rgba(179, 221, 36, 0.5) !important;
+}
+
+.site-brand-text {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+  letter-spacing: 1.2px !important;
+  color: #FFFFFF !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+
+.site-brand-text span {
+  color: var(--color-accent, #B3DD24) !important;
+}
+
+/* CENTER: MAIN NAVIGATION */
+.site-nav-menu {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  flex: 1 !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  flex-wrap: nowrap !important;
+}
+
+.site-nav-item {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  color: var(--color-text-primary, #F0F0F0) !important;
+  text-decoration: none !important;
+  padding: 8px 14px !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  transition: all 0.2s ease !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.6px !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  user-select: none !important;
+}
+
+.site-nav-item:hover {
+  color: var(--color-accent, #B3DD24) !important;
+  background: var(--color-surface, #202020) !important;
+}
+
+.site-nav-item.active {
+  background: var(--color-surface-elevated, #2A2A2A) !important;
+  color: var(--color-accent, #B3DD24) !important;
+  border: 1px solid var(--color-accent-border, rgba(179, 221, 36, 0.4)) !important;
+  font-weight: 700 !important;
+}
+
+/* RIGHT: ACTION BUTTONS */
+.site-header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Store Cart Icon Button */
+.cart-action-btn {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  position: relative !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  background: var(--color-surface, #202020) !important;
+  border: 1px solid var(--color-border, #363636) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.cart-action-btn:hover {
+  background: var(--color-surface-elevated, #2A2A2A) !important;
+  border-color: var(--color-accent, #B3DD24) !important;
+  color: var(--color-accent, #B3DD24) !important;
+}
+
+.cart-badge-count {
+  position: absolute !important;
+  top: -5px !important;
+  right: -5px !important;
+  background: var(--color-accent, #B3DD24) !important;
+  color: #000000 !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  min-width: 17px !important;
+  height: 17px !important;
+  padding: 0 4px !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6) !important;
+}
+
+.cart-badge-count.hidden {
+  display: none !important;
+}
+
+.admin-action-btn {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  text-decoration: none !important;
+  padding: 8px 14px !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  border: 1px solid var(--color-border, #363636) !important;
+  color: var(--color-text-secondary, #B8B8B8) !important;
+  background: var(--color-surface, #202020) !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  user-select: none !important;
+}
+
+.admin-action-btn:hover, .admin-action-btn.active {
+  background: var(--color-surface-elevated, #2A2A2A) !important;
+  color: var(--color-accent, #B3DD24) !important;
+  border-color: var(--color-accent, #B3DD24) !important;
+}
+
+.admin-action-btn:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+.signin-action-btn {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  text-decoration: none !important;
+  padding: 9px 18px !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  background: var(--color-accent, #B3DD24) !important;
+  color: #101010 !important;
+  border: 1px solid var(--color-accent, #B3DD24) !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  user-select: none !important;
+}
+
+.signin-action-btn:hover {
+  background: var(--color-accent-hover, #C4ED32) !important;
+  border-color: var(--color-accent-hover, #C4ED32) !important;
+  transform: translateY(-1px);
+}
+
+.signin-action-btn:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+.signin-action-btn.active {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #FFFFFF !important;
+}
+
+/* HAMBURGER TOGGLE BUTTON */
+.site-hamburger-btn {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: var(--color-surface, #202020) !important;
+  border: 1px solid var(--color-border, #363636) !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  color: #FFFFFF !important;
+  font-size: 17px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.site-hamburger-btn:hover {
+  border-color: var(--color-accent, #B3DD24) !important;
+  color: var(--color-accent, #B3DD24) !important;
+}
+
+.site-mobile-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  z-index: 10000 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.site-mobile-backdrop.open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.site-mobile-drawer {
+  position: fixed !important;
+  top: 0 !important;
+  right: -320px !important;
+  width: 300px !important;
+  max-width: 85vw !important;
+  height: 100vh !important;
+  background: var(--color-bg, #101010) !important;
+  border-left: 1px solid var(--color-border, #363636) !important;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.8) !important;
+  z-index: 10001 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+}
+
+.site-mobile-drawer.open {
+  right: 0 !important;
+}
+
+.site-drawer-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 20px 22px !important;
+  border-bottom: 1px solid var(--color-border, #363636) !important;
+}
+
+.site-drawer-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+}
+
+.site-drawer-brand img {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  border: 1.5px solid var(--color-accent, #B3DD24) !important;
+}
+
+.site-drawer-brand span {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  color: #FFFFFF !important;
+}
+
+.site-drawer-brand span span {
+  color: var(--color-accent, #B3DD24) !important;
+}
+
+.site-drawer-close-btn {
+  background: var(--color-surface, #202020) !important;
+  border: 1px solid var(--color-border, #363636) !important;
+  color: var(--color-text-secondary, #B8B8B8) !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.site-drawer-close-btn:hover {
+  background: var(--color-surface-elevated, #2A2A2A) !important;
+  border-color: var(--color-accent, #B3DD24) !important;
+  color: var(--color-accent, #B3DD24) !important;
+}
+
+.site-drawer-nav {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 16px 14px !important;
+  gap: 6px !important;
+  flex: 1 !important;
+}
+
+.site-drawer-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 10px 16px !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  color: var(--color-text-primary, #F0F0F0) !important;
+  text-decoration: none !important;
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.4px !important;
+  transition: all 0.18s ease !important;
+}
+
+.site-drawer-item i {
+  width: 18px !important;
+  text-align: center !important;
+  color: var(--color-accent, #B3DD24) !important;
+  font-size: 14px !important;
+}
+
+.site-drawer-item:hover {
+  background: var(--color-surface, #202020) !important;
+  color: var(--color-accent, #B3DD24) !important;
+  transform: translateX(4px);
+}
+
+.site-drawer-item.active {
+  background: var(--color-surface-elevated, #2A2A2A) !important;
+  color: var(--color-accent, #B3DD24) !important;
+  border: 1px solid var(--color-accent-border, rgba(179, 221, 36, 0.4)) !important;
+  font-weight: 700 !important;
+}
+
+.site-drawer-item.active i {
+  color: var(--color-accent, #B3DD24) !important;
+}
+
+.site-drawer-actions {
+  padding: 18px 16px !important;
+  border-top: 1px solid var(--color-border, #363636) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  background: #000000 !important;
+}
+
+.site-drawer-action-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 11px !important;
+  border-radius: var(--radius-btn, 8px) !important;
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.6px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1440px) {
+  .site-nav-container {
+    padding: 0 20px !important;
+    gap: 10px !important;
+  }
+  .site-brand-text {
+    font-size: 16px !important;
+  }
+  .site-nav-item {
+    font-size: 11px !important;
+    padding: 6px 9px !important;
+    letter-spacing: 0.3px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .site-nav-menu {
+    display: none !important;
+  }
+  .site-hamburger-btn {
+    display: flex !important;
+  }
+  .site-brand-text {
+    display: block !important;
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-nav-container {
+    padding: 0 14px !important;
+  }
+  .site-brand-text {
+    font-size: 14px !important;
+  }
+  .admin-action-btn {
+    display: none !important;
+  }
+  .signin-action-btn {
+    padding: 6px 12px !important;
+    font-size: 10.5px !important;
+  }
+}
+

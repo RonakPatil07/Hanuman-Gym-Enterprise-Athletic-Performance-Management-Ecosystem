@@ -1,0 +1,27 @@
+# Python artifacts
+__pycache__
+*.py[cod]
+*$py.class
+.Python
+.venv
+venv
+ENV
+env
+.pytest_cache
+.coverage
+htmlcov
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Git
+.git
+.gitignore
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode
+.idea

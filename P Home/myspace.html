@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Space | Hanuman Gym Command Center</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="../shared/site-header.js" defer></script>
+    <script src="../shared/site-footer.js" defer></script>
+    <style>
+        :root {
+            --bg-base: #080808;
+            --surface-card: #121212;
+            --surface-card-hover: #181818;
+            --accent: #B3DD24;
+            --accent-glow: rgba(179, 221, 36, 0.22);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(179, 221, 36, 0.35);
+            --text-primary: #FFFFFF;
+            --text-muted: #9CA3AF;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            padding-top: 80px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .myspace-hero {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 50px 24px 80px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(179, 221, 36, 0.08);
+            border: 1px solid var(--border-accent);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .myspace-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+
+        .myspace-title span {
+            color: var(--accent);
+        }
+
+        .myspace-subtitle {
+            font-size: 16.5px;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto 36px;
+            line-height: 1.6;
+        }
+
+        .myspace-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn-cta-primary {
+            background: var(--accent);
+            color: #000000;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 14px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(179, 221, 36, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(179, 221, 36, 0.5);
+            background: #FFF238;
+        }
+
+        .btn-cta-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 14px 30px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-cta-demo {
+            background: rgba(179, 221, 36, 0.1);
+            border: 1.5px solid var(--border-accent);
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 14px 30px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-cta-demo:hover {
+            background: var(--accent);
+            color: #000000;
+            box-shadow: 0 4px 20px rgba(179, 221, 36, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Metric Highlights Strip */
+        .portal-stats-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            background: #111111;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 28px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .strip-stat-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .strip-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(179, 221, 36, 0.1);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .strip-stat-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #FFF;
+            line-height: 1.1;
+        }
+
+        .strip-stat-lbl {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Feature Spotlight Cards Grid */
+        .myspace-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            text-align: left;
+        }
+
+        .feature-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-accent);
+            background: var(--surface-card-hover);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(179, 221, 36, 0.08);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(179, 221, 36, 0.1);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(179, 221, 36, 0.2);
+        }
+
+        .feature-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        #checking-session {
+            display: none;
+            padding: 160px 20px;
+            text-align: center;
+            color: #94A3B8;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .myspace-title { font-size: 34px; }
+            .myspace-features-grid { grid-template-columns: 1fr; }
+            .portal-stats-strip { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div id="checking-session">
+        <i class="fa-solid fa-spinner fa-spin" style="font-size: 36px; color: #B3DD24; margin-bottom: 16px;"></i>
+        <p style="font-size: 16px;">Connecting to your personal athlete command center...</p>
+    </div>
+
+    <main class="myspace-hero" id="myspace-content">
+        <span class="hero-badge"><i class="fa-solid fa-bolt"></i> Unified Athlete Command Hub</span>
+        
+        <h1 class="myspace-title">Your Fitness Journey, <span>Commanded</span></h1>
+        <p class="myspace-subtitle">Track daily workout volume, monitor real-time hydration and calorie targets, scan your digital membership turnstile keycard, and manage training gear in one place.</p>
+        
+        <div class="myspace-cta-group">
+            <a href="../login_register/index.html" class="btn-cta-primary">
+                <i class="fa-solid fa-right-to-bracket"></i> Sign In to Dashboard
+            </a>
+            <a href="../login_register/index.html" class="btn-cta-secondary" onclick="sessionStorage.setItem('openRegister', 'true')">
+                <i class="fa-solid fa-user-plus"></i> Create Free Account
+            </a>
+            <button type="button" class="btn-cta-demo" onclick="launchDemoMode()">
+                <i class="fa-solid fa-play"></i> Try Live Demo Mode
+            </button>
+        </div>
+
+        <!-- Metric Highlights Strip -->
+        <div class="portal-stats-strip">
+            <div class="strip-stat-item">
+                <div class="strip-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                <div>
+                    <div class="strip-stat-val">34 Exercises</div>
+                    <div class="strip-stat-lbl">Video Technique DB</div>
+                </div>
+            </div>
+
+            <div class="strip-stat-item">
+                <div class="strip-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div>
+                    <div class="strip-stat-val">1RM & Volume</div>
+                    <div class="strip-stat-lbl">Real-Time Progression</div>
+                </div>
+            </div>
+
+            <div class="strip-stat-item">
+                <div class="strip-icon"><i class="fa-solid fa-id-card"></i></div>
+                <div>
+                    <div class="strip-stat-val">Digital QR Pass</div>
+                    <div class="strip-stat-lbl">Touchless Turnstile Entry</div>
+                </div>
+            </div>
+
+            <div class="strip-stat-item">
+                <div class="strip-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <div>
+                    <div class="strip-stat-val">Cross-Device</div>
+                    <div class="strip-stat-lbl">Cloud Storage Sync</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 Feature Spotlight Cards -->
+        <div class="myspace-features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3>Workout Volume & 1RM Analytics</h3>
+                <p>Log exercise sets, reps, and weights. Watch dynamic volume curves and celebrate Personal Record (PR) badges across all lifts.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-droplet"></i></div>
+                <h3>Hydration & Calorie Progress Rings</h3>
+                <p>Interactive radial progress rings for daily water intake with 1-click +250ml quick logging and baseline energy calorie tracking.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-qrcode"></i></div>
+                <h3>Digital Turnstile Keycard</h3>
+                <p>Your official Hanuman Gym digital membership pass with live QR access code for seamless biometric turnstile check-in at all 10 branches.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <h3>My Home Branch Hub</h3>
+                <p>Instant access to your designated Home Gym (Kalyan, Thane, Dadar, etc.) with real-time open hours, crowd meters, and desk contacts.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-bowl-food"></i></div>
+                <h3>Nutrition & Recipe Matcher Sync</h3>
+                <p>Align meal targets with your training phase (Cut, Shred, Clean Bulk) with direct bookmarks from the Hanuman Kitchen.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                <h3>Printable Progress Certificates</h3>
+                <p>Generate one-click A4-formatted monthly performance reports complete with workout volume and coach review notes.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+
+    <script src="../shared/api-client.js"></script>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    <script src="../shared/site-footer.js" defer></script>
+    <script>
+        function launchDemoMode() {
+            sessionStorage.setItem('gym_demo_mode', 'true');
+            window.location.href = '../login_register/dashboard.html';
+        }
+
+        // Pure FastAPI JWT Auth Check: Auto-forward logged-in users directly to dashboard
+        (async function checkUserSession() {
+            try {
+                if (window.GymApiClient && GymApiClient.isAuthenticated()) {
+                    const meRes = await GymApiClient.getMe();
+                    if (meRes && meRes.authenticated) {
+                        const checkEl = document.getElementById('checking-session');
+                        const contentEl = document.getElementById('myspace-content');
+                        if (checkEl) checkEl.style.display = 'block';
+                        if (contentEl) contentEl.style.display = 'none';
+                        window.location.replace('../login_register/dashboard.html');
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.log('Session check complete: unauthenticated guest');
+            }
+        })();
+    </script>
+</body>
+</html>

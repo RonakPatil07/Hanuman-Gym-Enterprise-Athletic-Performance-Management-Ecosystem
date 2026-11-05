@@ -1,0 +1,18 @@
+# ==============================================================================
+# Hanuman Gym - Local Development Override
+# Mounts source code volumes for live instant hot-reloading
+# ==============================================================================
+
+services:
+  web:
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APP_ENV=development
+
+  api:
+    volumes:
+      - ./backend:/app
+    environment:
+      - DEBUG=True
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

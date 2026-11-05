@@ -1,0 +1,634 @@
+/* ==============================================================================
+   HANUMAN GYM - UNIFIED PREMIUM RECIPE DESIGN SYSTEM
+   Compact, Modern, Consistent Layout for all Recipe Pages
+   ============================================================================== */
+
+:root {
+  --bg-base: #101010;
+  --surface-card: #202020;
+  --surface-card-hover: #2A2A2A;
+  --surface-glass: rgba(255, 255, 255, 0.035);
+  --accent: #B3DD24;
+  --accent-hover: #C4ED32;
+  --accent-glow: rgba(179, 221, 36, 0.28);
+  --border: #363636;
+  --border-accent: rgba(179, 221, 36, 0.40);
+  --text-primary: #FFFFFF;
+  --text-muted: #9CA3AF;
+  --text-dim: #6B7280;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+  --font-display: 'Syne', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-label: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding-top: 74px; /* Space for site-header */
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Container Wrapper */
+.recipe-page-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+/* --------------------------------------------------------------------------
+   1. TOP NAVIGATION / BREADCRUMB BAR
+   -------------------------------------------------------------------------- */
+.recipe-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.recipe-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
+}
+
+.recipe-back-btn:hover {
+  background: var(--accent);
+  color: #000000;
+  border-color: var(--accent);
+  transform: translateX(-3px);
+}
+
+.recipe-actions-quick {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-recipe-action {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12.5px;
+  font-family: var(--font-label);
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-recipe-action:hover {
+  color: #FFFFFF;
+  border-color: var(--border-accent);
+  background: var(--surface-card-hover);
+}
+
+/* --------------------------------------------------------------------------
+   2. COMPACT HERO BANNER
+   -------------------------------------------------------------------------- */
+.recipe-hero-card {
+  position: relative;
+  background: linear-gradient(135deg, #141414 0%, #0A0A0A 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 34px 36px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.recipe-hero-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(179, 221, 36, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.recipe-category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(179, 221, 36, 0.12);
+  color: var(--accent);
+  border: 1px solid var(--border-accent);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.recipe-title {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.recipe-quick-metrics-strip {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: #E5E7EB;
+}
+
+.metric-pill i {
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.metric-pill strong {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   3. TWO-COLUMN MAIN CONTENT GRID
+   -------------------------------------------------------------------------- */
+.recipe-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .recipe-main-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. LEFT COLUMN: STORY, IMAGE & STEP-BY-STEP PROCESS
+   -------------------------------------------------------------------------- */
+.recipe-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.recipe-panel {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 26px;
+}
+
+.recipe-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.recipe-panel-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.recipe-panel-title i {
+  color: var(--accent);
+}
+
+.recipe-intro-text {
+  font-size: 14.5px;
+  color: #D1D5DB;
+  line-height: 1.7;
+}
+
+/* Science / Athlete Benefit Card */
+.athlete-science-panel {
+  background: linear-gradient(135deg, rgba(179, 221, 36, 0.06) 0%, rgba(15, 15, 15, 0.95) 100%);
+  border: 1px solid rgba(179, 221, 36, 0.35);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.athlete-science-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.athlete-science-body {
+  font-size: 13.5px;
+  color: #E5E7EB;
+  line-height: 1.6;
+}
+
+.recipe-featured-img-box {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  max-height: 420px;
+}
+
+.recipe-featured-img-box img {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.recipe-featured-img-box:hover img {
+  transform: scale(1.02);
+}
+
+/* Black Athlete Meal Placeholder for Detail Template */
+.recipe-detail-placeholder-black {
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(135deg, #141414 0%, #080808 100%);
+  border: 1px solid rgba(179, 221, 36, 0.25);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.recipe-detail-placeholder-black::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, rgba(179, 221, 36, 0.08) 0%, transparent 70%);
+}
+
+.recipe-detail-placeholder-black i.detail-placeholder-icon {
+  font-size: 52px;
+  color: var(--accent, #B3DD24);
+  filter: drop-shadow(0 0 16px rgba(179, 221, 36, 0.35));
+  z-index: 1;
+}
+
+.recipe-detail-placeholder-black span.detail-placeholder-title {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9CA3AF;
+  z-index: 1;
+}
+
+/* Instructions Step-by-Step Cards */
+.recipe-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.recipe-step-card {
+  display: flex;
+  gap: 16px;
+  background: #141414;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  transition: border-color 0.2s ease;
+}
+
+.recipe-step-card:hover {
+  border-color: var(--border-accent);
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #000000;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-text {
+  flex: 1;
+}
+
+.step-text h4 {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.step-text p {
+  font-size: 13.5px;
+  color: #9CA3AF;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   5. RIGHT COLUMN: INGREDIENTS CHECKLIST & MACROS
+   -------------------------------------------------------------------------- */
+.recipe-sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 90px;
+}
+
+.ingredients-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ingredient-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #141414;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ingredient-row:hover {
+  background: #1A1A1A;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ingredient-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #E5E7EB;
+}
+
+.ingredient-check-dot {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.ingredient-row.checked .ingredient-check-dot {
+  background: var(--accent);
+}
+
+.ingredient-row.checked .ingredient-check-dot::after {
+  content: '✓';
+  color: #000;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.ingredient-row.checked .ingredient-name {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.ingredient-amount-badge {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 12px;
+  background: rgba(179, 221, 36, 0.08);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Macros Breakdown Box */
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.macro-box {
+  background: #141414;
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.macro-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.macro-val {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.macro-val.text-gold {
+  color: var(--accent);
+}
+
+/* Macro Ratio Progress Bar */
+.macro-ratio-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.macro-bar-seg {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.macro-bar-protein {
+  background: var(--accent, #B3DD24);
+}
+
+.macro-bar-carbs {
+  background: #3ECF8E;
+}
+
+.macro-bar-fats {
+  background: #FF6384;
+}
+
+.macro-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.macro-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.macro-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Meal Prep & Storage Guide Card */
+.meal-prep-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.meal-prep-item {
+  background: #141414;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.meal-prep-item i {
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.meal-prep-item span {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.meal-prep-item strong {
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   6. PRINT MEDIA STYLESHEET
+   -------------------------------------------------------------------------- */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    padding-top: 0 !important;
+  }
+  #site-header, .recipe-topbar, .btn-recipe-action, #recipe-toast-container {
+    display: none !important;
+  }
+  .recipe-hero-card, .recipe-panel, .recipe-step-card, .ingredient-row, .macro-box, .meal-prep-item {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 1px solid #CCCCCC !important;
+    box-shadow: none !important;
+  }
+  .recipe-title, .recipe-panel-title, .step-text h4, .macro-val, .meal-prep-item strong {
+    color: #000000 !important;
+  }
+  .metric-pill, .ingredient-amount-badge, .recipe-category-pill {
+    background: #EEEEEE !important;
+    color: #000000 !important;
+  }
+  .step-number {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+  }
+}

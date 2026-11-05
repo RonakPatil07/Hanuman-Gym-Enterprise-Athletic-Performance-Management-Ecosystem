@@ -1,0 +1,333 @@
+/* ==============================================================================
+   HANUMAN GYM - GLOBAL FLAGSHIP FOOTER SYSTEM
+   Ultra-Premium, Pitch-Black & Neon Gold 4-Zone Responsive Architecture
+   ============================================================================== */
+
+:root {
+  --footer-bg: var(--color-bg-black, #000000);
+  --footer-card: var(--color-surface, #202020);
+  --footer-border: var(--color-border, #363636);
+  --footer-border-subtle: var(--color-border, #363636);
+  --footer-accent: var(--color-accent, #B3DD24);
+  --footer-text-primary: var(--color-text-primary, #F0F0F0);
+  --footer-text-muted: var(--color-text-secondary, #B8B8B8);
+  --footer-text-dim: var(--color-text-muted, #858585);
+  --footer-glow: rgba(179, 221, 36, 0.2);
+}
+
+.site-global-footer {
+  background-color: var(--footer-bg) !important;
+  border-top: 1px solid var(--footer-border) !important;
+  color: var(--footer-text-primary) !important;
+  font-family: var(--font-body, 'Inter', system-ui, -apple-system, sans-serif) !important;
+  position: relative !important;
+  z-index: 10 !important;
+  width: 100% !important;
+  margin-top: 60px !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Subtle Golden Top Highlight */
+.site-global-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--footer-accent), transparent);
+  opacity: 0.7;
+}
+
+.footer-main-container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 60px 24px 30px !important;
+  box-sizing: border-box !important;
+}
+
+/* 4-Column Grid */
+.footer-grid {
+  display: grid !important;
+  grid-template-columns: 1.5fr 1fr 1fr 1.3fr !important;
+  gap: 40px !important;
+  margin-bottom: 48px !important;
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 36px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+/* Column 1: Brand & Philosophy */
+.footer-brand-col {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+}
+
+.footer-logo-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  text-decoration: none !important;
+}
+
+.footer-logo-img {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--footer-accent) !important;
+  box-shadow: 0 0 14px rgba(179, 221, 36, 0.3) !important;
+  object-fit: cover !important;
+}
+
+.footer-brand-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+}
+
+.footer-brand-title span {
+  color: var(--footer-accent) !important;
+}
+
+.footer-brand-tagline {
+  font-size: 13.5px !important;
+  color: var(--footer-text-muted) !important;
+  line-height: 1.65 !important;
+  max-width: 340px !important;
+}
+
+/* Social Media Badges */
+.footer-social-strip {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 4px !important;
+}
+
+.footer-social-btn {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: var(--footer-card) !important;
+  border: 1px solid var(--footer-border-subtle) !important;
+  color: var(--footer-text-muted) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  transition: all 0.25s ease !important;
+}
+
+.footer-social-btn:hover {
+  color: #000000 !important;
+  background: var(--footer-accent) !important;
+  border-color: var(--footer-accent) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 4px 12px rgba(179, 221, 36, 0.4) !important;
+}
+
+/* Columns 2 & 3: Navigation Links */
+.footer-nav-col h4 {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  margin-bottom: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.footer-nav-col h4 i {
+  color: var(--footer-accent) !important;
+  font-size: 13px !important;
+}
+
+.footer-links-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 11px !important;
+}
+
+.footer-links-list a {
+  color: var(--footer-text-muted) !important;
+  text-decoration: none !important;
+  font-size: 13.5px !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.footer-links-list a:hover {
+  color: var(--footer-accent) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Column 4: Newsletter & HQ Contact */
+.footer-newsletter-box {
+  background: var(--footer-card) !important;
+  border: 1px solid var(--footer-border-subtle) !important;
+  border-radius: 12px !important;
+  padding: 18px !important;
+  margin-bottom: 18px !important;
+}
+
+.footer-newsletter-box h5 {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin-bottom: 4px !important;
+}
+
+.footer-newsletter-box p {
+  font-size: 12px !important;
+  color: var(--footer-text-dim) !important;
+  margin-bottom: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.footer-input-group {
+  display: flex !important;
+  gap: 6px !important;
+}
+
+.footer-input {
+  flex: 1 !important;
+  background: #000000 !important;
+  border: 1px solid var(--footer-border-subtle) !important;
+  color: #FFFFFF !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  font-size: 12.5px !important;
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
+  outline: none !important;
+}
+
+.footer-input:focus {
+  border-color: var(--footer-accent) !important;
+}
+
+.footer-subscribe-btn {
+  background: var(--footer-accent) !important;
+  color: #000000 !important;
+  border: none !important;
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  padding: 8px 14px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.footer-subscribe-btn:hover {
+  background: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+}
+
+.footer-contact-details {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  font-size: 12.5px !important;
+  color: var(--footer-text-muted) !important;
+}
+
+.footer-contact-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.footer-contact-item i {
+  color: var(--footer-accent) !important;
+  font-size: 12px !important;
+  width: 14px !important;
+  text-align: center !important;
+}
+
+/* --------------------------------------------------------------------------
+   BOTTOM BAR: COPYRIGHT & TRUST BADGES
+   -------------------------------------------------------------------------- */
+.footer-bottom-strip {
+  border-top: 1px solid var(--footer-border-subtle) !important;
+  padding-top: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  font-size: 12px !important;
+  color: var(--footer-text-dim) !important;
+}
+
+.footer-badges {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+}
+
+.footer-badge-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--footer-border-subtle) !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  font-size: 11px !important;
+  color: var(--footer-text-muted) !important;
+}
+
+.footer-badge-pill i {
+  color: var(--footer-accent) !important;
+}
+
+.footer-legal-links {
+  display: flex !important;
+  gap: 14px !important;
+}
+
+.footer-legal-links a {
+  color: var(--footer-text-dim) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.footer-legal-links a:hover {
+  color: var(--footer-accent) !important;
+}
+
+/* Hide on print */
+@media print {
+  .site-global-footer {
+    display: none !important;
+  }
+}

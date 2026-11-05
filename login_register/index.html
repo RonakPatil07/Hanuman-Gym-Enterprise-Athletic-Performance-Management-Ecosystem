@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register - GYM Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Shared Authoritative Header -->
+    <div id="site-header"></div>
+    <script src="../shared/site-header.js" defer></script>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Left Side - Login Form -->
+        <div class="login-section">
+            <div class="login-content">
+                <div class="welcome-text">
+                    <h1 class="welcome-title" id="welcomeTitle">Welcome Back!</h1>
+                    <p class="welcome-subtitle" id="welcomeSubtitle">Start your fitness journey today</p>
+                </div>
+
+                <!-- Auth Tabs Toggle -->
+                <div class="auth-tabs">
+                    <button type="button" id="tab-login" class="auth-tab-btn active" onclick="showForm('login-form')">Sign In</button>
+                    <button type="button" id="tab-register" class="auth-tab-btn" onclick="showForm('register-form')">Create Account</button>
+                </div>
+
+                <form class="login-form active" id="login-form" aria-label="Sign In Form">
+                    <div id="login-feedback" role="alert" aria-live="polite"></div>
+                    
+                    <!-- Email Input -->
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="xyz@gmail.com" class="form-input" aria-label="Email Address" required>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="input-group">
+                        <input type="password" name="password" placeholder="Enter your password" class="form-input" aria-label="Password" required>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember" class="checkbox">
+                            <label for="remember">Keep me signed in</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot your password?</a>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="divider">
+                        <div class="divider-line"></div>
+                        <span class="divider-text">or</span>
+                        <div class="divider-line"></div>
+                    </div>
+
+                    <!-- Google Login -->
+                    <button type="button" class="google-login-btn">
+                        <img src="images/google-icon.png" alt="Google" class="google-icon">
+                        <span>Login with Google</span>
+                    </button>
+
+                    <!-- Login Button -->
+                    <button type="submit" name="login" class="login-btn">Login</button>
+
+                    <!-- Switch to Register -->
+                    <p class="terms-text" style="margin-top: 18px;">Don't have an account? <a href="#" onclick="showForm('register-form')">Sign Up</a></p>
+
+                    <!-- Terms -->
+                    <p class="terms-text" style="margin-top: 10px; font-size: 11px; opacity: 0.7;">By signing in, you agree to the Terms & Conditions and Privacy Policy</p>
+                </form>
+
+                <!-- Registration Form -->
+                <form class="registration-form" id="register-form" aria-label="Registration Form">
+                    <div id="register-feedback" role="alert" aria-live="polite"></div>
+                    
+                    <!-- Personal Details Section -->
+                    <div class="form-section">
+                        <h3>Personal Details</h3>
+                        
+                        <div class="form-row">
+                            <!-- Name Input -->
+                            <div class="input-group">
+                                <input type="text" name="name" placeholder="Enter your full name" class="form-input" required>
+                            </div>
+
+                            <!-- Email Input -->
+                            <div class="input-group">
+                                <input type="email" name="email" placeholder="xyz@gmail.com" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <!-- Password Input -->
+                            <div class="input-group">
+                                <input type="password" name="password" placeholder="Enter your password" class="form-input" required>
+                            </div>
+
+                            <!-- Phone Input -->
+                            <div class="input-group">
+                                <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <!-- Address Input -->
+                        <div class="input-group">
+                            <input type="text" name="address" placeholder="Enter your address" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <!-- Gym & Fitness Details Section -->
+                    <div class="form-section">
+                        <h3>Gym & Fitness Details</h3>
+                        
+                        <div class="form-row">
+                            <!-- Current Weight -->
+                            <div class="input-group">
+                                <input type="number" name="current_weight" placeholder="Current Weight (kg)" step="0.1" min="1" max="500" class="form-input" required>
+                            </div>
+
+                            <!-- Target Weight -->
+                            <div class="input-group">
+                                <input type="number" name="target_weight" placeholder="Target Weight (kg)" step="0.1" min="1" max="500" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <!-- Water Goal -->
+                            <div class="input-group">
+                                <input type="number" name="water_goal" placeholder="Daily Water Goal (liters)" step="0.1" min="1" max="10" class="form-input" required>
+                            </div>
+
+                            <!-- Calorie Goal -->
+                            <div class="input-group">
+                                <input type="number" name="calorie_goal" placeholder="Daily Calorie Goal" min="1000" max="5000" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <!-- Workout Days -->
+                            <div class="input-group">
+                                <select name="workout_days" class="form-input" required>
+                                    <option value="">Workout Days per Week</option>
+                                    <option value="3">3 days</option>
+                                    <option value="4">4 days</option>
+                                    <option value="5">5 days</option>
+                                    <option value="6">6 days</option>
+                                    <option value="7">7 days</option>
+                                </select>
+                            </div>
+
+                            <!-- Fitness Goal -->
+                            <div class="input-group">
+                                <select name="fitness_goal" class="form-input" required>
+                                    <option value="">Select Fitness Goal</option>
+                                    <option value="weight-loss">Weight Loss</option>
+                                    <option value="muscle-gain">Muscle Gain</option>
+                                    <option value="maintenance">Maintenance</option>
+                                    <option value="endurance">Endurance</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Create Account Button -->
+                    <button type="submit" name="register" class="create-account-btn">Create Account</button>
+
+                    <!-- Login Link -->
+                    <p class="terms-text">Already have an account? <a href="#" onclick="showForm('login-form')">Login</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Side - Background Image -->
+        <div class="background-section">
+            <div class="background-image">
+                <img src="images/background-image.png" alt="Fitness Background">
+            </div>
+            <div class="background-overlay">
+                <div class="background-text">STRENGTH IN <span style="color:var(--accent)">INTELLIGENCE</span></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../shared/api-client.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

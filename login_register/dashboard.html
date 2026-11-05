@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Space | Hanuman Gym</title>
+    <link rel="icon" type="image/png" href="../P Home/images/logo.png">
+    
+    <!-- Modern Minimalist Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    
+    <!-- Design System & Dashboard Styles -->
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="dashboard-styles.css">
+
+    <!-- Immediate Pre-Render Identity Hydration -->
+    <script>
+        (function() {
+            try {
+                var raw = localStorage.getItem("gym_auth_user") || sessionStorage.getItem("gym_auth_user");
+                if (raw) {
+                    var u = JSON.parse(raw);
+                    var name = (u.name && u.name !== 'Athlete') ? u.name : "";
+                    var email = u.email || "";
+                    if (name) {
+                        var initials = name.split(" ").filter(Boolean).map(function(n) { return n[0]; }).join("").toUpperCase().slice(0, 2) || "A";
+                        var goal = (u.fitness_goal || u.fitnessGoal || "muscle-gain").replace("-", " ").toUpperCase();
+                        document.addEventListener("DOMContentLoaded", function() {
+                            var nEl = document.getElementById("userName");
+                            var iEl = document.getElementById("userInitials");
+                            var eEl = document.getElementById("headerEmail");
+                            var gEl = document.getElementById("headerGoal");
+                            var pnEl = document.getElementById("profileName");
+                            var peEl = document.getElementById("profileEmail");
+                            if (nEl) nEl.textContent = name;
+                            if (iEl) iEl.textContent = initials;
+                            if (eEl && email) eEl.textContent = email;
+                            if (gEl) gEl.textContent = goal;
+                            if (pnEl) pnEl.textContent = name;
+                            if (peEl && email) peEl.textContent = email;
+                        });
+                    }
+                }
+            } catch(e) {}
+        })();
+    </script>
+</head>
+<body class="dashboard-page">
+    <!-- Global Header -->
+    <div id="site-header"></div>
+    <script src="../shared/site-header.js" defer></script>
+
+    <div class="dashboard-wrapper">
+        
+        <!-- COMPACT ATHLETE COMMAND HEADER -->
+        <header class="compact-profile-bar">
+            <div class="profile-left">
+                <div class="mini-avatar">
+                    <span id="userInitials">A</span>
+                </div>
+                <div class="profile-text">
+                    <div class="profile-name-row">
+                        <h2 id="userName">Athlete</h2>
+                        <span class="pill-badge pill-gold"><i class="fa-solid fa-bolt"></i> PRO ATHLETE</span>
+                        <span id="streakBadge" class="pill-badge pill-streak"><i class="fa-solid fa-fire text-gold"></i> <strong id="streakCount">0</strong>-Day Streak</span>
+                        <span class="pill-badge pill-glass"><i class="fa-solid fa-shield-halved"></i> Active</span>
+                    </div>
+                    <p class="profile-subtext">
+                        <span><i class="fa-regular fa-envelope"></i> <span id="headerEmail">athlete@gym.com</span></span>
+                        <span class="dot-sep">&bull;</span>
+                        <span><i class="fa-solid fa-bullseye"></i> <span id="headerGoal">Muscle Gain</span></span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Inline Summary Stats -->
+            <div class="profile-stats-inline">
+                <div class="inline-stat">
+                    <span class="stat-label">Weight</span>
+                    <span class="stat-value" id="inlineWeight">-</span>
+                </div>
+                <div class="inline-stat-divider"></div>
+                <div class="inline-stat">
+                    <span class="stat-label">Hydration</span>
+                    <span class="stat-value" id="inlineHydration">2.5 <small>L</small></span>
+                </div>
+                <div class="inline-stat-divider"></div>
+                <div class="inline-stat">
+                    <span class="stat-label">Calories</span>
+                    <span class="stat-value" id="inlineCalories">2,200 <small>kcal</small></span>
+                </div>
+                <div class="inline-stat-divider"></div>
+                <div class="inline-stat">
+                    <span class="stat-label">Total Spent</span>
+                    <span class="stat-value text-gold" id="inlineTotalSpent">₹0.00</span>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <button type="button" class="btn btn-secondary btn-sm" onclick="window.dashboardManager.generatePrintReport()" title="Generate Printable Monthly Summary">
+                    <i class="fa-solid fa-file-pdf"></i> Report
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="switchTab('workoutsTab'); document.getElementById('exerciseName')?.focus();">
+                    <i class="fa-solid fa-plus"></i> Log Workout
+                </button>
+                <a href="javascript:void(0)" id="logoutBtn" onclick="handleDashboardLogout()" class="btn btn-danger-soft btn-sm" title="Sign Out">
+                    <i class="fa-solid fa-power-off"></i> Logout
+                </a>
+            </div>
+        </header>
+
+        <!-- SLEEK SEGMENTED TAB NAVIGATION -->
+        <nav class="segmented-tabs-bar">
+            <button type="button" class="tab-btn active" data-tab="overviewTab" onclick="switchTab('overviewTab')">
+                <i class="fa-solid fa-chart-pie"></i> Overview
+            </button>
+            <button type="button" class="tab-btn" data-tab="workoutsTab" onclick="switchTab('workoutsTab')">
+                <i class="fa-solid fa-dumbbell"></i> Workouts
+            </button>
+            <button type="button" class="tab-btn" data-tab="plansTab" onclick="switchTab('plansTab')">
+                <i class="fa-solid fa-crown"></i> Plans & Trainers
+            </button>
+            <button type="button" class="tab-btn" data-tab="purchasesTab" onclick="switchTab('purchasesTab')">
+                <i class="fa-solid fa-bag-shopping"></i> Store Orders
+            </button>
+            <button type="button" class="tab-btn" data-tab="analyticsTab" onclick="switchTab('analyticsTab')">
+                <i class="fa-solid fa-chart-line"></i> Analytics
+            </button>
+            <button type="button" class="tab-btn" data-tab="settingsTab" onclick="switchTab('settingsTab')">
+                <i class="fa-solid fa-sliders"></i> Profile & Data
+            </button>
+        </nav>
+
+        <!-- TAB CONTENTS CONTAINER -->
+        <main class="dashboard-panes-wrapper">
+
+            <!-- =========================================================================
+                 TAB 1: OVERVIEW PANE
+                 ========================================================================= -->
+            <section id="overviewTab" class="tab-pane active">
+                <!-- Top 4 KPI Cards Grid -->
+                <div class="compact-kpi-grid">
+                    <div class="mini-kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-label">Current Weight</span>
+                            <i class="fa-solid fa-weight-scale kpi-icon"></i>
+                        </div>
+                        <div class="kpi-val" id="currentWeight">- <span class="unit">kg</span></div>
+                        <div class="kpi-bottom-text">
+                            <span>Target: <strong id="targetWeight">-</strong></span>
+                            <span id="weightDiffTag" class="diff-tag text-gold"></span>
+                        </div>
+                    </div>
+
+                    <div class="mini-kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-label">Daily Hydration</span>
+                            <i class="fa-solid fa-droplet kpi-icon text-gold"></i>
+                        </div>
+                        <div class="kpi-val" id="overviewHydration">2.5 <span class="unit">L</span></div>
+                        <div class="kpi-bottom-text">Target: <strong id="overviewHydrationTarget">2.5 L/day</strong></div>
+                    </div>
+
+                    <div class="mini-kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-label">Energy Target</span>
+                            <i class="fa-solid fa-fire kpi-icon text-gold"></i>
+                        </div>
+                        <div class="kpi-val" id="overviewCalories">2,200 <span class="unit">kcal</span></div>
+                        <div class="kpi-bottom-text">Baseline Intake</div>
+                    </div>
+
+                    <div class="mini-kpi-card">
+                        <div class="kpi-top">
+                            <span class="kpi-label">Invested in Gear & Plans</span>
+                            <i class="fa-solid fa-receipt kpi-icon text-gold"></i>
+                        </div>
+                        <div class="kpi-val text-gold" id="overviewTotalSpent">₹0.00</div>
+                        <div class="kpi-bottom-text"><span id="overviewTotalItems">0</span> items / subscriptions</div>
+                    </div>
+                </div>
+
+                <!-- Overview 2-Column Layout -->
+                <div class="overview-two-col">
+                    <!-- Left: Volume Progression Chart & Radial Meters -->
+                    <div class="compact-card flex-grow-card">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-bolt text-gold"></i> Exercise Volume Progression</h3>
+                                <p>Total training volume over the last 30 days</p>
+                            </div>
+                            <button type="button" class="btn-icon" onclick="switchTab('analyticsTab')" title="Expand Analytics">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Personal Record (PR) Badges Strip -->
+                        <div class="pr-badges-bar" id="prBadgesContainer" style="margin-bottom: 14px;">
+                            <!-- Populated dynamically by dashboard.js -->
+                        </div>
+
+                        <div class="canvas-box" style="height: 190px;">
+                            <canvas id="exerciseChart"></canvas>
+                        </div>
+
+                        <!-- Daily Hydration & Calorie Radial Progress Meters -->
+                        <div class="radial-meters-grid">
+                            <div class="radial-meter-card">
+                                <div class="radial-svg-box">
+                                    <svg width="48" height="48" viewBox="0 0 48 48">
+                                        <circle cx="24" cy="24" r="18" fill="none" stroke="#222" stroke-width="4"/>
+                                        <circle id="hydrationSvgCircle" cx="24" cy="24" r="18" fill="none" stroke="#B3DD24" stroke-width="4" stroke-dasharray="113" stroke-dashoffset="20"/>
+                                    </svg>
+                                </div>
+                                <div style="flex:1;">
+                                    <div style="font-size:11px; color:#888; text-transform:uppercase; font-weight:700;">Hydration Goal</div>
+                                    <div style="font-size:15px; font-weight:800; color:#FFF;" id="radialHydrationVal">2.5 / 2.5 L</div>
+                                    <div class="quick-water-actions">
+                                        <button type="button" class="btn-quick-water" onclick="window.dashboardManager.quickAddWater(0.25)">+250ml</button>
+                                        <button type="button" class="btn-quick-water" onclick="window.dashboardManager.quickAddWater(0.5)">+500ml</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="radial-meter-card">
+                                <div class="radial-svg-box">
+                                    <svg width="48" height="48" viewBox="0 0 48 48">
+                                        <circle cx="24" cy="24" r="18" fill="none" stroke="#222" stroke-width="4"/>
+                                        <circle id="calorieSvgCircle" cx="24" cy="24" r="18" fill="none" stroke="#10B981" stroke-width="4" stroke-dasharray="113" stroke-dashoffset="35"/>
+                                    </svg>
+                                </div>
+                                <div style="flex:1;">
+                                    <div style="font-size:11px; color:#888; text-transform:uppercase; font-weight:700;">Calorie Target</div>
+                                    <div style="font-size:15px; font-weight:800; color:#FFF;" id="radialCalorieVal">2,200 kcal</div>
+                                    <a href="../P Recipe/recipes.html" style="font-size:11px; color:#B3DD24; text-decoration:none; font-weight:700;">View Recipes &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Digital Keycard & Active Membership -->
+                    <div class="overview-right-col" style="display:flex; flex-direction:column; gap:14px;">
+                        <!-- Digital Turnstile Member Keycard -->
+                        <div class="digital-keycard-box">
+                            <div class="keycard-header">
+                                <div>
+                                    <span class="pill-badge pill-gold" style="font-size:10px;"><i class="fa-solid fa-bolt"></i> HANUMAN DIGITAL PASS</span>
+                                    <h4 style="font-size:15px; font-weight:800; color:#FFF; margin-top:3px;" id="keycardUserName">Athlete</h4>
+                                </div>
+                                <i class="fa-solid fa-dumbbell text-gold" style="font-size:20px;"></i>
+                            </div>
+                            <div class="keycard-qr-wrap">
+                                <div class="keycard-qr">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                </div>
+                                <div>
+                                    <div style="font-size:12px; font-weight:700; color:#FFF;">Touchless Turnstile QR</div>
+                                    <div style="font-size:11px; color:#888;">ID: <strong class="text-gold" id="keycardId">HG-849201</strong></div>
+                                    <div style="font-size:10.5px; color:#3ECF8E; margin-top:2px;">● Valid at all 10 branches</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- My Home Branch Hub Card -->
+                        <div class="home-branch-card">
+                            <div>
+                                <div style="font-size:10.5px; color:#888; text-transform:uppercase; font-weight:800;">⭐ My Home Gym</div>
+                                <h4 id="myHomeBranchName" style="font-size:15px; font-weight:800; color:#B3DD24; margin-top:2px;">Kalyan Flagship Branch</h4>
+                                <div style="font-size:11.5px; color:#AAA; margin-top:2px;"><i class="fa-solid fa-clock" style="color:#3ECF8E;"></i> <span id="myHomeBranchHours">24/7 Access Active</span></div>
+                            </div>
+                            <a href="../Locations/location.html" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 10px;">
+                                <i class="fa-solid fa-location-dot"></i> Change
+                            </a>
+                        </div>
+
+                        <!-- Recent Workouts Quick List -->
+                        <div class="compact-card flex-fill-card">
+                            <div class="card-head">
+                                <div class="head-title">
+                                    <h3><i class="fa-solid fa-clock-rotate-left"></i> Recent Activity</h3>
+                                </div>
+                                <a href="javascript:void(0)" onclick="switchTab('workoutsTab')" class="text-link">View All</a>
+                            </div>
+                            <div id="overviewWorkoutList" class="mini-workout-list">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- =========================================================================
+                 TAB 2: WORKOUTS LOGGER & SESSIONS PANE
+                 ========================================================================= -->
+            <section id="workoutsTab" class="tab-pane">
+                <!-- Active AI Mesocycle Banner -->
+                <div class="active-mesocycle-banner" id="activeMesocycleBanner" style="display:none; background: linear-gradient(135deg, rgba(179, 221, 36,0.08), rgba(0,229,255,0.05)); border: 1px solid rgba(179, 221, 36,0.3); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                        <div>
+                            <span class="pill-badge pill-gold" style="font-size:10px;"><i class="fa-solid fa-bolt"></i> ACTIVE AI MESOCYCLE</span>
+                            <h4 id="mesocycleTitle" style="font-size:16px; font-weight:800; color:#FFF; margin-top:4px;">12-Week Periodized Blueprint</h4>
+                            <p id="mesocycleDetails" style="font-size:12px; color:#94A3B8; margin-top:2px;">4 Days / Week &bull; Hypertrophy &bull; Optimal Adaptive Volume</p>
+                        </div>
+                        <a href="../custom workout plan/workout-plan.html" class="btn btn-primary btn-sm" style="font-weight:800; text-decoration:none;">
+                            <i class="fa-solid fa-play"></i> Open Live Workout HUD
+                        </a>
+                    </div>
+                </div>
+
+                <div class="two-col-grid">
+                    <!-- Workout Form -->
+                    <div class="compact-card">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-plus text-gold"></i> Log Workout Session</h3>
+                                <p>Record your sets, reps, weight, water, and calories</p>
+                            </div>
+                            <a href="../Form module/index.html" target="_blank" class="text-link" style="font-size:12px;">
+                                <i class="fa-solid fa-video"></i> 34 Form Videos
+                            </a>
+                        </div>
+
+                        <form id="workoutForm" class="compact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="workoutDate">Date</label>
+                                    <input type="date" id="workoutDate" name="workoutDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exerciseName">Exercise Name (Quick-Select)</label>
+                                    <input type="text" id="exerciseName" name="exerciseName" list="academyExercises" placeholder="e.g. Incline Bench Press" required autocomplete="off">
+                                    <datalist id="academyExercises">
+                                        <option value="Deadlifts">
+                                        <option value="Barbell Squat">
+                                        <option value="Incline Bench Press">
+                                        <option value="Flat Dumbbell Bench Press">
+                                        <option value="Overhead Press">
+                                        <option value="Barbell Row">
+                                        <option value="Pull-ups">
+                                        <option value="Lat Pulldown">
+                                        <option value="Dumbbell Lateral Raise">
+                                        <option value="Barbell Bicep Curl">
+                                        <option value="Tricep Rope Pushdown">
+                                        <option value="Leg Press">
+                                        <option value="Romanian Deadlift">
+                                        <option value="Calf Raises">
+                                        <option value="Hanging Leg Raise">
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="form-row form-row-three">
+                                <div class="form-group">
+                                    <label for="sets">Sets</label>
+                                    <input type="number" id="sets" name="sets" min="1" max="50" placeholder="4" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reps">Reps</label>
+                                    <input type="number" id="reps" name="reps" min="1" max="100" placeholder="10" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="weight">Weight (kg)</label>
+                                    <input type="number" id="weight" name="weight" step="0.5" min="0" placeholder="60" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="waterIntake">Water Intake (L)</label>
+                                    <input type="number" id="waterIntake" name="waterIntake" step="0.1" min="0" placeholder="2.5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="caloriesConsumed">Calories (kcal)</label>
+                                    <input type="number" id="caloriesConsumed" name="caloriesConsumed" min="0" placeholder="2200" required>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fa-solid fa-floppy-disk"></i> Record Session
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Workout History Feed -->
+                    <div class="compact-card">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-list text-gold"></i> Session History Feed</h3>
+                                <p>All workouts logged on your account</p>
+                            </div>
+                        </div>
+
+                        <div id="workoutHistory" class="compact-feed-list">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- =========================================================================
+                 TAB 3: PLANS & TRAINERS PANE
+                 ========================================================================= -->
+            <section id="plansTab" class="tab-pane">
+                <div class="two-col-grid">
+                    <!-- Memberships & Courses -->
+                    <div class="compact-card">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-crown text-gold"></i> My Memberships & Courses</h3>
+                                <p>Enrolled gym passes and active course subscriptions</p>
+                            </div>
+                            <a href="../Memberships/index.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-plus"></i> Join Plan</a>
+                        </div>
+                        <div id="membershipsContainer" class="compact-entities-grid">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Assigned Trainers -->
+                    <div class="compact-card">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-user-ninja text-gold"></i> Assigned Personal Trainers</h3>
+                                <p>Dedicated coaches booked through the platform</p>
+                            </div>
+                            <a href="../Training_Section/index.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-plus"></i> Book Coach</a>
+                        </div>
+                        <div id="trainersContainer" class="compact-entities-grid">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise Form Feedback -->
+                <div class="compact-card" style="margin-top: 20px;">
+                    <div class="card-head">
+                        <div class="head-title">
+                            <h3><i class="fa-solid fa-comments text-gold"></i> Exercise Form Training Activity</h3>
+                            <p>Feedback and technique notes submitted via the Exercise Form Module</p>
+                        </div>
+                        <a href="../Form module/index.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-video"></i> Practice Form</a>
+                    </div>
+                    <div id="exerciseLogsContainer" class="compact-logs-grid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- =========================================================================
+                 TAB 4: STORE ORDERS & PURCHASES PANE
+                 ========================================================================= -->
+            <section id="purchasesTab" class="tab-pane">
+                <!-- Financial Banner -->
+                <div class="purchase-stats-strip">
+                    <div class="strip-item">
+                        <span class="label">Total Amount Invested</span>
+                        <span class="val text-gold" id="totalSpent">₹0.00</span>
+                    </div>
+                    <div class="strip-divider"></div>
+                    <div class="strip-item">
+                        <span class="label">Total Orders & Subscriptions</span>
+                        <span class="val" id="totalItems">0</span>
+                    </div>
+                    <div class="strip-action">
+                        <a href="../store/index.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-bag-shopping"></i> Visit Store</a>
+                    </div>
+                </div>
+
+                <div class="two-col-grid" style="margin-top: 20px;">
+                    <!-- Manual Purchase Form -->
+                    <div class="compact-card">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-cart-plus text-gold"></i> Add Manual Expense</h3>
+                                <p>Record external supplements or gym gear</p>
+                            </div>
+                        </div>
+
+                        <form id="purchaseForm" class="compact-form">
+                            <div class="form-group">
+                                <label for="itemName">Item / Service Name</label>
+                                <input type="text" id="itemName" name="itemName" placeholder="e.g. Whey Isolate / Knee Sleeves" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="itemPrice">Price (₹)</label>
+                                    <input type="number" id="itemPrice" name="itemPrice" step="0.01" min="0" placeholder="2499.00" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="purchaseDate">Purchase Date</label>
+                                    <input type="date" id="purchaseDate" name="purchaseDate" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fa-solid fa-plus-circle"></i> Save to Ledger
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Purchases Table -->
+                    <div class="compact-card">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-table-list text-gold"></i> Orders & Subscriptions Ledger</h3>
+                                <p>Verified store receipts and plan purchases</p>
+                            </div>
+                        </div>
+
+                        <div class="compact-table-box">
+                            <table id="purchaseTable" class="compact-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Item / Plan</th>
+                                        <th>Price</th>
+                                        <th style="width: 50px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- =========================================================================
+                 TAB 5: ANALYTICS & CHARTS PANE
+                 ========================================================================= -->
+            <section id="analyticsTab" class="tab-pane">
+                <div class="analytics-charts-grid">
+                    <!-- Chart 1: Weight -->
+                    <div class="compact-card chart-card" title="Click to enlarge">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-weight-scale text-gold"></i> Weight History</h3>
+                                <p>Bodyweight tracking over time</p>
+                            </div>
+                            <span class="btn-icon"><i class="fa-solid fa-expand"></i></span>
+                        </div>
+                        <div class="canvas-box">
+                            <canvas id="weightChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2: Hydration -->
+                    <div class="compact-card chart-card" title="Click to enlarge">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-droplet text-gold"></i> Hydration Tracking</h3>
+                                <p>Daily liters vs target goal</p>
+                            </div>
+                            <span class="btn-icon"><i class="fa-solid fa-expand"></i></span>
+                        </div>
+                        <div class="canvas-box">
+                            <canvas id="waterChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 3: Calories -->
+                    <div class="compact-card chart-card" title="Click to enlarge">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-fire text-gold"></i> Calorie Tracking</h3>
+                                <p>Daily intake vs target goal</p>
+                            </div>
+                            <span class="btn-icon"><i class="fa-solid fa-expand"></i></span>
+                        </div>
+                        <div class="canvas-box">
+                            <canvas id="calorieChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 4: Frequency -->
+                    <div class="compact-card chart-card" title="Click to enlarge">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-calendar-check text-gold"></i> Weekly Frequency</h3>
+                                <p>Completed training sessions</p>
+                            </div>
+                            <span class="btn-icon"><i class="fa-solid fa-expand"></i></span>
+                        </div>
+                        <div class="canvas-box">
+                            <canvas id="workoutChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- =========================================================================
+                 TAB 6: PROFILE & DATA SETTINGS PANE
+                 ========================================================================= -->
+            <section id="settingsTab" class="tab-pane">
+                <div class="two-col-grid">
+                    <!-- Profile Credentials -->
+                    <div class="compact-card">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-id-card text-gold"></i> Profile Details</h3>
+                                <p>Your personal account credentials</p>
+                            </div>
+                        </div>
+
+                        <div class="profile-specs-list">
+                            <div class="spec-row">
+                                <span class="spec-label">Full Name</span>
+                                <span class="spec-val" id="profileName">Athlete</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Email Address</span>
+                                <span class="spec-val" id="profileEmail">athlete@gym.com</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Phone</span>
+                                <span class="spec-val" id="profilePhone">Not provided</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Address / Branch</span>
+                                <span class="spec-val" id="profileAddress">Not provided</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Fitness Goal</span>
+                                <span class="spec-val text-gold" id="fitnessGoal">Muscle Gain</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Backup & Reset -->
+                    <div class="compact-card">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-database text-gold"></i> Data & Backup Controls</h3>
+                                <p>Export JSON backups or reset local activity cache</p>
+                            </div>
+                        </div>
+
+                        <div class="backup-actions-stack">
+                            <div class="backup-item">
+                                <div>
+                                    <h4>Export JSON Backup</h4>
+                                    <p>Download your complete workout and purchase records.</p>
+                                </div>
+                                <button id="exportData" class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i> Export</button>
+                            </div>
+
+                            <div class="backup-item">
+                                <div>
+                                    <h4>Import JSON Data</h4>
+                                    <p>Restore records from a previously exported backup file.</p>
+                                </div>
+                                <button id="importData" class="btn btn-secondary btn-sm"><i class="fa-solid fa-upload"></i> Import</button>
+                                <input type="file" id="importFile" accept=".json" style="display: none;">
+                            </div>
+
+                            <div class="backup-item danger-item">
+                                <div>
+                                    <h4 style="color:#EF4444;">Clear Activity Cache</h4>
+                                    <p>Reset local workspace logs. Database account remains safe.</p>
+                                </div>
+                                <button id="clearData" class="btn btn-danger-soft btn-sm"><i class="fa-solid fa-trash"></i> Reset</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Supabase Cloud Storage Widget -->
+                    <div class="compact-card" style="grid-column: 1 / -1; margin-top: 10px;">
+                        <div class="card-head">
+                            <div class="head-title">
+                                <h3><i class="fa-solid fa-cloud-bolt text-gold"></i> Supabase Cloud Storage Sync</h3>
+                                <p>Live real-time cross-device sync with Supabase Postgres storage</p>
+                            </div>
+                            <span id="cloudSyncStatusBadge" class="pill-badge pill-gold"><i class="fa-solid fa-bolt"></i> Supabase Cloud: Active</span>
+                        </div>
+                        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; background:#161616; padding:14px 18px; border-radius:8px; border:1px solid var(--border);">
+                            <div>
+                                <span style="font-size:13px; font-weight:600; color:#FFF;">Cross-Device Cloud Sync</span>
+                                <p style="font-size:12px; color:#888; margin-top:2px;">Workouts, store orders, and trainer bookings automatically synchronize with your Supabase database in real-time.</p>
+                            </div>
+                            <div style="display:flex; gap:10px;">
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="window.dashboardManager.manualCloudSync()">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Sync Cloud
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="window.dashboardManager.manualCloudPush()">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i> Push to Cloud
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Chart Fullscreen Modal -->
+    <div id="chartModal" class="chart-modal">
+        <div class="modal-overlay" onclick="closeChartModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalChartTitle" style="font-size:18px; font-weight:700; color:#B3DD24;">Chart View</h3>
+                <button class="modal-close" onclick="closeChartModal()" title="Close">&times;</button>
+            </div>
+            <div class="modal-chart-container" style="height: 380px;">
+                <canvas id="modalChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Switching & Dashboard Helpers -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+            });
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.toggle('active', pane.id === tabId);
+            });
+
+            // Trigger chart resize on tab change
+            setTimeout(() => {
+                if (window.chartManager && window.dashboardManager && window.dashboardManager.currentUser) {
+                    window.chartManager.updateAllCharts(window.dashboardManager.currentUser);
+                }
+            }, 100);
+        }
+
+        function handleDashboardLogout() {
+            if (window.GymApiClient) {
+                GymApiClient.logout();
+            } else {
+                localStorage.removeItem('gym_auth_token');
+                localStorage.removeItem('gym_auth_user');
+                sessionStorage.removeItem('gym_auth_token');
+                sessionStorage.removeItem('gym_auth_user');
+            }
+            window.location.href = 'index.html';
+        }
+    </script>
+
+    <!-- Shared Store & Catalog Adapters -->
+    <script src="../shared/api-client.js"></script>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    <script src="../shared/gym-trainers-catalog.js"></script>
+
+    <!-- Dashboard Management Scripts -->
+    <script src="js/dashboard.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>

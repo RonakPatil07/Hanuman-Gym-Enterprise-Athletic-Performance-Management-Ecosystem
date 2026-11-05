@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Profile & Enrollment - Hanuman Gym</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="../shared/site-header.js" defer></script>
+    <script src="../shared/site-footer.js" defer></script>
+</head>
+<body>
+
+    <div id="site-header"></div>
+
+    <main class="main">
+        <div class="container">
+            <!-- Trainer Hero Section -->
+            <section class="trainer-hero" id="trainerHero">
+                <div class="trainer-photo">
+                    <img id="trainerImage" src="" alt="Trainer Photo">
+                </div>
+                <div class="trainer-info">
+                    <h1 id="trainerName" class="trainer-name"></h1>
+                    <h2 id="trainerSpecialization" class="trainer-specialization"></h2>
+                </div>
+            </section>
+
+            <!-- Trainer Bio Section -->
+            <section class="trainer-bio">
+                <h3>About Me</h3>
+                <p id="trainerBio" class="bio-text"></p>
+                
+                <!-- Trainer Stats -->
+                <div class="trainer-details-stats" id="trainerStats">
+                    <!-- Stats will be populated by JavaScript -->
+                </div>
+                
+                <!-- Trainer Achievements -->
+                <div class="trainer-details-achievements" id="trainerAchievements">
+                    <!-- Achievements will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <div class="section-separator thick"></div>
+
+            <!-- Contact Section -->
+            <section class="contact-section">
+                <h3>Get In Touch</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span id="trainerEmail"></span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" id="facebookLink">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" id="instagramLink">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" id="twitterLink">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-separator thick"></div>
+
+            <!-- Membership Plans Section -->
+            <section class="membership-section">
+                <h3>Choose Your Membership Plan</h3>
+                <div class="membership-grid">
+                    <div class="membership-card">
+                        <div class="plan-header">
+                            <h4>Basic</h4>
+                            <div class="price">₹2,000<span>/month</span></div>
+                        </div>
+                        <ul class="benefits">
+                            <li><i class="fas fa-check"></i> Standard floor access</li>
+                            <li><i class="fas fa-check"></i> Locker room &amp; shower</li>
+                            <li><i class="fas fa-check"></i> Olympic lifting zone</li>
+                            <li><i class="fas fa-check"></i> Free biometric assessment</li>
+                        </ul>
+                        <button class="join-btn" onclick="openModal('Basic')">Join Now</button>
+                    </div>
+
+                    <div class="membership-card featured">
+                        <div class="plan-badge">Most Popular</div>
+                        <div class="plan-header">
+                            <h4>Pro Athlete</h4>
+                            <div class="price">₹4,500<span>/month</span></div>
+                        </div>
+                        <ul class="benefits">
+                            <li><i class="fas fa-check"></i> 24/7 keyless branch access</li>
+                            <li><i class="fas fa-check"></i> Unlimited HIIT &amp; Yoga classes</li>
+                            <li><i class="fas fa-check"></i> Finnish sauna recovery</li>
+                            <li><i class="fas fa-check"></i> 1 Monthly Coach Assessment</li>
+                        </ul>
+                        <button class="join-btn" onclick="openModal('Pro Athlete')">Join Now</button>
+                    </div>
+
+                    <div class="membership-card">
+                        <div class="plan-header">
+                            <h4>Elite Tier</h4>
+                            <div class="price">₹7,500<span>/month</span></div>
+                        </div>
+                        <ul class="benefits">
+                            <li><i class="fas fa-check"></i> All Pro Athlete privileges</li>
+                            <li><i class="fas fa-check"></i> 4x 1-on-1 PT Sessions/mo</li>
+                            <li><i class="fas fa-check"></i> Custom Nutrition Blueprint</li>
+                            <li><i class="fas fa-check"></i> Dedicated private VIP locker</li>
+                        </ul>
+                        <button class="join-btn" onclick="openModal('Elite Tier')">Join Now</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Signup Modal -->
+    <div class="modal-overlay" id="signupModal">
+        <div class="modal-content professional-modal horizontal-modal">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <span class="step-indicator">Enrollment Step <span id="currentStepNum">1</span> of 2</span>
+                    <h3 id="modalTitle">Personal Information</h3>
+                </div>
+                <button class="close-btn" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form class="signup-form" id="signupForm">
+                <!-- Processing Overlay -->
+                <div class="processing-overlay" id="processingOverlay">
+                    <div class="spinner"></div>
+                    <div style="font-weight: 800; color: var(--accent);">Processing Transaction</div>
+                    <div style="font-size: 11px; color: #666; margin-top: 5px;">Securing your trainer spot...</div>
+                </div>
+
+                <!-- Step 1: Personal Info -->
+                <div class="modal-step active" id="step1">
+                    <div class="step-left-info">
+                        <div class="step-info-title">Begin Training</div>
+                        <p class="step-info-desc">Start your fitness journey with <strong id="leftTrainerName" style="color:#fff;"></strong>.</p>
+                        <ul class="feature-list-mini">
+                            <li><i class="fas fa-check"></i> Personalized workout plans</li>
+                            <li><i class="fas fa-check"></i> Weekly 1-on-1 check-ins</li>
+                            <li><i class="fas fa-check"></i> Nutrition & Supplement guide</li>
+                        </ul>
+                    </div>
+                    <div class="step-right-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                            </div>
+                        </div>
+                        <div class="btn-row">
+                            <button type="button" class="submit-btn" onclick="nextStep(2)">Proceed to Payment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Payment Section -->
+                <div class="modal-step" id="step2">
+                    <div class="step-left-info">
+                        <div class="step-info-title">Checkout</div>
+                        <p class="step-info-desc">Finalize your enrollment and start training.</p>
+                        <div class="order-summary-mini">
+                            <div class="summary-row">
+                                <span id="summaryPlan">Standard Plan</span>
+                                <span id="summaryPrice">₹4,000</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Platform Fee</span>
+                                <span>₹0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total Payable</span>
+                                <span id="summaryTotal">₹4,000</span>
+                            </div>
+                        </div>
+                        <div class="secure-badge">
+                            <i class="fas fa-shield-alt"></i> 256-bit SSL Secure
+                        </div>
+                    </div>
+                    <div class="step-right-form">
+                        <div class="payment-methods">
+                            <div class="payment-method-card active" onclick="selectPayment('card')">
+                                <i class="fas fa-credit-card"></i>
+                                <span style="font-size: 12px; font-weight: 700;">Card</span>
+                            </div>
+                            <div class="payment-method-card" onclick="selectPayment('upi')">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span style="font-size: 12px; font-weight: 700;">UPI</span>
+                            </div>
+                        </div>
+
+                        <!-- Card Form -->
+                        <div id="cardPaymentForm" class="payment-form-container">
+                            <div class="credit-card-ui">
+                                <div class="form-group">
+                                    <label style="color: #666;">Card Number</label>
+                                    <input type="text" placeholder="XXXX XXXX XXXX XXXX" style="background: rgba(255,255,255,0.03); border-color: #333;">
+                                </div>
+                                <div class="card-row">
+                                    <div class="form-group">
+                                        <label style="color: #666;">Expiry</label>
+                                        <input type="text" placeholder="MM/YY" style="background: rgba(255,255,255,0.03); border-color: #333;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="color: #666;">CVV</label>
+                                        <input type="password" placeholder="***" style="background: rgba(255,255,255,0.03); border-color: #333;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UPI QR -->
+                        <div id="upiPaymentForm" class="payment-form-container" style="display: none;">
+                            <div class="upi-qr-placeholder">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=HanumanGymPayment" alt="UPI QR">
+                            </div>
+                            <p style="text-align: center; font-size: 11px; color: #555; margin-bottom: 10px;">Scan to pay via any UPI app</p>
+                        </div>
+
+                        <div class="btn-row">
+                            <button type="button" class="btn-back" onclick="nextStep(1)">Back</button>
+                            <button type="submit" class="submit-btn" id="submitBtn">Pay & Join Trainer</button>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" id="plan" name="plan">
+            </form>
+        </div>
+    </div>
+
+    <!-- Additional Styles for Professional Modal -->
+    <style>
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85) !important;
+            backdrop-filter: blur(15px) !important;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1500;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .modal-overlay.active {
+            display: flex !important;
+        }
+
+        .professional-modal.horizontal-modal {
+            background: #000 !important;
+            border: 1px solid #333 !important;
+            width: 100%;
+            max-width: 750px !important; /* Reduced from 820px */
+            border-radius: 24px; /* Slightly tighter radius */
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .modal-header {
+            padding: 12px 25px; /* Reduced from 15px 30px */
+            border-bottom: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #050505;
+        }
+
+        .modal-title-area {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .step-indicator {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #B3DD24;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.3rem; /* Slightly smaller */
+            color: #B3DD24 !important;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(179, 221, 36, 0.2);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem; /* Slightly smaller */
+            color: #666;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #222;
+            color: #B3DD24;
+        }
+
+        .modal-step {
+            display: none;
+            padding: 0;
+            animation: fadeInStep 0.4s ease;
+        }
+
+        .modal-step.active {
+            display: flex; /* Changed to flex for 2 columns */
+        }
+
+        .step-left-info {
+            flex: 1;
+            background: linear-gradient(135deg, #111 0%, #050505 100%);
+            padding: 25px; /* Reduced from 30px */
+            border-right: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .step-right-form {
+            flex: 1.2;
+            padding: 25px; /* Reduced from 30px */
+            background: #000;
+        }
+
+        .step-info-title {
+            font-size: 1.4rem; /* Slightly smaller */
+            font-weight: 800;
+            color: #B3DD24;
+            margin-bottom: 10px;
+        }
+
+        .step-info-desc {
+            color: #888;
+            font-size: 0.9rem; /* Slightly smaller */
+            margin-bottom: 20px;
+        }
+
+        .feature-list-mini {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .feature-list-mini li {
+            font-size: 12px; /* Smaller */
+            color: #ccc;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-list-mini li i { color: #B3DD24; font-size: 11px; }
+
+        .signup-form .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px; /* Tighter spacing */
+        }
+
+        .signup-form .form-group label {
+            color: #999 !important;
+            font-size: 12px; /* Smaller */
+            font-weight: 600;
+        }
+
+        @keyframes fadeInStep {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Payment Section Styles - Optimized */
+        .payment-methods {
+            display: flex;
+            gap: 10px; /* Reduced */
+            margin-bottom: 15px; /* Reduced */
+        }
+
+        .payment-method-card {
+            flex: 1;
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 12px; /* Reduced */
+            border-radius: 12px; /* Tighter */
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #eee;
+        }
+
+        .payment-method-card.active {
+            border-color: #B3DD24;
+            background: rgba(179, 221, 36, 0.05);
+            color: #B3DD24;
+        }
+
+        .payment-method-card i {
+            font-size: 16px; /* Smaller */
+            color: #555;
+        }
+
+        .payment-method-card.active i {
+            color: #B3DD24;
+        }
+
+        .payment-form-container {
+            margin-top: 12px;
+        }
+
+        /* Professional Card UI - Compact */
+        .credit-card-ui {
+            background: linear-gradient(135deg, #111 0%, #000 100%);
+            border: 1px solid #222;
+            padding: 15px; /* Reduced */
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .order-summary-mini {
+            background: #0a0a0a;
+            padding: 12px; /* Reduced */
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px dashed #222;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+            font-size: 11px; /* Smaller */
+            color: #ccc;
+        }
+
+        .summary-row.total {
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px solid #222;
+            font-weight: 800;
+            font-size: 13px; /* Smaller */
+            color: #B3DD24;
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px; /* Smaller */
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .secure-badge i { color: #22c55e; }
+
+        .upi-qr-placeholder {
+            text-align: center;
+            padding: 8px;
+            background: #fff;
+            border-radius: 10px;
+            width: 120px; /* Smaller */
+            margin: 0 auto 8px;
+        }
+
+        .upi-qr-placeholder img { width: 100%; height: auto; }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn-back {
+            flex: 1;
+            background: transparent;
+            border: 1px solid #222;
+            color: #555;
+            padding: 12px; /* Reduced */
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover { color: #fff; border-color: #444; }
+
+        .submit-btn {
+            width: 100%;
+            background: #B3DD24 !important;
+            color: #000 !important;
+            border-radius: 10px !important;
+            border: none !important;
+            padding: 12px; /* Reduced */
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px; /* Smaller */
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(179, 221, 36, 0.1);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .processing-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .spinner {
+            width: 35px; /* Smaller */
+            height: 35px;
+            border: 3px solid #222;
+            border-top: 3px solid #B3DD24;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 12px;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #555;
+            font-size: 13px;
+        }
+
+        .input-with-icon input {
+            padding: 10px 12px 10px 40px !important; /* Reduced padding */
+            width: 100%;
+            background: #151515 !important;
+            border: 1px solid #333 !important;
+            color: #fff !important;
+            border-radius: 8px !important;
+            font-size: 0.95rem;
+        }
+
+        .input-with-icon input:focus {
+            background: #1a1a1a !important;
+            border-color: #B3DD24 !important;
+            box-shadow: 0 0 0 4px rgba(179, 221, 36, 0.1) !important;
+            outline: none;
+        }
+
+        @media (max-width: 900px) {
+            .professional-modal.horizontal-modal { max-width: 95% !important; }
+            .modal-step.active { flex-direction: column; }
+            .step-left-info { display: none; }
+            .step-right-form { padding: 25px; }
+        }
+    </style>
+
+    <script src="../shared/api-client.js"></script>
+    <script src="../shared/gym-trainers-catalog.js"></script>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    <script src="js/trainer-details.js"></script>
+</body>
+</html>

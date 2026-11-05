@@ -1,0 +1,114 @@
+{
+  "branches": {
+    "Ambernath": {
+      "name": "Ambernath Branch",
+      "city": "Ambernath",
+      "address": "108 Station Road, Opposite Skywalk, Ambernath East",
+      "primaryPhone": "+91 98765 43210",
+      "secondaryPhone": "+91 98765 43211",
+      "hours": "5:00 AM - 11:00 PM",
+      "lat": 19.2015,
+      "lng": 73.1895,
+      "facilities": ["Cardio Deck", "Heavy Powerlifting Zone", "Steam & Sauna", "Smoothie Bar"]
+    },
+    "Karjat": {
+      "name": "Karjat Branch",
+      "city": "Karjat",
+      "address": "45 Green Valley Complex, Near Karjat Junction",
+      "primaryPhone": "+91 98765 43220",
+      "secondaryPhone": "+91 98765 43221",
+      "hours": "5:30 AM - 10:30 PM",
+      "lat": 18.9102,
+      "lng": 73.3283,
+      "facilities": ["CrossFit Arena", "Strength Training", "Personal Coaching"]
+    },
+    "Ambivali": {
+      "name": "Ambivali Branch",
+      "city": "Ambivali",
+      "address": "12 Riverview Promenade, Ambivali West",
+      "primaryPhone": "+91 98765 43230",
+      "secondaryPhone": "+91 98765 43231",
+      "hours": "5:00 AM - 11:00 PM",
+      "lat": 19.2612,
+      "lng": 73.1678,
+      "facilities": ["Free Weights", "Cardio Zone", "Zumba & Yoga Studio"]
+    },
+    "Titwala": {
+      "name": "Titwala Branch",
+      "city": "Titwala",
+      "address": "88 Temple Road, Near Maha Ganapati Chowk",
+      "primaryPhone": "+91 98765 43240",
+      "secondaryPhone": "+91 98765 43241",
+      "hours": "5:00 AM - 11:00 PM",
+      "lat": 19.2974,
+      "lng": 73.2127,
+      "facilities": ["Power Racks", "Olympic Lifting", "Functional Turf"]
+    },
+    "Kalyan": {
+      "name": "Kalyan Branch",
+      "city": "Kalyan",
+      "address": "Grand Central Mall 3rd Floor, Shivaji Chowk, Kalyan West",
+      "primaryPhone": "+91 98765 43250",
+      "secondaryPhone": "+91 98765 43251",
+      "hours": "24/7 Access",
+      "lat": 19.2437,
+      "lng": 73.1355,
+      "facilities": ["24/7 Biometric Access", "Cryotherapy", "Olympic Lifting Platforms", "Nutritionist Desk"]
+    },
+    "Badlapur": {
+      "name": "Badlapur Branch",
+      "city": "Badlapur",
+      "address": "22 Katrap Highway Plaza, Badlapur East",
+      "primaryPhone": "+91 98765 43260",
+      "secondaryPhone": "+91 98765 43261",
+      "hours": "5:00 AM - 11:00 PM",
+      "lat": 19.1674,
+      "lng": 73.2625,
+      "facilities": ["Strength & Hypertrophy", "Cardio Cinema", "Lockers & Showers"]
+    },
+    "Dombivali": {
+      "name": "Dombivali Branch",
+      "city": "Dombivali",
+      "address": "Plot 5, Manpada Road, Dombivali East",
+      "primaryPhone": "+91 98765 43270",
+      "secondaryPhone": "+91 98765 43271",
+      "hours": "5:00 AM - 11:30 PM",
+      "lat": 19.2183,
+      "lng": 73.0867,
+      "facilities": ["Calisthenics Rig", "Heavy Dumbbell Zone", "Recovery Lounge"]
+    },
+    "Thane": {
+      "name": "Thane Branch",
+      "city": "Thane",
+      "address": "Tower B, Ghodbunder Road, Near Viviana, Thane West",
+      "primaryPhone": "+91 98765 43280",
+      "secondaryPhone": "+91 98765 43281",
+      "hours": "24/7 Access",
+      "lat": 19.2183,
+      "lng": 72.9781,
+      "facilities": ["Flagship 15,000 sq ft", "24/7 Keycard", "Recovery Ice Baths", "MMA Octagon"]
+    },
+    "Dadar": {
+      "name": "Dadar Branch",
+      "city": "Dadar",
+      "address": "104 Shivaji Park Road, Dadar West, Mumbai",
+      "primaryPhone": "+91 98765 43290",
+      "secondaryPhone": "+91 98765 43291",
+      "hours": "5:00 AM - Midnight",
+      "lat": 19.0178,
+      "lng": 72.8478,
+      "facilities": ["Elite Performance Lab", "Physiotherapy Clinic", "Juice Bar"]
+    },
+    "Vashi": {
+      "name": "Vashi Branch",
+      "city": "Vashi",
+      "address": "Sector 17 Business Park, Vashi, Navi Mumbai",
+      "primaryPhone": "+91 98765 43300",
+      "secondaryPhone": "+91 98765 43301",
+      "hours": "24/7 Access",
+      "lat": 19.0771,
+      "lng": 72.9986,
+      "facilities": ["24/7 Access", "Boxing Ring", "Infrared Saunas", "Coaching Studio"]
+    }
+  }
+}

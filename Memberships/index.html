@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership &amp; Pricing — Hanuman Gym</title>
+    <!-- FIX #14: SEO + OG Tags -->
+    <meta name="description" content="Join Hanuman Gym from Rs.2,000/month. Basic, Pro Athlete and Elite Tier. 5 branches across Maharashtra. 7-day money-back guarantee. Free 1-day trial.">
+    <meta property="og:title" content="Membership and Pricing — Hanuman Gym">
+    <meta property="og:description" content="Join Hanuman Gym from Rs.2,000/month. 3 elite tiers, 5 branches, world-class trainers. Free 1-day trial.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="../P Home/images/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Memberships — Hanuman Gym">
+    <link rel="icon" type="image/png" href="../P Home/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <!-- FIX #1: Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="memberships.css">
+</head>
+<body class="membership-page">
+    <div id="site-header"></div>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    <script src="../shared/site-header.js" defer></script>
+
+    <!-- FIX #8: COUNTDOWN BANNER -->
+    <div class="countdown-banner" id="countdownBanner">
+        <div class="cd-label"><i class="fa-solid fa-bolt"></i> Festive Offer Ends In</div>
+        <div class="countdown-timer">
+            <div class="cd-unit"><span class="cd-num" id="cd-days">02</span><span class="cd-lbl">Days</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit"><span class="cd-num" id="cd-hours">14</span><span class="cd-lbl">Hours</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit"><span class="cd-num" id="cd-mins">32</span><span class="cd-lbl">Mins</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit"><span class="cd-num" id="cd-secs">09</span><span class="cd-lbl">Secs</span></div>
+        </div>
+        <div class="cd-spots">Only <strong>3</strong> Elite slots left this month</div>
+    </div>
+
+    <main class="membership-container">
+        <!-- HERO -->
+        <section class="membership-hero">
+            <div class="hero-badge-pill"><span class="eyebrow-pulse"></span><span>Hanuman All-Access Passes</span></div>
+            <h1>Choose Your <span>Transformation</span></h1>
+            <p>Elevate your athletic potential with transparent tier pricing, elite strength coaching, and 24/7 world-class facility access.</p>
+            <div class="billing-toggle-wrapper">
+                <span class="toggle-label active" id="labelMonthly" onclick="setBillingCycle('monthly')" tabindex="0" role="button">Monthly</span>
+                <div class="toggle-switch-container" id="toggleSwitch" onclick="toggleBillingCycle()" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle annual billing">
+                    <div class="toggle-switch-handle"></div>
+                </div>
+                <span class="toggle-label" id="labelAnnual" onclick="setBillingCycle('annual')" tabindex="0" role="button">Annual</span>
+                <span class="discount-chip"><i class="fa-solid fa-tag"></i> Save 20%</span>
+            </div>
+            <!-- FIX #9: BRANCH SELECTOR -->
+            <div class="branch-selector-bar">
+                <span class="branch-selector-label"><i class="fa-solid fa-location-dot"></i> Branch:</span>
+                <select class="branch-select" id="branchSelect" onchange="handleBranchChange(this.value)" aria-label="Select gym branch">
+                    <option value="ambernath">Ambernath Main Branch</option>
+                    <option value="dadar">Dadar Olympic Zone</option>
+                    <option value="thane">Thane Performance Lab</option>
+                    <option value="kalyan">Kalyan Strength Hub</option>
+                    <option value="karjat">Karjat Athletic Arena</option>
+                </select>
+                <div class="branch-peak-info" id="branchPeakInfo">Peak Hours: <strong>6-9 AM &amp; 6-9 PM</strong></div>
+            </div>
+        </section>
+
+        <!-- PRICING CARDS -->
+        <section class="pricing-cards-grid">
+            <!-- BASIC -->
+            <div class="pricing-card">
+                <div class="card-header-block">
+                    <h2 class="plan-tier-name">Basic</h2>
+                    <p class="plan-tier-desc">Essential gym floor access for independent lifters and beginners.</p>
+                </div>
+                <div class="plan-price-box">
+                    <div class="price-original-row" id="strikeBasic">
+                        <span class="price-strikethrough" id="strikeBasicAmt">Rs.24,000</span>
+                        <span class="price-save-tag" id="saveBasicAmt">Save Rs.4,800</span>
+                    </div>
+                    <div class="plan-price-main">
+                        <span class="currency-symbol">Rs.</span>
+                        <span class="price-amount" id="priceBasic">2,000</span>
+                        <span class="price-period" id="periodBasic">/ month</span>
+                    </div>
+                </div>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check"></i> Standard floor and strength machine access</li>
+                    <li><i class="fa-solid fa-check"></i> Cardio and functional training zone</li>
+                    <li><i class="fa-solid fa-check"></i> Locker room and hot shower access</li>
+                    <li><i class="fa-solid fa-check"></i> Free hydration station refill</li>
+                    <li><i class="fa-solid fa-check"></i> Standard gym hours (6 AM - 11 PM)</li>
+                </ul>
+                <button class="plan-cta-btn" onclick="openEnrollmentModal('Basic',2000,19200)">Join Basic</button>
+            </div>
+            <!-- PRO ATHLETE -->
+            <div class="pricing-card popular">
+                <div class="popular-badge"><i class="fa-solid fa-crown"></i> Most Popular</div>
+                <div class="card-header-block">
+                    <h2 class="plan-tier-name">Pro Athlete</h2>
+                    <p class="plan-tier-desc">Comprehensive access with unlimited group HIIT, yoga, and sauna.</p>
+                </div>
+                <div class="plan-price-box">
+                    <div class="price-original-row" id="strikePro">
+                        <span class="price-strikethrough" id="strikeProAmt">Rs.54,000</span>
+                        <span class="price-save-tag" id="saveProAmt">Save Rs.10,800</span>
+                    </div>
+                    <div class="plan-price-main">
+                        <span class="currency-symbol">Rs.</span>
+                        <span class="price-amount" id="pricePro">4,500</span>
+                        <span class="price-period" id="periodPro">/ month</span>
+                    </div>
+                </div>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check"></i> <strong>24/7 Unlimited Gym Access</strong></li>
+                    <li><i class="fa-solid fa-check"></i> Unlimited <strong>Group HIIT and Yoga Classes</strong></li>
+                    <li><i class="fa-solid fa-check"></i> Finnish Sauna and Recovery Zone</li>
+                    <li><i class="fa-solid fa-check"></i> 1x Monthly Trainer Technique Assessment</li>
+                    <li><i class="fa-solid fa-check"></i> 1 Free Monthly Guest Pass</li>
+                    <li><i class="fa-solid fa-check"></i> Mobile App Workout and Diet Logger</li>
+                    <!-- FIX #10: FREEZE BADGE -->
+                    <li><i class="fa-solid fa-snowflake"></i> <strong>Pause up to 60 days/yr</strong> (free freeze)</li>
+                </ul>
+                <button class="plan-cta-btn" onclick="openEnrollmentModal('Pro Athlete',4500,43200)"><i class="fa-solid fa-bolt"></i> Join Pro Athlete</button>
+            </div>
+            <!-- ELITE -->
+            <div class="pricing-card">
+                <div class="card-header-block">
+                    <h2 class="plan-tier-name">Elite Tier</h2>
+                    <p class="plan-tier-desc">The ultimate VIP package with dedicated 1-on-1 personal coaching.</p>
+                </div>
+                <div class="plan-price-box">
+                    <div class="price-original-row" id="strikeElite">
+                        <span class="price-strikethrough" id="strikeEliteAmt">Rs.90,000</span>
+                        <span class="price-save-tag" id="saveEliteAmt">Save Rs.18,000</span>
+                    </div>
+                    <div class="plan-price-main">
+                        <span class="currency-symbol">Rs.</span>
+                        <span class="price-amount" id="priceElite">7,500</span>
+                        <span class="price-period" id="periodElite">/ month</span>
+                    </div>
+                </div>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check"></i> <strong>All Pro Athlete Tier Features</strong></li>
+                    <li><i class="fa-solid fa-check"></i> <strong>4x Monthly 1-on-1 Personal Trainer Sessions</strong></li>
+                    <li><i class="fa-solid fa-check"></i> Custom Nutrition and Macro Coaching Blueprint</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>15% Discount on Gym FitStore Merch</strong></li>
+                    <li><i class="fa-solid fa-check"></i> VIP Private Locker and Fresh Towel Service</li>
+                    <li><i class="fa-solid fa-check"></i> Unlimited Guest Passes</li>
+                    <!-- FIX #10: FREEZE BADGE -->
+                    <li><i class="fa-solid fa-snowflake"></i> <strong>Pause up to 60 days/yr</strong> (free freeze)</li>
+                </ul>
+                <button class="plan-cta-btn" onclick="openEnrollmentModal('Elite Tier',7500,72000)">Join Elite Tier</button>
+            </div>
+        </section>
+        <!-- FIX #18: WHY HANUMAN GYM -->
+        <section class="why-hanuman-section">
+            <div class="section-header-centered">
+                <h2>Why <span>Hanuman Gym?</span></h2>
+                <p>Trusted by hundreds of athletes across Maharashtra. Here is what sets us apart.</p>
+            </div>
+            <div class="why-stats-grid">
+                <div class="why-stat-card"><div class="why-stat-icon"><i class="fa-solid fa-users"></i></div><div class="why-stat-number">500<span>+</span></div><div class="why-stat-label">Active Members</div></div>
+                <div class="why-stat-card"><div class="why-stat-icon"><i class="fa-solid fa-location-dot"></i></div><div class="why-stat-number">5</div><div class="why-stat-label">Branches Across Maharashtra</div></div>
+                <div class="why-stat-card"><div class="why-stat-icon"><i class="fa-solid fa-certificate"></i></div><div class="why-stat-number">12<span>+</span></div><div class="why-stat-label">Certified Expert Coaches</div></div>
+                <div class="why-stat-card"><div class="why-stat-icon"><i class="fa-solid fa-star"></i></div><div class="why-stat-number">4.8<span>*</span></div><div class="why-stat-label">Google Rating (320+ Reviews)</div></div>
+            </div>
+        </section>
+
+        <!-- ROI CALCULATOR -->
+        <section class="roi-calc-section">
+            <div class="roi-calc-header">
+                <div class="short-pass-badge" style="display:inline-block;background:rgba(179, 221, 36,.1);color:var(--mem-gold);padding:4px 10px;border-radius:12px;font-size:11px;font-weight:800;font-family:var(--mem-font-heading);text-transform:uppercase;margin-bottom:12px;"><i class="fa-solid fa-calculator"></i> Real Value Calculator</div>
+                <h3>Calculate Your <span>Cost Per Workout</span></h3>
+                <p style="color:var(--mem-text-secondary);font-size:13.5px;margin-top:6px;">See how affordable elite training becomes based on your weekly commitment.</p>
+            </div>
+            <div class="roi-slider-container">
+                <div class="roi-slider-label">
+                    <span>How many days per week will you train?</span>
+                    <strong><span id="workoutDaysDisplay">4</span> Days/Week (<span id="monthlySessionsDisplay">16</span> sessions/mo)</strong>
+                </div>
+                <input type="range" min="1" max="7" value="4" class="roi-range-slider" id="workoutFrequencySlider" oninput="calculateCostPerSession(this.value)">
+            </div>
+            <div class="roi-metrics-grid">
+                <div class="roi-metric-card"><div class="roi-plan-tag">Basic Tier</div><div class="roi-cost-val" id="roiBasicCost">Rs.125</div><div class="roi-cost-sub">per workout session</div></div>
+                <div class="roi-metric-card" style="border-color:var(--mem-gold-border);background:rgba(179, 221, 36,.03);"><div class="roi-plan-tag" style="color:var(--mem-gold);">Pro Athlete (Best Value)</div><div class="roi-cost-val" id="roiProCost">Rs.281</div><div class="roi-cost-sub">per workout session</div></div>
+                <div class="roi-metric-card"><div class="roi-plan-tag">Elite Tier VIP</div><div class="roi-cost-val" id="roiEliteCost">Rs.468</div><div class="roi-cost-sub">per session incl. 4 PT</div></div>
+            </div>
+        </section>
+
+        <!-- SHORT PASSES -->
+        <section class="short-passes-section">
+            <div class="section-header-centered"><h2>Flexible <span>Short-Term Passes</span></h2><p>Not ready for a full commitment? Choose a flexible pass option.</p></div>
+            <div class="short-passes-grid">
+                <div class="short-pass-card">
+                    <span class="short-pass-badge"><i class="fa-solid fa-ticket"></i> Single Day</span>
+                    <h3 class="short-pass-title">1-Day VIP Pass</h3>
+                    <div class="short-pass-price">Rs.399 <span>/ day</span></div>
+                    <p class="short-pass-desc">Full 24-hour access to machines, Olympic lifting platforms, locker rooms, and sauna recovery.</p>
+                    <button class="plan-cta-btn" onclick="openEnrollmentModal('1-Day VIP Pass',399,399)">Get 1-Day Pass</button>
+                </div>
+                <div class="short-pass-card" style="border-color:var(--mem-gold-border);">
+                    <span class="short-pass-badge" style="background:var(--mem-gold);color:#000;"><i class="fa-solid fa-fire"></i> 7 Days</span>
+                    <h3 class="short-pass-title">1-Week Athlete Pass</h3>
+                    <div class="short-pass-price">Rs.999 <span>/ 7 days</span></div>
+                    <p class="short-pass-desc">Perfect for travelers testing the facility. Includes unlimited HIIT and Yoga classes.</p>
+                    <button class="plan-cta-btn" style="background:var(--mem-gold);border-color:var(--mem-gold);color:#000;" onclick="openEnrollmentModal('1-Week Athlete Pass',999,999)">Get 1-Week Pass</button>
+                </div>
+                <div class="short-pass-card">
+                    <span class="short-pass-badge"><i class="fa-solid fa-graduation-cap"></i> 25% Off</span>
+                    <h3 class="short-pass-title">Student Athlete Pass</h3>
+                    <div class="short-pass-price">Rs.1,500 <span>/ month</span></div>
+                    <p class="short-pass-desc">Dedicated discount for high-school and college students. Valid student ID verified at check-in.</p>
+                    <button class="plan-cta-btn" onclick="openEnrollmentModal('Student Pass',1500,14400)">Join with Student ID</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADDONS -->
+        <section class="addons-section">
+            <div class="section-header-centered"><h2>Custom <span>Add-On Packages</span></h2><p>Supercharge any membership with coaching packs, locker rentals, and body scans.</p></div>
+            <div class="addons-grid">
+                <div class="addon-card"><i class="fa-solid fa-dumbbell addon-icon"></i><h4 class="addon-title">5x PT Coaching Pack</h4><div class="addon-price">Rs.3,999</div><p class="addon-desc">5 private 60-min sessions with a master coach.</p><button class="btn-addon-book" onclick="openEnrollmentModal('Add-On: 5x PT Pack',3999,3999)">Add to Plan</button></div>
+                <div class="addon-card"><i class="fa-solid fa-medal addon-icon"></i><h4 class="addon-title">10x PT Master Pack</h4><div class="addon-price">Rs.7,499</div><p class="addon-desc">10 sessions + customized nutrition macro blueprint.</p><button class="btn-addon-book" onclick="openEnrollmentModal('Add-On: 10x PT Pack',7499,7499)">Add to Plan</button></div>
+                <div class="addon-card"><i class="fa-solid fa-lock addon-icon"></i><h4 class="addon-title">Dedicated VIP Locker</h4><div class="addon-price">Rs.499<span style="font-size:13px;color:var(--mem-text-muted);">/mo</span></div><p class="addon-desc">Personal full-height locker with private combination lock.</p><button class="btn-addon-book" onclick="openEnrollmentModal('Add-On: VIP Locker',499,4990)">Add to Plan</button></div>
+                <div class="addon-card"><i class="fa-solid fa-heart-pulse addon-icon"></i><h4 class="addon-title">InBody Composition Scan</h4><div class="addon-price">Rs.299<span style="font-size:13px;color:var(--mem-text-muted);">/scan</span></div><p class="addon-desc">Medical-grade segmental muscle, fat and water analysis.</p><button class="btn-addon-book" onclick="openEnrollmentModal('Add-On: InBody Scan',299,299)">Add to Plan</button></div>
+            </div>
+        </section>
+
+        <!-- COMPARISON TABLE -->
+        <section class="comparison-section">
+            <div class="section-header-centered"><h2>Compare <span>Plan Features</span></h2><p>Granular breakdown of what is included across all Hanuman Gym membership tiers.</p></div>
+            <div class="table-responsive-wrapper">
+                <table class="comparison-table">
+                    <thead><tr><th class="col-feature">Feature / Amenity</th><th class="col-tier">Basic</th><th class="col-tier highlight-pro">Pro Athlete</th><th class="col-tier">Elite Tier</th></tr></thead>
+                    <tbody>
+                        <tr class="category-header-row"><td colspan="4"><i class="fa-solid fa-building"></i> Facility and Gym Floor Access</td></tr>
+                        <tr><td>Standard Floor Access</td><td class="col-tier"><i class="fa-solid fa-check icon-check"></i></td><td class="col-tier highlight-pro"><i class="fa-solid fa-check icon-check"></i></td><td class="col-tier"><i class="fa-solid fa-check icon-check"></i></td></tr>
+                        <tr><td>24/7 Access (Keycard and Mobile NFC)</td><td class="col-tier"><i class="fa-solid fa-xmark icon-cross"></i></td><td class="col-tier highlight-pro"><i class="fa-solid fa-check icon-check"></i></td><td class="col-tier"><i class="fa-solid fa-check icon-check"></i></td></tr>
+                        <tr><td>Olympic Lifting Platforms and Turf Zone</td><td class="col-tier"><i class="fa-solid fa-check icon-check"></i></td><td class="col-tier highlight-pro"><i class="fa-solid fa-check icon-check"></i></td><td class="col-tier"><i class="fa-solid fa-check icon-check"></i></td></tr>
+                        <tr><td>Finnish Sauna and Thermal Recovery Lounge</td><td class="col-tier"><i class="fa-solid fa-xmark icon-cross"></i></td><td class="col-tier highlight-pro"><i class="fa-solid fa-check icon-check"></i></td><td class="col-tier"><i class="fa-solid fa-check icon-check"></i></td></tr>
+                        <tr><td>Locker and Towel Service</td><td class="col-tier">Standard</td><td class="col-tier highlight-pro">Standard</td><td class="col-tier"><span class="tier-text-val">VIP Private</span></td></tr>
+                        <tr><td>Membership Freeze (Up to 60 days/yr)</td><td class="col-tier"><i class="fa-solid fa-xmark icon-cross"></i></td><td class="col-tier highlight-pro"><i class="fa-solid fa-check icon-check"></i></td><td class="col-tier"><i class="fa-solid fa-check icon-check"></i></td></tr>
+                        <tr class="category-header-row"><td colspan="4"><i class="fa-solid fa-dumbbell"></i> Coaching, Classes and Nutrition</td></tr>
+                        <tr><td>Group HIIT, Boxing and Yoga Classes</td><td class="col-tier"><i class="fa-solid fa-xmark icon-cross"></i></td><td class="col-tier highlight-pro"><span class="tier-text-val">Unlimited</span></td><td class="col-tier"><span class="tier-text-val">Unlimited</span></td></tr>
+                        <tr><td>1-on-1 Personal Trainer Sessions</td><td class="col-tier"><i class="fa-solid fa-xmark icon-cross"></i></td><td class="col-tier highlight-pro">1 Assessment/mo</td><td class="col-tier"><span class="tier-text-val">4 Sessions/mo</span></td></tr>
+                        <tr><td>Personalized Nutrition Plan</td><td class="col-tier"><i class="fa-solid fa-xmark icon-cross"></i></td><td class="col-tier highlight-pro">Sample Template</td><td class="col-tier"><span class="tier-text-val">Custom 1-on-1</span></td></tr>
+                        <tr><td>Mobile App Workout Tracker</td><td class="col-tier"><i class="fa-solid fa-check icon-check"></i></td><td class="col-tier highlight-pro"><i class="fa-solid fa-check icon-check"></i></td><td class="col-tier"><i class="fa-solid fa-check icon-check"></i></td></tr>
+                        <tr class="category-header-row"><td colspan="4"><i class="fa-solid fa-gift"></i> Privileges and Discounts</td></tr>
+                        <tr><td>Monthly Guest Passes</td><td class="col-tier"><i class="fa-solid fa-xmark icon-cross"></i></td><td class="col-tier highlight-pro">1 Pass/mo</td><td class="col-tier"><span class="tier-text-val">Unlimited</span></td></tr>
+                        <tr><td>Hanuman Gym Store Discount</td><td class="col-tier"><i class="fa-solid fa-xmark icon-cross"></i></td><td class="col-tier highlight-pro">5% OFF</td><td class="col-tier"><span class="tier-text-val" style="color:var(--mem-gold);">15% OFF</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <!-- FIX #4: COACH PROFILES -->
+        <section class="coaches-section">
+            <div class="section-header-centered"><h2>Meet Your <span>Coaches</span></h2><p>Elite certified trainers passionate about your transformation.</p></div>
+            <div class="coaches-grid">
+                <div class="coach-card"><div class="coach-avatar"><i class="fa-solid fa-person-running"></i></div><div class="coach-body"><div class="coach-name">Rajan Patil</div><div class="coach-role">Head Strength Coach</div><div class="coach-exp">8 years — NSCA Certified</div><div class="coach-tags"><span class="coach-tag">Powerlifting</span><span class="coach-tag">Hypertrophy</span></div></div></div>
+                <div class="coach-card"><div class="coach-avatar"><i class="fa-solid fa-dumbbell"></i></div><div class="coach-body"><div class="coach-name">Priya Sharma</div><div class="coach-role">HIIT and Yoga Specialist</div><div class="coach-exp">6 years — ACE Certified</div><div class="coach-tags"><span class="coach-tag">HIIT</span><span class="coach-tag">Flexibility</span></div></div></div>
+                <div class="coach-card"><div class="coach-avatar"><i class="fa-solid fa-bolt"></i></div><div class="coach-body"><div class="coach-name">Ankit Desai</div><div class="coach-role">Sports Performance Trainer</div><div class="coach-exp">5 years — CSCS Certified</div><div class="coach-tags"><span class="coach-tag">Olympic Lifting</span><span class="coach-tag">Speed</span></div></div></div>
+                <div class="coach-card"><div class="coach-avatar"><i class="fa-solid fa-apple-whole"></i></div><div class="coach-body"><div class="coach-name">Dr. Sneha Rao</div><div class="coach-role">Nutrition and Wellness Coach</div><div class="coach-exp">10 years — RD Certified</div><div class="coach-tags"><span class="coach-tag">Macro Planning</span><span class="coach-tag">Fat Loss</span></div></div></div>
+            </div>
+        </section>
+
+        <!-- BUDDY AND CORPORATE -->
+        <section class="duo-corp-grid">
+            <div class="duo-card">
+                <span class="short-pass-badge" style="display:inline-block;background:rgba(179, 221, 36,.1);color:var(--mem-gold);padding:4px 10px;border-radius:12px;font-size:11px;font-weight:800;font-family:var(--mem-font-heading);text-transform:uppercase;margin-bottom:12px;"><i class="fa-solid fa-user-group"></i> Train Together</span>
+                <h3>Buddy and <span>Couple Pass</span></h3>
+                <p>Sign up with a workout partner and receive an instant <strong>15% discount</strong> on both monthly or annual memberships.</p>
+                <div style="font-family:var(--mem-font-heading);font-size:24px;font-weight:800;color:var(--mem-gold);margin-bottom:16px;">Rs.7,650 <span style="font-size:13px;color:var(--mem-text-muted);">/ month for 2 (Pro Tier)</span></div>
+                <button class="plan-cta-btn" onclick="openEnrollmentModal('Buddy/Couple Pass',7650,73440)">Claim Buddy 15% Discount</button>
+                <!-- FIX #15: REFERRAL CTA -->
+                <div class="referral-cta-strip">
+                    <div class="ref-text"><i class="fa-solid fa-share-nodes" style="color:var(--mem-gold);"></i> <strong>Refer and Earn:</strong> Friend joins — You get <strong>Rs.500 wallet credit</strong></div>
+                    <button class="btn-referral" onclick="copyReferralLink()"><i class="fa-solid fa-copy"></i> Copy My Link</button>
+                </div>
+            </div>
+            <div class="corp-card">
+                <span class="short-pass-badge" style="display:inline-block;background:rgba(255,255,255,.08);color:#FFF;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:800;font-family:var(--mem-font-heading);text-transform:uppercase;margin-bottom:12px;"><i class="fa-solid fa-building"></i> Enterprise</span>
+                <h3>Corporate <span>Wellness</span></h3>
+                <p>Custom wellness blueprints and group memberships for corporate teams of 5 to 500+ employees.</p>
+                <form id="corporateInquiryForm" onsubmit="handleCorporateInquirySubmit(event)" style="display:flex;flex-direction:column;gap:10px;">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                        <input type="text" id="corpCompany" placeholder="Company Name" required class="form-input-modal" style="height:38px;">
+                        <input type="number" id="corpEmployees" placeholder="Team Size" required class="form-input-modal" style="height:38px;">
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                        <input type="text" id="corpContactName" placeholder="HR / Lead Name" required class="form-input-modal" style="height:38px;">
+                        <input type="tel" id="corpPhone" placeholder="Work Phone" required class="form-input-modal" style="height:38px;">
+                    </div>
+                    <button type="submit" id="btnCorpSubmit" class="btn-addon-book" style="background:var(--mem-gold);color:#000;border:none;height:40px;font-weight:800;">Request Corporate Proposal</button>
+                    <div id="corpFeedback" style="font-size:12px;color:#22c55e;display:none;"><i class="fa-solid fa-circle-check"></i> Proposal received! Our coordinator will reach out in 2 business hours.</div>
+                </form>
+            </div>
+        </section>
+
+        <!-- TRIAL BANNER -->
+        <section class="trial-fallback-banner">
+            <div class="trial-fallback-text">
+                <div class="short-pass-badge" style="display:inline-block;background:rgba(179, 221, 36,.1);color:var(--mem-gold);padding:4px 10px;border-radius:12px;font-size:11px;font-weight:800;font-family:var(--mem-font-heading);text-transform:uppercase;margin-bottom:12px;"><i class="fa-solid fa-gift"></i> Zero Risk Trial</div>
+                <h3>Not Ready? <span>Test Drive Hanuman Gym</span></h3>
+                <p>Experience our Olympic lifting zone, cardio theater, and Finnish sauna with a 100% free 1-day pass.</p>
+            </div>
+            <button class="btn-trial-action" onclick="openFreeTrialModal()"><i class="fa-solid fa-calendar-check"></i> Claim Free 1-Day Pass</button>
+        </section>
+
+        <!-- REASSURANCE -->
+        <section class="reassurance-strip">
+            <div class="reassurance-box"><i class="fa-solid fa-shield-check reassurance-icon"></i><div class="reassurance-text"><h4>No Long-Term Lock-In</h4><p>Cancel or pause anytime with 1-click</p></div></div>
+            <div class="reassurance-box"><i class="fa-solid fa-rotate-left reassurance-icon"></i><div class="reassurance-text"><h4>7-Day Guarantee</h4><p>Full refund if not 100% satisfied</p></div></div>
+            <div class="reassurance-box"><i class="fa-solid fa-lock reassurance-icon"></i><div class="reassurance-text"><h4>256-Bit SSL Encrypted</h4><p>Bank-grade secure transaction</p></div></div>
+        </section>
+
+        <!-- FIX #5: TESTIMONIALS -->
+        <section class="testimonials-section">
+            <div class="section-header-centered"><h2>Real <span>Member Results</span></h2><p>Authentic transformations from our Hanuman Gym community across all tiers.</p></div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="testimonial-text">"Lost 14 kg in 4 months with Elite Tier. Coach Rajan's custom nutrition plan plus 4 PT sessions per month made all the difference. Best investment I have ever made."</p>
+                    <div class="testimonial-member"><div class="testimonial-avatar">&#x1F4AA;</div><div class="testimonial-info"><div class="testimonial-name">Vikram Mehta</div><div class="testimonial-meta">Elite Tier — Dadar Branch — 5 months</div></div><span class="testimonial-result-tag">-14 kg</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="testimonial-text">"The Pro Athlete plan is incredible value. Unlimited yoga and HIIT classes, sauna recovery, and the mobile tracker. Going 6 days a week now. Totally worth Rs.4,500."</p>
+                    <div class="testimonial-member"><div class="testimonial-avatar">&#x1F3C3;</div><div class="testimonial-info"><div class="testimonial-name">Neha Kulkarni</div><div class="testimonial-meta">Pro Athlete — Thane Branch — 8 months</div></div><span class="testimonial-result-tag">+8 kg muscle</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="testimonial-text">"Started with Basic as a beginner and upgraded to Pro after 2 months. Facilities are world-class and the staff genuinely care about your progress."</p>
+                    <div class="testimonial-member"><div class="testimonial-avatar">&#x1F525;</div><div class="testimonial-info"><div class="testimonial-name">Aakash Sharma</div><div class="testimonial-meta">Basic to Pro — Ambernath — 3 months</div></div><span class="testimonial-result-tag">-8 kg fat</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="section-header-centered"><h2>Frequently Asked <span>Questions</span></h2><p>Common questions about membership tiers, facilities, and billing policies.</p></div>
+            <div class="faq-accordion">
+                <div class="faq-item active"><div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="true"><h3>Can I freeze or pause my membership if I travel?</h3><i class="fa-solid fa-chevron-down faq-chevron"></i></div><div class="faq-answer"><p>Yes! Pro Athlete and Elite Tier members can freeze their membership for up to 60 days per year at zero extra charge through the My Space dashboard or front desk.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false"><h3>Are there any hidden joining or registration fees?</h3><i class="fa-solid fa-chevron-down faq-chevron"></i></div><div class="faq-answer"><p>Zero hidden fees. What you see on this page is the total price. Your membership includes all listed facility access, locker rooms, and mobile tracking apps.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false"><h3>How do the 1-on-1 personal trainer sessions work?</h3><i class="fa-solid fa-chevron-down faq-chevron"></i></div><div class="faq-answer"><p>Elite Tier members receive 4 dedicated personal training sessions every month. You can choose any master coach and book private 60-minute slots directly online.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false"><h3>Can I upgrade or downgrade my tier at any time?</h3><i class="fa-solid fa-chevron-down faq-chevron"></i></div><div class="faq-answer"><p>Yes, tier changes can be requested at any point during your billing cycle. Upgrades take effect immediately with pro-rated billing.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false"><h3>What is your cancellation and refund policy?</h3><i class="fa-solid fa-chevron-down faq-chevron"></i></div><div class="faq-answer"><p>All new memberships come with a 7-day money-back guarantee. For month-to-month plans, cancel whenever you wish prior to your next billing renewal.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false"><h3>How does the Refer and Earn program work?</h3><i class="fa-solid fa-chevron-down faq-chevron"></i></div><div class="faq-answer"><p>Every active member gets a unique referral link. When a friend joins any paid plan using your link, you receive Rs.500 wallet credit automatically applied to your next billing cycle.</p></div></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../shared/site-footer.js" defer></script>
+
+    <!-- FIX #13: BACK TO TOP -->
+    <button class="back-to-top-btn" id="backToTopBtn" onclick="scrollToTop()" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+    <!-- FIX #19: MOBILE STICKY CTA -->
+    <div class="mobile-sticky-cta" id="mobileStickyCta">
+        <div class="sticky-cta-text"><div class="sticky-plan">Pro Athlete</div><div class="sticky-price" id="stickyPriceLabel">Rs.4,500 / month — Most Popular</div></div>
+        <button class="sticky-cta-btn" onclick="openEnrollmentModal('Pro Athlete',4500,43200)"><i class="fa-solid fa-bolt"></i> Join Now</button>
+    </div>
+    <!-- FIX #11: ENROLLMENT MODAL (aria + FIX #17 wizard + FIX #12 T&C) -->
+    <div class="modal-overlay" id="enrollmentModal" onclick="handleModalOverlayClick(event)" role="dialog" aria-modal="true" aria-labelledby="enrollModalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="enrollModalTitle">Join: <span id="modalPlanTitle">Pro Athlete</span></h3>
+                <button class="modal-close-btn" onclick="closeEnrollmentModal()" aria-label="Close enrollment modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <!-- FIX #17: STEP WIZARD BAR -->
+                <div class="step-wizard-bar" id="wizardProgressBar">
+                    <div class="step-item active" id="step-indicator-1"><div class="step-circle">1</div><div class="step-label">Your Info</div></div>
+                    <div class="step-item" id="step-indicator-2"><div class="step-circle">2</div><div class="step-label">Payment</div></div>
+                    <div class="step-item" id="step-indicator-3"><div class="step-circle">3</div><div class="step-label">Confirm</div></div>
+                </div>
+                <form id="membershipEnrollmentForm" onsubmit="handleEnrollmentSubmit(event)" novalidate>
+                    <!-- STEP 1: INFO -->
+                    <div class="wizard-step active" id="wizardStep1">
+                        <div class="modal-form-grid">
+                            <!-- FIX #3: VALIDATION fields -->
+                            <div class="form-group-modal">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" class="form-input-modal" placeholder="John Doe" required autocomplete="name">
+                                <div class="field-error-msg" id="err-fullName">Please enter your full name.</div>
+                            </div>
+                            <div class="form-group-modal">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" class="form-input-modal" placeholder="+91 98765 43210" required autocomplete="tel">
+                                <div class="field-error-msg" id="err-phone">Enter a valid 10-digit Indian mobile number.</div>
+                            </div>
+                        </div>
+                        <div class="form-group-modal">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input-modal" placeholder="athlete@example.com" required autocomplete="email">
+                            <div class="field-error-msg" id="err-email">Please enter a valid email address.</div>
+                        </div>
+                        <div class="form-group-modal">
+                            <label for="enrollBranch">Select Branch *</label>
+                            <select id="enrollBranch" class="form-input-modal" style="background:#050505;color:#FFF;" required>
+                                <option value="">-- Choose a branch --</option>
+                                <option value="Ambernath">Ambernath Main Branch</option>
+                                <option value="Dadar">Dadar Olympic Zone</option>
+                                <option value="Thane">Thane Performance Lab</option>
+                                <option value="Kalyan">Kalyan Strength Hub</option>
+                                <option value="Karjat">Karjat Athletic Arena</option>
+                            </select>
+                            <div class="field-error-msg" id="err-branch">Please select a branch.</div>
+                        </div>
+                        <div class="wizard-nav-btns">
+                            <button type="button" class="btn-wizard-next" onclick="goToStep(2)" style="flex:1;">Next: Payment <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <!-- STEP 2: PAYMENT -->
+                    <div class="wizard-step" id="wizardStep2">
+                        <label style="display:block;font-family:var(--mem-font-heading);font-size:11.5px;font-weight:700;text-transform:uppercase;color:var(--mem-text-secondary);margin-bottom:6px;">Have a Promo Code?</label>
+                        <!-- FIX #20: PROMO CODES (demo fallback; note: validate server-side in production) -->
+                        <div class="modal-promo-wrap">
+                            <input type="text" id="modalPromoCode" class="modal-promo-input" placeholder="e.g. HANUMAN10 or FESTIVE20">
+                            <button type="button" class="btn-apply-promo" onclick="applyPromoCode()">Apply</button>
+                        </div>
+                        <div class="promo-success-tag" id="promoSuccessTag"><i class="fa-solid fa-circle-check"></i> <span id="promoSuccessText">Promo applied!</span></div>
+                        <label style="display:block;font-family:var(--mem-font-heading);font-size:11.5px;font-weight:700;text-transform:uppercase;color:var(--mem-text-secondary);margin:10px 0 6px;">Select Payment Method</label>
+                        <div class="modal-payment-tabs">
+                            <div class="modal-tab-pill active" id="tabCard" onclick="selectModalPayment('card')"><i class="fa-solid fa-credit-card"></i> Card (Visa / MC)</div>
+                            <div class="modal-tab-pill" id="tabUpi" onclick="selectModalPayment('upi')"><i class="fa-solid fa-mobile-screen-button"></i> UPI Instant Pay</div>
+                        </div>
+                        <div class="modal-summary-box">
+                            <div>
+                                <div class="modal-summary-label">Selected Tier</div>
+                                <strong id="modalSummaryPlan" style="font-family:var(--mem-font-heading);color:#FFF;">Pro Athlete (Monthly)</strong>
+                                <div id="discountNote" style="font-size:11px;color:#22c55e;display:none;"></div>
+                            </div>
+                            <div class="modal-summary-amount" id="modalSummaryTotal">Rs.4,500</div>
+                        </div>
+                        <div class="wizard-nav-btns">
+                            <button type="button" class="btn-wizard-back" onclick="goToStep(1)"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn-wizard-next" onclick="goToStep(3)">Review Order <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <!-- STEP 3: CONFIRM + FIX #12 T&C -->
+                    <div class="wizard-step" id="wizardStep3">
+                        <div class="modal-summary-box" style="flex-direction:column;align-items:flex-start;gap:8px;">
+                            <div style="width:100%;display:flex;justify-content:space-between;"><div class="modal-summary-label">Plan</div><strong id="confirmPlanName" style="font-family:var(--mem-font-heading);color:#FFF;font-size:13px;">Pro Athlete</strong></div>
+                            <div style="width:100%;display:flex;justify-content:space-between;"><div class="modal-summary-label">Member Name</div><strong id="confirmMemberName" style="font-family:var(--mem-font-heading);color:#FFF;font-size:13px;">--</strong></div>
+                            <div style="width:100%;display:flex;justify-content:space-between;"><div class="modal-summary-label">Branch</div><strong id="confirmBranch" style="font-family:var(--mem-font-heading);color:#FFF;font-size:13px;">--</strong></div>
+                            <div style="width:100%;display:flex;justify-content:space-between;border-top:1px solid var(--mem-border-subtle);padding-top:8px;margin-top:4px;"><div class="modal-summary-label">Total Due</div><div class="modal-summary-amount" id="confirmTotal">Rs.4,500</div></div>
+                        </div>
+                        <!-- FIX #12: T&C CONSENT with DPDP Act 2023 -->
+                        <div class="terms-consent-wrap">
+                            <input type="checkbox" id="termsConsent" name="termsConsent">
+                            <label for="termsConsent">I agree to the <a href="#" onclick="return false;">Terms of Service</a> and <a href="#" onclick="return false;">Privacy Policy</a>. I consent to Hanuman Gym processing my personal data as per India's DPDP Act 2023.</label>
+                        </div>
+                        <div class="field-error-msg" id="err-terms">You must agree to the Terms of Service to proceed.</div>
+                        <div class="wizard-nav-btns">
+                            <button type="button" class="btn-wizard-back" onclick="goToStep(2)"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        </div>
+                        <!-- FIX #1: RAZORPAY SUBMIT -->
+                        <button type="submit" class="modal-submit-btn" id="enrollSubmitBtn" style="margin-top:12px;"><i class="fa-solid fa-lock"></i> Pay and Activate Membership</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FREE TRIAL MODAL -->
+    <div class="modal-overlay" id="freeTrialModal" onclick="handleTrialModalOverlayClick(event)" role="dialog" aria-modal="true" aria-label="Free Trial Pass">
+        <div class="modal-content" style="max-width:520px;">
+            <div class="modal-header"><h3>Claim <span>Free 1-Day VIP Pass</span></h3><button class="modal-close-btn" onclick="closeFreeTrialModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+            <div class="modal-body">
+                <p style="font-size:13px;color:var(--mem-text-secondary);margin-bottom:16px;">Enjoy 100% free access to all strength zones, cardio theater, and sauna recovery.</p>
+                <form id="freeTrialForm" onsubmit="handleFreeTrialSubmit(event)">
+                    <div class="form-group-modal"><label for="trialName">Full Name</label><input type="text" id="trialName" class="form-input-modal" placeholder="Rahul Sharma" required></div>
+                    <div class="form-group-modal"><label for="trialPhone">Phone Number</label><input type="tel" id="trialPhone" class="form-input-modal" placeholder="+91 98765 43210" required></div>
+                    <div class="form-group-modal"><label for="trialEmail">Email Address</label><input type="email" id="trialEmail" class="form-input-modal" placeholder="rahul@example.com" required></div>
+                    <div class="form-group-modal"><label for="trialLocation">Preferred Branch</label>
+                        <select id="trialLocation" class="form-input-modal" style="background:#050505;color:#FFF;">
+                            <option value="Ambernath">Ambernath Main Branch</option>
+                            <option value="Dadar">Dadar Olympic Zone</option>
+                            <option value="Thane">Thane Performance Lab</option>
+                            <option value="Kalyan">Kalyan Strength Hub</option>
+                            <option value="Karjat">Karjat Athletic Arena</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="btnTrialSubmit" class="modal-submit-btn" style="margin-top:10px;"><i class="fa-solid fa-ticket"></i> Activate Free 1-Day Pass</button>
+                    <div id="trialSuccessMsg" style="font-size:13px;color:#22c55e;margin-top:12px;display:none;text-align:center;"><i class="fa-solid fa-circle-check"></i> VIP Pass generated! Show your confirmation at the front desk.</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIX #16: SUCCESS OVERLAY (CSS bug fixed, properly closed) -->
+    <div class="success-overlay" id="successOverlay" role="dialog" aria-modal="true" aria-label="Membership Activated">
+        <div class="success-card">
+            <div class="success-icon-badge"><i class="fa-solid fa-check"></i></div>
+            <h2 style="font-family:var(--mem-font-heading);font-weight:800;font-size:24px;text-transform:uppercase;color:#FFF;margin-bottom:8px;">Welcome to Hanuman Gym!</h2>
+            <p style="font-size:14px;color:var(--mem-text-secondary);margin-bottom:4px;" id="successPlanText">Your membership pass is now active.</p>
+            <!-- FIX #6: EXPIRY DATE -->
+            <div class="membership-expiry-box">
+                <i class="fa-solid fa-calendar-days" style="color:var(--mem-gold);"></i>
+                <div><div class="expiry-label">Membership Period</div><div class="expiry-dates" id="successExpiryDates">--</div></div>
+            </div>
+            <button class="plan-cta-btn" style="background:var(--mem-gold);border-color:var(--mem-gold);color:#000;" onclick="window.location.href='../login_register/dashboard.html'"><i class="fa-solid fa-gauge-high"></i> Go to My Space</button>
+        </div>
+    </div>
+    <script>
+        // ===== STATE =====
+        let currentCycle='monthly', currentDiscountMultiplier=1.0, appliedPromoCode=null, currentWizardStep=1, selectedPaymentMethod='card';
+        let currentSelectedPlan={name:'Pro Athlete',monthlyPrice:4500,annualPrice:43200};
+        const branchPeakHours={ambernath:'6-9 AM & 6-9 PM',dadar:'5-8 AM & 5-9 PM',thane:'6-10 AM & 6-10 PM',kalyan:'6-9 AM & 5-8 PM',karjat:'7-10 AM & 4-7 PM'};
+
+        // FIX #8: COUNTDOWN TIMER
+        function initCountdown(){
+            const deadline=new Date();
+            deadline.setDate(deadline.getDate()+2);
+            deadline.setHours(deadline.getHours()+14);
+            deadline.setMinutes(deadline.getMinutes()+32);
+            function tick(){
+                const diff=deadline-new Date();
+                if(diff<=0){document.getElementById('countdownBanner').style.display='none';return;}
+                const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+                document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+                document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+                document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
+                document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
+            }
+            tick();setInterval(tick,1000);
+        }
+
+        // FIX #9: BRANCH SELECTOR
+        function handleBranchChange(val){
+            document.getElementById('branchPeakInfo').innerHTML='Peak Hours: <strong>'+(branchPeakHours[val]||'6-9 AM & 6-9 PM')+'</strong>';
+            const eb=document.getElementById('enrollBranch');if(!eb)return;
+            const map={ambernath:'Ambernath',dadar:'Dadar',thane:'Thane',kalyan:'Kalyan',karjat:'Karjat'};
+            for(let i=0;i<eb.options.length;i++){if(eb.options[i].value===map[val]){eb.selectedIndex=i;break;}}
+        }
+
+        // BILLING CYCLE TOGGLE
+        function setBillingCycle(cycle){
+            currentCycle=cycle;
+            const ts=document.getElementById('toggleSwitch'),lm=document.getElementById('labelMonthly'),la=document.getElementById('labelAnnual');
+            if(cycle==='annual'){
+                ts.classList.add('annual');ts.setAttribute('aria-checked','true');
+                la.classList.add('active');lm.classList.remove('active');
+                document.getElementById('priceBasic').textContent='19,200';document.getElementById('periodBasic').textContent='/ year';
+                document.getElementById('pricePro').textContent='43,200';document.getElementById('periodPro').textContent='/ year';
+                document.getElementById('priceElite').textContent='72,000';document.getElementById('periodElite').textContent='/ year';
+                showSavings(true);
+                document.getElementById('stickyPriceLabel').textContent='Rs.43,200 / year — Save Rs.10,800';
+            }else{
+                ts.classList.remove('annual');ts.setAttribute('aria-checked','false');
+                lm.classList.add('active');la.classList.remove('active');
+                document.getElementById('priceBasic').textContent='2,000';document.getElementById('periodBasic').textContent='/ month';
+                document.getElementById('pricePro').textContent='4,500';document.getElementById('periodPro').textContent='/ month';
+                document.getElementById('priceElite').textContent='7,500';document.getElementById('periodElite').textContent='/ month';
+                showSavings(false);
+                document.getElementById('stickyPriceLabel').textContent='Rs.4,500 / month — Most Popular';
+            }
+            calculateCostPerSession(document.getElementById('workoutFrequencySlider')?.value||4);
+            updateModalSummaryPrice();
+        }
+        function toggleBillingCycle(){setBillingCycle(currentCycle==='monthly'?'annual':'monthly');}
+
+        // FIX #7: SAVINGS CALLOUT
+        function showSavings(show){
+            const data={Basic:[24000,4800],Pro:[54000,10800],Elite:[90000,18000]};
+            ['Basic','Pro','Elite'].forEach(t=>{
+                const row=document.getElementById('strike'+t);if(!row)return;
+                if(show){row.classList.add('visible');document.getElementById('strike'+t+'Amt').textContent='Rs.'+data[t][0].toLocaleString('en-IN');document.getElementById('save'+t+'Amt').textContent='Save Rs.'+data[t][1].toLocaleString('en-IN');}
+                else{row.classList.remove('visible');}
+            });
+        }
+
+        // ROI CALCULATOR
+        function calculateCostPerSession(d){
+            d=parseInt(d)||4;const ms=Math.max(4,d*4);
+            document.getElementById('workoutDaysDisplay').textContent=d;
+            document.getElementById('monthlySessionsDisplay').textContent=ms;
+            const be=currentCycle==='annual'?19200/12:2000,pe=currentCycle==='annual'?43200/12:4500,ee=currentCycle==='annual'?72000/12:7500;
+            document.getElementById('roiBasicCost').textContent='Rs.'+Math.round(be/ms);
+            document.getElementById('roiProCost').textContent='Rs.'+Math.round(pe/ms);
+            document.getElementById('roiEliteCost').textContent='Rs.'+Math.round(ee/ms);
+        }
+
+        // FAQ
+        function toggleFaq(el){
+            const item=el.closest('.faq-item'),isActive=item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');i.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false');});
+            if(!isActive){item.classList.add('active');el.setAttribute('aria-expanded','true');}
+        }
+
+        // FIX #17: STEP WIZARD NAVIGATION
+        function goToStep(step){
+            if(step===2&&currentWizardStep===1&&!validateStep1())return;
+            if(step===3&&currentWizardStep===2){
+                document.getElementById('confirmPlanName').textContent=document.getElementById('modalSummaryPlan').textContent;
+                document.getElementById('confirmMemberName').textContent=document.getElementById('fullName').value;
+                document.getElementById('confirmBranch').textContent=document.getElementById('enrollBranch').value||'--';
+                document.getElementById('confirmTotal').textContent=document.getElementById('modalSummaryTotal').textContent;
+            }
+            document.querySelectorAll('.wizard-step').forEach(s=>s.classList.remove('active'));
+            document.getElementById('wizardStep'+step).classList.add('active');
+            ['1','2','3'].forEach(n=>{
+                const ind=document.getElementById('step-indicator-'+n);ind.classList.remove('active','completed');
+                if(parseInt(n)<step)ind.classList.add('completed');
+                if(parseInt(n)===step)ind.classList.add('active');
+            });
+            currentWizardStep=step;
+            const mc=document.querySelector('.modal-content');if(mc)mc.scrollTop=0;
+        }
+
+        // FIX #3: FORM VALIDATION
+        function validateStep1(){
+            let valid=true;
+            const name=document.getElementById('fullName').value.trim(),phone=document.getElementById('phone').value.trim(),email=document.getElementById('email').value.trim(),branch=document.getElementById('enrollBranch').value;
+            if(!name||name.length<2){setErr('fullName','err-fullName',true);valid=false;}else{setErr('fullName','err-fullName',false);}
+            if(!/^(\+91[\s-]?)?[6-9]\d{9}$/.test(phone.replace(/\s/g,''))){setErr('phone','err-phone',true);valid=false;}else{setErr('phone','err-phone',false);}
+            if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){setErr('email','err-email',true);valid=false;}else{setErr('email','err-email',false);}
+            if(!branch){setErr('enrollBranch','err-branch',true);valid=false;}else{setErr('enrollBranch','err-branch',false);}
+            return valid;
+        }
+        function setErr(inputId,errId,show){
+            const input=document.getElementById(inputId),err=document.getElementById(errId);if(!input||!err)return;
+            if(show){input.classList.add('input-error');input.classList.remove('input-valid');err.classList.add('visible');}
+            else{input.classList.remove('input-error');input.classList.add('input-valid');err.classList.remove('visible');}
+        }
+
+        // FIX #2: ENROLLMENT MODAL
+        function openEnrollmentModal(name,monthly,annual){
+            // Note: In production, check GymCloudStore.getCurrentUser() here for auth gate
+            currentSelectedPlan={name,monthlyPrice:monthly,annualPrice:annual};
+            currentDiscountMultiplier=1.0;appliedPromoCode=null;
+            goToStep(1);
+            document.getElementById('membershipEnrollmentForm').reset();
+            document.querySelectorAll('.form-input-modal').forEach(el=>el.classList.remove('input-error','input-valid'));
+            document.querySelectorAll('.field-error-msg').forEach(el=>el.classList.remove('visible'));
+            const pt=document.getElementById('promoSuccessTag');if(pt)pt.style.display='none';
+            const dn=document.getElementById('discountNote');if(dn)dn.style.display='none';
+            handleBranchChange(document.getElementById('branchSelect')?.value||'ambernath');
+            updateModalSummaryPrice();
+            document.getElementById('enrollmentModal').style.display='flex';document.body.style.overflow='hidden';
+            setTimeout(()=>{const f=document.getElementById('enrollmentModal').querySelector('input,select');if(f)f.focus();},350);
+        }
+        function updateModalSummaryPrice(){
+            const base=currentCycle==='annual'?currentSelectedPlan.annualPrice:currentSelectedPlan.monthlyPrice;
+            const final=Math.round(base*currentDiscountMultiplier),cycle=currentCycle==='annual'?'Annual':'Monthly';
+            document.getElementById('modalPlanTitle').textContent=currentSelectedPlan.name;
+            document.getElementById('modalSummaryPlan').textContent=currentSelectedPlan.name+' ('+cycle+')';
+            document.getElementById('modalSummaryTotal').textContent='Rs.'+final.toLocaleString('en-IN');
+        }
+        function closeEnrollmentModal(){document.getElementById('enrollmentModal').style.display='none';document.body.style.overflow='';}
+        function handleModalOverlayClick(e){if(e.target.id==='enrollmentModal')closeEnrollmentModal();}
+
+        // FIX #20: PROMO CODES (demo fallback; validate server-side in production)
+        function applyPromoCode(){
+            const code=document.getElementById('modalPromoCode').value.trim().toUpperCase();
+            const tag=document.getElementById('promoSuccessTag'),text=document.getElementById('promoSuccessText'),note=document.getElementById('discountNote');
+            if(!code)return;
+            const DEMO_CODES={HANUMAN10:10,FESTIVE20:20,FIRSTMONTH:15};
+            if(DEMO_CODES[code]!==undefined){
+                const pct=DEMO_CODES[code];currentDiscountMultiplier=1-pct/100;appliedPromoCode=code;
+                tag.style.display='block';tag.style.color='#22c55e';text.textContent='Coupon applied: '+pct+'% instant discount!';
+                note.style.display='block';note.textContent=pct+'% Discount Applied';
+            }else{
+                tag.style.display='block';tag.style.color='#ef4444';text.textContent='Invalid code. Try HANUMAN10';
+                currentDiscountMultiplier=1.0;appliedPromoCode=null;note.style.display='none';
+            }
+            updateModalSummaryPrice();
+        }
+
+        function selectModalPayment(m){
+            selectedPaymentMethod=m;
+            const tc=document.getElementById('tabCard'),tu=document.getElementById('tabUpi');
+            if(m==='card'){tc.classList.add('active');tu.classList.remove('active');}
+            else{tu.classList.add('active');tc.classList.remove('active');}
+        }
+
+        // FIX #1: RAZORPAY INTEGRATION + FIX #6: EXPIRY DATE
+        async function handleEnrollmentSubmit(e){
+            e.preventDefault();
+            const terms=document.getElementById('termsConsent');
+            if(!terms.checked){document.getElementById('err-terms').classList.add('visible');return;}
+            document.getElementById('err-terms').classList.remove('visible');
+            const btn=document.getElementById('enrollSubmitBtn');btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+            const base=currentCycle==='annual'?currentSelectedPlan.annualPrice:currentSelectedPlan.monthlyPrice;
+            const eff=Math.round(base*currentDiscountMultiplier);
+            const name=document.getElementById('fullName').value.trim(),email=document.getElementById('email').value.trim(),phone=document.getElementById('phone').value.trim(),branch=document.getElementById('enrollBranch').value;
+            const opts={
+                key:'rzp_test_YourTestKeyHere',amount:eff*100,currency:'INR',
+                name:'Hanuman Gym',description:currentSelectedPlan.name+' ('+currentCycle+')',
+                prefill:{name,email,contact:phone},theme:{color:'#B3DD24'},
+                handler:function(r){finalizeMembership(eff,name,email,phone,branch,r.razorpay_payment_id);},
+                modal:{ondismiss:function(){btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-lock"></i> Pay and Activate Membership';}}
+            };
+            try{
+                if(typeof Razorpay!=='undefined'){const rzp=new Razorpay(opts);rzp.open();}
+                else{await new Promise(r=>setTimeout(r,1200));finalizeMembership(eff,name,email,phone,branch,'demo_'+Date.now());}
+            }catch(err){await new Promise(r=>setTimeout(r,1200));finalizeMembership(eff,name,email,phone,branch,'demo_'+Date.now());}
+        }
+
+        async function finalizeMembership(eff,name,email,phone,branch,payId){
+            const btn=document.getElementById('enrollSubmitBtn');
+            if(window.GymCloudStore)GymCloudStore.recordTrainerSubscription({id:'sub_'+Date.now(),customerName:name,customerEmail:email,customerPhone:phone,planName:currentSelectedPlan.name+' ('+currentCycle+')',amount:eff,paymentId:payId,branch:branch,createdAt:new Date().toISOString()});
+            try{if(window.GymApiClient)await GymApiClient.savePurchase({item_name:'Membership: '+currentSelectedPlan.name+' ('+currentCycle+')',item_price:eff,purchase_date:new Date().toISOString().split('T')[0]});}catch(e){console.warn(e);}
+            btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-lock"></i> Pay and Activate Membership';
+            closeEnrollmentModal();
+            // FIX #6: Calculate and display expiry
+            const start=new Date(),expiry=new Date(start);
+            if(currentCycle==='annual')expiry.setFullYear(expiry.getFullYear()+1);else expiry.setMonth(expiry.getMonth()+1);
+            const fmt=d=>d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+            document.getElementById('successExpiryDates').textContent=fmt(start)+' — '+fmt(expiry);
+            document.getElementById('successPlanText').textContent=currentSelectedPlan.name+' plan is now active at '+branch+'.';
+            document.getElementById('successOverlay').style.display='flex';
+        }
+
+        // TRIAL MODAL
+        function openFreeTrialModal(){document.getElementById('freeTrialModal').style.display='flex';document.body.style.overflow='hidden';}
+        function closeFreeTrialModal(){document.getElementById('freeTrialModal').style.display='none';document.body.style.overflow='';}
+        function handleTrialModalOverlayClick(e){if(e.target.id==='freeTrialModal')closeFreeTrialModal();}
+        async function handleFreeTrialSubmit(e){
+            e.preventDefault();const btn=document.getElementById('btnTrialSubmit');btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
+            try{if(window.GymApiClient)await GymApiClient.createInquiry({name:document.getElementById('trialName').value.trim(),phone:document.getElementById('trialPhone').value.trim(),email:document.getElementById('trialEmail').value.trim(),location:document.getElementById('trialLocation').value,inquiry_type:'trial_pass',message:'[1-Day Trial] Branch: '+document.getElementById('trialLocation').value});}catch(err){console.warn(err);}
+            btn.style.display='none';document.getElementById('trialSuccessMsg').style.display='block';
+            setTimeout(()=>{closeFreeTrialModal();btn.style.display='inline-flex';btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-ticket"></i> Activate Free 1-Day Pass';document.getElementById('trialSuccessMsg').style.display='none';document.getElementById('freeTrialForm').reset();},2500);
+        }
+
+        // CORPORATE
+        async function handleCorporateInquirySubmit(e){
+            e.preventDefault();const btn=document.getElementById('btnCorpSubmit');btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+            try{if(window.GymApiClient)await GymApiClient.createInquiry({name:document.getElementById('corpContactName').value.trim(),phone:document.getElementById('corpPhone').value.trim(),email:'corp@'+document.getElementById('corpCompany').value.toLowerCase().replace(/[^a-z0-9]/g,'')+'.com',location:'Corporate',inquiry_type:'general_inquiry',message:'[Corporate] Company: '+document.getElementById('corpCompany').value+', Size: '+document.getElementById('corpEmployees').value});}catch(ex){console.warn(ex);}
+            document.getElementById('corpFeedback').style.display='block';btn.innerHTML='<i class="fa-solid fa-check"></i> Proposal Requested';btn.style.background='#22c55e';btn.style.color='#FFF';
+        }
+
+        // FIX #15: REFERRAL
+        function copyReferralLink(){
+            const code='HAN-'+Math.random().toString(36).substring(2,8).toUpperCase();
+            const link=window.location.origin+'/PS-miniproject/Memberships/?ref='+code;
+            const btn=event.target.closest('button'),orig=btn.innerHTML;
+            navigator.clipboard.writeText(link).then(()=>{btn.innerHTML='<i class="fa-solid fa-check"></i> Copied!';btn.style.background='var(--mem-gold)';btn.style.color='#000';setTimeout(()=>{btn.innerHTML=orig;btn.style.background='';btn.style.color='';},2000);}).catch(()=>alert('Referral link: '+link));
+        }
+
+        // FIX #13: BACK TO TOP
+        function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+        function initBackToTop(){
+            const btn=document.getElementById('backToTopBtn');
+            window.addEventListener('scroll',()=>{if(window.scrollY>400)btn.classList.add('visible');else btn.classList.remove('visible');},{passive:true});
+        }
+
+        // FIX #19: MOBILE STICKY CTA
+        function initMobileStickyCta(){
+            const cta=document.getElementById('mobileStickyCta'),pg=document.querySelector('.pricing-cards-grid');
+            if(!cta||!pg)return;
+            window.addEventListener('scroll',()=>{if(pg.getBoundingClientRect().bottom<0)cta.classList.add('visible');else cta.classList.remove('visible');},{passive:true});
+        }
+
+        // FIX #11: KEYBOARD TRAP + ESC KEY
+        document.addEventListener('keydown',e=>{
+            if(e.key==='Escape'){
+                if(document.getElementById('enrollmentModal').style.display==='flex')closeEnrollmentModal();
+                if(document.getElementById('freeTrialModal').style.display==='flex')closeFreeTrialModal();
+            }
+            if(e.key==='Tab'){
+                const active=['enrollmentModal','freeTrialModal'].map(id=>document.getElementById(id)).find(m=>m.style.display==='flex');
+                if(!active)return;
+                const focusable=Array.from(active.querySelectorAll('button:not([disabled]),input,select,[tabindex]:not([tabindex="-1"])')).filter(el=>!el.hidden);
+                const first=focusable[0],last=focusable[focusable.length-1];
+                if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+                else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+            }
+        });
+
+        // INITIALIZE
+        document.addEventListener('DOMContentLoaded',()=>{
+            initCountdown();
+            initBackToTop();
+            initMobileStickyCta();
+            calculateCostPerSession(4);
+        });
+    </script>
+    <script src="../shared/api-client.js"></script>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise & Movement Academy - Hanuman Gym</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="exercise-style.css">
+    <script src="../shared/site-header.js" defer></script>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <main class="exercise-container">
+        <!-- Hero Header with Masters of Iron Typography -->
+        <header class="exercise-hero-banner">
+            <div class="hero-eyebrow">
+                <span class="eyebrow-pulse"></span>
+                <span>Movement &amp; Technique Academy</span>
+            </div>
+            <h1 class="exercise-hero-title">
+                <span class="title-line-1">MASTER PERFECT</span>
+                <span class="title-line-2">LIFTING FORM &amp; BIOMECHANICS</span>
+            </h1>
+            <p class="exercise-hero-desc">
+                Explore our library of 35+ professional exercise demonstrations with slow-motion technique breakdown, step-by-step coaching cues, and injury prevention guides.
+            </p>
+
+            <!-- Trust Stats Strip -->
+            <div class="exercise-trust-strip">
+                <div class="trust-item"><i class="fa-solid fa-play"></i> 35+ HD Demonstrations</div>
+                <div class="trust-item"><i class="fa-solid fa-shield-heart"></i> Injury Prevention Cues</div>
+                <div class="trust-item cyan-highlight"><i class="fa-solid fa-person-running"></i> Biomechanical Form Checks</div>
+                <div class="trust-item"><i class="fa-solid fa-trophy"></i> Elite Lifting Standards</div>
+            </div>
+        </header>
+
+        <!-- Search & Filter Hub -->
+        <section class="exercise-filter-hub">
+            <div class="exercise-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="exercise-search-input" class="exercise-search-input" placeholder="Search by exercise name (e.g. Bench Press, Squat, Deadlift, Bicep Curl, Pull-ups)..." autocomplete="off">
+            </div>
+
+            <!-- Equipment & Difficulty Filters -->
+            <div class="filter-row">
+                <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                    <span class="filter-group-label">Equipment:</span>
+                    <div class="filter-chip-list" id="equipment-filter-chips">
+                        <span class="filter-chip active" data-equipment="all">All Equipment</span>
+                        <span class="filter-chip" data-equipment="Barbell"><i class="fa-solid fa-dumbbell"></i> Barbell</span>
+                        <span class="filter-chip" data-equipment="Dumbbell"><i class="fa-solid fa-weight-hanging"></i> Dumbbell</span>
+                        <span class="filter-chip" data-equipment="Cable"><i class="fa-solid fa-arrows-split-up-and-left"></i> Cables</span>
+                        <span class="filter-chip" data-equipment="Bodyweight"><i class="fa-solid fa-person"></i> Bodyweight</span>
+                        <span class="filter-chip" data-equipment="Machine"><i class="fa-solid fa-gear"></i> Machines</span>
+                    </div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                    <span class="filter-group-label">Level:</span>
+                    <div class="filter-chip-list" id="difficulty-filter-chips">
+                        <span class="filter-chip active" data-difficulty="all">All Levels</span>
+                        <span class="filter-chip" data-difficulty="Beginner">Beginner</span>
+                        <span class="filter-chip" data-difficulty="Intermediate">Intermediate</span>
+                        <span class="filter-chip" data-difficulty="Advanced">Advanced</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anatomy View Switcher Strip -->
+        <div class="anatomy-switcher-strip" id="anatomy-strip">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <i class="fa-solid fa-person-running text-gold" style="color:#B3DD24; font-size:18px;"></i>
+                <span style="font-family:'Outfit',sans-serif; font-size:14px; font-weight:700; color:#FFF;">Target Muscle Groups</span>
+            </div>
+            <div class="anatomy-view-toggles">
+                <button type="button" class="btn-view-toggle active" data-view="all">All Muscles</button>
+                <button type="button" class="btn-view-toggle" data-view="front">Front Body</button>
+                <button type="button" class="btn-view-toggle" data-view="back">Back Body</button>
+            </div>
+        </div>
+
+        <!-- Body Parts Grid (Top Overview) -->
+        <section id="bodyPartsSection" class="body-parts-grid">
+            <div class="body-part-card" data-body-part="chest" data-body-side="front">
+                <div class="body-part-icon">
+                    <img src="./chest.png" alt="Chest Anatomy" loading="lazy">
+                </div>
+                <div class="body-part-name">Chest</div>
+                <div class="exercise-count-badge">7 Movements • Video Cues</div>
+                <div class="muscle-preview">Pectoralis Major, Clavicular Upper Pecs</div>
+            </div>
+
+            <div class="body-part-card" data-body-part="biceps" data-body-side="front">
+                <div class="body-part-icon">
+                    <img src="./biceps.png" alt="Biceps Anatomy" loading="lazy">
+                </div>
+                <div class="body-part-name">Biceps</div>
+                <div class="exercise-count-badge">4 Mass Builders</div>
+                <div class="muscle-preview">Biceps Brachii, Brachialis Peak</div>
+            </div>
+
+            <div class="body-part-card" data-body-part="triceps" data-body-side="back">
+                <div class="body-part-icon">
+                    <img src="./triceps.png" alt="Triceps Anatomy" loading="lazy">
+                </div>
+                <div class="body-part-name">Triceps</div>
+                <div class="exercise-count-badge">5 Lockout Exercises</div>
+                <div class="muscle-preview">Long, Lateral & Medial Heads</div>
+            </div>
+
+            <div class="body-part-card" data-body-part="shoulders" data-body-side="front">
+                <div class="body-part-icon">
+                    <img src="./shoulders.png" alt="Shoulders Anatomy" loading="lazy">
+                </div>
+                <div class="body-part-name">Shoulders</div>
+                <div class="exercise-count-badge">4 3D Deltoid Lifts</div>
+                <div class="muscle-preview">Anterior, Lateral & Posterior Delts</div>
+            </div>
+
+            <div class="body-part-card" data-body-part="back" data-body-side="back">
+                <div class="body-part-icon">
+                    <img src="./back.png" alt="Back Anatomy" loading="lazy">
+                </div>
+                <div class="body-part-name">Back</div>
+                <div class="exercise-count-badge">7 Width & Thickness Moves</div>
+                <div class="muscle-preview">Lats, Rhomboids, Erector Spinae</div>
+            </div>
+
+            <div class="body-part-card" data-body-part="legs" data-body-side="front">
+                <div class="body-part-icon">
+                    <img src="./legs.png" alt="Legs Anatomy" loading="lazy">
+                </div>
+                <div class="body-part-name">Legs</div>
+                <div class="exercise-count-badge">5 Quad & Hamstring Moves</div>
+                <div class="muscle-preview">Quadriceps, Hamstrings, Adductors</div>
+            </div>
+
+            <div class="body-part-card" data-body-part="glutes" data-body-side="back">
+                <div class="body-part-icon">
+                    <img src="./glutes.png" alt="Glutes Anatomy" loading="lazy">
+                </div>
+                <div class="body-part-name">Glutes</div>
+                <div class="exercise-count-badge">Power Hip Thrusts</div>
+                <div class="muscle-preview">Gluteus Maximus & Medius</div>
+            </div>
+
+            <div class="body-part-card" data-body-part="abs" data-body-side="front">
+                <div class="body-part-icon">
+                    <img src="./core.png" alt="Core Anatomy" loading="lazy">
+                </div>
+                <div class="body-part-name">Core</div>
+                <div class="exercise-count-badge">Core Bracing</div>
+                <div class="muscle-preview">Rectus Abdominis, Obliques</div>
+            </div>
+
+            <div class="body-part-card" data-body-part="forearms" data-body-side="front">
+                <div class="body-part-icon">
+                    <img src="./forearm.png" alt="Forearms Anatomy" loading="lazy">
+                </div>
+                <div class="body-part-name">Forearms</div>
+                <div class="exercise-count-badge">Grip Strength</div>
+                <div class="muscle-preview">Flexors, Extensors, Grip Power</div>
+            </div>
+        </section>
+
+        <!-- Exercise Details & Video Grid Section -->
+        <section id="exerciseVideos" class="exercise-videos-section">
+            <div class="exercise-section-header">
+                <button type="button" class="back-button" onclick="window.HanumanExercise.showAll()">
+                    <i class="fa-solid fa-arrow-left"></i> All Muscle Groups
+                </button>
+                <div class="section-title-wrap">
+                    <h2 id="selectedBodyPartTitle">Chest <span>Technique Library</span></h2>
+                </div>
+                <div id="exercise-group-count" style="font-family:'Outfit',sans-serif; font-size:13px; color:#888; font-weight:700;">
+                    Showing Exercises
+                </div>
+            </div>
+
+            <div id="videosContainer" class="videos-grid">
+                <!-- Populated via exercise-interactive.js -->
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="exercise-empty-state" class="exercise-empty-state">
+                <i class="fa-solid fa-dumbbell" style="font-size:44px; color:#444; margin-bottom:16px;"></i>
+                <h3 style="font-size:20px; font-weight:800; color:#FFF; margin-bottom:6px;">No Exercises Match Your Search</h3>
+                <p style="font-size:14px; color:#888; margin-bottom:20px;">Try adjusting your equipment filter or clearing search terms.</p>
+                <button type="button" onclick="window.HanumanExercise.resetFilters()" style="background:#B3DD24; color:#000; border:none; padding:10px 24px; border-radius:20px; font-weight:800; cursor:pointer;">Reset Filters</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Master Scripts -->
+    <script src="exercise-data.js"></script>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    <script src="../shared/site-footer.js" defer></script>
+    <script src="exercise-interactive.js"></script>
+</body>
+</html>

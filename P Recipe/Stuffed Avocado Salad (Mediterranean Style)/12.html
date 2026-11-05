@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuffed Avocado Salad Recipe - Hanuman Gym Nutrition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../shared/design-tokens.css">
+    <link rel="stylesheet" href="../../shared/site-header.css">
+    <link rel="stylesheet" href="../../shared/site-footer.css">
+    <link rel="stylesheet" href="../recipe-details-premium.css">
+    <script src="../../shared/site-header.js" defer></script>
+    <script src="../../shared/site-footer.js" defer></script>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="recipe-page-container">
+        <!-- Topbar -->
+        <div class="recipe-topbar">
+            <a href="../recipes.html" class="recipe-back-btn">
+                <i class="fa-solid fa-arrow-left"></i> <span>Back to Recipes</span>
+            </a>
+            <div class="recipe-actions-quick">
+                <button type="button" class="btn-recipe-action" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> <span>Print Recipe</span>
+                </button>
+                <button type="button" class="btn-recipe-action" onclick="alert('Recipe saved to your My Space nutrition bookmarks!')">
+                    <i class="fa-solid fa-bookmark"></i> <span>Save Recipe</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Compact Hero Banner -->
+        <header class="recipe-hero-card">
+            <span class="recipe-category-pill"><i class="fa-solid fa-seedling text-gold"></i> Healthy Fats & Plant Energy</span>
+            <h1 class="recipe-title">Mediterranean Stuffed Avocado Bowls</h1>
+            <p class="recipe-intro-text">Rich, buttery avocados stuffed with a zesty Greek salad of organic chickpeas, diced Persian cucumbers, cherry tomatoes, Kalamata olives, and crumbled feta cheese with an oregano vinaigrette.</p>
+
+            <div class="recipe-quick-metrics-strip">
+                <div class="metric-pill">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Prep: <strong>15 Mins</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <span>No Cook: <strong>Raw Fresh</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Yield: <strong>6 Halves</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Calories: <strong>260 kcal</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-drumstick-bite"></i>
+                    <span>Protein: <strong>9g</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main 2-Column Grid -->
+        <div class="recipe-main-grid">
+            <!-- Left Column: Story, Image & Process Steps -->
+            <div class="recipe-content-col">
+                <div class="recipe-featured-img-box">
+                    <img src="images/oo.jpg" alt="Stuffed Avocado Salad preparation" onerror="this.src='../images/recipe-hero.svg'">
+                </div>
+
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-kitchen-set"></i> Preparation Steps</h3>
+                    </div>
+                    <div class="recipe-steps-list">
+                        <div class="recipe-step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-text">
+                                <h4>Prep the Avocado Boats</h4>
+                                <p>Cut ripe avocados in half lengthwise and carefully remove pits. Scoop out a small spoonful of avocado flesh to create a deeper boat for stuffing.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-text">
+                                <h4>Toss Mediterranean Filling</h4>
+                                <p>In a mixing bowl, combine rinsed chickpeas, diced cucumbers, halved cherry tomatoes, chopped Kalamata olives, and red onion.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-text">
+                                <h4>Whisk Herb Dressing</h4>
+                                <p>Whisk together extra-virgin olive oil, freshly squeezed lemon juice, dried Greek oregano, salt, and freshly ground pepper.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-text">
+                                <h4>Stuff & Garnish</h4>
+                                <p>Spoon generous amounts of the chickpea salad into each avocado cavity. Top with crumbled sheep's milk feta and fresh flat-leaf parsley.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Ingredients & Macros -->
+            <aside class="recipe-sidebar-col">
+                <!-- Ingredients Card -->
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-basket-shopping"></i> Ingredients</h3>
+                        <span style="font-size:12px; color:#888;">6 Halves</span>
+                    </div>
+                    <div class="ingredients-checklist">
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Ripe Hass Avocados</span>
+                            </div>
+                            <span class="ingredient-amount-badge">3 Whole</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Organic Chickpeas</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 Cup</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Cherry Tomatoes & Cucumber</span>
+                            </div>
+                            <span class="ingredient-amount-badge">½ Cup each</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Kalamata Olives & Feta</span>
+                            </div>
+                            <span class="ingredient-amount-badge">¼ Cup each</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Cold-Pressed Olive Oil</span>
+                            </div>
+                            <span class="ingredient-amount-badge">2 tbsp</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Fresh Lemon Juice & Parsley</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 tbsp / 2 tbsp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Macro Breakdown Card -->
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-chart-pie"></i> Macro Profile</h3>
+                    </div>
+                    <div class="macro-grid">
+                        <div class="macro-box">
+                            <span class="macro-label">Calories</span>
+                            <span class="macro-val text-gold">260 kcal</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Protein</span>
+                            <span class="macro-val">9g</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Carbs</span>
+                            <span class="macro-val">18g</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Healthy Fats</span>
+                            <span class="macro-val">19g</span>
+                        </div>
+                    </div>
+
+                    <!-- Macro Ratio Bar -->
+                    <div class="macro-ratio-bar">
+                        <div class="macro-bar-seg macro-bar-protein" style="width: 18%;" title="Protein 18%"></div>
+                        <div class="macro-bar-seg macro-bar-carbs" style="width: 32%;" title="Carbs 32%"></div>
+                        <div class="macro-bar-seg macro-bar-fats" style="width: 50%;" title="Fats 50%"></div>
+                    </div>
+                    <div class="macro-legend">
+                        <span><i class="macro-dot" style="background:#B3DD24;"></i> 18% Protein</span>
+                        <span><i class="macro-dot" style="background:#3ECF8E;"></i> 32% Carbs</span>
+                        <span><i class="macro-dot" style="background:#FF6384;"></i> 50% Fat</span>
+                    </div>
+
+                    <!-- Meal Prep & Storage Box -->
+                    <div class="meal-prep-box">
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-snowflake"></i>
+                            <span>Freezer</span>
+                            <strong>Not Rec.</strong>
+                        </div>
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-leaf"></i>
+                            <span>Fridge</span>
+                            <strong>1-2 Days</strong>
+                        </div>
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-lemon"></i>
+                            <span>Citrus</span>
+                            <strong>Lime/Lemon</strong>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Master Interactive Recipe Engine -->
+    <script src="../recipe-interactive.js"></script>
+</body>
+</html>

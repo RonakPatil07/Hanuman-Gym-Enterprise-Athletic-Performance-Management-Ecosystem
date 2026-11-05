@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment - Male Gym Products - FitStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="../shared/site-header.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .product-card-small {
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a) !important;
+            border-radius: 16px !important;
+            padding: 25px 20px !important;
+            border: 2px solid #333 !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center !important;
+            min-height: 350px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .product-card-small::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(135deg, rgba(179, 221, 36, 0.1), transparent) !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+        }
+        
+        .product-card-small:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+            border-color: #B3DD24 !important;
+            box-shadow: 0 20px 40px rgba(179, 221, 36, 0.15), 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+        }
+        
+        .product-card-small:hover::before {
+            opacity: 1 !important;
+        }
+        
+        .product-image-small {
+            width: 100% !important;
+            height: 180px !important;
+            background: linear-gradient(145deg, #2c2c2c, #3c3c3c) !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            margin-bottom: 20px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+            z-index: 1 !important;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+        }
+        
+        .product-image-small img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+            transition: transform 0.3s ease !important;
+        }
+        
+        .product-card-small:hover .product-image-small img {
+            transform: scale(1.05) !important;
+        }
+        
+        .product-details h4 {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 18px !important;
+            color: #FFFFFF !important;
+            margin: 0 0 12px 0 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            position: relative !important;
+            z-index: 1 !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        .product-description {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 400 !important;
+            font-size: 14px !important;
+            color: #AAAAAA !important;
+            margin: 0 0 15px 0 !important;
+            line-height: 1.4 !important;
+            position: relative !important;
+            z-index: 1 !important;
+            font-style: italic !important;
+        }
+        
+        .product-details .price {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 22px !important;
+            color: #B3DD24 !important;
+            display: block !important;
+            margin-bottom: 20px !important;
+            position: relative !important;
+            z-index: 1 !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        .buy-btn-small {
+            width: 100% !important;
+            padding: 15px 25px !important;
+            background: transparent !important;
+            border: 2px solid #B3DD24 !important;
+            border-radius: 12px !important;
+            color: #B3DD24 !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 16px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
+            z-index: 1 !important;
+            box-shadow: 0 4px 15px rgba(179, 221, 36, 0.2) !important;
+        }
+        
+        .buy-btn-small:hover {
+            background-color: #B3DD24 !important;
+            color: #000000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(179, 221, 36, 0.4) !important;
+        }
+        
+        .products-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+            gap: 30px !important;
+            margin-top: 40px !important;
+            width: 100% !important;
+            max-width: 1400px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding: 60px 40px !important;
+            background: #000000 !important;
+        }
+        
+        .back-to-categories {
+            grid-column: 1 / -1 !important;
+            margin-bottom: 30px !important;
+            text-align: center !important;
+        }
+        
+        .back-btn-category {
+            background: linear-gradient(145deg, #333, #444) !important;
+            border: 2px solid #555 !important;
+            border-radius: 30px !important;
+            padding: 15px 30px !important;
+            color: #FFFFFF !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+        
+        .back-btn-category:hover {
+            background: linear-gradient(145deg, #B3DD24, #C4ED32) !important;
+            border-color: #B3DD24 !important;
+            color: #000000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(179, 221, 36, 0.4) !important;
+        }
+        
+        .page-title {
+            font-weight: 700 !important;
+            font-size: clamp(2rem, 4vw, 2.5rem) !important;
+            color: #FFFFFF !important;
+            text-align: center !important;
+            margin: 40px 0 20px 0 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 2px !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <!-- Page Title -->
+    <h1 class="page-title">EQUIPMENT</h1>
+
+    <!-- FIX #6: SEARCH + TRENDING PILLS + CATEGORY TOOLBAR -->
+    <section class="store-toolbar-section" id="equipmentCatalogSection">
+        <div class="store-toolbar-container">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+                <h2 class="categories-title" style="margin-bottom:0;"><i class="fa-solid fa-bolt" style="color:var(--gold);margin-right:8px;"></i> ALL EQUIPMENT</h2>
+                <div class="store-search-box" style="max-width:420px;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="equipmentSearchInput" placeholder="Search equipment, barbells, racks..." oninput="handleEquipmentSearch(this.value)" aria-label="Search Equipment Catalog">
+                </div>
+            </div>
+
+            <!-- Trending Searches Quick-Pills -->
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--text-muted);">
+                <span style="font-weight:700;color:var(--gold);"><i class="fa-solid fa-fire"></i> Trending:</span>
+                <button type="button" class="store-mini-size-pill" style="width:auto;padding:2px 10px;font-size:11px;" onclick="applyTrendingSearch('Heavyweight')">Heavyweight Tee</button>
+                <button type="button" class="store-mini-size-pill" style="width:auto;padding:2px 10px;font-size:11px;" onclick="applyTrendingSearch('Barbell')">Olympic Barbell</button>
+                <button type="button" class="store-mini-size-pill" style="width:auto;padding:2px 10px;font-size:11px;" onclick="applyTrendingSearch('Leggings')">Contour Leggings</button>
+                <button type="button" class="store-mini-size-pill" style="width:auto;padding:2px 10px;font-size:11px;" onclick="applyTrendingSearch('Hoodie')">Fleece Hoodie</button>
+                <button type="button" class="store-mini-size-pill" style="width:auto;padding:2px 10px;font-size:11px;" onclick="applyTrendingSearch('Shaker')">Protein Shaker</button>
+            </div>
+
+            <!-- Category Pills & Sort Row -->
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:6px;">
+                <div class="store-category-pills" id="equipmentCategoryPillStrip">
+                    <button class="store-cat-pill active" data-cat="all" onclick="filterEquipmentCategory('all', this)"><i class="fa-solid fa-border-all"></i> All (8)</button>
+                    <button class="store-cat-pill" data-cat="dumbbells" onclick="filterEquipmentCategory('dumbbells', this)"><i class="fa-solid fa-dumbbell"></i> Dumbbells</button>
+                    <button class="store-cat-pill" data-cat="barbell" onclick="filterEquipmentCategory('barbell', this)"><i class="fa-solid fa-route"></i> Barbells</button>
+                    <button class="store-cat-pill" data-cat="kettlebell" onclick="filterEquipmentCategory('kettlebell', this)"><i class="fa-solid fa-kettlebell"></i> Kettlebells</button>
+                    <button class="store-cat-pill" data-cat="bench press" onclick="filterEquipmentCategory('bench press', this)"><i class="fa-solid fa-chair"></i> Benches</button>
+                    <button class="store-cat-pill" data-cat="pull-up bar" onclick="filterEquipmentCategory('pull-up bar', this)"><i class="fa-solid fa-hand"></i> Pull-up Bars</button>
+                    <button class="store-cat-pill" data-cat="weight plates" onclick="filterEquipmentCategory('weight plates', this)"><i class="fa-solid fa-gem"></i> Weight Plates</button>
+                    <button class="store-cat-pill" data-cat="cardio machine" onclick="filterEquipmentCategory('cardio machine', this)"><i class="fa-solid fa-fire"></i> Cardio</button>
+                </div>
+                <select class="store-sort-select" id="equipmentSortSelect" onchange="handleEquipmentSort(this.value)" aria-label="Sort Products">
+                    <option value="featured">Featured / Bestsellers</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Top Rated</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <div class="products-grid">
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/EQUIPMENT men/Dumbbells.png" alt="Dumbbells">
+            </div>
+            <div class="product-details">
+                <h4>Dumbbells</h4>
+                <p class="product-description">Adjustable dumbbells for strength training</p>
+                <span class="price">?12,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Dumbbells', '?12,999')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/EQUIPMENT men/Barbell.png" alt="Barbell">
+            </div>
+            <div class="product-details">
+                <h4>Barbell</h4>
+                <p class="product-description">Olympic barbell for heavy lifting exercises</p>
+                <span class="price">?8,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Barbell', '?8,999')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/EQUIPMENT men/Kettlebell.png" alt="Kettlebell">
+            </div>
+            <div class="product-details">
+                <h4>Kettlebell</h4>
+                <p class="product-description">Versatile kettlebell for functional training</p>
+                <span class="price">?4,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Kettlebell', '?4,999')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/EQUIPMENT men/Bench Press for men.png" alt="Bench Press">
+            </div>
+            <div class="product-details">
+                <h4>Bench Press</h4>
+                <p class="product-description">Adjustable bench for chest and upper body workouts</p>
+                <span class="price">?15,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Bench Press', '?15,999')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/EQUIPMENT men/Pull-up Bar for men.png" alt="Pull-up Bar">
+            </div>
+            <div class="product-details">
+                <h4>Pull-up Bar</h4>
+                <p class="product-description">Doorway pull-up bar for upper body strength</p>
+                <span class="price">?2,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Pull-up Bar', '?2,999')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/EQUIPMENT men/Weight Plates for men.png" alt="Weight Plates">
+            </div>
+            <div class="product-details">
+                <h4>Weight Plates</h4>
+                <p class="product-description">Olympic weight plates for progressive training</p>
+                <span class="price">?6,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Weight Plates', '?6,999')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SQUAT RACK.png" alt="Squat Rack">
+            </div>
+            <div class="product-details">
+                <h4>Squat Rack</h4>
+                <p class="product-description">Power rack for safe squatting and lifting</p>
+                <span class="price">?24,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Squat Rack', '?24,999')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/EQUIPMENT men/Cardio Machine.png" alt="Cardio Machine">
+            </div>
+            <div class="product-details">
+                <h4>Cardio Machine</h4>
+                <p class="product-description">Treadmill or elliptical for cardiovascular training</p>
+                <span class="price">?35,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Cardio Machine', '?35,999')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/EQUIPMENT men/Squat Rack.png" alt="Squat Rack">
+            </div>
+            <div class="product-details">
+                <h4>Squat Rack</h4>
+                <p class="product-description">Heavy-duty squat rack for safe weightlifting</p>
+                <span class="price">?24,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Squat Rack', '?24,999')">BUY</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBackToCategories() {
+            window.location.href = 'male-products.html';
+        }
+
+        // Buy product functionality
+        function buyProduct(productName, price) {
+            const url = `checkout.html?product=${encodeURIComponent(productName)}&price=${encodeURIComponent(price)}`;
+            window.location.href = url;
+        }
+
+        // Equipment category filter
+        function filterEquipmentCategory(cat, element) {
+            const pills = document.querySelectorAll('#equipmentCategoryPillStrip .store-cat-pill');
+            pills.forEach(p => p.classList.remove('active'));
+            element.classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card-small');
+            let count = 0;
+
+            cards.forEach(card => {
+                const catName = card.querySelector('h4').innerText.toLowerCase();
+                const show = cat === 'all' || catName.includes(cat.replace(/-/g, ' '));
+                card.style.display = show ? 'block' : 'none';
+                if (show) count++;
+            });
+
+            const pillCount = cat === 'all' ? '8' : count;
+            document.querySelector('#equipmentCategoryPillStrip .store-cat-pill.active').innerHTML = `<i class="fa-solid fa-border-all"></i> ${cat.charAt(0).toUpperCase() + cat.slice(1)} (${pillCount})`;
+        }
+
+        // Equipment search handler
+        function handleEquipmentSearch(val) {
+            const cards = document.querySelectorAll('.product-card-small');
+            const q = val.toLowerCase().trim();
+
+            let matchCount = 0;
+            cards.forEach(card => {
+                const name = card.querySelector('h4').innerText.toLowerCase();
+                const desc = card.querySelector('.product-description').innerText.toLowerCase();
+                const show = q.length === 0 || name.includes(q) || desc.includes(q);
+                card.style.display = show ? 'block' : 'none';
+                if (show) matchCount++;
+            });
+
+            // Update active pill to reflect search
+            const activePill = document.querySelector('#equipmentCategoryPillStrip .store-cat-pill.active');
+            if (activePill && !activePill.classList.contains('filter-applied')) {
+                activePill.classList.add('filter-applied');
+                activePill.setAttribute('title', `Search: ${val}`);
+            }
+        }
+
+        // Equipment sort handler
+        function handleEquipmentSort(sortVal) {
+            const grid = document.querySelector('.products-grid');
+            if (!grid) return;
+
+            const visibleCards = Array.from(grid.querySelectorAll('.product-card-small[style*="display: block"]'));
+            const allCards = Array.from(grid.querySelectorAll('.product-card-small'));
+
+            // Show all cards first
+            allCards.forEach(card => card.style.display = 'block');
+
+            let sorted = allCards;
+            if (sortVal === 'price-low') {
+                sorted.sort((a, b) => {
+                    const pa = parseInt(a.querySelector('.price').innerText.replace(/[^0-9]/g, ''));
+                    const pb = parseInt(b.querySelector('.price').innerText.replace(/[^0-9]/g, ''));
+                    return pa - pb;
+                });
+            } else if (sortVal === 'price-high') {
+                sorted.sort((a, b) => {
+                    const pa = parseInt(a.querySelector('.price').innerText.replace(/[^0-9]/g, ''));
+                    const pb = parseInt(b.querySelector('.price').innerText.replace(/[^0-9]/g, ''));
+                    return pb - pa;
+                });
+            } else if (sortVal === 'rating') {
+                sorted.sort((a, b) => {
+                    // All equipment shown as ????? in hardcoded version
+                    return 0;
+                });
+            }
+            // featured: keep original order
+
+            // Re-append in sorted order
+            grid.innerHTML = '';
+            sorted.forEach(card => grid.appendChild(card));
+        }
+    </script>
+    <script src="store-bridge.js" defer></script>
+</body>
+</html>
+
+

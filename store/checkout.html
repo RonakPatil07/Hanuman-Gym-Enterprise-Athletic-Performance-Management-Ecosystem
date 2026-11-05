@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Checkout — Hanuman Gym FitStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --bg-black: #000000;
+            --bg-surface: #0B0B0B;
+            --bg-input: #050505;
+            --gold: #B3DD24;
+            --gold-glow: rgba(179, 221, 36, 0.18);
+            --gold-border: rgba(179, 221, 36, 0.28);
+            --border-subtle: rgba(255, 255, 255, 0.07);
+            --border-medium: rgba(255, 255, 255, 0.12);
+            --text-primary: #FFFFFF;
+            --text-secondary: #AAAAAA;
+            --text-muted: #666666;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        .checkout-wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 18px 20px 40px;
+        }
+
+        /* Compact Top Bar */
+        .checkout-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .back-btn-store {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-subtle);
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.2s ease;
+        }
+
+        .back-btn-store:hover {
+            color: var(--gold);
+            border-color: var(--gold-border);
+            background: rgba(179, 221, 36, 0.06);
+        }
+
+        .security-badge-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            background: rgba(179, 221, 36, 0.06);
+            border: 1px solid var(--gold-border);
+            border-radius: 20px;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+        }
+
+        /* Ultra-Compact 2-Column Grid */
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* Form Card */
+        .checkout-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .section-number {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000000;
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        /* Compact Grids */
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-grid-3 {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 0.8fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-group-compact {
+            margin-bottom: 10px;
+        }
+
+        .form-group-compact:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 38px;
+            padding: 0 12px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-medium);
+            border-radius: 6px;
+            color: #FFFFFF;
+            font-family: var(--font-body);
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: #0A0A0A;
+            box-shadow: 0 0 0 2px var(--gold-glow);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+            font-size: 12.5px;
+        }
+
+        select.form-input {
+            color-scheme: dark;
+            cursor: pointer;
+        }
+
+        select.form-input option {
+            background: #111111;
+            color: #FFFFFF;
+        }
+
+        /* Compact Payment Selector Tabs */
+        .payment-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .payment-tab-btn {
+            background: var(--bg-input);
+            border: 1px solid var(--border-medium);
+            border-radius: 8px;
+            padding: 9px 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+        }
+
+        .payment-tab-btn i {
+            font-size: 15px;
+            color: var(--gold);
+        }
+
+        .payment-tab-btn .tab-title {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .payment-tab-btn:hover {
+            border-color: var(--gold-border);
+            background: #0E0E0E;
+        }
+
+        .payment-tab-btn.selected {
+            border-color: var(--gold);
+            background: rgba(179, 221, 36, 0.06);
+            box-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        .payment-tab-btn.selected .tab-title {
+            color: var(--gold);
+        }
+
+        .card-number-wrapper {
+            position: relative;
+        }
+
+        .card-brand-icons {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 5px;
+            color: var(--gold);
+            font-size: 15px;
+            pointer-events: none;
+        }
+
+        /* Order Summary Sticky Panel */
+        .summary-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 18px;
+            position: sticky;
+            top: 18px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .summary-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .summary-product-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 14px;
+        }
+
+        .summary-product-thumb {
+            width: 44px;
+            height: 44px;
+            background: radial-gradient(circle, #222222 0%, #0c0c0c 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--gold);
+            flex-shrink: 0;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .summary-product-name {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+
+        .summary-product-price {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .calc-row.total-calc-row {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--gold-border);
+            font-size: 14px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .total-amount-display {
+            font-family: var(--font-heading);
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .btn-complete-order {
+            width: 100%;
+            height: 44px;
+            background: var(--gold);
+            border: none;
+            border-radius: 6px;
+            color: #000000;
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(179, 221, 36, 0.25);
+        }
+
+        .btn-complete-order:hover {
+            background: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .trust-strip-compact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .trust-pill {
+            font-size: 10.5px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .trust-pill i {
+            color: var(--gold);
+        }
+
+        @media (max-width: 860px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+            .summary-card {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-grid-2,
+            .form-grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .payment-tabs {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    <script src="../shared/site-header.js" defer></script>
+
+    <div class="checkout-wrapper">
+        <!-- Compact Top Bar -->
+        <div class="checkout-topbar">
+            <a href="index.html" class="back-btn-store"><i class="fa-solid fa-arrow-left"></i> Back to Store</a>
+            <div class="security-badge-header">
+                <i class="fa-solid fa-shield-halved"></i> 256-Bit SSL Encrypted Checkout
+            </div>
+        </div>
+
+        <div class="checkout-grid">
+            <!-- Left: Ultra-Compact Form -->
+            <div class="checkout-card">
+                <form id="checkoutForm">
+                    
+                    <!-- Section 1: Customer & Delivery Details -->
+                    <div class="section-header">
+                        <div class="section-number">1</div>
+                        <h2 class="section-title">Delivery Details</h2>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group-compact">
+                            <label class="form-label" for="fullName">Full Name</label>
+                            <input type="text" class="form-input" id="fullName" name="fullName" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group-compact">
+                            <label class="form-label" for="phoneNumber">Phone Number</label>
+                            <input type="tel" class="form-input" id="phoneNumber" name="phoneNumber" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" class="form-input" id="email" name="email" placeholder="athlete@example.com" required>
+                    </div>
+
+                    <div class="form-grid-3">
+                        <div class="form-group-compact">
+                            <label class="form-label" for="address">Street / Flat Address</label>
+                            <input type="text" class="form-input" id="address" name="address" placeholder="Flat No, Street" required>
+                        </div>
+                        <div class="form-group-compact">
+                            <label class="form-label" for="city">City</label>
+                            <input type="text" class="form-input" id="city" name="city" placeholder="City" required>
+                        </div>
+                        <div class="form-group-compact">
+                            <label class="form-label" for="pincode">Pincode</label>
+                            <input type="text" class="form-input" id="pincode" name="pincode" placeholder="400001" required>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Payment Method -->
+                    <div class="section-header" style="margin-top: 18px;">
+                        <div class="section-number">2</div>
+                        <h2 class="section-title">Payment Method</h2>
+                    </div>
+
+                    <div class="payment-tabs">
+                        <div class="payment-tab-btn selected" id="creditCard">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <span class="tab-title">Credit / Debit Card</span>
+                        </div>
+                        <div class="payment-tab-btn" id="upi">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <span class="tab-title">UPI Instant Pay</span>
+                        </div>
+                    </div>
+
+                    <!-- Credit Card Subform -->
+                    <div id="creditCardForm">
+                        <div class="form-group-compact">
+                            <label class="form-label" for="cardNumber">Card Number</label>
+                            <div class="card-number-wrapper">
+                                <input type="text" class="form-input" id="cardNumber" name="cardNumber" placeholder="4532 •••• •••• 8921" maxlength="19" required>
+                                <div class="card-brand-icons">
+                                    <i class="fa-brands fa-cc-visa"></i>
+                                    <i class="fa-brands fa-cc-mastercard"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group-compact">
+                                <label class="form-label" for="expiryDate">Expiry (MM/YY)</label>
+                                <input type="text" class="form-input" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group-compact">
+                                <label class="form-label" for="cvv">CVV / CVC</label>
+                                <input type="password" class="form-input" id="cvv" name="cvv" placeholder="•••" maxlength="4" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group-compact">
+                            <label class="form-label" for="cardholderName">Cardholder Name</label>
+                            <input type="text" class="form-input" id="cardholderName" name="cardholderName" placeholder="Name on Card" required>
+                        </div>
+                    </div>
+
+                    <!-- UPI Subform -->
+                    <div id="upiForm" style="display: none;">
+                        <div class="form-grid-2">
+                            <div class="form-group-compact">
+                                <label class="form-label" for="upiId">UPI ID (VPA)</label>
+                                <input type="text" class="form-input" id="upiId" name="upiId" placeholder="username@upi" required>
+                            </div>
+                            <div class="form-group-compact">
+                                <label class="form-label" for="upiApp">Preferred App</label>
+                                <select class="form-input" id="upiApp" name="upiApp" required>
+                                    <option value="">Choose App</option>
+                                    <option value="gpay">Google Pay</option>
+                                    <option value="phonepe">PhonePe</option>
+                                    <option value="paytm">Paytm</option>
+                                    <option value="bhim">BHIM UPI</option>
+                                    <option value="cred">CRED</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Right: Order Summary Sidebar -->
+            <div class="summary-card">
+                <div class="summary-title">
+                    <span>Summary</span>
+                    <i class="fa-solid fa-lock" style="color: var(--gold); font-size: 12px;"></i>
+                </div>
+
+                <div class="summary-product-box">
+                    <div class="summary-product-thumb">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div>
+                        <div class="summary-product-name" id="productName">Gym Equipment</div>
+                        <div class="summary-product-price" id="productPrice">₹12,999</div>
+                    </div>
+                </div>
+
+                <div class="calc-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">₹12,999</span>
+                </div>
+
+                <div class="calc-row">
+                    <span>Shipping</span>
+                    <span>₹199</span>
+                </div>
+
+                <div class="calc-row">
+                    <span>GST (18%)</span>
+                    <span id="tax">₹2,375</span>
+                </div>
+
+                <div class="calc-row total-calc-row">
+                    <span>Total Due</span>
+                    <span class="total-amount-display" id="total">₹15,573</span>
+                </div>
+
+                <button type="button" class="btn-complete-order" onclick="processOrder()">
+                    <i class="fa-solid fa-lock"></i> Pay Now
+                </button>
+
+                <div class="trust-strip-compact">
+                    <div class="trust-pill"><i class="fa-solid fa-check"></i> Authentic</div>
+                    <div class="trust-pill"><i class="fa-solid fa-rotate-left"></i> 7-Day Return</div>
+                    <div class="trust-pill"><i class="fa-solid fa-receipt"></i> Invoice</div>
+                    <div class="trust-pill"><i class="fa-solid fa-shield"></i> Fraud Shield</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+    <script src="../shared/site-footer.js" defer></script>
+
+    <script>
+        // Global Order State
+        let checkoutItems = [];
+        let appliedDiscount = 0;
+
+        // Get product details from cart or URL parameters
+        function getProductDetails() {
+            const container = document.getElementById('productName')?.closest('.summary-product-box')?.parentElement;
+            
+            // Check if multi-item cart exists in localStorage
+            try {
+                const savedCart = localStorage.getItem('gym_store_cart');
+                const discountPct = parseInt(localStorage.getItem('gym_store_discount_pct') || '0', 10);
+                if (savedCart) {
+                    const parsed = JSON.parse(savedCart);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        checkoutItems = parsed;
+                        appliedDiscount = discountPct;
+                    }
+                }
+            } catch (e) {
+                console.warn('Cart load error:', e);
+            }
+
+            if (checkoutItems.length > 0) {
+                // Render multi-item list in summary
+                const listHtml = checkoutItems.map(item => `
+                    <div class="summary-product-box" style="margin-bottom: 10px;">
+                        <img src="${item.image}" alt="${item.name}" style="width:48px;height:48px;border-radius:6px;object-fit:cover;background:#181822;" onerror="this.src='images/hero-background-figma-7573f8.jpg'">
+                        <div style="flex:1;">
+                            <div class="summary-product-name" style="font-size:12.5px;">${item.name}</div>
+                            <div style="font-size:11px;color:var(--text-muted);">Size: ${item.size} &bull; Qty: ${item.qty}</div>
+                            <div class="summary-product-price" style="font-size:13px;color:var(--gold);">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+                        </div>
+                    </div>
+                `).join('');
+
+                const productBox = document.querySelector('.summary-product-box');
+                if (productBox) {
+                    productBox.outerHTML = `<div id="multiItemsList">${listHtml}</div>`;
+                }
+
+                // Calculate Totals
+                const rawSubtotal = checkoutItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                const discountAmt = Math.round(rawSubtotal * (appliedDiscount / 100));
+                const subtotalAfterDisc = rawSubtotal - discountAmt;
+                const shipping = subtotalAfterDisc >= 1499 ? 0 : 199;
+                const tax = Math.round(subtotalAfterDisc * 0.18);
+                const total = subtotalAfterDisc + shipping + tax;
+
+                document.getElementById('subtotal').textContent = `₹${rawSubtotal.toLocaleString('en-IN')}`;
+                document.getElementById('tax').textContent = `₹${tax.toLocaleString('en-IN')}`;
+                document.getElementById('total').textContent = `₹${total.toLocaleString('en-IN')}`;
+                return;
+            }
+
+            // Fallback: Single product from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productName = urlParams.get('product') || 'Hanuman Performance Gear';
+            const productPrice = urlParams.get('price') || '₹2,499';
+            
+            const rawPrice = parseInt(productPrice.replace(/[^\d]/g, ''), 10) || 2499;
+            const price = rawPrice >= 100 ? rawPrice : 2499;
+            const shipping = price >= 1499 ? 0 : 199;
+            const tax = Math.round(price * 0.18);
+            const total = price + shipping + tax;
+            
+            document.getElementById('productName').textContent = productName;
+            document.getElementById('productPrice').textContent = productPrice;
+            document.getElementById('subtotal').textContent = `₹${price.toLocaleString('en-IN')}`;
+            document.getElementById('tax').textContent = `₹${tax.toLocaleString('en-IN')}`;
+            document.getElementById('total').textContent = `₹${total.toLocaleString('en-IN')}`;
+        }
+
+        // Payment method selection
+        const ccBtn = document.getElementById('creditCard');
+        const upiBtn = document.getElementById('upi');
+        const ccForm = document.getElementById('creditCardForm');
+        const upiForm = document.getElementById('upiForm');
+
+        if (ccBtn && upiBtn) {
+            ccBtn.addEventListener('click', function() {
+                ccBtn.classList.add('selected');
+                upiBtn.classList.remove('selected');
+                ccForm.style.display = 'block';
+                upiForm.style.display = 'none';
+            });
+
+            upiBtn.addEventListener('click', function() {
+                upiBtn.classList.add('selected');
+                ccBtn.classList.remove('selected');
+                upiForm.style.display = 'block';
+                ccForm.style.display = 'none';
+            });
+        }
+
+        // API Endpoint configuration
+        const GYM_API_BASE = window.GYM_API_URL || 'http://localhost:5000/api';
+
+        // Process order handler
+        async function processOrder() {
+            const isCreditCardSelected = document.getElementById('creditCard').classList.contains('selected');
+            const isUPISelected = document.getElementById('upi').classList.contains('selected');
+            
+            const shippingFields = [
+                { id: 'fullName', label: 'Full Name' },
+                { id: 'email', label: 'Email Address' },
+                { id: 'phoneNumber', label: 'Phone Number' },
+                { id: 'address', label: 'Address' },
+                { id: 'city', label: 'City' },
+                { id: 'pincode', label: 'Pincode' }
+            ];
+            
+            let paymentFields = [];
+            if (isCreditCardSelected) {
+                paymentFields = [
+                    { id: 'cardNumber', label: 'Card Number' },
+                    { id: 'expiryDate', label: 'Expiry Date' },
+                    { id: 'cvv', label: 'CVV' },
+                    { id: 'cardholderName', label: 'Cardholder Name' }
+                ];
+            } else if (isUPISelected) {
+                paymentFields = [
+                    { id: 'upiId', label: 'UPI ID' },
+                    { id: 'upiApp', label: 'UPI App' }
+                ];
+            }
+            
+            const allFields = [...shippingFields, ...paymentFields];
+            let isValid = true;
+            let emptyFields = [];
+            
+            allFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (!element || !element.value.trim()) {
+                    isValid = false;
+                    emptyFields.push(field.label);
+                    if (element) {
+                        element.style.borderColor = '#FF334B';
+                    }
+                } else {
+                    if (element) {
+                        element.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                    }
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all required fields:\n• ' + emptyFields.join('\n• '));
+                return;
+            }
+
+            let orderTitle = 'Hanuman Store Order';
+            let totalAmount = 0;
+
+            if (checkoutItems.length > 0) {
+                const rawSubtotal = checkoutItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                const discountAmt = Math.round(rawSubtotal * (appliedDiscount / 100));
+                const subtotalAfterDisc = rawSubtotal - discountAmt;
+                const shipping = subtotalAfterDisc >= 1499 ? 0 : 199;
+                const tax = Math.round(subtotalAfterDisc * 0.18);
+                totalAmount = subtotalAfterDisc + shipping + tax;
+                orderTitle = checkoutItems.map(i => `${i.qty}x ${i.name} (${i.size})`).join(', ');
+            } else {
+                const urlParams = new URLSearchParams(window.location.search);
+                orderTitle = urlParams.get('product') || 'Hanuman Performance Gear';
+                const productPrice = urlParams.get('price') || '₹2,499';
+                const rawNum = parseInt(String(productPrice).replace(/[^\d]/g, ''), 10) || 2499;
+                const priceNum = rawNum >= 100 ? rawNum : 2499;
+                const shipping = priceNum >= 1499 ? 0 : 199;
+                const tax = Math.round(priceNum * 0.18);
+                totalAmount = priceNum + shipping + tax;
+            }
+
+            const method = isCreditCardSelected ? 'Card' : 'UPI';
+
+            const payload = {
+                customerName: document.getElementById('fullName').value.trim(),
+                customerEmail: document.getElementById('email').value.trim(),
+                customerPhone: document.getElementById('phoneNumber').value.trim(),
+                productName: orderTitle,
+                amount: totalAmount,
+                method,
+                addressLine: document.getElementById('address').value.trim(),
+                city: document.getElementById('city').value.trim(),
+                pincode: document.getElementById('pincode').value.trim(),
+                items: checkoutItems
+            };
+
+            const confirmationUrl = `order-confirmation.html?product=${encodeURIComponent(orderTitle)}&price=${encodeURIComponent('₹' + totalAmount.toLocaleString('en-IN'))}`;
+
+            if (window.GymCloudStore) {
+                GymCloudStore.recordStorePurchase(payload);
+            }
+
+            try {
+                const todayStr = new Date().toISOString().split('T')[0];
+                if (window.GymApiClient) {
+                    await GymApiClient.savePurchase({
+                        item_name: orderTitle,
+                        item_price: totalAmount,
+                        purchase_date: todayStr
+                    });
+                }
+            } catch (err) {
+                console.warn('[FastAPI Purchase]', err.message);
+            }
+
+            try {
+                const res = await fetch(`${GYM_API_BASE}/website/store-order`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+            } catch (err) {
+                console.warn('Optional remote API unavailable:', err);
+            }
+
+            // Clear Cart upon order success
+            localStorage.removeItem('gym_store_cart');
+            localStorage.removeItem('gym_store_applied_promo');
+            localStorage.removeItem('gym_store_discount_pct');
+
+            window.location.href = confirmationUrl;
+        }
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', function() {
+            getProductDetails();
+        });
+    </script>
+    <script src="../shared/api-client.js"></script>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+</body>
+</html>

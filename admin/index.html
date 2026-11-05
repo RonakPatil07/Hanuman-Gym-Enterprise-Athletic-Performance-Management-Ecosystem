@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GYM CLOUD | Admin Command Center</title>
+  <link rel="stylesheet" href="admin-cloud.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="icon" type="image/png" href="../P Home/images/logo.png" />
+</head>
+<body>
+
+<div class="layout">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-logo">
+      <div class="logo-icon"><i class="fa-solid fa-cloud-bolt"></i></div>
+      <div class="logo-text">GYM<span>CLOUD</span></div>
+    </div>
+
+    <div class="topbar-actions">
+      <button type="button" class="btn btn-ghost btn-sm" onclick="openCommandPalette()" style="display:flex; align-items:center; gap:8px; border:1px solid var(--border-bright);">
+        <i class="fa-solid fa-magnifying-glass text-gold"></i>
+        <span>Command Search</span>
+        <kbd style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; font-family:inherit;">Ctrl K</kbd>
+      </button>
+
+      <div class="admin-pill" id="topbar-cloud-badge">
+        <div class="cloud-dot"></div>
+        <span id="topbar-cloud-badge-text">Connecting to Cloud...</span>
+      </div>
+      <div class="user-profile-pill">
+        <span class="user-avatar">P</span>
+        <span class="user-status-dot"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-label">CORE DASHBOARD</div>
+      <div class="nav-item active" id="nav-item-dashboard" onclick="showPage('dashboard', this)">
+        <span class="nav-icon"><i class="fa-solid fa-chart-pie"></i></span>
+        <span>Overview</span>
+      </div>
+      <div class="nav-item" id="nav-item-athletes" onclick="showPage('athletes', this)">
+        <span class="nav-icon"><i class="fa-solid fa-id-card-clip"></i></span>
+        <span>Athlete Directory</span>
+        <span class="nav-badge" id="sidebar-athlete-count">0</span>
+      </div>
+      <div class="nav-item" id="nav-item-workouts" onclick="showPage('workouts', this)">
+        <span class="nav-icon"><i class="fa-solid fa-fire-flame-curved"></i></span>
+        <span>Master Workouts</span>
+        <span class="nav-badge" id="sidebar-workout-count">0</span>
+      </div>
+      <div class="nav-item" id="nav-item-inquiries" onclick="showPage('inquiries', this)">
+        <span class="nav-icon"><i class="fa-solid fa-headset"></i></span>
+        <span>Inquiries & Leads</span>
+        <span class="nav-badge badge-live" id="sidebar-inquiry-count">0</span>
+      </div>
+      <div class="nav-item" id="nav-item-members" onclick="showPage('members', this)">
+        <span class="nav-icon"><i class="fa-solid fa-user-group"></i></span>
+        <span>Memberships</span>
+        <span class="nav-badge" id="sidebar-member-count">0</span>
+      </div>
+      <div class="nav-item" id="nav-item-financials" onclick="showPage('financials', this)">
+        <span class="nav-icon"><i class="fa-solid fa-sack-dollar"></i></span>
+        <span>Financials</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">LIVE SYSTEMS</div>
+      <div class="nav-item" id="nav-item-store" onclick="showPage('store', this)">
+        <span class="nav-icon"><i class="fa-solid fa-cart-shopping"></i></span> 
+        <span>Store Orders</span>
+        <span class="nav-badge" id="sidebar-store-count">0</span>
+      </div>
+      <div class="nav-item" id="nav-item-payments" onclick="showPage('payments', this)">
+        <span class="nav-icon"><i class="fa-solid fa-credit-card"></i></span> 
+        <span>Payments</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">MANAGEMENT</div>
+      <div class="nav-item" id="nav-item-branches" onclick="showPage('branches', this)">
+        <span class="nav-icon"><i class="fa-solid fa-map-location-dot"></i></span> 
+        <span>Branch Network</span>
+        <span class="nav-badge" id="sidebar-branch-count">10</span>
+      </div>
+      <div class="nav-item" id="nav-item-inventory" onclick="showPage('inventory', this)">
+        <span class="nav-icon"><i class="fa-solid fa-boxes-stacked"></i></span> 
+        <span>Inventory & Catalog</span>
+        <span class="nav-badge" id="sidebar-product-count">0</span>
+      </div>
+      <div class="nav-item" id="nav-item-schedules" onclick="showPage('schedules', this)">
+        <span class="nav-icon"><i class="fa-solid fa-calendar-days"></i></span> 
+        <span>Schedules</span>
+      </div>
+      <div class="nav-item" id="nav-item-trainers" onclick="showPage('trainers', this)">
+        <span class="nav-icon"><i class="fa-solid fa-user-tie"></i></span> 
+        <span>Trainers</span>
+      </div>
+    </div>
+
+    <div class="nav-section" style="margin-top:auto; border-top: 1px solid var(--border);">
+      <div class="nav-item" id="nav-item-settings" onclick="showPage('settings', this)">
+        <span class="nav-icon"><i class="fa-solid fa-sliders"></i></span> 
+        <span>System Settings</span>
+      </div>
+      <div class="nav-item" style="color: #ff4d4d;" onclick="handleLogout()">
+        <span class="nav-icon"><i class="fa-solid fa-right-from-bracket"></i></span> 
+        <span>Logout</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main" id="mainContent">
+
+    <!-- DASHBOARD PAGE -->
+    <section class="page active" id="page-dashboard">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Command Center</h1>
+          <p class="page-sub">System Overview · <span style="color:var(--accent); font-weight:700;">LIVE UPDATES</span></p>
+        </div>
+        <div style="display:flex;gap:12px;">
+          <button type="button" class="btn btn-ghost" id="btn-test-member" style="color:var(--accent); border-color:var(--accent);"><i class="fa-solid fa-bolt"></i> ⚡ Seed 5,000+ Data</button>
+          <button class="btn btn-primary" onclick="showModal('addMemberModal')">+ New Member</button>
+        </div>
+      </header>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-val" id="dash-stat-subs">0</div>
+          <div class="stat-label">Total Members</div>
+          <div class="stat-trend trend-up"><i class="fa-solid fa-circle-check"></i> Live Updates</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+          <div class="stat-val" id="dash-stat-revenue">₹0</div>
+          <div class="stat-label">Net Revenue</div>
+          <div class="stat-trend trend-up"><i class="fa-solid fa-circle-check"></i> Live Updates</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-box-open"></i></div>
+          <div class="stat-val" id="dash-stat-store">0</div>
+          <div class="stat-label">Store Orders</div>
+          <div class="stat-trend trend-up"><i class="fa-solid fa-circle-check"></i> Live Updates</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <div class="stat-val" id="dash-stat-maintenance">0</div>
+          <div class="stat-label">Repair Pending</div>
+          <div class="stat-trend trend-up"><i class="fa-solid fa-circle-check"></i> System Alert</div>
+        </div>
+      </div>
+
+      <div class="grid-dashboard-main">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Live Activity Feed</h3>
+            <span class="badge badge-green">Streaming</span>
+          </div>
+          <div class="card-body">
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Member</th>
+                    <th>Action</th>
+                    <th>Type</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-dash-feed">
+                  <tr><td colspan="4" style="text-align:center; padding:40px; color:var(--text-dark);">Initializing systems...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Revenue Distribution</h3>
+          </div>
+          <div class="card-body" style="padding: 10px;">
+            <div class="chart-wrap" style="height: 280px; padding: 10px;">
+              <canvas id="chart-revenue"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">System Activity</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-wrap">
+              <canvas id="chart-volume"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Inventory Health</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-wrap">
+              <canvas id="chart-inventory-health"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADVANCED ANALYTICS SECTION -->
+      <div class="section-divider">
+        <h2 class="section-title">Strategic Intelligence</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Retention Funnel</h3>
+            <span class="badge badge-blue">Growth</span>
+          </div>
+          <div class="card-body">
+            <div class="chart-wrap">
+              <canvas id="chart-retention"></canvas>
+            </div>
+            <div class="chart-insight">
+              <i class="fas fa-chart-line"></i> Projected growth: <span id="insight-growth">+12.4%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Revenue Forecast</h3>
+            <span class="badge badge-purple">Finance</span>
+          </div>
+          <div class="card-body">
+            <div class="chart-wrap">
+              <canvas id="chart-forecast"></canvas>
+            </div>
+            <div class="chart-insight">
+              <i class="fas fa-money-bill-trend-up"></i> Next month target: <span id="insight-target">₹1.2M</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Membership Growth Trend</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-wrap" style="height: 250px;">
+              <canvas id="chart-growth"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATHLETE DIRECTORY PAGE (FASTAPI + POSTGRESQL) -->
+    <section class="page" id="page-athletes">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Athlete Directory</h1>
+          <p class="page-sub">Comprehensive athlete registry (<span id="athletes-total-count" style="color:var(--accent); font-weight:700;">Loading...</span> athletes registered)</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-ghost" onclick="exportAthletesCSV()"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+          <button class="btn btn-ghost" onclick="hydrateAthletesPage()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+        </div>
+      </header>
+
+      <!-- Search and Filter Toolbar -->
+      <div class="card" style="margin-bottom: -6px;">
+        <div class="card-body" style="padding: 12px 16px;">
+          <div class="table-toolbar">
+            <div class="search-input-wrap" style="flex: 1; max-width: 380px;">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="athleteSearchInput" class="search-input" placeholder="Search athlete by name, email, or #ID..." oninput="handleAthleteSearch()" />
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <select id="athleteGoalFilter" class="filter-select" onchange="handleAthleteSearch()">
+                <option value="all">All Fitness Goals</option>
+                <option value="weight_loss">Weight Loss</option>
+                <option value="muscle_gain">Muscle Gain</option>
+                <option value="strength">Strength / Power</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="endurance">Endurance</option>
+              </select>
+              <select id="athleteStatusFilter" class="filter-select" onchange="handleAthleteSearch()">
+                <option value="all">All Statuses</option>
+                <option value="active">Active Accounts</option>
+                <option value="inactive">Suspended / Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Athletes Data Table -->
+      <div class="card">
+        <div class="card-body">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Athlete Profile</th>
+                  <th>Fitness Goal</th>
+                  <th>Weight (Current / Goal)</th>
+                  <th>Daily Targets</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-page-athletes">
+                <tr><td colspan="8" style="text-align:center; padding:30px;">Connecting to PostgreSQL database...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Bar -->
+          <div class="pagination-bar">
+            <span class="pagination-info" id="athletePaginationInfo">Showing 1 to 50</span>
+            <div class="pagination-actions">
+              <button class="btn btn-ghost btn-sm" id="btnPrevAthletes" onclick="navigateAthletesPage(-1)"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <button class="btn btn-ghost btn-sm" id="btnNextAthletes" onclick="navigateAthletesPage(1)">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASTER WORKOUT TELEMETRY PAGE (FASTAPI + POSTGRESQL) -->
+    <section class="page" id="page-workouts">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Master Workout Telemetry</h1>
+          <p class="page-sub">Live logging stream across all gym athletes (<span id="workouts-total-count" style="color:var(--accent); font-weight:700;">Loading...</span> total sessions)</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-ghost" onclick="exportWorkoutsCSV()"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+          <button class="btn btn-ghost" onclick="hydrateWorkoutsPage()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+        </div>
+      </header>
+
+      <!-- Workout Search and Filter Toolbar -->
+      <div class="card" style="margin-bottom: -6px;">
+        <div class="card-body" style="padding: 12px 16px;">
+          <div class="table-toolbar">
+            <div class="search-input-wrap" style="flex: 1; max-width: 420px;">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="workoutSearchInput" class="search-input" placeholder="Search by athlete name, exercise, or date..." oninput="handleWorkoutSearch()" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Athlete Name</th>
+                  <th>Exercise Performed</th>
+                  <th>Sets × Reps @ Weight</th>
+                  <th>Session Volume</th>
+                  <th>Water & Calories</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-page-workouts">
+                <tr><td colspan="7" style="text-align:center; padding:30px;">Loading workout logs...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Bar -->
+          <div class="pagination-bar">
+            <span class="pagination-info" id="workoutPaginationInfo">Showing 1 to 50</span>
+            <div class="pagination-actions">
+              <button class="btn btn-ghost btn-sm" id="btnPrevWorkouts" onclick="navigateWorkoutsPage(-1)"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <button class="btn btn-ghost btn-sm" id="btnNextWorkouts" onclick="navigateWorkoutsPage(1)">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INQUIRIES & LEADS CRM PAGE (FASTAPI + POSTGRESQL) -->
+    <section class="page" id="page-inquiries">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Inquiries & Leads CRM</h1>
+          <p class="page-sub">Tour bookings, free trials, and website messages (<span id="inquiries-total-count" style="color:var(--accent); font-weight:700;">Loading...</span> total leads)</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-ghost" onclick="exportInquiriesCSV()"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+          <button class="btn btn-ghost" onclick="hydrateInquiriesPage()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+        </div>
+      </header>
+
+      <!-- Inquiries Search and Filter Toolbar -->
+      <div class="card" style="margin-bottom: -6px;">
+        <div class="card-body" style="padding: 12px 16px;">
+          <div class="table-toolbar">
+            <div class="search-input-wrap" style="flex: 1; max-width: 380px;">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="inquirySearchInput" class="search-input" placeholder="Search lead by name, phone, or email..." oninput="handleInquirySearch()" />
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <select id="inquiryStatusFilter" class="filter-select" onchange="handleInquirySearch()">
+                <option value="all">All Lead Stages</option>
+                <option value="new">New Inquiries</option>
+                <option value="contacted">Contacted / Follow-up</option>
+                <option value="trial_booked">Trial Pass Issued</option>
+                <option value="converted">Enrolled Member</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Lead Contact</th>
+                  <th>Type & Branch</th>
+                  <th>Message / Notes</th>
+                  <th>Stage</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-page-inquiries">
+                <tr><td colspan="6" style="text-align:center; padding:30px;">Loading inquiries...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Bar -->
+          <div class="pagination-bar">
+            <span class="pagination-info" id="inquiryPaginationInfo">Showing 1 to 50</span>
+            <div class="pagination-actions">
+              <button class="btn btn-ghost btn-sm" id="btnPrevInquiries" onclick="navigateInquiriesPage(-1)"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <button class="btn btn-ghost btn-sm" id="btnNextInquiries" onclick="navigateInquiriesPage(1)">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERS PAGE -->
+    <section class="page" id="page-members">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Membership Registry</h1>
+          <p class="page-sub">Enrolled members and athlete profiles</p>
+        </div>
+        <button class="btn btn-primary" onclick="showModal('addMemberModal')">+ Add Member</button>
+      </header>
+      
+      <div class="card">
+        <div class="card-body">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Member Name</th>
+                  <th>Plan Tier</th>
+                  <th>Contact</th>
+                  <th>Join Date</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-page-members">
+                <tr><td colspan="4" style="text-align:center; padding:30px;">Loading members...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINANCIALS PAGE -->
+    <section class="page" id="page-financials">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Financial Performance</h1>
+          <p class="page-sub">Comprehensive multi-stream revenue analytics across all gym operations</p>
+        </div>
+        <button class="btn btn-ghost" onclick="hydrateFromFastApiAdmin()"><i class="fa-solid fa-rotate"></i> Refresh Ledger</button>
+      </header>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-indian-rupee-sign text-gold"></i></div>
+          <div class="stat-val text-gold" id="dash-kpi-revenue">₹0</div>
+          <div class="stat-label">Total Net Platform Revenue</div>
+          <div class="stat-trend trend-up"><i class="fa-solid fa-circle-check"></i> Unified Streams</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-crown"></i></div>
+          <div class="stat-val" id="fin-membership-rev">₹0</div>
+          <div class="stat-label">Membership Subscriptions</div>
+          <div class="stat-trend trend-up"><i class="fa-solid fa-user-check"></i> Plan Subscriptions</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+          <div class="stat-val" id="fin-store-rev">₹0</div>
+          <div class="stat-label">Store & Gear Purchases</div>
+          <div class="stat-trend trend-up"><i class="fa-solid fa-bag-shopping"></i> E-Commerce Orders</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-user-ninja"></i></div>
+          <div class="stat-val" id="fin-trainer-rev">₹0</div>
+          <div class="stat-label">Personal Trainer Coaching</div>
+          <div class="stat-trend trend-up"><i class="fa-solid fa-dumbbell"></i> Coaching Bookings</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRANCH NETWORK OPERATIONS PAGE -->
+    <section class="page" id="page-branches">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Branch Network Operations</h1>
+          <p class="page-sub">10 active strength & recovery facilities across MMR (<span style="color:var(--accent); font-weight:700;">10 Centers Live</span>)</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <a href="../Locations/location.html" target="_blank" class="btn btn-primary"><i class="fa-solid fa-up-right-from-square"></i> Member View</a>
+          <button class="btn btn-ghost" onclick="hydrateBranchesPage()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+        </div>
+      </header>
+
+      <div class="branch-ops-grid" id="admin-branches-grid">
+        <!-- Populated dynamically via admin.js -->
+      </div>
+    </section>
+
+    <!-- STORE ORDERS PAGE -->
+    <section class="page" id="page-store">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Store Purchases & Orders</h1>
+          <p class="page-sub">Live supplement, apparel, and gear order fulfillment (<span id="store-total-count" style="color:var(--accent); font-weight:700;">Loading...</span> orders)</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-ghost" onclick="exportStoreCSV()"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+          <button class="btn btn-ghost" onclick="hydrateStoreOrdersPage()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+        </div>
+      </header>
+      <div class="card">
+        <div class="card-body">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Customer</th>
+                  <th>Order Ref</th>
+                  <th>Product Purchased</th>
+                  <th>Total Amount</th>
+                  <th>Settlement</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-page-store">
+                <tr><td colspan="7" style="text-align:center; padding:30px;">Loading orders...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAYMENTS PAGE -->
+    <section class="page" id="page-payments">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Payment Logs</h1>
+          <p class="page-sub">Transaction audit ledger</p>
+        </div>
+      </header>
+      <div class="card">
+        <div class="card-body">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Customer</th>
+                  <th>Amount</th>
+                  <th>Detail</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-page-payments">
+                <tr><td colspan="5" style="text-align:center; padding:30px;">Loading payments...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVENTORY & PRODUCT CATALOG PAGE (FASTAPI + POSTGRESQL) -->
+    <section class="page" id="page-inventory">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Store Products & Inventory Catalog</h1>
+          <p class="page-sub">Manage e-commerce products, prices, stock levels, and gym assets (<span id="inventory-total-count" style="color:var(--accent); font-weight:700;">Loading...</span> items)</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-primary" onclick="openAddProductModal()"><i class="fa-solid fa-plus"></i> Add Product</button>
+          <button class="btn btn-ghost" onclick="exportProductsCSV()"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+          <button class="btn btn-ghost" onclick="hydrateInventoryPage()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+        </div>
+      </header>
+
+      <!-- Products Filter Toolbar -->
+      <div class="card" style="margin-bottom: -6px;">
+        <div class="card-body" style="padding: 12px 16px;">
+          <div class="table-toolbar">
+            <div class="search-input-wrap" style="flex: 1; max-width: 380px;">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="productSearchInput" class="search-input" placeholder="Search products by title or category..." oninput="handleProductSearch()" />
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <select id="productCategoryFilter" class="filter-select" onchange="handleProductSearch()">
+                <option value="all">All Product Categories</option>
+                <option value="supplements">Supplements & Nutrition</option>
+                <option value="apparel">Gym Apparel</option>
+                <option value="gear">Lifting Gear</option>
+                <option value="accessories">Shakers & Accessories</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Product Details</th>
+                  <th>Category</th>
+                  <th>Price (INR)</th>
+                  <th>Stock Quantity</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-page-inventory">
+                <tr><td colspan="6" style="text-align:center; padding:30px;">Loading product catalog...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Bar -->
+          <div class="pagination-bar">
+            <span class="pagination-info" id="productPaginationInfo">Showing 1 to 50</span>
+            <div class="pagination-actions">
+              <button class="btn btn-ghost btn-sm" id="btnPrevProducts" onclick="navigateProductsPage(-1)"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <button class="btn btn-ghost btn-sm" id="btnNextProducts" onclick="navigateProductsPage(1)">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULES PAGE -->
+    <section class="page" id="page-schedules">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Training Schedules</h1>
+          <p class="page-sub">Classes and group session timings</p>
+        </div>
+        <button class="btn btn-primary" onclick="showModal('addClassModal')">+ Schedule Class</button>
+      </header>
+      <div class="card">
+        <div class="card-body">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Class</th>
+                  <th>Trainer</th>
+                  <th>Day</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-page-schedules">
+                <tr><td colspan="4" style="text-align:center; padding:30px;">Loading schedule...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAINERS PAGE -->
+    <section class="page" id="page-trainers">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Coaching Staff</h1>
+          <p class="page-sub">Personal trainers and coaches</p>
+        </div>
+      </header>
+      <div class="grid-3" id="admin-trainers-grid">
+        <!-- Populated dynamically -->
+      </div>
+    </section>
+
+    <!-- SETTINGS PAGE -->
+    <section class="page" id="page-settings">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">System Settings & Controls</h1>
+          <p class="page-sub">Database sync and administrator options</p>
+        </div>
+      </header>
+      <div class="card">
+        <div class="card-body" style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <h4 style="color:#FFF;">Database Backup</h4>
+              <p style="color:var(--text-dark); font-size:13px;">Download full database snapshot backup</p>
+            </div>
+            <button class="btn btn-primary" onclick="handleExportData()"><i class="fa-solid fa-download"></i> Export Data</button>
+          </div>
+          <hr style="border-color:var(--border);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <h4 style="color:#FFF;">Cloud Sync Status</h4>
+              <p style="color:var(--text-dark); font-size:13px;">Live connection to cloud database</p>
+            </div>
+            <span class="badge badge-green" id="settings-cloud-status">ACTIVE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- MODALS -->
+<div class="modal" id="addMemberModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 class="modal-title">New Member Registration</h3>
+      <button type="button" class="btn-close" onclick="closeModal('addMemberModal')">&times;</button>
+    </div>
+    <form id="form-add-member" style="display:flex; flex-direction:column; gap:16px;">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="m-name" placeholder="John Doe" required />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="m-email" placeholder="john@example.com" required />
+      </div>
+      <div class="form-group">
+        <label>Plan Tier</label>
+        <select id="m-plan">
+          <option>Pro Athlete Plan</option>
+          <option>Standard All-Access</option>
+          <option>Starter Fitness</option>
+        </select>
+      </div>
+      <div style="margin-top:20px; display:flex; gap:12px;">
+        <button type="submit" class="btn btn-primary" style="flex:1;">Enroll Member</button>
+        <button type="button" class="btn btn-ghost" onclick="closeModal('addMemberModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="addEquipModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 class="modal-title">Add Equipment</h3>
+      <button type="button" class="btn-close" onclick="closeModal('addEquipModal')">&times;</button>
+    </div>
+    <form id="form-add-equip" style="display:flex; flex-direction:column; gap:16px;">
+      <div class="form-group">
+        <label>Equipment Name</label>
+        <input type="text" id="eq-name" placeholder="Olympic Barbell" required />
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" id="eq-cat" placeholder="Free Weights" required />
+      </div>
+      <div style="margin-top:20px; display:flex; gap:12px;">
+        <button type="submit" class="btn btn-primary" style="flex:1;">Save Asset</button>
+        <button type="button" class="btn btn-ghost" onclick="closeModal('addEquipModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="addClassModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 class="modal-title">Schedule Class</h3>
+      <button type="button" class="btn-close" onclick="closeModal('addClassModal')">&times;</button>
+    </div>
+    <form id="form-add-class" style="display:flex; flex-direction:column; gap:16px;">
+      <div class="form-group">
+        <label>Class Name</label>
+        <input type="text" id="c-name" placeholder="HIIT Bootcamp" required />
+      </div>
+      <div class="form-group">
+        <label>Trainer</label>
+        <input type="text" id="c-trainer" placeholder="Coach Alex" required />
+      </div>
+      <div class="form-row" style="display:flex; gap:12px;">
+        <div class="form-group" style="flex:1;">
+          <label>Day</label>
+          <select id="c-day">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+          </select>
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label>Time</label>
+          <input type="time" id="c-time" required />
+        </div>
+      </div>
+      <div style="margin-top:20px; display:flex; gap:12px;">
+        <button type="submit" class="btn btn-primary" style="flex:1;">Schedule Session</button>
+        <button type="button" class="btn btn-ghost" onclick="closeModal('addClassModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ATHLETE DETAIL & NUTRITION PRESCRIPTION DRAWER -->
+<div class="modal" id="athleteDetailModal">
+  <div class="modal-card" style="max-width: 560px;">
+    <div class="modal-head">
+      <div>
+        <h3 class="modal-title" id="drawerAthleteName">Athlete Profile & Prescription</h3>
+        <p style="font-size:11.5px; color:var(--text-dim);" id="drawerAthleteEmail">athlete@example.com</p>
+      </div>
+      <button type="button" class="btn-close" onclick="closeModal('athleteDetailModal')">&times;</button>
+    </div>
+    
+    <div id="drawerAthleteBody" style="display:flex; flex-direction:column; gap:16px;">
+      <!-- Prescribed Nutritional & Fitness Goals (Synchronized with My Space) -->
+      <div style="background:rgba(230, 81, 0, 0.08); border:1px solid rgba(230, 81, 0, 0.25); border-radius:8px; padding:12px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <i class="fa-solid fa-utensils" style="color:var(--accent);"></i>
+          <span style="font-size:12px; font-weight:700; color:#FFF; text-transform:uppercase;">Coach Goal & Macro Prescription</span>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label style="font-size:11px;">Calorie Target (kcal/day)</label>
+            <input type="number" id="drawerEditCalories" placeholder="2400" min="500" max="10000" />
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label style="font-size:11px;">Hydration Target (L/day)</label>
+            <input type="number" step="0.1" id="drawerEditWater" placeholder="3.5" min="0.5" max="15.0" />
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label style="font-size:11px;">Current Weight (kg)</label>
+            <input type="number" step="0.1" id="drawerEditCurrentWeight" placeholder="78.5" />
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label style="font-size:11px;">Target Goal Weight (kg)</label>
+            <input type="number" step="0.1" id="drawerEditTargetWeight" placeholder="72.0" />
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label style="font-size:11px;">Workout Split (Days/Wk)</label>
+            <input type="number" id="drawerEditWorkoutDays" placeholder="5" min="1" max="7" />
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label style="font-size:11px;">Fitness Goal Program</label>
+            <select id="drawerEditGoal">
+              <option value="weight_loss">Weight Loss</option>
+              <option value="muscle_gain">Muscle Gain</option>
+              <option value="strength">Strength / Power</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="endurance">Endurance</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Identity and Role Settings -->
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+        <div class="form-group">
+          <label>Account Role</label>
+          <select id="drawerRoleSelect">
+            <option value="user">User (Athlete)</option>
+            <option value="trainer">Trainer (Coach)</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Account Status</label>
+          <select id="drawerStatusSelect">
+            <option value="active">Active Access</option>
+            <option value="inactive">Suspended / Inactive</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.015); border:1px solid var(--border-subtle); border-radius:8px; padding:12px; font-size:12px; color:var(--text-dim); display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex; justify-content:space-between;"><span>Account ID:</span> <strong style="color:#FFF;" id="drawerId">#--</strong></div>
+        <div style="display:flex; justify-content:space-between;"><span>Contact Phone:</span> <strong style="color:#FFF;" id="drawerPhone">--</strong></div>
+        <div style="display:flex; justify-content:space-between;"><span>Joined Database:</span> <strong style="color:#FFF;" id="drawerCreatedAt">--</strong></div>
+        <div style="display:flex; justify-content:space-between;"><span>Total Workouts:</span> <strong style="color:#FFF;" id="drawerWorkoutCount">0 logged</strong></div>
+        <div style="display:flex; justify-content:space-between;"><span>Total Purchases:</span> <strong style="color:#FFF;" id="drawerPurchaseCount">0 recorded</strong></div>
+      </div>
+
+      <input type="hidden" id="drawerTargetUserId" />
+
+      <div style="display:flex; gap:10px; margin-top:8px;">
+        <button type="button" class="btn btn-primary" style="flex:1;" onclick="saveAthleteProfileChanges()"><i class="fa-solid fa-floppy-disk"></i> Save Changes & Goals</button>
+        <button type="button" class="btn btn-ghost" onclick="closeModal('athleteDetailModal')">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT ADD/EDIT MODAL -->
+<div class="modal" id="productModal">
+  <div class="modal-card" style="max-width: 520px;">
+    <div class="modal-head">
+      <h3 class="modal-title" id="productModalTitle">Add Store Product</h3>
+      <button type="button" class="btn-close" onclick="closeModal('productModal')">&times;</button>
+    </div>
+    <form id="form-product-crud" onsubmit="handleSaveProduct(event)" style="display:flex; flex-direction:column; gap:14px;">
+      <input type="hidden" id="prod-id" />
+      <div class="form-group">
+        <label>Product Title / Name *</label>
+        <input type="text" id="prod-name" placeholder="e.g. Hanuman Gold Whey Isolate 2kg" required />
+      </div>
+      <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="prod-category" required>
+            <option value="supplements">Supplements & Nutrition</option>
+            <option value="apparel">Gym Apparel</option>
+            <option value="gear">Lifting Gear</option>
+            <option value="accessories">Shakers & Accessories</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Gender / Fit</label>
+          <select id="prod-gender">
+            <option value="unisex">Unisex</option>
+            <option value="men">Men</option>
+            <option value="female">Women</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+        <div class="form-group">
+          <label>Price in INR (₹) *</label>
+          <input type="number" step="0.01" id="prod-price" placeholder="3999.00" min="1" required />
+        </div>
+        <div class="form-group">
+          <label>Stock Quantity (Units) *</label>
+          <input type="number" id="prod-stock" placeholder="50" min="0" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Image URL / Asset Path</label>
+        <input type="text" id="prod-image" placeholder="../store/images/supp-whey.jpg" />
+      </div>
+      <div class="form-group">
+        <label>Product Description</label>
+        <textarea id="prod-desc" style="width:100%; background:var(--surface); border:1px solid var(--border); border-radius:6px; color:#FFF; padding:10px; min-height:70px;" placeholder="Key features, ingredients, or specifications..."></textarea>
+      </div>
+      <div class="form-group" style="display:flex; align-items:center; gap:8px;">
+        <input type="checkbox" id="prod-active" checked style="width:16px; height:16px; cursor:pointer;" />
+        <label for="prod-active" style="margin-bottom:0; cursor:pointer;">Active for sale in store catalog</label>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:10px;">
+        <button type="submit" class="btn btn-primary" style="flex:1;"><i class="fa-solid fa-floppy-disk"></i> Save Product</button>
+        <button type="button" class="btn btn-ghost" onclick="closeModal('productModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- INQUIRY FOLLOW-UP MODAL -->
+<div class="modal" id="inquiryDetailModal">
+  <div class="modal-card" style="max-width: 500px;">
+    <div class="modal-head">
+      <div>
+        <h3 class="modal-title" id="inqModalLeadName">Lead Follow-up</h3>
+        <p style="font-size:11.5px; color:var(--text-dim);" id="inqModalContact">--</p>
+      </div>
+      <button type="button" class="btn-close" onclick="closeModal('inquiryDetailModal')">&times;</button>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; padding:12px;">
+        <span style="font-size:11px; color:var(--text-dim); text-transform:uppercase; font-weight:700; display:block; margin-bottom:4px;">Original Inquiry Message</span>
+        <p style="font-size:13px; color:#FFF; line-height:1.5; white-space:pre-wrap;" id="inqModalMessage">--</p>
+      </div>
+
+      <div class="form-group">
+        <label>Lead Stage / Pipeline Status</label>
+        <select id="inqModalStatusSelect">
+          <option value="new">New Inquiry</option>
+          <option value="contacted">Contacted / Follow-up</option>
+          <option value="trial_booked">Trial Pass Issued</option>
+          <option value="converted">Enrolled Member</option>
+          <option value="archived">Archived</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Staff Follow-up Notes</label>
+        <textarea id="inqModalNotes" style="width:100%; background:var(--surface); border:1px solid var(--border); border-radius:6px; color:#FFF; padding:10px; min-height:80px;" placeholder="Add internal notes about calls, trial dates, or member preferences..."></textarea>
+      </div>
+
+      <input type="hidden" id="inqModalTargetId" />
+
+      <div style="display:flex; gap:10px; margin-top:8px;">
+        <button type="button" class="btn btn-primary" style="flex:1;" onclick="saveInquiryFollowUp()"><i class="fa-solid fa-floppy-disk"></i> Update Lead</button>
+        <button type="button" class="btn btn-ghost" onclick="closeModal('inquiryDetailModal')">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UNIVERSAL COMMAND PALETTE (CTRL + K) -->
+<div class="command-palette-backdrop" id="commandPaletteModal" onclick="closeCommandPalette(event)">
+  <div class="command-palette-box" onclick="event.stopPropagation()">
+    <div class="command-search-head">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="commandPaletteInput" class="command-input-field" placeholder="Search athletes, orders, branches, products, or actions (Ctrl+K)..." autocomplete="off" oninput="handleCommandSearch()" />
+      <span style="font-size:11px; color:var(--text-dark); background:#222; padding:2px 8px; border-radius:4px;">ESC to close</span>
+    </div>
+    <div class="command-results-list" id="commandResultsContainer">
+      <!-- Populated dynamically via admin.js -->
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="../Locations/locations-data.js"></script>
+<script src="../shared/api-client.js"></script>
+<script src="../shared/gym-trainers-catalog.js"></script>
+<script src="../shared/gym-seed-data.js"></script>
+<script src="../shared/cloud-config.js"></script>
+<script src="../shared/cloud-adapter.js"></script>
+<script src="../shared/gym-cloud-store.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Gym Apparel &amp; Gear — Hanuman Gym FitStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="site-header"></div>
+    <script src="../shared/site-header.js" defer></script>
+
+    <!-- Women's Department Banner -->
+    <section class="male-categories-section" style="padding-top: 110px; padding-bottom: 20px;">
+        <div class="categories-container">
+            <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap: 12px;">
+                <div>
+                    <h1 class="categories-title" style="margin-top: 0; margin-bottom: 4px;"><i class="fa-solid fa-person-dress" style="color:var(--gold);margin-right:8px;"></i> WOMEN'S ATHLETIC COLLECTIONS</h1>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 0;">Contour seamless leggings, high-impact sports bras, cropped gym hoodies, and cross-training shoes.</p>
+                </div>
+            </div>
+
+            <!-- Women's Department Toolbar & Filter Pills -->
+            <div class="store-toolbar-section" style="background:transparent;padding:10px 0;">
+                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:14px;">
+                    <div class="store-search-box" style="max-width:380px;flex:1;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="womenSearchInput" placeholder="Search sports bras, leggings, cropped tops, shoes..." oninput="handleWomenSearch(this.value)" aria-label="Search Women's Store">
+                    </div>
+                    <select class="store-sort-select" id="womenSortSelect" onchange="handleWomenSort(this.value)">
+                        <option value="featured">Featured / Bestsellers</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+
+                <div class="store-category-pills" id="womenCategoryPills">
+                    <button class="store-cat-pill active" data-subcat="all" onclick="filterWomenSubcategory('all', this)"><i class="fa-solid fa-border-all"></i> All Women's (18)</button>
+                    <button class="store-cat-pill" data-subcat="tops" onclick="filterWomenSubcategory('tops', this)"><i class="fa-solid fa-shirt"></i> Tops &amp; Bras</button>
+                    <button class="store-cat-pill" data-subcat="bottoms" onclick="filterWomenSubcategory('bottoms', this)"><i class="fa-solid fa-person-running"></i> Bottoms &amp; Leggings</button>
+                    <button class="store-cat-pill" data-subcat="outerwear" onclick="filterWomenSubcategory('outerwear', this)"><i class="fa-solid fa-vest"></i> Outerwear</button>
+                    <button class="store-cat-pill" data-subcat="shoes" onclick="filterWomenSubcategory('shoes', this)"><i class="fa-solid fa-shoe-prints"></i> Footwear</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Women's Products Grid Container -->
+    <main class="container" style="padding-top: 10px; margin-bottom: 70px;">
+        <div class="store-products-grid" id="womenProductsGrid">
+            <!-- Populated dynamically with new premium card style & size selector -->
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+    <script src="../shared/site-footer.js" defer></script>
+
+    <!-- Slide-Out Cart Drawer -->
+    <div class="cart-drawer-backdrop" id="cartDrawerBackdrop" onclick="closeCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3><i class="fa-solid fa-bag-shopping" style="color:var(--gold);"></i> My <span>Gym Cart</span> (<span id="cartDrawerCount">0</span>)</h3>
+            <button class="cart-drawer-close" onclick="closeCartDrawer()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-free-shipping-strip">
+            <div class="free-shipping-label" id="freeShippingLabel">
+                <i class="fa-solid fa-truck-fast" style="color:var(--gold);"></i> Add <strong>₹1,499</strong> more for <strong>FREE Delivery</strong>
+            </div>
+            <div class="free-shipping-bar-bg"><div class="free-shipping-bar-fill" id="freeShippingFill"></div></div>
+        </div>
+        <div class="cart-drawer-items" id="cartDrawerItems"></div>
+        <div class="cart-promo-box">
+            <div class="promo-input-row">
+                <input type="text" id="cartPromoInput" placeholder="Member Code (e.g. MEMBER10)">
+                <button type="button" onclick="applyCartPromo()">Apply</button>
+            </div>
+            <div class="promo-feedback" id="promoFeedback"></div>
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="cart-summary-row"><span>Subtotal</span><span id="cartDrawerSubtotal">₹0</span></div>
+            <div class="cart-summary-row" id="cartDiscountRow" style="display:none;color:#22c55e;"><span>Member Discount (<span id="cartDiscountLabel">0%</span>)</span><span id="cartDrawerDiscount">-₹0</span></div>
+            <div class="cart-summary-row"><span>Delivery</span><span id="cartDrawerDelivery">₹199</span></div>
+            <div class="cart-summary-row total"><span>Total Amount</span><span class="total-val" id="cartDrawerTotal">₹0</span></div>
+            <button type="button" class="btn-drawer-checkout" onclick="proceedToCheckoutFromDrawer()"><i class="fa-solid fa-lock"></i> Proceed To Checkout</button>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button -->
+    <div class="floating-cart-trigger" id="floatingCartBtn" onclick="openCartDrawer()" title="View Cart">
+        <i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i>
+        <div class="floating-cart-count" id="floatingCartCount">0</div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="product-modal-backdrop" id="productModal" onclick="handleModalBackdropClick(event)">
+        <div class="product-modal-container">
+            <button class="modal-close-btn" onclick="closeProductModal()" title="Close (Esc)"><i class="fa-solid fa-xmark"></i></button>
+            <div class="product-modal-grid">
+                <div class="modal-product-stage">
+                    <span class="modal-product-badge" id="modalBadge">OFFICIAL MERCH</span>
+                    <img src="" alt="Product" class="modal-product-img" id="modalImg">
+                    <div class="modal-stage-perks">
+                        <span class="modal-perk"><i class="fa-solid fa-shield-check"></i> 100% Authentic</span>
+                        <span class="modal-perk"><i class="fa-solid fa-truck-fast"></i> Fast Delivery</span>
+                    </div>
+                </div>
+                <div class="modal-product-info">
+                    <span class="modal-category-tag" id="modalCategory"><i class="fa-solid fa-bolt"></i> Women's Performance</span>
+                    <h2 class="modal-product-title" id="modalTitle">Product Title</h2>
+                    <div class="modal-rating-strip">
+                        <div class="modal-stars">★★★★★</div>
+                        <span class="modal-rating-score" id="modalRatingScore">4.9</span>
+                        <span class="modal-rating-count">(Verified Athlete Reviews)</span>
+                    </div>
+                    <div class="modal-price-row">
+                        <span class="modal-price-main" id="modalPrice">₹2,999</span>
+                        <span class="modal-price-original" id="modalOriginalPrice">₹3,999</span>
+                    </div>
+                    <p class="modal-product-desc" id="modalDesc">Engineered with high-waist stay-put support, 100% squat-proof opacity, and breathable anti-microbial fabric.</p>
+                    <div class="modal-options-block">
+                        <div class="modal-option-label"><span>Select Size</span></div>
+                        <div class="modal-size-pills" id="modalSizePills">
+                            <button type="button" class="size-pill" onclick="selectModalSize(this, 'XS')">XS</button>
+                            <button type="button" class="size-pill active" onclick="selectModalSize(this, 'S')">S</button>
+                            <button type="button" class="size-pill" onclick="selectModalSize(this, 'M')">M</button>
+                            <button type="button" class="size-pill" onclick="selectModalSize(this, 'L')">L</button>
+                        </div>
+                    </div>
+                    <div class="modal-actions-row">
+                        <div class="modal-qty-stepper">
+                            <button type="button" class="qty-btn" onclick="changeProductQty(-1)">-</button>
+                            <span class="qty-display" id="modalQtyDisplay">1</span>
+                            <button type="button" class="qty-btn" onclick="changeProductQty(1)">+</button>
+                        </div>
+                        <button type="button" class="modal-btn-cart" onclick="addToCartFromModal()"><i class="fa-solid fa-bag-shopping"></i> Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Toast -->
+    <div class="cart-toast" id="cartToast"><i class="fa-solid fa-circle-check"></i> <span id="cartToastMsg">Added to cart!</span></div>
+    <!-- WOMEN'S STORE ENGINE SCRIPT -->
+    <script>
+        const WOMEN_PRODUCTS = [
+            { id: 201, name: "Contour High-Waist Performance Leggings", subcat: "bottoms", price: 2999, originalPrice: 3999, image: "images/BOTTOMS & LEGGINGS female/Leggings for female.png", badge: "BESTSELLER", rating: 5.0, reviews: 215, sizes: ["XS","S","M","L"] },
+            { id: 202, name: "Seamless High-Impact Sports Bra", subcat: "tops", price: 2199, originalPrice: 2899, image: "images/TOPS & BRAS female/Sports Bra for female.png", badge: "HOT", rating: 4.9, reviews: 174, sizes: ["S","M","L"] },
+            { id: 203, name: "Seamless Athletic Workout Bra", subcat: "tops", price: 2399, originalPrice: 3199, image: "images/TOPS & BRAS female/Workout Bra for female.png", badge: "POPULAR", rating: 4.8, reviews: 89, sizes: ["S","M","L"] },
+            { id: 204, name: "Athletic Compression Crop Top", subcat: "tops", price: 1899, originalPrice: 2599, image: "images/TOPS & BRAS female/Crop Top for female.png", badge: "NEW", rating: 4.8, reviews: 68, sizes: ["XS","S","M","L"] },
+            { id: 205, name: "Open-Back Training Tank Top", subcat: "tops", price: 1799, originalPrice: 2399, image: "images/TOPS & BRAS female/Tank Top for female.png", badge: "SALE", rating: 4.7, reviews: 54, sizes: ["S","M","L"] },
+            { id: 206, name: "Breathable Yoga Tank Top", subcat: "tops", price: 1699, originalPrice: 2199, image: "images/TOPS & BRAS female/Yoga Top for female.png", badge: "FLEX", rating: 4.8, reviews: 41, sizes: ["S","M","L"] },
+            { id: 207, name: "Long Sleeve Training Top", subcat: "tops", price: 2499, originalPrice: 3299, image: "images/TOPS & BRAS female/Long Sleeve Top for female.png", badge: "WARM", rating: 4.9, reviews: 62, sizes: ["S","M","L"] },
+
+            { id: 208, name: "Seamless Compression Leggings", subcat: "bottoms", price: 3299, originalPrice: 4299, image: "images/BOTTOMS & LEGGINGS female/Compression Leggings for female.png", badge: "NEW", rating: 4.9, reviews: 95, sizes: ["S","M","L"] },
+            { id: 209, name: "Athletic Running Shorts for Women", subcat: "bottoms", price: 1999, originalPrice: 2699, image: "images/BOTTOMS & LEGGINGS female/Running Shorts for female.png", badge: "SUMMER", rating: 4.8, reviews: 82, sizes: ["XS","S","M","L"] },
+            { id: 210, name: "High-Waist Biker Training Shorts", subcat: "bottoms", price: 2299, originalPrice: 2999, image: "images/BOTTOMS & LEGGINGS female/Biker Shorts for female.png", badge: "HOT", rating: 4.9, reviews: 112, sizes: ["S","M","L"] },
+            { id: 211, name: "Tapered Workout Joggers", subcat: "bottoms", price: 3199, originalPrice: 4199, image: "images/BOTTOMS & LEGGINGS female/Joggers for female.png", badge: "POPULAR", rating: 4.8, reviews: 73, sizes: ["S","M","L"] },
+            { id: 212, name: "Capri Training Pants", subcat: "bottoms", price: 2599, originalPrice: 3399, image: "images/BOTTOMS & LEGGINGS female/Capri Pants for female.png", badge: "COMFORT", rating: 4.7, reviews: 39, sizes: ["S","M","L"] },
+            { id: 213, name: "Flex Yoga Training Pants", subcat: "bottoms", price: 2799, originalPrice: 3599, image: "images/BOTTOMS & LEGGINGS female/Yoga Pantsfor femalw.png", badge: "YOGA", rating: 4.9, reviews: 84, sizes: ["XS","S","M","L"] },
+
+            { id: 214, name: "CrossFit Performance Shoes for Women", subcat: "shoes", price: 5999, originalPrice: 7999, image: "images/FOOTWEAR female/CrossFit Shoes for female.png", badge: "PREMIUM", rating: 4.9, reviews: 76, sizes: ["5 UK","6 UK","7 UK","8 UK"] },
+            { id: 215, name: "All-Day Athletic Training Shoes", subcat: "shoes", price: 4999, originalPrice: 6599, image: "images/FOOTWEAR female/Athletic Shoes for female.png", badge: "CUSHIONED", rating: 4.8, reviews: 59, sizes: ["5 UK","6 UK","7 UK"] },
+            { id: 216, name: "Ultra-Light Running Shoes", subcat: "shoes", price: 4499, originalPrice: 5999, image: "images/FOOTWEAR female/Running Shoes for female.png", badge: "SPEED", rating: 4.8, reviews: 68, sizes: ["6 UK","7 UK","8 UK"] },
+
+            { id: 217, name: "Cast Iron Competition Kettlebell", subcat: "bottoms", price: 2799, originalPrice: 3899, image: "images/EQUIPMENT men/Kettlebell.png", badge: "ESSENTIAL", rating: 4.8, reviews: 116, sizes: ["12kg","16kg"] },
+            { id: 218, name: "Full Loop Resistance Bands (5 Levels)", subcat: "tops", price: 1499, originalPrice: 2199, image: "images/ACCESSORIES men/Resistance Bands.png", badge: "5 PACK", rating: 4.9, reviews: 160, sizes: ["Full Set"] }
+        ];
+
+        let activeWomenSubcat = 'all';
+        let womenSearchVal = '';
+        let womenSortVal = 'featured';
+        let storeCart = [];
+        let storeWishlist = [];
+        let appliedDiscountPct = 0;
+        let appliedPromoCode = '';
+        let currentModalProduct = null;
+        let currentModalSize = 'S';
+        let currentModalQty = 1;
+
+        function initWomenStore() {
+            try {
+                const savedCart = localStorage.getItem('gym_store_cart');
+                if (savedCart) storeCart = JSON.parse(savedCart);
+                const savedWish = localStorage.getItem('gym_store_wishlist');
+                if (savedWish) storeWishlist = JSON.parse(savedWish);
+                const savedPromo = localStorage.getItem('gym_store_applied_promo');
+                const savedDisc = localStorage.getItem('gym_store_discount_pct');
+                if (savedPromo) appliedPromoCode = savedPromo;
+                if (savedDisc) appliedDiscountPct = parseInt(savedDisc, 10) || 0;
+            } catch (e) {}
+            updateCartCounter();
+            renderWomenProducts();
+        }
+
+        function renderWomenProducts() {
+            const grid = document.getElementById('womenProductsGrid');
+            if (!grid) return;
+
+            let list = WOMEN_PRODUCTS.filter(p => {
+                const catMatch = (activeWomenSubcat === 'all') || (p.subcat === activeWomenSubcat);
+                const q = womenSearchVal.toLowerCase().trim();
+                const searchMatch = (q.length === 0) || p.name.toLowerCase().includes(q);
+                return catMatch && searchMatch;
+            });
+
+            if (womenSortVal === 'price-low') list.sort((a, b) => a.price - b.price);
+            else if (womenSortVal === 'price-high') list.sort((a, b) => b.price - a.price);
+            else if (womenSortVal === 'rating') list.sort((a, b) => b.rating - a.rating);
+
+            if (list.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:60px 20px;background:#0d0d12;border:1px dashed var(--border-medium);border-radius:16px;">
+                        <i class="fa-solid fa-box-open" style="font-size:38px;color:var(--gold);margin-bottom:12px;"></i>
+                        <h3 style="font-family:var(--font-heading);font-size:18px;color:#fff;">No Women's Products Found</h3>
+                        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Try another search or filter category.</p>
+                        <button class="store-cat-pill active" onclick="filterWomenSubcategory('all', document.querySelector('[data-subcat=all]'))">View All Women's Gear</button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = list.map(p => {
+                const isWished = storeWishlist.includes(p.id);
+                const sizePills = (p.sizes || ['XS', 'S', 'M', 'L']).slice(0, 4).map((s, idx) => `
+                    <div class="store-mini-size-pill ${idx===0?'active':''}" onclick="event.stopPropagation();selectCardSize(this, ${p.id}, '${s}')">${s}</div>
+                `).join('');
+
+                return `
+                    <div class="store-product-card" data-id="${p.id}" onclick="openProductQuickView(${p.id})">
+                        <div class="store-card-img-wrap">
+                            <span class="store-card-badge ${p.badge==='SALE'?'badge-sale':''}">${p.badge}</span>
+                            <button class="store-wishlist-btn ${isWished?'active':''}" onclick="event.stopPropagation();toggleWishlist(${p.id}, this)">
+                                <i class="fa-${isWished?'solid':'regular'} fa-heart"></i>
+                            </button>
+                            <img src="${p.image}" alt="${p.name}" class="store-card-img" loading="lazy" onerror="this.src='images/hero-background-figma-7573f8.jpg'">
+                        </div>
+                        <div class="store-card-body">
+                            <div class="store-card-cat">Women &bull; ${p.subcat.toUpperCase()}</div>
+                            <h3 class="store-card-title">${p.name}</h3>
+                            <div class="store-card-rating"><span>★★★★★</span> <strong>${p.rating}</strong> <span>(${p.reviews})</span></div>
+                            <div class="store-card-price-row">
+                                <span class="store-card-price">₹${p.price.toLocaleString('en-IN')}</span>
+                                <span class="store-card-original-price">₹${p.originalPrice.toLocaleString('en-IN')}</span>
+                            </div>
+                            <div class="store-card-size-selector">${sizePills}</div>
+                            <div class="store-card-actions">
+                                <button class="btn-card-add-cart" onclick="event.stopPropagation();quickAddToCart(${p.id}, this)">
+                                    <i class="fa-solid fa-bag-shopping"></i> Add To Cart
+                                </button>
+                                <button class="btn-card-quick-view" onclick="event.stopPropagation();openProductQuickView(${p.id})" title="Quick View">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterWomenSubcategory(subcat, btn) {
+            activeWomenSubcat = subcat;
+            document.querySelectorAll('#womenCategoryPills .store-cat-pill').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderWomenProducts();
+        }
+
+        function handleWomenSearch(val) { womenSearchVal = val || ''; renderWomenProducts(); }
+        function handleWomenSort(val) { womenSortVal = val || 'featured'; renderWomenProducts(); }
+
+        function selectCardSize(pill, id, size) {
+            const wrap = pill.closest('.store-card-size-selector');
+            wrap.querySelectorAll('.store-mini-size-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+        }
+
+        function quickAddToCart(productId, btn) {
+            const p = WOMEN_PRODUCTS.find(item => item.id === productId);
+            if (!p) return;
+            const card = document.querySelector(`.store-product-card[data-id="${productId}"]`);
+            const activeSize = card ? (card.querySelector('.store-mini-size-pill.active')?.textContent.trim() || 'S') : 'S';
+            
+            if (btn) {
+                const originalHtml = btn.innerHTML;
+                btn.classList.add('btn-added-state');
+                btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Added!';
+                setTimeout(() => {
+                    btn.classList.remove('btn-added-state');
+                    btn.innerHTML = originalHtml;
+                }, 1200);
+            }
+
+            addItemToCart(p, activeSize, 1);
+            showToast(`"${p.name}" (${activeSize}) added to cart!`);
+            openCartDrawer();
+        }
+
+        function addItemToCart(product, size, qty) {
+            const existing = storeCart.find(item => item.name === product.name && item.size === size);
+            if (existing) { existing.qty += qty; }
+            else {
+                storeCart.push({ id: product.id, name: product.name, price: product.price, originalPrice: product.originalPrice, image: product.image, size: size, qty: qty });
+            }
+            saveCart();
+            updateCartDrawerUI();
+        }
+
+        function saveCart() {
+            localStorage.setItem('gym_store_cart', JSON.stringify(storeCart));
+            updateCartCounter();
+        }
+
+        function updateCartCounter() {
+            const totalCount = storeCart.reduce((sum, item) => sum + item.qty, 0);
+            const b1 = document.getElementById('floatingCartCount');
+            const b2 = document.getElementById('cartDrawerCount');
+            if (b1) b1.textContent = totalCount;
+            if (b2) b2.textContent = totalCount;
+        }
+
+        function openCartDrawer() {
+            updateCartDrawerUI();
+            document.getElementById('cartDrawer')?.classList.add('active');
+            document.getElementById('cartDrawerBackdrop')?.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCartDrawer() {
+            document.getElementById('cartDrawer')?.classList.remove('active');
+            document.getElementById('cartDrawerBackdrop')?.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateCartDrawerUI() {
+            const listEl = document.getElementById('cartDrawerItems');
+            if (!listEl) return;
+            if (storeCart.length === 0) {
+                listEl.innerHTML = `<div class="cart-empty-view"><i class="fa-solid fa-cart-arrow-down"></i><h4>Your Cart is Empty</h4><p>Explore Women's athletic apparel and gear.</p></div>`;
+                document.getElementById('cartDrawerSubtotal').textContent = '₹0';
+                document.getElementById('cartDrawerTotal').textContent = '₹0';
+                document.getElementById('cartDrawerDelivery').textContent = '₹0';
+                document.getElementById('freeShippingFill').style.width = '0%';
+                return;
+            }
+
+            listEl.innerHTML = storeCart.map((item, idx) => `
+                <div class="cart-item-card">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-thumb" onerror="this.src='images/hero-background-figma-7573f8.jpg'">
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-meta">Size: <strong>${item.size}</strong></div>
+                        <div class="cart-item-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+                    </div>
+                    <div class="cart-item-qty-row">
+                        <button class="cart-qty-btn" onclick="changeCartItemQty(${idx}, -1)">-</button>
+                        <span class="cart-qty-num">${item.qty}</span>
+                        <button class="cart-qty-btn" onclick="changeCartItemQty(${idx}, 1)">+</button>
+                    </div>
+                    <i class="fa-solid fa-trash-can cart-item-remove" onclick="removeCartItem(${idx})"></i>
+                </div>
+            `).join('');
+
+            const rawSubtotal = storeCart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const discountAmount = Math.round(rawSubtotal * (appliedDiscountPct / 100));
+            const subtotalAfterDisc = rawSubtotal - discountAmount;
+            const deliveryFee = subtotalAfterDisc >= 1499 ? 0 : 199;
+            const finalTotal = subtotalAfterDisc + deliveryFee;
+
+            const fillPct = Math.min(100, Math.round((subtotalAfterDisc / 1499) * 100));
+            document.getElementById('freeShippingFill').style.width = `${fillPct}%`;
+            document.getElementById('cartDrawerSubtotal').textContent = `₹${rawSubtotal.toLocaleString('en-IN')}`;
+            document.getElementById('cartDrawerDelivery').textContent = deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`;
+            document.getElementById('cartDrawerTotal').textContent = `₹${finalTotal.toLocaleString('en-IN')}`;
+        }
+
+        function changeCartItemQty(idx, change) {
+            if (!storeCart[idx]) return;
+            storeCart[idx].qty += change;
+            if (storeCart[idx].qty <= 0) storeCart.splice(idx, 1);
+            saveCart();
+            updateCartDrawerUI();
+        }
+
+        function removeCartItem(idx) { storeCart.splice(idx, 1); saveCart(); updateCartDrawerUI(); }
+
+        function applyCartPromo() {
+            const code = (document.getElementById('cartPromoInput')?.value || '').trim().toUpperCase();
+            const feedback = document.getElementById('promoFeedback');
+            if (code === 'MEMBER10') { appliedDiscountPct = 10; appliedPromoCode = code; feedback.className = 'promo-feedback success'; feedback.textContent = '✓ 10% Member Discount Applied!'; }
+            else if (code === 'ELITE20') { appliedDiscountPct = 20; appliedPromoCode = code; feedback.className = 'promo-feedback success'; feedback.textContent = '✓ 20% Elite Tier Discount Applied!'; }
+            else { feedback.className = 'promo-feedback error'; feedback.textContent = '✗ Invalid promo code.'; }
+            updateCartDrawerUI();
+        }
+
+        function proceedToCheckoutFromDrawer() {
+            if (storeCart.length === 0) { showToast('Cart is empty!'); return; }
+            saveCart();
+            localStorage.setItem('gym_store_applied_promo', appliedPromoCode);
+            localStorage.setItem('gym_store_discount_pct', String(appliedDiscountPct));
+            window.location.href = 'checkout.html';
+        }
+
+        function openProductQuickView(productId) {
+            const p = WOMEN_PRODUCTS.find(item => item.id === productId);
+            if (!p) return;
+            currentModalProduct = p;
+            currentModalQty = 1;
+            currentModalSize = p.sizes ? p.sizes[0] : 'S';
+            document.getElementById('modalTitle').textContent = p.name;
+            document.getElementById('modalPrice').textContent = `₹${p.price.toLocaleString('en-IN')}`;
+            document.getElementById('modalOriginalPrice').textContent = `₹${p.originalPrice.toLocaleString('en-IN')}`;
+            document.getElementById('modalImg').src = p.image;
+            document.getElementById('modalBadge').textContent = p.badge;
+            document.getElementById('modalQtyDisplay').textContent = '1';
+
+            const pills = document.getElementById('modalSizePills');
+            if (pills && p.sizes) {
+                pills.innerHTML = p.sizes.map((s, idx) => `<button type="button" class="size-pill ${idx===0?'active':''}" onclick="selectModalSize(this, '${s}')">${s}</button>`).join('');
+            }
+            document.getElementById('productModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() { document.getElementById('productModal')?.classList.remove('active'); document.body.style.overflow = ''; }
+        function handleModalBackdropClick(e) { if (e.target.id === 'productModal') closeProductModal(); }
+        function selectModalSize(btn, s) { document.querySelectorAll('.size-pill').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentModalSize = s; }
+        function changeProductQty(c) { currentModalQty = Math.max(1, currentModalQty + c); document.getElementById('modalQtyDisplay').textContent = currentModalQty; }
+
+        function addToCartFromModal() {
+            if (!currentModalProduct) return;
+            addItemToCart(currentModalProduct, currentModalSize, currentModalQty);
+            closeProductModal();
+            showToast(`Added to cart!`);
+            openCartDrawer();
+        }
+
+        function toggleWishlist(id, btn) {
+            const idx = storeWishlist.indexOf(id);
+            if (idx > -1) { storeWishlist.splice(idx, 1); btn.classList.remove('active'); btn.innerHTML = '<i class="fa-regular fa-heart"></i>'; }
+            else { storeWishlist.push(id); btn.classList.add('active'); btn.innerHTML = '<i class="fa-solid fa-heart"></i>'; showToast('Added to Wishlist!'); }
+            localStorage.setItem('gym_store_wishlist', JSON.stringify(storeWishlist));
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('cartToast');
+            const msgEl = document.getElementById('cartToastMsg');
+            if (toast && msgEl) { msgEl.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2500); }
+        }
+
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeProductModal(); closeCartDrawer(); } });
+        document.addEventListener('DOMContentLoaded', initWomenStore);
+    </script>
+</body>
+</html>

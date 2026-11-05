@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workout Programs & Custom AI Training Hub | Hanuman Gym</title>
+    <meta name="description" content="Generate a 100% personalized custom workout plan or explore battle-tested blueprints: 6-Day PPL, Arnold Split, Glute Sculpt, 4-Day Upper/Lower, 3-Day Full Body, Powerbuilding, and HIIT Shred." />
+    <link rel="icon" type="image/png" href="../P Home/images/logo.png" />
+
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <!-- Shared Header & Footer Stylesheets -->
+    <link rel="stylesheet" href="../shared/site-header.css" />
+    <link rel="stylesheet" href="../shared/site-footer.css" />
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="workout-programs-style.css" />
+
+    <!-- Shared Navigation & Footer Injected -->
+    <script src="../shared/site-header.js" defer></script>
+    <script src="../shared/site-footer.js" defer></script>
+</head>
+<body>
+
+    <!-- Shared Global Header -->
+    <div id="site-header"></div>
+
+    <!-- 2-COLUMN BALANCED HERO SECTION WITH INTERACTIVE COMMAND CARD -->
+    <section class="workout-hero-section">
+        <div class="hero-layout-grid">
+            
+            <!-- LEFT COLUMN: COMMANDING HEADLINE, SUMMARY & PRIMARY CTAS -->
+            <div class="hero-text-column">
+                <div class="hero-pill-badge">
+                    <i class="fa-solid fa-fire-flame-curved text-gold"></i> Elite Training Architecture
+                </div>
+                <h1 class="hero-main-title">
+                    MASTER YOUR <span>PHYSIQUE</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Build a 100% personalized routine matched to your biometrics and goals, or train instantly with our 7 battle-tested periodized blueprints with video guides, live rest timers, and plate calculators.
+                </p>
+
+                <div class="hero-primary-actions">
+                    <a href="../custom workout plan/workout-plan.html" class="btn btn-hero-gold">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Personalize Custom AI Plan
+                    </a>
+                    <a href="#programCatalog" class="btn btn-hero-ghost">
+                        <i class="fa-solid fa-layer-group text-gold"></i> Browse 7 Blueprints
+                    </a>
+                </div>
+
+                <!-- Horizontal Trust & Feature Strip -->
+                <div class="hero-feature-pills">
+                    <div class="feature-item"><i class="fa-solid fa-check text-gold"></i> 7 Master Splits</div>
+                    <div class="feature-item"><i class="fa-solid fa-check text-gold"></i> 35 Slow-Mo HUDs</div>
+                    <div class="feature-item"><i class="fa-solid fa-check text-gold"></i> Live Rest Timers</div>
+                    <div class="feature-item"><i class="fa-solid fa-check text-gold"></i> 1-Click Cloud Sync</div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: INTERACTIVE 3-TAB COMMAND CARD -->
+            <div class="hero-command-card">
+                <!-- Navigation Tabs -->
+                <div class="command-card-tabs">
+                    <button class="command-tab-btn active" data-tab="ai" onclick="window.WorkoutEngine.switchHeroTab('ai', this)">
+                        <i class="fa-solid fa-wand-magic-sparkles text-gold"></i> AI Custom Plan
+                    </button>
+                    <button class="command-tab-btn" data-tab="matcher" onclick="window.WorkoutEngine.switchHeroTab('matcher', this)">
+                        <i class="fa-solid fa-bullseye text-gold"></i> Split Finder
+                    </button>
+                    <button class="command-tab-btn" data-tab="tools" onclick="window.WorkoutEngine.switchHeroTab('tools', this)">
+                        <i class="fa-solid fa-calculator text-gold"></i> 1RM Calc & Warm-Up
+                    </button>
+                </div>
+
+                <!-- TAB 1: AI CUSTOM PLAN SHOWCASE -->
+                <div class="command-tab-content active" id="heroTab-ai">
+                    <div class="tab-ai-header">
+                        <span class="tab-badge"><i class="fa-solid fa-crown text-gold"></i> Flagship Feature</span>
+                        <span class="tab-meta">Takes ~60s</span>
+                    </div>
+                    <h3 class="tab-ai-title">100% Tailored Workout Routine</h3>
+                    <p class="tab-ai-desc">
+                        Our 37-point assessment matches your body fat %, target muscle imbalances, past injuries, schedule, and equipment into an optimal routine.
+                    </p>
+                    <div class="tab-ai-perks">
+                        <span><i class="fa-solid fa-circle-check text-gold"></i> Biometric Macro Match</span>
+                        <span><i class="fa-solid fa-circle-check text-gold"></i> Injury Substitutions</span>
+                        <span><i class="fa-solid fa-circle-check text-gold"></i> Cloud Sync to Dashboard</span>
+                    </div>
+                    <a href="../custom workout plan/workout-plan.html" class="btn btn-tab-cta">
+                        <i class="fa-solid fa-bolt"></i> Launch 60-Second Assessment
+                    </a>
+                </div>
+
+                <!-- TAB 2: QUICK SPLIT MATCHER -->
+                <div class="command-tab-content" id="heroTab-matcher">
+                    <div class="matcher-header">
+                        <span class="matcher-title"><i class="fa-solid fa-filter text-gold"></i> Instant Split Filter</span>
+                        <span class="matcher-subtitle">Tap to highlight matches</span>
+                    </div>
+                    <div class="matcher-buttons-grid">
+                        <button class="matcher-btn active" data-match="all" onclick="window.WorkoutEngine.quickMatch('all', this)"><i class="fa-solid fa-layer-group"></i> All Splits</button>
+                        <button class="matcher-btn" data-match="6days" onclick="window.WorkoutEngine.quickMatch('6days', this)"><i class="fa-solid fa-calendar-days"></i> 6 Days/Wk</button>
+                        <button class="matcher-btn" data-match="4days" onclick="window.WorkoutEngine.quickMatch('4days', this)"><i class="fa-solid fa-calendar-check"></i> 4 Days/Wk</button>
+                        <button class="matcher-btn" data-match="3days" onclick="window.WorkoutEngine.quickMatch('3days', this)"><i class="fa-solid fa-bolt"></i> 3 Days/Wk</button>
+                        <button class="matcher-btn" data-match="hypertrophy" onclick="window.WorkoutEngine.quickMatch('hypertrophy', this)"><i class="fa-solid fa-dumbbell"></i> Muscle Mass</button>
+                        <button class="matcher-btn" data-match="strength" onclick="window.WorkoutEngine.quickMatch('strength', this)"><i class="fa-solid fa-crown"></i> 1RM Strength</button>
+                        <button class="matcher-btn" data-match="shred" onclick="window.WorkoutEngine.quickMatch('shred', this)"><i class="fa-solid fa-fire"></i> Fat Shred</button>
+                    </div>
+                    <a href="#programCatalog" class="tab-jump-link">View Filtered Blueprints &darr;</a>
+                </div>
+
+                <!-- TAB 3: 1RM CALCULATOR & WARM-UP PRIMER -->
+                <div class="command-tab-content" id="heroTab-tools">
+                    <h4 style="font-size:16px; color:#FFF; margin-bottom:8px;">Power & Mobility Utilities</h4>
+                    <p style="font-size:13px; color:var(--text-dark); margin-bottom:16px;">
+                        Calculate your 1RM, view exact barbell plate loading racks, or review the 5-minute pre-workout dynamic mobility protocol.
+                    </p>
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        <button class="btn btn-ghost" style="justify-content:flex-start;" onclick="window.WorkoutEngine.openOneRepMaxModal()">
+                            <i class="fa-solid fa-calculator text-gold" style="font-size:16px;"></i>
+                            <div style="text-align:left;">
+                                <strong style="display:block; color:#FFF; font-size:13px;">1RM & Barbell Plate Calculator</strong>
+                                <span style="font-size:11px; color:var(--text-dark);">Brzycki/Epley Formula with Olympic Plate visualizer</span>
+                            </div>
+                        </button>
+                        <button class="btn btn-ghost" style="justify-content:flex-start;" onclick="window.WorkoutEngine.openWarmupModal()">
+                            <i class="fa-solid fa-person-running text-gold" style="font-size:16px;"></i>
+                            <div style="text-align:left;">
+                                <strong style="display:block; color:#FFF; font-size:13px;">5-Minute Dynamic Warm-Up</strong>
+                                <span style="font-size:11px; color:var(--text-dark);">4-Stage mobility and rotator cuff injury primer</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SPLIT FILTER HUB (7 CURATED CATEGORIES) -->
+    <div class="workout-filter-hub" id="programCatalog">
+        <button class="split-filter-chip active" data-filter="all"><i class="fa-solid fa-layer-group"></i> All Programs (7)</button>
+        <button class="split-filter-chip" data-filter="ppl"><i class="fa-solid fa-fire"></i> 6-Day PPL</button>
+        <button class="split-filter-chip" data-filter="arnold"><i class="fa-solid fa-shield-halved"></i> Arnold Split</button>
+        <button class="split-filter-chip" data-filter="glute_sculpt"><i class="fa-solid fa-gem"></i> Glute & Core</button>
+        <button class="split-filter-chip" data-filter="upper_lower"><i class="fa-solid fa-dumbbell"></i> 4-Day Upper/Lower</button>
+        <button class="split-filter-chip" data-filter="full_body"><i class="fa-solid fa-bolt"></i> 3-Day Full Body</button>
+        <button class="split-filter-chip" data-filter="powerbuilding"><i class="fa-solid fa-crown"></i> Powerbuilding</button>
+        <button class="split-filter-chip" data-filter="shred"><i class="fa-solid fa-gauge-high"></i> HIIT Shred</button>
+    </div>
+
+    <!-- SPOTLIGHT PROGRAM CARDS GRID -->
+    <main class="workout-programs-container" id="workoutProgramsGrid">
+        <!-- Rendered dynamically via workout-programs.js -->
+    </main>
+
+    <!-- FULLSCREEN / SLIDE-OVER SPLIT INSPECTOR DRAWER -->
+    <div class="split-drawer-backdrop" id="splitInspectorDrawer">
+        <div class="split-drawer-card">
+            <div class="drawer-header">
+                <div>
+                    <h3 class="drawer-title" id="drawerProgramTitle">Push-Pull-Legs Mass Builder</h3>
+                    <div style="font-size:12.5px; color:var(--text-dark); margin-top:2px;" id="drawerProgramSubtitle">6 Days / Week • Hypertrophy & Density</div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="window.WorkoutEngine.closeInspectorDrawer()">&times;</button>
+            </div>
+
+            <div class="drawer-controls-bar">
+                <div class="drawer-day-tabs-scroll" id="drawerDayTabsContainer">
+                    <!-- Day Tabs Rendered Here -->
+                </div>
+                <div class="mesocycle-pills" id="drawerMesocycleContainer">
+                    <!-- Mesocycle pills Rendered Here -->
+                </div>
+            </div>
+
+            <div class="drawer-exercises-list" id="drawerExercisesContainer">
+                <!-- Day-by-Day Exercises with video links rendered here -->
+            </div>
+
+            <div class="drawer-actions-footer">
+                <button class="btn btn-primary" id="drawerStartWorkoutBtn" onclick="window.WorkoutEngine.startLiveFromDrawer()">
+                    <i class="fa-solid fa-play"></i> Start Live Workout
+                </button>
+                <button class="btn btn-ghost" id="drawerPushMySpaceBtn" onclick="window.WorkoutEngine.pushFromDrawer()">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Push to My Space
+                </button>
+                <button class="btn btn-ghost" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> Print A4 Sheet
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVE IN-GYM FLOOR WORKOUT MODAL WITH AUDIO REST TIMER -->
+    <div class="workout-modal-backdrop" id="liveWorkoutModal">
+        <div class="workout-modal-card">
+            <div class="workout-modal-header">
+                <div>
+                    <h3 class="workout-modal-title" id="liveModalTitle">Live Training Session</h3>
+                    <div style="font-size:12px; color:var(--text-dark);" id="liveModalSubtitle">Day 1 Routine</div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="window.WorkoutEngine.closeLiveModal()">&times;</button>
+            </div>
+
+            <!-- REST TIMER HUD -->
+            <div class="rest-timer-hud-box">
+                <div class="timer-progress-fill" id="timerProgressBar"></div>
+                <div>
+                    <span style="font-size:10px; text-transform:uppercase; color:var(--text-dark); display:block; font-weight:700;">Rest Interval</span>
+                    <div class="timer-digits" id="restTimerDisplay">00:00</div>
+                </div>
+                <div class="timer-preset-btns">
+                    <button class="btn-timer-chip" onclick="window.WorkoutEngine.startRestTimer(60)">60s</button>
+                    <button class="btn-timer-chip" onclick="window.WorkoutEngine.startRestTimer(90)">90s</button>
+                    <button class="btn-timer-chip" onclick="window.WorkoutEngine.startRestTimer(120)">120s</button>
+                    <button class="btn-timer-chip" onclick="window.WorkoutEngine.startRestTimer(180)">180s</button>
+                    <button class="btn-timer-chip" style="background:#ff4d4d; color:#FFF;" onclick="window.WorkoutEngine.stopRestTimer()">Stop</button>
+                </div>
+            </div>
+
+            <div class="live-day-tabs-strip" id="liveModalDayTabs"></div>
+
+            <div class="live-exercises-scroll" id="liveModalExercisesContainer">
+                <!-- Exercises with check-off boxes rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 1RM ESTIMATOR & BARBELL PLATE CALCULATOR MODAL -->
+    <div class="workout-modal-backdrop" id="oneRepMaxModal">
+        <div class="workout-modal-card" style="max-width:660px;">
+            <div class="workout-modal-header">
+                <div>
+                    <h3 class="workout-modal-title">1RM & Barbell Plate Calculator</h3>
+                    <span style="font-size:10.5px; color:var(--accent-gold); font-weight:700; text-transform:uppercase;">Brzycki & Epley Formula</span>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="window.WorkoutEngine.closeOneRepMaxModal()">&times;</button>
+            </div>
+            <div class="calc-grid-layout">
+                <div class="calc-input-box">
+                    <div>
+                        <label style="font-size:11.5px; font-weight:700; color:#FFF; display:block; margin-bottom:5px;">Lift Weight (kg)</label>
+                        <input type="number" id="calcWeightInput" value="100" min="1" step="0.5" style="width:100%; background:#181818; border:1px solid var(--border-subtle); color:#FFF; padding:9px 12px; border-radius:6px; font-size:15px; font-weight:700;" oninput="window.WorkoutEngine.calculateOneRepMax()" />
+                    </div>
+                    <div>
+                        <label style="font-size:11.5px; font-weight:700; color:#FFF; display:block; margin-bottom:5px;">Reps Completed</label>
+                        <input type="number" id="calcRepsInput" value="5" min="1" max="15" style="width:100%; background:#181818; border:1px solid var(--border-subtle); color:#FFF; padding:9px 12px; border-radius:6px; font-size:15px; font-weight:700;" oninput="window.WorkoutEngine.calculateOneRepMax()" />
+                    </div>
+                    <div>
+                        <label style="font-size:11.5px; font-weight:700; color:#FFF; display:block; margin-bottom:5px;">Bar Weight (kg)</label>
+                        <select id="calcBarWeight" style="width:100%; background:#181818; border:1px solid var(--border-subtle); color:#FFF; padding:9px 12px; border-radius:6px; font-size:13.5px;" onchange="window.WorkoutEngine.calculateOneRepMax()">
+                            <option value="20">Olympic Standard Bar (20 kg / 44 lbs)</option>
+                            <option value="15">Women's / Tech Bar (15 kg / 33 lbs)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calc-results-box">
+                    <div class="onerm-hero-stat">
+                        <span style="font-size:10.5px; text-transform:uppercase; color:var(--text-dark); font-weight:700;">Estimated 1 Rep Max</span>
+                        <div class="onerm-number" id="calcOneRmResult">115.0 kg</div>
+                    </div>
+                    <div class="pct-table-compact">
+                        <div class="pct-row"><span>95% (Heavy Double):</span> <strong id="pct95">109.3 kg</strong></div>
+                        <div class="pct-row"><span>90% (Triples):</span> <strong id="pct90">103.5 kg</strong></div>
+                        <div class="pct-row"><span>85% (5RM Working):</span> <strong id="pct85">97.8 kg</strong></div>
+                        <div class="pct-row"><span>80% (Hypertrophy 8RM):</span> <strong id="pct80">92.0 kg</strong></div>
+                        <div class="pct-row"><span>75% (Volume 10RM):</span> <strong id="pct75">86.3 kg</strong></div>
+                    </div>
+                </div>
+
+                <div class="barbell-visualizer-box">
+                    <span style="font-size:11px; text-transform:uppercase; color:var(--accent-gold); font-weight:800; display:block; margin-bottom:4px;">
+                        <i class="fa-solid fa-dumbbell"></i> Plates Per Side (for <span id="barbellTargetWeight">100.0</span> kg on 20kg bar)
+                    </span>
+                    <div class="plate-rack-render" id="plateRackVisualizer">
+                        <!-- Loaded plate badges rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DYNAMIC WARM-UP PROTOCOL MODAL -->
+    <div class="workout-modal-backdrop" id="warmupModal">
+        <div class="workout-modal-card" style="max-width:560px;">
+            <div class="workout-modal-header">
+                <div>
+                    <h3 class="workout-modal-title">Scientific Dynamic Warm-Up</h3>
+                    <span style="font-size:10.5px; color:var(--accent-gold); font-weight:700; text-transform:uppercase;">5-Minute Injury Prevention Primer</span>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="window.WorkoutEngine.closeWarmupModal()">&times;</button>
+            </div>
+            <div style="padding:18px; overflow-y:auto; max-height:75vh; display:flex; flex-direction:column; gap:10px;">
+                <div style="background:#0F0F0F; border:1px solid var(--border-subtle); border-radius:6px; padding:12px;">
+                    <strong style="color:var(--accent-gold); font-size:13.5px;">1. Joint Lubrication & Thoracic Mobility</strong>
+                    <p style="font-size:12px; color:var(--text-dim); margin-top:3px;">Cat-Cow (10 reps) + World's Greatest Stretch (5 reps/side) to mobilize the hips and thoracic spine.</p>
+                </div>
+                <div style="background:#0F0F0F; border:1px solid var(--border-subtle); border-radius:6px; padding:12px;">
+                    <strong style="color:var(--accent-gold); font-size:13.5px;">2. Rotator Cuff & Upper Back Activation</strong>
+                    <p style="font-size:12px; color:var(--text-dim); margin-top:3px;">Resistance Band Pull-Aparts (15 reps) + Band Over-and-Backs (10 reps) to seat the glenohumeral joint.</p>
+                </div>
+                <div style="background:#0F0F0F; border:1px solid var(--border-subtle); border-radius:6px; padding:12px;">
+                    <strong style="color:var(--accent-gold); font-size:13.5px;">3. Hip & Glute Priming (For Squats/Deadlifts)</strong>
+                    <p style="font-size:12px; color:var(--text-dim); margin-top:3px;">90/90 Hip Flow (6 reps/side) + Bodyweight Glute Bridges (15 reps with 2s squeeze).</p>
+                </div>
+                <div style="background:#0F0F0F; border:1px solid var(--border-subtle); border-radius:6px; padding:12px;">
+                    <strong style="color:var(--accent-gold); font-size:13.5px;">4. Barbell Ramp-Up Sets (Non-Fatiguing)</strong>
+                    <p style="font-size:12px; color:var(--text-dim); margin-top:3px;">Empty Bar x 10 reps &rarr; 50% Working Weight x 5 &rarr; 70% x 3 &rarr; 85% x 1 &rarr; Begin Working Sets.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXERCISE TECHNIQUE VIDEO HUD MODAL -->
+    <div class="workout-modal-backdrop" id="exerciseVideoModal">
+        <div class="workout-modal-card" style="max-width:520px;">
+            <div class="workout-modal-header">
+                <div>
+                    <h3 class="workout-modal-title" id="videoModalExerciseName">Exercise Video</h3>
+                    <span style="font-size:10.5px; color:var(--accent-gold); font-weight:700; text-transform:uppercase;">Exercise Academy Slow-Mo</span>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="window.WorkoutEngine.closeVideoModal()">&times;</button>
+            </div>
+            <div style="padding:16px; background:#0A0A0A;">
+                <video id="videoModalPlayer" controls autoplay loop playsinline style="width:100%; border-radius:8px; max-height:280px; background:#000; box-shadow:0 8px 20px rgba(0,0,0,0.8);"></video>
+                <div style="margin-top:12px; background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:6px; padding:12px;">
+                    <span style="font-size:11px; text-transform:uppercase; color:var(--accent-gold); font-weight:800; display:block; margin-bottom:4px;">
+                        <i class="fa-solid fa-bullseye"></i> Execution Cues
+                    </span>
+                    <p style="font-size:12.5px; color:#EEE; line-height:1.45;" id="videoModalCues"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- WORKOUT TOAST NOTIFICATION -->
+    <div class="workout-toast" id="workoutToast" style="display:none;"></div>
+
+    <!-- Shared Global Footer -->
+    <div id="site-footer"></div>
+
+    <!-- SCRIPTS -->
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    <script src="workout-programs.js"></script>
+
+</body>
+</html>

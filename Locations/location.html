@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Locations & Branches - Hanuman Gym</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="locations-style.css">
+    <script src="../shared/site-header.js" defer></script>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <!-- Restored Classic Hero Section -->
+    <section class="hero">
+        <div style="max-width:1100px; margin:0 auto; padding:0 20px;">
+            <div class="hero-eyebrow">
+                <span class="eyebrow-pulse"></span>
+                <span>HANUMAN ATHLETIC NETWORK</span>
+            </div>
+            <h1>Find Your Nearest <span>Gym & Wellness Center</span></h1>
+            <p>Experience world-class fitness facilities, heavy powerlifting zones, and 24/7 keycard access across 10 premium centers in Mumbai and surrounding areas.</p>
+            
+            <div class="hero-stats-row">
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                    <div><span class="stat-val">10 Centers</span> <span class="stat-label">• Active Branches</span></div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+                    <div><span class="stat-val">24/7 Access</span> <span class="stat-label">• Flagship Hubs</span></div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fa-solid fa-hot-tub-person"></i></div>
+                    <div><span class="stat-val">Recovery Spas</span> <span class="stat-label">• Steam & Sauna</span></div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fa-solid fa-ticket"></i></div>
+                    <div><span class="stat-val">Free 1-Day Pass</span> <span class="stat-label">• Instant Access</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="locations-main-container">
+
+        <!-- Search & Proximity Discovery Hub -->
+        <section class="locations-filter-hub">
+            <div class="search-and-gps-row">
+                <div class="location-search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="location-search-input" class="location-search-input" placeholder="Search by city, branch name, or landmark (e.g. Kalyan, Thane, Viviana, Dadar, Station)..." autocomplete="off">
+                </div>
+                <button type="button" id="btn-gps-locate" class="btn-gps-locate">
+                    <i class="fa-solid fa-location-crosshairs"></i> Find Nearest Gym to Me
+                </button>
+            </div>
+
+            <!-- Region & Facility Filter Chips -->
+            <div class="filter-row-wrap">
+                <div class="filter-chip-group" id="region-filter-chips">
+                    <span class="filter-group-title">Zone:</span>
+                    <span class="location-chip active" data-region="all">All Zones (10)</span>
+                    <span class="location-chip" data-region="Mumbai City"><i class="fa-solid fa-city"></i> Mumbai City</span>
+                    <span class="location-chip" data-region="Thane & Navi Mumbai"><i class="fa-solid fa-building"></i> Thane & Navi Mumbai</span>
+                    <span class="location-chip" data-region="Kalyan-Dombivali"><i class="fa-solid fa-train-subway"></i> Kalyan-Dombivali</span>
+                    <span class="location-chip" data-region="Central Suburbs"><i class="fa-solid fa-mountain"></i> Central Suburbs</span>
+                </div>
+
+                <div class="filter-chip-group" id="facility-filter-chips">
+                    <span class="filter-group-title">Amenities:</span>
+                    <span class="location-chip active" data-facility="all">All Amenities</span>
+                    <span class="location-chip" data-facility="24/7"><i class="fa-solid fa-key"></i> 24/7 Access</span>
+                    <span class="location-chip" data-facility="Steam & Sauna"><i class="fa-solid fa-spa"></i> Steam & Sauna</span>
+                    <span class="location-chip" data-facility="Olympic Lifting"><i class="fa-solid fa-weight-hanging"></i> Olympic Racks</span>
+                    <span class="location-chip" data-facility="CrossFit"><i class="fa-solid fa-fire"></i> CrossFit / Turf</span>
+                    <span class="location-chip" data-facility="Smoothie Bar"><i class="fa-solid fa-blender"></i> Smoothie Bar</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section class="interactive-map-section" id="mapSection">
+            <div class="map-header-bar">
+                <h2>Interactive <span>MMR Branch Map</span></h2>
+                <span style="font-size:12.5px; color:#888;">Click any gold pin to inspect branch details & route directions</span>
+            </div>
+            <div id="gym-interactive-map"></div>
+        </section>
+
+        <!-- Branch Locations Grid Section -->
+        <section class="branches-section">
+            <div class="locations-grid-header">
+                <h2>All <span>Hanuman Gym Locations</span></h2>
+                <div id="branches-count-badge" style="font-family:'Outfit',sans-serif; font-size:13px; color:#888; font-weight:700;">
+                    Showing 10 Centers
+                </div>
+            </div>
+
+            <div id="branchesContainer" class="branches-cards-grid">
+                <!-- Populated dynamically via locations-interactive.js -->
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="locations-empty-state" class="locations-empty-state">
+                <i class="fa-solid fa-location-dot" style="font-size:44px; color:#444; margin-bottom:16px;"></i>
+                <h3 style="font-size:20px; font-weight:800; color:#FFF; margin-bottom:6px;">No Centers Found Matching Your Criteria</h3>
+                <p style="font-size:14px; color:#888; margin-bottom:20px;">Try searching for a different city, or reset your zone and amenity filters.</p>
+                <button type="button" onclick="window.HanumanLocations.reset()" style="background:#B3DD24; color:#000; border:none; padding:10px 24px; border-radius:20px; font-weight:800; cursor:pointer;">Reset Filters</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Free 1-Day Pass Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="window.HanumanLocations.closeModal('bookingModal')">&times;</span>
+            <h2>Book Your Free 1-Day Pass</h2>
+            <div id="bookingMessage" class="message"></div>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="bookingName">Full Name *</label>
+                    <input type="text" id="bookingName" name="name" required placeholder="e.g. Rahul Sharma">
+                </div>
+                <div class="form-group">
+                    <label for="bookingEmail">Email Address *</label>
+                    <input type="email" id="bookingEmail" name="email" required placeholder="name@domain.com">
+                </div>
+                <div class="form-group">
+                    <label for="bookingPhone">Phone Number *</label>
+                    <input type="tel" id="bookingPhone" name="phone" required placeholder="+91 98765 43210">
+                </div>
+                <div class="form-group">
+                    <label for="bookingLocation">Preferred Branch *</label>
+                    <select id="bookingLocation" name="location" required>
+                        <option value="">Select a location</option>
+                        <option value="Ambernath">Ambernath Branch</option>
+                        <option value="Karjat">Karjat Branch</option>
+                        <option value="Ambivali">Ambivali Branch</option>
+                        <option value="Titwala">Titwala Branch</option>
+                        <option value="Kalyan">Kalyan Flagship Branch</option>
+                        <option value="Badlapur">Badlapur Branch</option>
+                        <option value="Dombivali">Dombivali Branch</option>
+                        <option value="Thane">Thane Mega Center</option>
+                        <option value="Dadar">Dadar Elite Performance Lab</option>
+                        <option value="Vashi">Vashi Power Center</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bookingDate">Pass Date *</label>
+                    <input type="date" id="bookingDate" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingTime">Preferred Time Slot *</label>
+                    <select id="bookingTime" name="time" required>
+                        <option value="Morning (6:00 AM - 10:00 AM)">Morning (6:00 AM - 10:00 AM)</option>
+                        <option value="Afternoon (11:00 AM - 4:00 PM)">Afternoon (11:00 AM - 4:00 PM)</option>
+                        <option value="Evening (5:00 PM - 9:00 PM)">Evening (5:00 PM - 9:00 PM)</option>
+                        <option value="Late Night (9:00 PM - 11:00 PM)">Late Night (9:00 PM - 11:00 PM)</option>
+                    </select>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-modal btn-modal-secondary" onclick="window.HanumanLocations.closeModal('bookingModal')">Cancel</button>
+                    <button type="submit" class="btn-modal btn-modal-primary">Confirm Free Pass</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Phone Modal -->
+    <div id="phoneModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="window.HanumanLocations.closeModal('phoneModal')">&times;</span>
+            <h2 id="phoneModalTitle">Branch Contacts</h2>
+            <div class="phone-options">
+                <div class="phone-option">
+                    <div class="phone-info">
+                        <h3>Front Desk</h3>
+                        <p>General inquiries & visitor access</p>
+                    </div>
+                    <div class="phone-number" id="primaryPhone">+91 98765 43210</div>
+                    <a href="#" class="btn-modal btn-modal-primary" id="primaryCallBtn" style="text-decoration:none; display:inline-block; text-align:center;">
+                        <i class="fa-solid fa-phone"></i> Call Desk
+                    </a>
+                </div>
+                <div class="phone-option">
+                    <div class="phone-info">
+                        <h3>Branch Manager</h3>
+                        <p>Memberships & personal training</p>
+                    </div>
+                    <div class="phone-number" id="secondaryPhone">+91 98765 43211</div>
+                    <a href="#" class="btn-modal btn-modal-secondary" id="secondaryCallBtn" style="text-decoration:none; display:inline-block; text-align:center;">
+                        <i class="fa-solid fa-user-tie"></i> Call Manager
+                    </a>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button type="button" class="btn-modal btn-modal-secondary" onclick="window.HanumanLocations.closeModal('phoneModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Master Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="locations-data.js"></script>
+    <script src="../shared/api-client.js"></script>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    <script src="../shared/site-footer.js" defer></script>
+    <script src="locations-interactive.js"></script>
+</body>
+</html>

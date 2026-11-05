@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FitPhysique - Train hard, stay strong. Modern gym for modern bodies. AI-powered workout plans, personalized training, and cutting-edge fitness technology.">
+    <meta name="theme-color" content="#B3DD24">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="FitPhysique">
+    <title>FitPhysique - Custom AI Gym Workout Plan</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="workout-plan.css">
+    <script src="../shared/site-header.js" defer></script>
+</head>
+<body>
+    <div id="site-header"></div>
+
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Unified Master Assessment Control Center -->
+        <div class="main-progress-container" id="mainProgressContainer">
+            <div class="chapter-stepper-wrap">
+                <div class="chapter-badge" id="chapterBadge">
+                    <i class="fas fa-user"></i> <span id="chapterTitle">Chapter 1: Biometrics &amp; Physical Profile</span>
+                </div>
+                
+                <div class="assessment-mode-selector-wrap" id="assessmentModeSelectorWrap">
+                    <div class="mode-toggle-pill-group">
+                        <button type="button" class="mode-toggle-btn active" id="btnModePro" onclick="setAssessmentMode('pro')" title="Pro Precision (34 Steps)">
+                            <i class="fas fa-brain"></i> Pro (34)
+                        </button>
+                        <button type="button" class="mode-toggle-btn" id="btnModeQuick" onclick="setAssessmentMode('quick')" title="Quick Start (60s Express)">
+                            <i class="fas fa-bolt"></i> Quick (60s)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="step-counter-pill" id="stepCounterPill">
+                    Step <span id="progressText">1</span> of <span id="totalStepsDisplay">34</span>
+                </div>
+            </div>
+
+            <div class="progress-bar-track" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100" aria-label="Assessment Progress">
+                <div class="progress-bar-fill" id="mainProgressBarFill" style="width: 3%;"></div>
+            </div>
+            <div class="sr-only" aria-live="polite" id="a11yStepAnnouncer">Step 1 of 34: Chapter 1: Biometrics &amp; Physical Profile</div>
+
+            <!-- Live Reactive Micro-Insight Banner (Embedded cleanly inside the control bar) -->
+            <div class="live-assessment-insight-banner" id="liveAssessmentInsightBanner" style="display: none;">
+                <div class="insight-banner-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                <div class="insight-banner-content" id="liveAssessmentInsightContent">
+                    <strong>AI Insight:</strong> Calculating your biomechanical parameters...
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Age Selection -->
+        <div class="step-content active" id="step1">
+            <h1 class="page-title animate-fadeInUp">Choose your age</h1>
+            <h2 class="page-subtitle animate-fadeInUp">Select your age group to help us personalize your training intensity</h2>
+            
+            <div class="age-cards">
+                <!-- 18-29 Card -->
+                <div class="age-card animate-fadeInUp" onclick="selectAge('18-29')">
+                    <div class="age-illustration age-18-29"></div>
+                    <div class="age-footer">
+                        <h2 class="age-title">Age: 18-29</h2>
+                        <div class="age-button">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 30-39 Card -->
+                <div class="age-card animate-fadeInUp" onclick="selectAge('30-39')">
+                    <div class="age-illustration age-30-39"></div>
+                    <div class="age-footer">
+                        <h2 class="age-title">Age: 30-39</h2>
+                        <div class="age-button">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 40-49 Card -->
+                <div class="age-card animate-fadeInUp" onclick="selectAge('40-49')">
+                    <div class="age-illustration age-40-49"></div>
+                    <div class="age-footer">
+                        <h2 class="age-title">Age: 40-49</h2>
+                        <div class="age-button">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 50+ Card -->
+                <div class="age-card animate-fadeInUp" onclick="selectAge('50+')">
+                    <div class="age-illustration age-50-plus"></div>
+                    <div class="age-footer">
+                        <h2 class="age-title">Age: 50+</h2>
+                        <div class="age-button">
+                            <i class="fas fa-arrow-right"></i>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Terms and Privacy Policy - First Page Only -->
+            <div class="terms-section">
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="termsCheckbox">
+                    <label for="termsCheckbox">
+                        By continuing, you agree to our <a href="#" class="terms-link">Terms of service</a> and acknowledge our <a href="#" class="terms-link">Privacy policy</a> and <a href="#" class="terms-link">Cookie policy</a>.
+                    </label>
+                </div>
+                <div class="email-consent">
+                    <input type="checkbox" id="emailConsent">
+                    <label for="emailConsent">
+                        I would like to receive updates about products, services, and special offers from FitPhysique via email.
+                    </label>
+                </div>
+                <div class="medical-disclaimer">
+                    <p>We recommend that you consult with your physician before beginning any exercise program.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Gender Selection -->
+        <div class="step-content" id="step2">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Choose your gender</h1>
+            
+            <div class="gender-cards">
+                <!-- Male Card -->
+                <div class="gender-card animate-fadeInUp" onclick="selectGender('male')">
+                    <div class="gender-info">
+                        <h2 class="gender-title">Male</h2>
+                    </div>
+                    <div class="gender-illustration male"></div>
+                </div>
+
+                <!-- Female Card -->
+                <div class="gender-card animate-fadeInUp" onclick="selectGender('female')">
+                    <div class="gender-info">
+                        <h2 class="gender-title">Female</h2>
+                    </div>
+                    <div class="gender-illustration female"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Body Type Selection -->
+        <div class="step-content" id="step3">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Choose your body type</h1>
+            
+            <div class="body-type-cards">
+                <!-- Slim Card -->
+                <div class="body-type-card animate-fadeInUp" onclick="selectBodyType('slim')">
+                    <div class="body-type-info">
+                        <h2 class="body-type-title">Slim</h2>
+                    </div>
+                    <div class="body-type-illustration slim"></div>
+                </div>
+
+                <!-- Average Card -->
+                <div class="body-type-card animate-fadeInUp" onclick="selectBodyType('average')">
+                    <div class="body-type-info">
+                        <h2 class="body-type-title">Average</h2>
+                    </div>
+                    <div class="body-type-illustration average"></div>
+                </div>
+
+                <!-- Heavy Card -->
+                <div class="body-type-card animate-fadeInUp" onclick="selectBodyType('heavy')">
+                    <div class="body-type-info">
+                        <h2 class="body-type-title">Heavy</h2>
+                    </div>
+                    <div class="body-type-illustration heavy"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Fitness Goals Selection -->
+        <div class="step-content" id="step4">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Choose your fitness goal</h1>
+            
+            <div class="goals-cards">
+                <!-- Muscle Gain Card -->
+                <div class="goal-card animate-fadeInUp" onclick="selectGoal('muscle-gain')">
+                    <div class="goal-info">
+                        <h2 class="goal-title">Muscle Gain</h2>
+                    </div>
+                    <div class="goal-illustration muscle-gain"></div>
+                </div>
+
+                <!-- Weight Loss Card -->
+                <div class="goal-card animate-fadeInUp" onclick="selectGoal('weight-loss')">
+                    <div class="goal-info">
+                        <h2 class="goal-title">Weight loss</h2>
+                    </div>
+                    <div class="goal-illustration weight-loss"></div>
+                </div>
+
+                <!-- Get Shredded Card -->
+                <div class="goal-card animate-fadeInUp" onclick="selectGoal('get-shredded')">
+                    <div class="goal-info">
+                        <h2 class="goal-title">Get Shredded</h2>
+                    </div>
+                    <div class="goal-illustration get-shredded"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Body Type Selection for Muscle Gain -->
+        <div class="step-content" id="step5">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Choose the body you want</h1>
+            
+            <div class="body-selection-cards">
+                <!-- Athlete Card -->
+                <div class="body-selection-card animate-fadeInUp" onclick="selectMuscleBodyType('athlete')">
+                    <div class="body-selection-info">
+                        <h2 class="body-selection-title">Athlete</h2>
+                        <p class="body-selection-description">Lean, muscular physique with defined abs and athletic build</p>
+                    </div>
+                    <div class="body-selection-illustration athlete"></div>
+                </div>
+
+                <!-- Hero Card -->
+                <div class="body-selection-card animate-fadeInUp" onclick="selectMuscleBodyType('hero')">
+                    <div class="body-selection-info">
+                        <h2 class="body-selection-title">Hero</h2>
+                        <p class="body-selection-description">Bulkier, more pronounced muscular physique with larger arms and chest</p>
+                    </div>
+                    <div class="body-selection-illustration hero"></div>
+                </div>
+
+                <!-- Bodybuilder Card -->
+                <div class="body-selection-card animate-fadeInUp" onclick="selectMuscleBodyType('bodybuilder')">
+                    <div class="body-selection-info">
+                        <h2 class="body-selection-title">Bodybuilder</h2>
+                        <p class="body-selection-description">Massive, highly developed muscular physique with extreme definition</p>
+                    </div>
+                    <div class="body-selection-illustration bodybuilder"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 6: Body Type Selection for Weight Loss -->
+        <div class="step-content" id="step6">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Choose the body you want</h1>
+            
+            <div class="body-selection-cards">
+                <!-- Slim Shredded Card -->
+                <div class="body-selection-card animate-fadeInUp" onclick="selectWeightLossBodyType('slim-shredded')">
+                    <div class="body-selection-info">
+                        <h2 class="body-selection-title">Slim, shredded body</h2>
+                        <p class="body-selection-description">Lean, defined physique with visible muscle definition and low body fat</p>
+                    </div>
+                    <div class="body-selection-illustration slim-shredded"></div>
+                </div>
+
+                <!-- Slim Card -->
+                <div class="body-selection-card animate-fadeInUp" onclick="selectWeightLossBodyType('slim')">
+                    <div class="body-selection-info">
+                        <h2 class="body-selection-title">Slim body</h2>
+                        <p class="body-selection-description">Lean, toned physique with moderate muscle definition</p>
+                    </div>
+                    <div class="body-selection-illustration slim"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 7: Body Type Selection for Get Shredded -->
+        <div class="step-content" id="step7">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Choose the body you want</h1>
+            
+            <div class="body-selection-cards">
+                <!-- Beach Body Card -->
+                <div class="body-selection-card animate-fadeInUp" onclick="selectGetShreddedBodyType('beach-body')">
+                    <div class="body-selection-info">
+                        <h2 class="body-selection-title">Beach body</h2>
+                        <p class="body-selection-description">Lean, toned physique perfect for beach and summer activities</p>
+                    </div>
+                    <div class="body-selection-illustration beach-body"></div>
+                </div>
+
+                <!-- Crossfit Body Card -->
+                <div class="body-selection-card animate-fadeInUp" onclick="selectGetShreddedBodyType('crossfit-body')">
+                    <div class="body-selection-info">
+                        <h2 class="body-selection-title">Crossfit body</h2>
+                        <p class="body-selection-description">Functional, athletic physique built for high-intensity workouts</p>
+                    </div>
+                    <div class="body-selection-illustration crossfit-body"></div>
+                </div>
+
+                <!-- Workout Body Card -->
+                <div class="body-selection-card animate-fadeInUp" onclick="selectGetShreddedBodyType('workout-body')">
+                    <div class="body-selection-info">
+                        <h2 class="body-selection-title">Workout body</h2>
+                        <p class="body-selection-description">Strong, defined physique built through consistent training</p>
+                    </div>
+                    <div class="body-selection-illustration workout-body"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Step 8: Workout Time Preference -->
+        <div class="step-content" id="step8">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                </div>
+            <h1 class="page-title animate-fadeInUp">When do you prefer to workout?</h1>
+            
+            <div class="workout-time-cards">
+                <!-- Morning Card -->
+                <div class="workout-time-card animate-fadeInUp" onclick="selectWorkoutTime('morning')">
+                    <div class="workout-time-info">
+                        <h2 class="workout-time-title">Morning 🌅</h2>
+                        <p class="workout-time-description">Start your day with energy and focus</p>
+                    </div>
+                </div>
+
+                <!-- Afternoon Card -->
+                <div class="workout-time-card animate-fadeInUp" onclick="selectWorkoutTime('afternoon')">
+                    <div class="workout-time-info">
+                        <h2 class="workout-time-title">Afternoon 🏙️</h2>
+                        <p class="workout-time-description">Break up your day with a productive session</p>
+                    </div>
+                </div>
+
+                <!-- Evening Card -->
+                <div class="workout-time-card animate-fadeInUp" onclick="selectWorkoutTime('evening')">
+                    <div class="workout-time-info">
+                        <h2 class="workout-time-title">Evening 🏔️</h2>
+                        <p class="workout-time-description">Unwind and de-stress after a long day</p>
+                    </div>
+                </div>
+
+                <!-- Different Times Card -->
+                <div class="workout-time-card animate-fadeInUp" onclick="selectWorkoutTime('different-times')">
+                    <div class="workout-time-info">
+                        <h2 class="workout-time-title">At different times</h2>
+                        <p class="workout-time-description">Flexible schedule that varies day to day</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 9: Workout Duration Selection -->
+        <div class="step-content" id="step9">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How much time are you willing to spend on a workout?</h1>
+            
+            <div class="workout-duration-cards">
+                <!-- 20 min or less -->
+                <div class="workout-duration-card animate-fadeInUp" onclick="selectWorkoutDuration('20-min-or-less')">
+                    <div class="duration-radio">
+                        <input type="radio" id="duration-20-min" name="workout-duration" value="20-min-or-less">
+                        <label for="duration-20-min"></label>
+                    </div>
+                    <div class="duration-info">
+                        <h2 class="duration-title">20 min or less</h2>
+                    </div>
+    </div>
+
+                <!-- 20-40 min -->
+                <div class="workout-duration-card animate-fadeInUp" onclick="selectWorkoutDuration('20-40-min')">
+                    <div class="duration-radio">
+                        <input type="radio" id="duration-20-40-min" name="workout-duration" value="20-40-min">
+                        <label for="duration-20-40-min"></label>
+                    </div>
+                    <div class="duration-info">
+                        <h2 class="duration-title">20 - 40 min</h2>
+                    </div>
+    </div>
+
+                <!-- 40-60 min -->
+                <div class="workout-duration-card animate-fadeInUp" onclick="selectWorkoutDuration('40-60-min')">
+                    <div class="duration-radio">
+                        <input type="radio" id="duration-40-60-min" name="workout-duration" value="40-60-min">
+                        <label for="duration-40-60-min"></label>
+                    </div>
+                    <div class="duration-info">
+                        <h2 class="duration-title">40 - 60 min</h2>
+                    </div>
+                </div>
+
+                <!-- Over an hour -->
+                <div class="workout-duration-card animate-fadeInUp" onclick="selectWorkoutDuration('over-an-hour')">
+                    <div class="duration-radio">
+                        <input type="radio" id="duration-over-hour" name="workout-duration" value="over-an-hour">
+                        <label for="duration-over-hour"></label>
+                    </div>
+                    <div class="duration-info">
+                        <h2 class="duration-title">Over an hour</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 10: Training Days Selection -->
+        <div class="step-content" id="step10">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Select the days when you are usually available to train</h1>
+            <p class="page-subtitle animate-fadeInUp">Leave at least 2 days for recovery</p>
+            
+            <div class="training-days-cards">
+                <!-- Monday -->
+                <div class="training-day-card animate-fadeInUp" onclick="toggleTrainingDay('monday')">
+                    <div class="day-checkbox">
+                        <input type="checkbox" id="day-monday" name="training-days" value="monday">
+                        <label for="day-monday"></label>
+                    </div>
+                    <div class="day-info">
+                        <h2 class="day-title">Monday</h2>
+                    </div>
+                </div>
+
+                <!-- Tuesday -->
+                <div class="training-day-card animate-fadeInUp" onclick="toggleTrainingDay('tuesday')">
+                    <div class="day-checkbox">
+                        <input type="checkbox" id="day-tuesday" name="training-days" value="tuesday">
+                        <label for="day-tuesday"></label>
+                    </div>
+                    <div class="day-info">
+                        <h2 class="day-title">Tuesday</h2>
+                    </div>
+                </div>
+
+                <!-- Wednesday -->
+                <div class="training-day-card animate-fadeInUp" onclick="toggleTrainingDay('wednesday')">
+                    <div class="day-checkbox">
+                        <input type="checkbox" id="day-wednesday" name="training-days" value="wednesday">
+                        <label for="day-wednesday"></label>
+                    </div>
+                    <div class="day-info">
+                        <h2 class="day-title">Wednesday</h2>
+                    </div>
+                </div>
+
+                <!-- Thursday -->
+                <div class="training-day-card animate-fadeInUp" onclick="toggleTrainingDay('thursday')">
+                    <div class="day-checkbox">
+                        <input type="checkbox" id="day-thursday" name="training-days" value="thursday">
+                        <label for="day-thursday"></label>
+                    </div>
+                    <div class="day-info">
+                        <h2 class="day-title">Thursday</h2>
+                    </div>
+                </div>
+
+                <!-- Friday -->
+                <div class="training-day-card animate-fadeInUp" onclick="toggleTrainingDay('friday')">
+                    <div class="day-checkbox">
+                        <input type="checkbox" id="day-friday" name="training-days" value="friday">
+                        <label for="day-friday"></label>
+                    </div>
+                    <div class="day-info">
+                        <h2 class="day-title">Friday</h2>
+                    </div>
+                </div>
+
+                <!-- Saturday -->
+                <div class="training-day-card animate-fadeInUp" onclick="toggleTrainingDay('saturday')">
+                    <div class="day-checkbox">
+                        <input type="checkbox" id="day-saturday" name="training-days" value="saturday">
+                        <label for="day-saturday"></label>
+                    </div>
+                    <div class="day-info">
+                        <h2 class="day-title">Saturday</h2>
+                    </div>
+                </div>
+
+                <!-- Sunday -->
+                <div class="training-day-card animate-fadeInUp" onclick="toggleTrainingDay('sunday')">
+                    <div class="day-checkbox">
+                        <input type="checkbox" id="day-sunday" name="training-days" value="sunday">
+                        <label for="day-sunday"></label>
+                    </div>
+                    <div class="day-info">
+                        <h2 class="day-title">Sunday</h2>
+                    </div>
+                </div>
+
+                <!-- Not sure -->
+                <div class="training-day-card not-sure-card animate-fadeInUp" onclick="toggleTrainingDay('not-sure')">
+                    <div class="day-checkbox">
+                        <input type="checkbox" id="day-not-sure" name="training-days" value="not-sure">
+                        <label for="day-not-sure" class="not-sure-label">✗</label>
+                    </div>
+                    <div class="day-info">
+                        <h2 class="day-title">Not sure</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continue Button -->
+            <div class="continue-button-container">
+                <button class="continue-button" onclick="proceedWithTrainingDays()">
+                    Continue →
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 11: Body Fat Level Selection -->
+        <div class="step-content" id="step11">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <div class="body-fat-container">
+                <!-- Left Side - Body Image -->
+                <div class="body-fat-image-section">
+                    <div class="body-fat-image" id="body-fat-image"></div>
+                </div>
+                
+                <!-- Right Side - Slider Control -->
+                <div class="body-fat-control-section">
+                    <h1 class="body-fat-title animate-fadeInUp">Choose your level of body fat</h1>
+                    
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <div class="slider-filled" id="sliderFilled"></div>
+                            <div class="slider-handle" id="sliderHandle"></div>
+                            <div class="slider-value" id="sliderValue">5-9%</div>
+                        </div>
+                        
+                        <div class="slider-labels">
+                            <span class="slider-label-left">5-9%</span>
+                            <span class="slider-label-right">>40%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Continue Button -->
+                    <div class="continue-button-container">
+                        <button class="continue-button" onclick="proceedWithBodyFat()">
+                            Continue →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 12: Height Selection -->
+        <div class="step-content" id="step12">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">What's your height?</h1>
+            
+            <div class="height-container">
+                <!-- Units Selection -->
+                <div class="units-section">
+                    <label class="units-label">Units</label>
+                    <div class="units-buttons">
+                        <button class="unit-button" id="ft-in-button" onclick="selectUnit('ft-in')">ft, in</button>
+                        <button class="unit-button active" id="cm-button" onclick="selectUnit('cm')">cm</button>
+                    </div>
+                </div>
+                
+                <!-- Height Input -->
+                <div class="height-input-section">
+                    <label class="height-label" id="height-label">Height (cm)</label>
+                    <input type="number" class="height-input" id="height-input" placeholder="_ cm" min="100" max="250">
+                </div>
+                
+                <!-- Continue Button -->
+                <div class="continue-button-container">
+                    <button class="continue-button" onclick="proceedWithHeight()">
+                        Continue →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 13: Weight Selection -->
+        <div class="step-content" id="step13">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">What's your current and target weight?</h1>
+            
+            <div class="weight-container">
+                <!-- Units Selection -->
+                <div class="units-section">
+                    <label class="units-label">Units</label>
+                    <div class="units-buttons">
+                        <button class="unit-button" id="lb-button" onclick="selectWeightUnit('lb')">lb</button>
+                        <button class="unit-button active" id="kg-button" onclick="selectWeightUnit('kg')">kg</button>
+                    </div>
+                </div>
+                
+                <!-- Current Weight Input -->
+                <div class="weight-input-section">
+                    <label class="weight-label" id="current-weight-label">Current Weight (kg)</label>
+                    <input type="number" class="weight-input" id="current-weight-input" placeholder="_ kg" min="30" max="200">
+                </div>
+                
+                <!-- Target Weight Input -->
+                <div class="weight-input-section">
+                    <label class="weight-label" id="target-weight-label">Target Weight (kg)</label>
+                    <input type="number" class="weight-input" id="target-weight-input" placeholder="_ kg" min="30" max="200">
+                </div>
+                
+                <!-- Continue Button -->
+                <div class="continue-button-container">
+                    <button class="continue-button" onclick="proceedWithWeight()">
+                        Continue →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 14: Experience Selection -->
+        <div class="step-content" id="step14">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How experienced are you at lifting weights?</h1>
+            
+            <div class="experience-cards">
+                <!-- Beginner Card -->
+                <div class="experience-card animate-fadeInUp" onclick="selectExperience('beginner')">
+                    <div class="experience-radio">
+                        <input type="radio" id="experience-beginner" name="experience" value="beginner">
+                        <label for="experience-beginner"></label>
+                    </div>
+                    <div class="experience-info">
+                        <h2 class="experience-title">Beginner</h2>
+                        <p class="experience-description">Haven't tried or just started lifting weights</p>
+                    </div>
+                </div>
+
+                <!-- Intermediate Card -->
+                <div class="experience-card animate-fadeInUp" onclick="selectExperience('intermediate')">
+                    <div class="experience-radio">
+                        <input type="radio" id="experience-intermediate" name="experience" value="intermediate">
+                        <label for="experience-intermediate"></label>
+                    </div>
+                    <div class="experience-info">
+                        <h2 class="experience-title">Intermediate</h2>
+                        <p class="experience-description">Tried and practiced common exercises</p>
+                    </div>
+                </div>
+
+                <!-- Advanced Card -->
+                <div class="experience-card animate-fadeInUp" onclick="selectExperience('advanced')">
+                    <div class="experience-radio">
+                        <input type="radio" id="experience-advanced" name="experience" value="advanced">
+                        <label for="experience-advanced"></label>
+                    </div>
+                    <div class="experience-info">
+                        <h2 class="experience-title">Advanced</h2>
+                        <p class="experience-description">Did strength training for years</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 15: Focus Areas Selection -->
+        <div class="step-content" id="step15">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Which areas would you like to focus on?</h1>
+            
+            <div class="focus-areas-container">
+                <!-- Weak Chest -->
+                <div class="focus-area-card animate-fadeInUp" onclick="toggleFocusArea('weak-chest')">
+                    <div class="focus-checkbox">
+                        <input type="checkbox" id="weak-chest" name="focus-areas" value="weak-chest">
+                        <label for="weak-chest"></label>
+                    </div>
+                    <div class="focus-info">
+                        <h3 class="focus-title">Weak chest</h3>
+                    </div>
+                    <div class="focus-image">
+                        <div class="body-image chest-highlight"></div>
+                    </div>
+                </div>
+
+                <!-- Slim Arms -->
+                <div class="focus-area-card animate-fadeInUp" onclick="toggleFocusArea('slim-arms')">
+                    <div class="focus-checkbox">
+                        <input type="checkbox" id="slim-arms" name="focus-areas" value="slim-arms">
+                        <label for="slim-arms"></label>
+                    </div>
+                    <div class="focus-info">
+                        <h3 class="focus-title">Slim arms</h3>
+                    </div>
+                    <div class="focus-image">
+                        <div class="body-image arms-highlight"></div>
+                    </div>
+                </div>
+
+                <!-- Beer Belly -->
+                <div class="focus-area-card animate-fadeInUp" onclick="toggleFocusArea('beer-belly')">
+                    <div class="focus-checkbox">
+                        <input type="checkbox" id="beer-belly" name="focus-areas" value="beer-belly">
+                        <label for="beer-belly"></label>
+                    </div>
+                    <div class="focus-info">
+                        <h3 class="focus-title">Beer belly</h3>
+                    </div>
+                    <div class="focus-image">
+                        <div class="body-image belly-highlight"></div>
+                    </div>
+                </div>
+
+                <!-- Slim Legs -->
+                <div class="focus-area-card animate-fadeInUp" onclick="toggleFocusArea('slim-legs')">
+                    <div class="focus-checkbox">
+                        <input type="checkbox" id="slim-legs" name="focus-areas" value="slim-legs">
+                        <label for="slim-legs"></label>
+                    </div>
+                    <div class="focus-info">
+                        <h3 class="focus-title">Slim legs</h3>
+                    </div>
+                    <div class="focus-image">
+                        <div class="body-image legs-highlight"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Continue Button -->
+            <div class="continue-button-container">
+                <button class="continue-button" onclick="proceedWithFocusAreas()">
+                    Continue →
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 16: Injuries Selection -->
+        <div class="step-content" id="step16">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Do you have any injuries?</h1>
+            <p class="page-subtitle animate-fadeInUp">We will adjust the plan to protect this body part from further damage</p>
+            
+            <div class="injuries-container">
+                <!-- Left Side - Options -->
+                <div class="injuries-options">
+                    <!-- Sensitive Knees -->
+                    <div class="injury-option animate-fadeInUp" onclick="toggleInjury('sensitive-knees')">
+                        <div class="injury-checkbox">
+                            <input type="checkbox" id="sensitive-knees" name="injuries" value="sensitive-knees">
+                            <label for="sensitive-knees"></label>
+                        </div>
+                        <span class="injury-label">Sensitive knees</span>
+                    </div>
+
+                    <!-- Sensitive Back -->
+                    <div class="injury-option animate-fadeInUp" onclick="toggleInjury('sensitive-back')">
+                        <div class="injury-checkbox">
+                            <input type="checkbox" id="sensitive-back" name="injuries" value="sensitive-back">
+                            <label for="sensitive-back"></label>
+                        </div>
+                        <span class="injury-label">Sensitive back</span>
+                    </div>
+
+                    <!-- No Thanks -->
+                    <div class="injury-option no-thanks animate-fadeInUp" onclick="selectNoInjuries()">
+                        <div class="no-thanks-icon">✗</div>
+                        <span class="injury-label">No, thanks</span>
+                    </div>
+                </div>
+
+                <!-- Right Side - Image -->
+                <div class="injuries-image-section">
+                    <div class="injuries-image" id="injuries-image"></div>
+                </div>
+            </div>
+            
+            <!-- Continue Button -->
+            <div class="continue-button-container">
+                <button class="continue-button" onclick="proceedWithInjuries()">
+                    Continue →
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 17: Training Frequency Selection -->
+        <div class="step-content" id="step17">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How often did you train in the last 3 months?</h1>
+            <p class="page-subtitle animate-fadeInUp">This helps us understand your current fitness level and create the perfect plan for you</p>
+            
+            <div class="training-frequency-container">
+                <!-- Not at all -->
+                <div class="training-frequency-option animate-fadeInUp" onclick="selectTrainingFrequency('not-at-all')">
+                    <div class="frequency-radio">
+                        <input type="radio" id="frequency-not-at-all" name="training-frequency" value="not-at-all">
+                        <label for="frequency-not-at-all"></label>
+                    </div>
+                    <div class="frequency-info">
+                        <div class="frequency-title">
+                            <span class="frequency-emoji">😔</span>
+                            <span class="frequency-text">Not at all</span>
+                        </div>
+                        <p class="frequency-description">I haven't trained, but I will after claiming my workout program!</p>
+                    </div>
+                </div>
+
+                <!-- 1-2 times a week -->
+                <div class="training-frequency-option animate-fadeInUp" onclick="selectTrainingFrequency('1-2-times')">
+                    <div class="frequency-radio">
+                        <input type="radio" id="frequency-1-2-times" name="training-frequency" value="1-2-times">
+                        <label for="frequency-1-2-times"></label>
+                    </div>
+                    <div class="frequency-info">
+                        <div class="frequency-title">
+                            <span class="frequency-emoji">💪</span>
+                            <span class="frequency-text">1-2 times a week</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 times a week -->
+                <div class="training-frequency-option animate-fadeInUp" onclick="selectTrainingFrequency('3-times')">
+                    <div class="frequency-radio">
+                        <input type="radio" id="frequency-3-times" name="training-frequency" value="3-times">
+                        <label for="frequency-3-times"></label>
+                    </div>
+                    <div class="frequency-info">
+                        <div class="frequency-title">
+                            <span class="frequency-emoji">💪⚡</span>
+                            <span class="frequency-text">3 times a week</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More than 3 times a week -->
+                <div class="training-frequency-option animate-fadeInUp" onclick="selectTrainingFrequency('more-than-3-times')">
+                    <div class="frequency-radio">
+                        <input type="radio" id="frequency-more-than-3-times" name="training-frequency" value="more-than-3-times">
+                        <label for="frequency-more-than-3-times"></label>
+                    </div>
+                    <div class="frequency-info">
+                        <div class="frequency-title">
+                            <span class="frequency-emoji">🏆</span>
+                            <span class="frequency-text">More than 3 times a week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Step 18: Push-ups Selection -->
+        <div class="step-content" id="step18">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How many push-ups can you do in one round?</h1>
+            
+            <div class="pushups-container">
+                <!-- Less than 10 -->
+                <div class="pushups-option animate-fadeInUp" onclick="selectPushups('less-than-10')">
+                    <div class="pushups-radio">
+                        <input type="radio" id="pushups-less-than-10" name="pushups" value="less-than-10">
+                        <label for="pushups-less-than-10"></label>
+                    </div>
+                    <div class="pushups-info">
+                        <div class="pushups-title">
+                            <span class="pushups-emoji">💪</span>
+                            <span class="pushups-text">Less than 10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 to 20 -->
+                <div class="pushups-option animate-fadeInUp" onclick="selectPushups('10-to-20')">
+                    <div class="pushups-radio">
+                        <input type="radio" id="pushups-10-to-20" name="pushups" value="10-to-20">
+                        <label for="pushups-10-to-20"></label>
+                    </div>
+                    <div class="pushups-info">
+                        <div class="pushups-title">
+                            <span class="pushups-emoji">💪💪</span>
+                            <span class="pushups-text">10 to 20</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 21 to 30 -->
+                <div class="pushups-option animate-fadeInUp" onclick="selectPushups('21-to-30')">
+                    <div class="pushups-radio">
+                        <input type="radio" id="pushups-21-to-30" name="pushups" value="21-to-30">
+                        <label for="pushups-21-to-30"></label>
+                    </div>
+                    <div class="pushups-info">
+                        <div class="pushups-title">
+                            <span class="pushups-emoji">💪💪💪</span>
+                            <span class="pushups-text">21 to 30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More than 30 -->
+                <div class="pushups-option animate-fadeInUp" onclick="selectPushups('more-than-30')">
+                    <div class="pushups-radio">
+                        <input type="radio" id="pushups-more-than-30" name="pushups" value="more-than-30">
+                        <label for="pushups-more-than-30"></label>
+                    </div>
+                    <div class="pushups-info">
+                        <div class="pushups-title">
+                            <span class="pushups-emoji">😩</span>
+                            <span class="pushups-text">More than 30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 19: Pull-ups Selection -->
+        <div class="step-content" id="step19">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How many pull-ups can you do in one round?</h1>
+            
+            <div class="pullups-container">
+                <!-- Can't do a single pull-up -->
+                <div class="pullups-option animate-fadeInUp" onclick="selectPullups('cant-do-single')">
+                    <div class="pullups-radio">
+                        <input type="radio" id="pullups-cant-do-single" name="pullups" value="cant-do-single">
+                        <label for="pullups-cant-do-single"></label>
+                    </div>
+                    <div class="pullups-info">
+                        <div class="pullups-title">
+                            <span class="pullups-text">I can't do a single pull-up</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Less than 5 -->
+                <div class="pullups-option animate-fadeInUp" onclick="selectPullups('less-than-5')">
+                    <div class="pullups-radio">
+                        <input type="radio" id="pullups-less-than-5" name="pullups" value="less-than-5">
+                        <label for="pullups-less-than-5"></label>
+                    </div>
+                    <div class="pullups-info">
+                        <div class="pullups-title">
+                            <span class="pullups-text">Less than 5 🔥</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 to 10 -->
+                <div class="pullups-option animate-fadeInUp" onclick="selectPullups('5-to-10')">
+                    <div class="pullups-radio">
+                        <input type="radio" id="pullups-5-to-10" name="pullups" value="5-to-10">
+                        <label for="pullups-5-to-10"></label>
+                    </div>
+                    <div class="pullups-info">
+                        <div class="pullups-title">
+                            <span class="pullups-text">5 to 10 🔥🔥</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More than 10 -->
+                <div class="pullups-option animate-fadeInUp" onclick="selectPullups('more-than-10')">
+                    <div class="pullups-radio">
+                        <input type="radio" id="pullups-more-than-10" name="pullups" value="more-than-10">
+                        <label for="pullups-more-than-10"></label>
+                    </div>
+                    <div class="pullups-info">
+                        <div class="pullups-title">
+                            <span class="pullups-text">More than 10 🔥🔥🔥</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 20: Typical Day Selection -->
+        <div class="step-content" id="step20">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How would you describe your typical day?</h1>
+            
+            <div class="typical-day-container">
+                <!-- Sitting most of the day -->
+                <div class="typical-day-option animate-fadeInUp" onclick="selectTypicalDay('sitting-most-day')">
+                    <div class="typical-day-radio">
+                        <input type="radio" id="typical-day-sitting" name="typical-day" value="sitting-most-day">
+                        <label for="typical-day-sitting"></label>
+                    </div>
+                    <div class="typical-day-info">
+                        <div class="typical-day-title">
+                            <span class="typical-day-text">I spend most of the day sitting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active breaks -->
+                <div class="typical-day-option animate-fadeInUp" onclick="selectTypicalDay('active-breaks')">
+                    <div class="typical-day-radio">
+                        <input type="radio" id="typical-day-active-breaks" name="typical-day" value="active-breaks">
+                        <label for="typical-day-active-breaks"></label>
+                    </div>
+                    <div class="typical-day-info">
+                        <div class="typical-day-title">
+                            <span class="typical-day-text">I take active breaks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- On feet all day -->
+                <div class="typical-day-option animate-fadeInUp" onclick="selectTypicalDay('on-feet-all-day')">
+                    <div class="typical-day-radio">
+                        <input type="radio" id="typical-day-on-feet" name="typical-day" value="on-feet-all-day">
+                        <label for="typical-day-on-feet"></label>
+                    </div>
+                    <div class="typical-day-info">
+                        <div class="typical-day-title">
+                            <span class="typical-day-text">I'm on my feet all day long</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 21: Activities Selection -->
+        <div class="step-content" id="step21">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Do you engage in any other type of activities?</h1>
+            
+            <div class="activities-container">
+                <!-- Sports games -->
+                <div class="activity-option animate-fadeInUp" onclick="toggleActivity('sports-games')">
+                    <div class="activity-checkbox">
+                        <input type="checkbox" id="activity-sports-games" name="activities" value="sports-games">
+                        <label for="activity-sports-games"></label>
+                    </div>
+                    <div class="activity-info">
+                        <div class="activity-title">
+                            <span class="activity-text">Sports games</span>
+                            <span class="activity-subtitle">Basketball, tennis etc.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yoga/Pilates/Stretching -->
+                <div class="activity-option animate-fadeInUp" onclick="toggleActivity('yoga-pilates-stretching')">
+                    <div class="activity-checkbox">
+                        <input type="checkbox" id="activity-yoga-pilates" name="activities" value="yoga-pilates-stretching">
+                        <label for="activity-yoga-pilates"></label>
+                    </div>
+                    <div class="activity-info">
+                        <div class="activity-title">
+                            <span class="activity-text">Yoga/Pilates/Stretching</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Martial arts -->
+                <div class="activity-option animate-fadeInUp" onclick="toggleActivity('martial-arts')">
+                    <div class="activity-checkbox">
+                        <input type="checkbox" id="activity-martial-arts" name="activities" value="martial-arts">
+                        <label for="activity-martial-arts"></label>
+                    </div>
+                    <div class="activity-info">
+                        <div class="activity-title">
+                            <span class="activity-text">Martial arts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Running/Swimming/Cycling -->
+                <div class="activity-option animate-fadeInUp" onclick="toggleActivity('running-swimming-cycling')">
+                    <div class="activity-checkbox">
+                        <input type="checkbox" id="activity-running-swimming" name="activities" value="running-swimming-cycling">
+                        <label for="activity-running-swimming"></label>
+                    </div>
+                    <div class="activity-info">
+                        <div class="activity-title">
+                            <span class="activity-text">Running/Swimming/Cycling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hiking -->
+                <div class="activity-option animate-fadeInUp" onclick="toggleActivity('hiking')">
+                    <div class="activity-checkbox">
+                        <input type="checkbox" id="activity-hiking" name="activities" value="hiking">
+                        <label for="activity-hiking"></label>
+                    </div>
+                    <div class="activity-info">
+                        <div class="activity-title">
+                            <span class="activity-text">Hiking</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- None of the above -->
+                <div class="activity-option none-option animate-fadeInUp" onclick="toggleActivity('none')">
+                    <div class="activity-checkbox">
+                        <input type="checkbox" id="activity-none" name="activities" value="none">
+                        <label for="activity-none" class="none-label">✕</label>
+                    </div>
+                    <div class="activity-info">
+                        <div class="activity-title">
+                            <span class="activity-text">None of the above</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Continue Button -->
+            <div class="continue-button-container">
+                <button class="continue-button" onclick="proceedWithActivities()">
+                    Continue →
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 22: Nutrition Information -->
+        <div class="step-content" id="step22">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <div class="nutrition-container">
+                <div class="nutrition-left">
+                    <div class="nutrition-video-container">
+                        <img id="nutrition-image" class="nutrition-image" src="mf.png" alt="Nutrition Information">
+                    </div>
+                </div>
+                
+                <div class="nutrition-right">
+                    <h1 class="nutrition-title animate-fadeInUp">
+                        <span class="nutrition-percentage">81%</span> of your results are about <span class="nutrition-highlight">nutrition</span>
+                    </h1>
+                    
+                    <p class="nutrition-subtitle animate-fadeInUp">
+                        To make the most gains in muscle mass and strength, you need:
+                    </p>
+                    
+                    <div class="nutrition-checklist animate-fadeInUp">
+                        <div class="checklist-item">
+                            <div class="checkmark">✓</div>
+                            <span>Enough total calories each day.</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkmark">✓</div>
+                            <span>Adequate protein to actually rebuild more muscle tissue.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nutrition-button-container animate-fadeInUp">
+                        <button class="nutrition-button" onclick="proceedWithNutrition()">
+                            Got it →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 23: Eating Habits -->
+        <div class="step-content" id="step23">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How would you describe your eating habits?</h1>
+            
+            <div class="eating-habits-container">
+                <div class="eating-habit-option" onclick="selectEatingHabit('emotional')">
+                    <input type="radio" name="eatingHabit" value="emotional" class="eating-habit-radio">
+                    <div class="eating-habit-info">
+                        <h3 class="eating-habit-title">Emotional eater</h3>
+                        <p class="eating-habit-text">You eat when you're happy, sad, or stressed</p>
+                    </div>
+                </div>
+                
+                <div class="eating-habit-option" onclick="selectEatingHabit('bored')">
+                    <input type="radio" name="eatingHabit" value="bored" class="eating-habit-radio">
+                    <div class="eating-habit-info">
+                        <h3 class="eating-habit-title">Bored eater</h3>
+                        <p class="eating-habit-text">You eat when you feel there's nothing else to do</p>
+                    </div>
+                </div>
+                
+                <div class="eating-habit-option" onclick="selectEatingHabit('unconscious')">
+                    <input type="radio" name="eatingHabit" value="unconscious" class="eating-habit-radio">
+                    <div class="eating-habit-info">
+                        <h3 class="eating-habit-title">Unconscious eater</h3>
+                        <p class="eating-habit-text">You eat food just because it's there</p>
+                    </div>
+                </div>
+                
+                <div class="eating-habit-option" onclick="selectEatingHabit('habitual')">
+                    <input type="radio" name="eatingHabit" value="habitual" class="eating-habit-radio">
+                    <div class="eating-habit-info">
+                        <h3 class="eating-habit-title">Habitual Eater</h3>
+                        <p class="eating-habit-text">You eat the same foods and follow the routines daily</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 24: Protein Intake -->
+        <div class="step-content" id="step24">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Do you get enough protein daily?</h1>
+            
+            <div class="protein-container">
+                <div class="protein-option" onclick="selectProtein('track')">
+                    <input type="radio" name="protein" value="track" class="protein-radio">
+                    <div class="protein-info">
+                        <h3 class="protein-title">Yes, I track the protein, carbs, and fats in every meal</h3>
+                    </div>
+                </div>
+                
+                <div class="protein-option" onclick="selectProtein('cant-figure')">
+                    <input type="radio" name="protein" value="cant-figure" class="protein-radio">
+                    <div class="protein-info">
+                        <h3 class="protein-title">No, I can't figure out a diet to get all the needed nutrients</h3>
+                    </div>
+                </div>
+                
+                <div class="protein-option" onclick="selectProtein('not-sure')">
+                    <input type="radio" name="protein" value="not-sure" class="protein-radio">
+                    <div class="protein-info">
+                        <h3 class="protein-title">I'm not sure</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 25: Water Intake -->
+        <div class="step-content" id="step25">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How much water do you drink daily?</h1>
+            
+            <div class="water-container">
+                <div class="water-option" onclick="selectWater('coffee-tea')">
+                    <input type="radio" name="water" value="coffee-tea" class="water-radio">
+                    <div class="water-info">
+                        <h3 class="water-title">☕ Only coffee or tea</h3>
+                    </div>
+                </div>
+                
+                <div class="water-option" onclick="selectWater('less-2-glasses')">
+                    <input type="radio" name="water" value="less-2-glasses" class="water-radio">
+                    <div class="water-info">
+                        <h3 class="water-title">💧 Less than 2 glasses</h3>
+                        <p class="water-subtitle">up to 0,5 l / 17 oz</p>
+                    </div>
+                </div>
+                
+                <div class="water-option" onclick="selectWater('2-6-glasses')">
+                    <input type="radio" name="water" value="2-6-glasses" class="water-radio">
+                    <div class="water-info">
+                        <h3 class="water-title">💧💧 2-6 glasses</h3>
+                        <p class="water-subtitle">0,5-1,5 l / 17-50 oz</p>
+                    </div>
+                </div>
+                
+                <div class="water-option" onclick="selectWater('7-10-glasses')">
+                    <input type="radio" name="water" value="7-10-glasses" class="water-radio">
+                    <div class="water-info">
+                        <h3 class="water-title">💧💧💧 7-10 glasses</h3>
+                        <p class="water-subtitle">1,5-2,5 l / 50-85 oz</p>
+                    </div>
+                </div>
+                
+                <div class="water-option" onclick="selectWater('more-10-glasses')">
+                    <input type="radio" name="water" value="more-10-glasses" class="water-radio">
+                    <div class="water-info">
+                        <h3 class="water-title">🚰 More than 10 glasses</h3>
+                        <p class="water-subtitle">more than 2,5 l / 85 oz</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 26: Sleep Duration -->
+        <div class="step-content" id="step26">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How much sleep do you usually get?</h1>
+            
+            <div class="sleep-container">
+                <div class="sleep-option" onclick="selectSleep('less-5-hours')">
+                    <input type="radio" name="sleep" value="less-5-hours" class="sleep-radio">
+                    <div class="sleep-info">
+                        <h3 class="sleep-title">😴 Less than 5 hours</h3>
+                    </div>
+                </div>
+                
+                <div class="sleep-option" onclick="selectSleep('5-6-hours')">
+                    <input type="radio" name="sleep" value="5-6-hours" class="sleep-radio">
+                    <div class="sleep-info">
+                        <h3 class="sleep-title">😩 5-6 hours</h3>
+                    </div>
+                </div>
+                
+                <div class="sleep-option" onclick="selectSleep('7-8-hours')">
+                    <input type="radio" name="sleep" value="7-8-hours" class="sleep-radio">
+                    <div class="sleep-info">
+                        <h3 class="sleep-title">🌙 7-8 hours</h3>
+                    </div>
+                </div>
+                
+                <div class="sleep-option" onclick="selectSleep('more-8-hours')">
+                    <input type="radio" name="sleep" value="more-8-hours" class="sleep-radio">
+                    <div class="sleep-info">
+                        <h3 class="sleep-title">😌 More than 8 hours</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 27: Daily Walking -->
+        <div class="step-content" id="step27">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">How much do you walk daily?</h1>
+            
+            <div class="walking-container">
+                <div class="walking-option" onclick="selectWalking('less-5k')">
+                    <input type="radio" name="walking" value="less-5k" class="walking-radio">
+                    <div class="walking-info">
+                        <h3 class="walking-title"><5K steps</h3>
+                    </div>
+                </div>
+                
+                <div class="walking-option" onclick="selectWalking('5-10k')">
+                    <input type="radio" name="walking" value="5-10k" class="walking-radio">
+                    <div class="walking-info">
+                        <h3 class="walking-title">😊 5-10K steps</h3>
+                    </div>
+                </div>
+                
+                <div class="walking-option" onclick="selectWalking('10-15k')">
+                    <input type="radio" name="walking" value="10-15k" class="walking-radio">
+                    <div class="walking-info">
+                        <h3 class="walking-title">👍 10-15K steps</h3>
+                    </div>
+                </div>
+                
+                <div class="walking-option" onclick="selectWalking('15-20k')">
+                    <input type="radio" name="walking" value="15-20k" class="walking-radio">
+                    <div class="walking-info">
+                        <h3 class="walking-title">🔥 15-20K steps</h3>
+                    </div>
+                </div>
+                
+                <div class="walking-option" onclick="selectWalking('more-20k')">
+                    <input type="radio" name="walking" value="more-20k" class="walking-radio">
+                    <div class="walking-info">
+                        <h3 class="walking-title">🏅 >20K steps</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 28: Fitness Issues -->
+        <div class="step-content" id="step28">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Have you experienced any of these issues</h1>
+            <p class="page-subtitle animate-fadeInUp">in your previous fitness attempts?</p>
+            
+            <div class="issues-container">
+                <div class="issue-option" onclick="toggleIssue('lack-motivation')">
+                    <input type="checkbox" name="issue" value="lack-motivation" class="issue-checkbox">
+                    <div class="issue-info">
+                        <h3 class="issue-title">Lack of motivation</h3>
+                    </div>
+                </div>
+                
+                <div class="issue-option" onclick="toggleIssue('no-progress')">
+                    <input type="checkbox" name="issue" value="no-progress" class="issue-checkbox">
+                    <div class="issue-info">
+                        <h3 class="issue-title">Made many attempts but saw no progress</h3>
+                    </div>
+                </div>
+                
+                <div class="issue-option" onclick="toggleIssue('gym-insecurity')">
+                    <input type="checkbox" name="issue" value="gym-insecurity" class="issue-checkbox">
+                    <div class="issue-info">
+                        <h3 class="issue-title">Felt insecure in the gym</h3>
+                    </div>
+                </div>
+                
+                <div class="issue-option" onclick="toggleIssue('no-plan')">
+                    <input type="checkbox" name="issue" value="no-plan" class="issue-checkbox">
+                    <div class="issue-info">
+                        <h3 class="issue-title">Didn't have a clear plan</h3>
+                    </div>
+                </div>
+                
+                <div class="issue-option" onclick="toggleIssue('too-hard')">
+                    <input type="checkbox" name="issue" value="too-hard" class="issue-checkbox">
+                    <div class="issue-info">
+                        <h3 class="issue-title">My workouts were too hard</h3>
+                    </div>
+                </div>
+                
+                <div class="issue-option" onclick="toggleIssue('bad-coaching')">
+                    <input type="checkbox" name="issue" value="bad-coaching" class="issue-checkbox">
+                    <div class="issue-info">
+                        <h3 class="issue-title">Bad coaching</h3>
+                    </div>
+                </div>
+                
+                <div class="issue-option none-option" onclick="selectNone()">
+                    <div class="none-icon">✕</div>
+                    <div class="issue-info">
+                        <h3 class="issue-title">None of the above</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="continue-button-container">
+                <button class="continue-button" onclick="proceedWithIssues()">
+                    Continue →
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Step 29: Final Motivation Section -->
+        <div class="step-content" id="step29">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                    </div>
+            <div class="final-container">
+                <div class="final-left">
+                    <div class="final-video-container">
+                        <img id="final-image" class="final-image" src="bf.png" alt="Final Motivation">
+                    </div>
+                </div>
+                
+                <div class="final-right">
+                    <h1 class="final-title animate-fadeInUp">Why do people give up on exercise?</h1>
+                    <div class="final-content">
+                        <p class="final-highlight animate-fadeInUp">The #1 reason is starting too big too quickly</p>
+                        <p class="final-text animate-fadeInUp">You'll achieve much more than just a few weeks of exercising.</p>
+                        <p class="final-text animate-fadeInUp">We won't promise you quick results. Our program's primary goal is to change your lifestyle for the better.</p>
+                    </div>
+                    
+                    <div class="final-button-container">
+                        <button class="final-button" onclick="proceedToWorkoutPlan()">
+                            Got it →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 30: Additional Goals -->
+        <div class="step-content" id="step30">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">Tick off your additional goals</h1>
+            
+            <div class="goals-container">
+                <div class="goal-option" onclick="toggleGoal('improve-sleep')">
+                    <input type="checkbox" name="goal" value="improve-sleep" class="goal-checkbox">
+                    <div class="goal-info">
+                        <h3 class="goal-title">Improve sleep</h3>
+                    </div>
+                </div>
+                
+                <div class="goal-option" onclick="toggleGoal('physical-habit')">
+                    <input type="checkbox" name="goal" value="physical-habit" class="goal-checkbox">
+                    <div class="goal-info">
+                        <h3 class="goal-title">Form a physical habit</h3>
+                    </div>
+                </div>
+                
+                <div class="goal-option" onclick="toggleGoal('self-discipline')">
+                    <input type="checkbox" name="goal" value="self-discipline" class="goal-checkbox">
+                    <div class="goal-info">
+                        <h3 class="goal-title">Self-discipline</h3>
+                    </div>
+                </div>
+                
+                <div class="goal-option" onclick="toggleGoal('feel-healthier')">
+                    <input type="checkbox" name="goal" value="feel-healthier" class="goal-checkbox">
+                    <div class="goal-info">
+                        <h3 class="goal-title">Feel healthier</h3>
+                    </div>
+                </div>
+                
+                <div class="goal-option" onclick="toggleGoal('reduce-stress')">
+                    <input type="checkbox" name="goal" value="reduce-stress" class="goal-checkbox">
+                    <div class="goal-info">
+                        <h3 class="goal-title">Reduce Stress</h3>
+                    </div>
+                </div>
+                
+                <div class="goal-option none-option" onclick="selectNoneGoals()">
+                    <div class="none-icon">✕</div>
+                    <div class="goal-info">
+                        <h3 class="goal-title">None of the above</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="continue-button-container">
+                <button class="continue-button" onclick="proceedWithGoals()">
+                    Continue →
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 31: Challenge Selection -->
+        <div class="step-content" id="step31">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h1 class="page-title animate-fadeInUp">In addition to your goal, what challenge would you like to join?</h1>
+            
+            <div class="challenge-container">
+                <div class="challenge-option" onclick="selectChallenge('walk-it')">
+                    <input type="radio" name="challenge" value="walk-it" class="challenge-radio">
+                    <div class="challenge-info">
+                        <h3 class="challenge-title">Walk it!</h3>
+                        <p class="challenge-description">Walk 10,000 steps for 7 days in a row.</p>
+                    </div>
+                </div>
+                
+                <div class="challenge-option" onclick="selectChallenge('burpee-monster')">
+                    <input type="radio" name="challenge" value="burpee-monster" class="challenge-radio">
+                    <div class="challenge-info">
+                        <h3 class="challenge-title">Burpee Monster</h3>
+                        <p class="challenge-description">Do 25 burpees for 10 days in a row.</p>
+                    </div>
+                </div>
+                
+                <div class="challenge-option" onclick="selectChallenge('no-sugar')">
+                    <input type="radio" name="challenge" value="no-sugar" class="challenge-radio">
+                    <div class="challenge-info">
+                        <h3 class="challenge-title">21 days no sugar</h3>
+                        <p class="challenge-description">Cut out all refined sugar for 21 days.</p>
+                    </div>
+                </div>
+                
+                <div class="challenge-option" onclick="selectChallenge('all-challenges')">
+                    <input type="radio" name="challenge" value="all-challenges" class="challenge-radio">
+                    <div class="challenge-info">
+                        <h3 class="challenge-title">I'll take on all the challenges! 🙌</h3>
+                    </div>
+                </div>
+                
+                <div class="challenge-option none-option" onclick="selectNoneChallenge()">
+                    <div class="none-icon">✕</div>
+                    <div class="challenge-info">
+                        <h3 class="challenge-title">None of the above</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 32: Account Creation -->
+        <div class="step-content" id="step32">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <div class="account-container">
+                <div class="notification-banner">
+                    <div class="banner-icon">✓</div>
+                    <div class="banner-text">Your workout and meal plan are almost ready!</div>
+                </div>
+                
+                <h1 class="account-title animate-fadeInUp">Let's create your Gym & wellness Platform account</h1>
+                
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 33%"></div>
+                    </div>
+                </div>
+                
+                <div class="input-section">
+                    <label class="input-label">What should we call you?</label>
+                    <input type="text" class="name-input" placeholder="Name" id="userName">
+                </div>
+                
+                <div class="continue-button-container">
+                    <button class="continue-button" onclick="proceedWithAccount()">
+                        Continue →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 33: Final Account Creation -->
+        <div class="step-content" id="step33">
+            <div class="step-back-button">
+                <button class="back-button" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <div class="final-account-container">
+                <div class="notification-banner">
+                    <div class="banner-icon">✓</div>
+                    <div class="banner-text">Your workout and meal plan are almost ready!</div>
+                </div>
+                
+                <h1 class="final-account-title animate-fadeInUp">Let's create your Gym & wellness Platform account</h1>
+                
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <div class="email-section">
+                    <label class="email-label">Email</label>
+                    <input type="email" class="email-input" placeholder="name@example.com" id="userEmail">
+                </div>
+                
+                <div class="privacy-text">
+                    We respect your privacy and take protecting it very seriously — no spam
+                </div>
+                
+                <div class="continue-button-container">
+                    <button class="continue-button" onclick="proceedWithFinalAccount()">
+                        Continue →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                 <h2>Analyzing your data...</h2>
+                 <p>Finding your perfect workout plan from 1,000+ options</p>
+                <div class="loading-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span id="progressText">Loading database...</span>
+                </div>
+            </div>
+        </div>
+
+                <!-- Step 34: Generated Workout Plan -->
+        <div class="step-content" id="step34">
+            <div id="planLoadingStatus" class="plan-loading-hud">
+                <div class="custom-plan-spinner"></div>
+                <h2>Generating Your Custom Plan...</h2>
+                <p>Matching biometrics, training schedule & nutritional guidelines</p>
+            </div>
+            <div class="workout-plan-container" style="display: none;" id="workoutPlanDisplay">
+                <div class="blueprint-deco-grid" aria-hidden="true"></div>
+
+                <!-- HERO SUMMARY BAR -->
+                <div class="plan-hero-header">
+                    <div class="hero-deco-glow" aria-hidden="true"></div>
+                    <div class="plan-hero-left">
+                        <span class="custom-badge-pill"><i class="fas fa-crown"></i> 100% Customized AI Plan</span>
+                        <h1 class="plan-title" id="planTitle">Custom Workout Plan</h1>
+                        <p class="plan-subtitle" id="planSubtitle">Tailored specifically to your biometrics, target goals, and training frequency.</p>
+                    </div>
+                    <div class="plan-hero-right">
+                        <div class="match-score-badge" id="matchScore">98% Match</div>
+                    </div>
+                </div>
+
+                <!-- BIOMETRIC OVERVIEW CHIPS -->
+                <div class="plan-user-summary-grid" id="planUserSummary">
+                    <div class="user-stat-card">
+                        <span class="stat-label"><i class="fas fa-bullseye"></i> Goal</span>
+                        <span class="stat-value" id="displayUserGoal">Hypertrophy</span>
+                    </div>
+                    <div class="user-stat-card">
+                        <span class="stat-label"><i class="fas fa-calendar-check"></i> Split Frequency</span>
+                        <span class="stat-value" id="displayUserDays">4 Days/Week</span>
+                    </div>
+                    <div class="user-stat-card">
+                        <span class="stat-label"><i class="fas fa-layer-group"></i> Experience</span>
+                        <span class="stat-value" id="displayUserLevel">Intermediate</span>
+                    </div>
+                    <div class="user-stat-card">
+                        <span class="stat-label"><i class="fas fa-stopwatch"></i> Session Duration</span>
+                        <span class="stat-value" id="displayUserDuration">45-60 min</span>
+                    </div>
+                </div>
+
+                <!-- 7-DAY WEEKLY SCHEDULE -->
+                <div class="plan-section weekly-schedule">
+                    <div class="section-head-bar">
+                        <div class="section-title-wrap">
+                            <i class="fas fa-calendar-alt section-icon"></i>
+                            <h2>Weekly Training Split Architecture</h2>
+                        </div>
+                        <span class="section-meta-pill">Periodized 7-Day Matrix</span>
+                    </div>
+                    <div id="weeklyScheduleContent"></div>
+                </div>
+
+                <!-- EXERCISES PROGRAM -->
+                <div class="plan-section exercises">
+                    <div class="section-head-bar">
+                        <div class="section-title-wrap">
+                            <i class="fas fa-dumbbell section-icon"></i>
+                            <h2>Comprehensive Exercise Blueprints</h2>
+                        </div>
+                        <span class="section-meta-pill">Target Sets, Reps, Rest & Tempo</span>
+                    </div>
+                    <div id="exercisesContent"></div>
+                </div>
+
+                <!-- NUTRITION GUIDELINES -->
+                <div class="plan-section nutrition">
+                    <div class="section-head-bar">
+                        <div class="section-title-wrap">
+                            <i class="fas fa-apple-alt section-icon"></i>
+                            <h2>Personalized Nutrition & Macro Guidance</h2>
+                        </div>
+                        <span class="section-meta-pill">Caloric & Micronutrient Targets</span>
+                    </div>
+                    <div id="nutritionContent"></div>
+                </div>
+
+                <!-- RECOVERY & REST -->
+                <div class="plan-section recovery">
+                    <div class="section-head-bar">
+                        <div class="section-title-wrap">
+                            <i class="fas fa-bed section-icon"></i>
+                            <h2>Recovery, Sleep & Mobility Protocol</h2>
+                        </div>
+                        <span class="section-meta-pill">Systemic Reset & Growth</span>
+                    </div>
+                    <div id="recoveryContent"></div>
+                </div>
+
+                <!-- ACTION BUTTONS BAR -->
+                <div class="plan-action-bar">
+                    <button class="plan-btn btn-gold" onclick="downloadPlan()">
+                        <i class="fas fa-download"></i> Download Full Plan (HTML/PDF)
+                    </button>
+                    <button class="plan-btn btn-outline" onclick="printPlan()">
+                        <i class="fas fa-print"></i> Print Workout Card
+                    </button>
+                    <button class="plan-btn btn-ghost" onclick="syncCustomPlanToMySpace()">
+                        <i class="fas fa-cloud-arrow-up"></i> Sync to My Space
+                    </button>
+                    <button class="plan-btn btn-ghost" onclick="restartQuiz()">
+                        <i class="fas fa-redo"></i> Retake Assessment
+                    </button>
+                </div>
+            </div>
+    <script src="js/engine/canonical-profile.js"></script>
+    <script src="js/engine/exercise-database.js"></script>
+    <script src="js/engine/training-rules.js"></script>
+    <script src="js/engine/intensity-rules.js"></script>
+    <script src="js/engine/progression-rules.js"></script>
+    <script src="js/engine/workout-logger.js"></script>
+    <script src="js/engine/performance-analysis.js"></script>
+    <script src="js/engine/adaptive-training.js"></script>
+    <script src="js/engine/weekly-analytics.js"></script>
+    <script src="js/engine/exercise-substitution.js"></script>
+    <script src="js/engine/periodization-engine.js"></script>
+    <script src="js/engine/personalization-explanations.js"></script>
+    <script src="js/engine/program-generator.js"></script>
+    <script src="js/engine/program-validator.js"></script>
+    <script src="js/engine/muscle-anatomy.js"></script>
+    <script src="js/engine/form-guides.js"></script>
+    <script src="js/engine/voice-coach.js"></script>
+    <script src="js/engine/social-export.js"></script>
+    <script src="js/engine/user-profile-bridge.js"></script>
+    <script src="js/engine/mesocycle-scrubber.js"></script>
+    <script src="js/engine/calendar-sync.js"></script>
+    <script src="js/engine/emg-substitution.js"></script>
+    <script src="js/engine/gym-focus-hud.js"></script>
+    <script src="js/engine/auto-1rm-engine.js"></script>
+    <script src="js/engine/superset-engine.js"></script>
+    <script src="js/engine/pwa-installer.js"></script>
+    <script src="js/ui/personalized-blueprint.js"></script>
+    <script src="workout-plan.js"></script>
+</body>
+</html>

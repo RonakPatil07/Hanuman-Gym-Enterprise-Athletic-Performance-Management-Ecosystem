@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kale and Chickpea Salad Recipe - Hanuman Gym Nutrition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../shared/design-tokens.css">
+    <link rel="stylesheet" href="../../shared/site-header.css">
+    <link rel="stylesheet" href="../../shared/site-footer.css">
+    <link rel="stylesheet" href="../recipe-details-premium.css">
+    <script src="../../shared/site-header.js" defer></script>
+    <script src="../../shared/site-footer.js" defer></script>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <div class="recipe-page-container">
+        <!-- Topbar -->
+        <div class="recipe-topbar">
+            <a href="../recipes.html" class="recipe-back-btn">
+                <i class="fa-solid fa-arrow-left"></i> <span>Back to Recipes</span>
+            </a>
+            <div class="recipe-actions-quick">
+                <button type="button" class="btn-recipe-action" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> <span>Print Recipe</span>
+                </button>
+                <button type="button" class="btn-recipe-action" onclick="alert('Recipe saved to your My Space nutrition bookmarks!')">
+                    <i class="fa-solid fa-bookmark"></i> <span>Save Recipe</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Compact Hero Banner -->
+        <header class="recipe-hero-card">
+            <span class="recipe-category-pill"><i class="fa-solid fa-leaf text-gold"></i> Plant-Powered Recovery</span>
+            <h1 class="recipe-title">Crispy Chickpea & Massaged Kale Salad</h1>
+            <p class="recipe-intro-text">Fresh, hearty, and packed with plant-based micronutrients! Tender massaged kale leaves tossed with crispy oven-roasted chickpeas, crisp veggies, and a zesty lemon-Dijon vinaigrette.</p>
+
+            <div class="recipe-quick-metrics-strip">
+                <div class="metric-pill">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Prep: <strong>10 Mins</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <span>Roast: <strong>20 Mins</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Yield: <strong>4 Servings</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Calories: <strong>290 kcal</strong></span>
+                </div>
+                <div class="metric-pill">
+                    <i class="fa-solid fa-drumstick-bite"></i>
+                    <span>Protein: <strong>14g</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main 2-Column Grid -->
+        <div class="recipe-main-grid">
+            <!-- Left Column: Story, Image & Process Steps -->
+            <div class="recipe-content-col">
+                <div class="recipe-featured-img-box">
+                    <img src="images/oo.jpg" alt="Kale and Chickpea Salad preparation" onerror="this.src='../images/recipe-hero.svg'">
+                </div>
+
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-kitchen-set"></i> Preparation Steps</h3>
+                    </div>
+                    <div class="recipe-steps-list">
+                        <div class="recipe-step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-text">
+                                <h4>Oven-Roast Chickpeas</h4>
+                                <p>Preheat oven to 200°C (400°F). Toss chickpeas with olive oil, smoked paprika, sea salt, and pepper. Roast for 20–25 minutes until golden and crunchy.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-text">
+                                <h4>Massage the Kale Leaves</h4>
+                                <p>Drizzle chopped kale with 1 tsp olive oil and a pinch of salt. Gently massage with your hands for 2 minutes until leaves turn dark green and tender.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-text">
+                                <h4>Whisk Lemon-Dijon Vinaigrette</h4>
+                                <p>In a small jar, shake extra-virgin olive oil, fresh lemon juice, Dijon mustard, minced garlic, a touch of honey, salt, and pepper until emulsified.</p>
+                            </div>
+                        </div>
+                        <div class="recipe-step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-text">
+                                <h4>Toss & Garnish</h4>
+                                <p>Combine kale, roasted chickpeas, halved cherry tomatoes, sliced cucumbers, and red onion. Drizzle dressing and top with crumbled feta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Ingredients & Macros -->
+            <aside class="recipe-sidebar-col">
+                <!-- Ingredients Card -->
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-basket-shopping"></i> Ingredients</h3>
+                        <span style="font-size:12px; color:#888;">4 Servings</span>
+                    </div>
+                    <div class="ingredients-checklist">
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Fresh Curly / Lacinato Kale</span>
+                            </div>
+                            <span class="ingredient-amount-badge">3 Cups</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Cooked Chickpeas (Garbanzo)</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 Cup</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Cherry Tomatoes & Cucumber</span>
+                            </div>
+                            <span class="ingredient-amount-badge">½ Cup / ½ Cuc</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Crumbled Feta Cheese</span>
+                            </div>
+                            <span class="ingredient-amount-badge">¼ Cup</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Extra Virgin Olive Oil</span>
+                            </div>
+                            <span class="ingredient-amount-badge">2 tbsp</span>
+                        </div>
+                        <div class="ingredient-row" onclick="this.classList.toggle('checked')">
+                            <div class="ingredient-left">
+                                <div class="ingredient-check-dot"></div>
+                                <span class="ingredient-name">Fresh Lemon Juice & Dijon</span>
+                            </div>
+                            <span class="ingredient-amount-badge">1 tbsp / ½ tsp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Macro Breakdown Card -->
+                <div class="recipe-panel">
+                    <div class="recipe-panel-head">
+                        <h3 class="recipe-panel-title"><i class="fa-solid fa-chart-pie"></i> Macro Profile</h3>
+                    </div>
+                    <div class="macro-grid">
+                        <div class="macro-box">
+                            <span class="macro-label">Calories</span>
+                            <span class="macro-val text-gold">290 kcal</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Protein</span>
+                            <span class="macro-val">14g</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Carbs</span>
+                            <span class="macro-val">34g</span>
+                        </div>
+                        <div class="macro-box">
+                            <span class="macro-label">Healthy Fats</span>
+                            <span class="macro-val">11g</span>
+                        </div>
+                    </div>
+
+                    <!-- Macro Ratio Bar -->
+                    <div class="macro-ratio-bar">
+                        <div class="macro-bar-seg macro-bar-protein" style="width: 22%;" title="Protein 22%"></div>
+                        <div class="macro-bar-seg macro-bar-carbs" style="width: 48%;" title="Carbs 48%"></div>
+                        <div class="macro-bar-seg macro-bar-fats" style="width: 30%;" title="Fats 30%"></div>
+                    </div>
+                    <div class="macro-legend">
+                        <span><i class="macro-dot" style="background:#B3DD24;"></i> 22% Protein</span>
+                        <span><i class="macro-dot" style="background:#3ECF8E;"></i> 48% Carbs</span>
+                        <span><i class="macro-dot" style="background:#FF6384;"></i> 30% Fat</span>
+                    </div>
+
+                    <!-- Meal Prep & Storage Box -->
+                    <div class="meal-prep-box">
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-snowflake"></i>
+                            <span>Freezer</span>
+                            <strong>Not Rec.</strong>
+                        </div>
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-leaf"></i>
+                            <span>Fridge</span>
+                            <strong>4 Days</strong>
+                        </div>
+                        <div class="meal-prep-item">
+                            <i class="fa-solid fa-fire"></i>
+                            <span>Prep</span>
+                            <strong>Tahini Dressing</strong>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Master Interactive Recipe Engine -->
+    <script src="../recipe-interactive.js"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shorts & Pants - Male Gym Products - FitStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="../shared/site-header.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .product-card-small {
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a) !important;
+            border-radius: 16px !important;
+            padding: 25px 20px !important;
+            border: 2px solid #333 !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center !important;
+            min-height: 350px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .product-card-small::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(135deg, rgba(179, 221, 36, 0.1), transparent) !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+        }
+        
+        .product-card-small:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+            border-color: #B3DD24 !important;
+            box-shadow: 0 20px 40px rgba(179, 221, 36, 0.15), 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+        }
+        
+        .product-card-small:hover::before {
+            opacity: 1 !important;
+        }
+        
+        .product-image-small {
+            width: 100% !important;
+            height: 180px !important;
+            background: linear-gradient(145deg, #2c2c2c, #3c3c3c) !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            margin-bottom: 20px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+            z-index: 1 !important;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+        }
+        
+        .product-image-small img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+            transition: transform 0.3s ease !important;
+        }
+        
+        .product-card-small:hover .product-image-small img {
+            transform: scale(1.05) !important;
+        }
+        
+        .product-details h4 {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 18px !important;
+            color: #FFFFFF !important;
+            margin: 0 0 12px 0 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            position: relative !important;
+            z-index: 1 !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        .product-description {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 400 !important;
+            font-size: 14px !important;
+            color: #AAAAAA !important;
+            margin: 0 0 15px 0 !important;
+            line-height: 1.4 !important;
+            position: relative !important;
+            z-index: 1 !important;
+            font-style: italic !important;
+        }
+        
+        .product-details .price {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 22px !important;
+            color: #B3DD24 !important;
+            display: block !important;
+            margin-bottom: 20px !important;
+            position: relative !important;
+            z-index: 1 !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        .buy-btn-small {
+            width: 100% !important;
+            padding: 15px 25px !important;
+            background: transparent !important;
+            border: 2px solid #B3DD24 !important;
+            border-radius: 12px !important;
+            color: #B3DD24 !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 16px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
+            z-index: 1 !important;
+            box-shadow: 0 4px 15px rgba(179, 221, 36, 0.2) !important;
+        }
+        
+        .buy-btn-small:hover {
+            background-color: #B3DD24 !important;
+            color: #000000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(179, 221, 36, 0.4) !important;
+        }
+        
+        .products-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+            gap: 30px !important;
+            margin-top: 40px !important;
+            width: 100% !important;
+            max-width: 1400px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding: 60px 40px !important;
+            background: #000000 !important;
+        }
+        
+        .back-to-categories {
+            grid-column: 1 / -1 !important;
+            margin-bottom: 30px !important;
+            text-align: center !important;
+        }
+        
+        .back-btn-category {
+            background: linear-gradient(145deg, #333, #444) !important;
+            border: 2px solid #555 !important;
+            border-radius: 30px !important;
+            padding: 15px 30px !important;
+            color: #FFFFFF !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+        
+        .back-btn-category:hover {
+            background: linear-gradient(145deg, #B3DD24, #C4ED32) !important;
+            border-color: #B3DD24 !important;
+            color: #000000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(179, 221, 36, 0.4) !important;
+        }
+        
+        .page-title {
+            font-weight: 700 !important;
+            font-size: clamp(2rem, 4vw, 2.5rem) !important;
+            color: #FFFFFF !important;
+            text-align: center !important;
+            margin: 40px 0 20px 0 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 2px !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <!-- Page Title -->
+    <h1 class="page-title">SHORTS & PANTS</h1>
+
+    <!-- Products Section -->
+    <div class="products-grid">
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SHORTS & PANTS men/Athletic Shorts for men.png" alt="Athletic Shorts">
+            </div>
+            <div class="product-details">
+                <h4>Athletic Shorts</h4>
+                <p class="product-description">Comfortable athletic shorts for all workouts</p>
+                <span class="price">?1,599</span>
+                <button class="buy-btn-small" onclick="buyProduct('Athletic Shorts', '?1,599')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SHORTS & PANTS men/Running Shorts for men.png" alt="Running Shorts">
+            </div>
+            <div class="product-details">
+                <h4>Running Shorts</h4>
+                <p class="product-description">Performance shorts for intense training sessions</p>
+                <span class="price">?1,899</span>
+                <button class="buy-btn-small" onclick="buyProduct('Running Shorts', '?1,899')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SHORTS & PANTS men/Workout Joggers for men.png" alt="Workout Joggers">
+            </div>
+            <div class="product-details">
+                <h4>Workout Joggers</h4>
+                <p class="product-description">Lightweight joggers designed for workouts</p>
+                <span class="price">?2,199</span>
+                <button class="buy-btn-small" onclick="buyProduct('Workout Joggers', '?2,199')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SHORTS & PANTS men/Fitness Leggings for men.png" alt="Fitness Leggings">
+            </div>
+            <div class="product-details">
+                <h4>Fitness Leggings</h4>
+                <p class="product-description">Compression leggings for muscle support</p>
+                <span class="price">?2,199</span>
+                <button class="buy-btn-small" onclick="buyProduct('Fitness Leggings', '?2,199')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SHORTS & PANTS men/Yoga Pants gor men.png" alt="Yoga Pants">
+            </div>
+            <div class="product-details">
+                <h4>Yoga Pants</h4>
+                <p class="product-description">Stretchy pants perfect for yoga and flexibility</p>
+                <span class="price">?2,499</span>
+                <button class="buy-btn-small" onclick="buyProduct('Yoga Pants', '?2,499')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SHORTS & PANTS men/Training Pants for men.png" alt="Training Pants">
+            </div>
+            <div class="product-details">
+                <h4>Training Pants</h4>
+                <p class="product-description">Flexible pants for various training activities</p>
+                <span class="price">?2,299</span>
+                <button class="buy-btn-small" onclick="buyProduct('Training Pants', '?2,299')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SHORTS & PANTS men/Athletic Pants for men.png" alt="Athletic Pants">
+            </div>
+            <div class="product-details">
+                <h4>Athletic Pants</h4>
+                <p class="product-description">Performance pants for athletic activities</p>
+                <span class="price">?2,399</span>
+                <button class="buy-btn-small" onclick="buyProduct('Athletic Pants', '?2,399')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SHORTS & PANTS men/Cargo Pants for men.png" alt="Cargo Pants">
+            </div>
+            <div class="product-details">
+                <h4>Cargo Pants</h4>
+                <p class="product-description">Utility pants with multiple pockets</p>
+                <span class="price">?2,599</span>
+                <button class="buy-btn-small" onclick="buyProduct('Cargo Pants', '?2,599')">BUY</button>
+            </div>
+        </div>
+        <div class="product-card-small">
+            <div class="product-image-small">
+                <img src="images/SHORTS & PANTS men/Workout Joggers for men.png" alt="Sweatpants">
+            </div>
+            <div class="product-details">
+                <h4>Sweatpants</h4>
+                <p class="product-description">Comfortable sweatpants for relaxation</p>
+                <span class="price">?1,999</span>
+                <button class="buy-btn-small" onclick="buyProduct('Sweatpants', '?1,999')">BUY</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBackToCategories() {
+            window.location.href = 'male-products.html';
+        }
+
+        // Buy product functionality
+        function buyProduct(productName, price) {
+            const url = `checkout.html?product=${encodeURIComponent(productName)}&price=${encodeURIComponent(price)}`;
+            window.location.href = url;
+        }
+    </script>
+    <script src="store-bridge.js" defer></script>
+</body>
+</html>
+
+

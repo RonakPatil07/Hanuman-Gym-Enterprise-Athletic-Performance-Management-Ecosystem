@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Coaches &amp; Personal Trainers — Hanuman Gym</title>
+    
+    <!-- Technical SEO & Open Graph Tags (FIX #11) -->
+    <meta name="description" content="Meet the elite certified coaching staff at Hanuman Gym. NSCA, CSCS, ACE, and RD certified mentors across Dadar, Thane, Ambernath, Kalyan, and Karjat. Book your 1-on-1 consultation.">
+    <meta name="keywords" content="personal trainers, fitness coaches, strength coach Dadar, personal trainer Thane, personal trainer Ambernath, sports nutritionists, Hanuman Gym coaches">
+    <meta property="og:title" content="Master Coaches &amp; Personal Trainers — Hanuman Gym">
+    <meta property="og:description" content="100% certified sports science faculty, powerlifting mentors, and clinical sports nutritionists across 5 Maharashtra branches.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hanumangym.in/Training_Section/index.html">
+    <meta property="og:image" content="../P Home/images/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Master Coaches &amp; Personal Trainers — Hanuman Gym">
+    <meta name="twitter:description" content="1-on-1 athletic periodization and Olympic coaching across 5 Maharashtra branches.">
+    <link rel="icon" type="image/png" href="../P Home/images/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Schema.org JSON-LD (FIX #11) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Hanuman Gym - Coaching & Training Faculty",
+      "image": "https://hanumangym.in/P%20Home/images/logo.png",
+      "description": "Maharashtra's premier certified strength, Olympic weightlifting, and sports nutrition coaching faculty.",
+      "url": "https://hanumangym.in/Training_Section/index.html",
+      "telephone": "+91 98765 43210"
+    }
+    </script>
+</head>
+<body>
+    <div id="site-header"></div>
+    <script src="../shared/cloud-config.js"></script>
+    <script src="../shared/cloud-adapter.js"></script>
+    <script src="../shared/gym-cloud-store.js"></script>
+    <script src="../shared/site-header.js" defer></script>
+
+    <main class="main">
+        <!-- HERO & VALUE PROPOSITION (FIX #1) -->
+        <section class="trainers-hero-section">
+            <div class="container">
+                <div class="hero-eyebrow">
+                    <span class="eyebrow-pulse"></span>
+                    <span>100% Certified Sports Science Faculty</span>
+                </div>
+                <h1 class="trainers-hero-title">
+                    <span class="title-line-1">TRAIN WITH THE</span>
+                    <span class="title-line-2">MASTERS OF IRON</span>
+                </h1>
+                <p class="trainers-hero-desc">
+                    NSCA, CSCS, ACE, and Olympic weightlifting certified mentors dedicated to your strength, body recomposition, and athletic longevity across all 5 branches.
+                </p>
+
+                <!-- Trust Stats Strip -->
+                <div class="trainers-trust-strip">
+                    <div class="trust-item"><i class="fa-solid fa-certificate"></i> 100% Certified Coaches</div>
+                    <div class="trust-item"><i class="fa-solid fa-location-dot"></i> 5 Flagship Branches</div>
+                    <div class="trust-item cyan-highlight"><i class="fa-solid fa-chart-pie"></i> Custom Nutrition Macros</div>
+                    <div class="trust-item"><i class="fa-solid fa-trophy"></i> 98% Goal Success Rate</div>
+                </div>
+
+                <!-- Matchmaker Quiz Trigger (FIX #5) -->
+                <div>
+                    <button class="btn-matchmaker-trigger" onclick="openMatchmakerQuiz()">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Unsure Who to Choose? Take the 30-Sec Coach Matchmaker
+                    </button>
+                </div>
+
+                <!-- INTERACTIVE SEARCH & MULTI-FILTER TOOLBAR (FIX #2) -->
+                <div class="trainers-toolbar">
+                    <div class="trainers-toolbar-row">
+                        <div class="trainers-search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="trainerSearch" placeholder="Search by coach name, specialty, bio..." oninput="handleSearch(this.value)" aria-label="Search trainers">
+                        </div>
+                        <select class="branch-filter-select" id="branchFilterSelect" onchange="handleBranchFilter(this.value)" aria-label="Filter by branch location">
+                            <option value="all"><i class="fa-solid fa-location-dot"></i> All Branches (5)</option>
+                            <option value="Dadar">Dadar Olympic Zone</option>
+                            <option value="Thane">Thane Performance Lab</option>
+                            <option value="Ambernath">Ambernath Main Hub</option>
+                            <option value="Kalyan">Kalyan Strength Hub</option>
+                            <option value="Karjat">Karjat Athletic Arena</option>
+                        </select>
+                    </div>
+
+                    <div class="trainers-filter-strip" id="filterChips">
+                        <button class="filter-chip active" onclick="filterTrainers('all', this)">All (12)</button>
+                        <button class="filter-chip" onclick="filterTrainers('strength', this)">Strength &amp; Hypertrophy</button>
+                        <button class="filter-chip" onclick="filterTrainers('cardio', this)">Cardio &amp; HIIT</button>
+                        <button class="filter-chip" onclick="filterTrainers('yoga', this)">Yoga &amp; Mobility</button>
+                        <button class="filter-chip" onclick="filterTrainers('combat', this)">Combat &amp; Boxing</button>
+                        <button class="filter-chip" onclick="filterTrainers('nutrition', this)">Nutrition &amp; Diet</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TRAINERS GRID (FIX #2, FIX #3, FIX #4, FIX #8) -->
+        <div class="container">
+            <div class="trainers-grid" id="trainersGrid">
+                <!-- Trainer cards dynamically populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- FIX #6: ATHLETE TRANSFORMATIONS SHOWCASE -->
+        <section class="transformations-section">
+            <div class="container">
+                <div class="section-header-centered">
+                    <div class="section-badge"><i class="fa-solid fa-trophy"></i> Proven Results</div>
+                    <h2>Athlete Transformations <span>By Our Coaches</span></h2>
+                    <p>Real members. Real periodization. Real physical breakthroughs.</p>
+                </div>
+
+                <div class="transformations-grid">
+                    <div class="transformation-card">
+                        <div class="transform-header">
+                            <span class="transform-badge">-16 kg Body Fat</span>
+                            <span style="font-size:12px;color:var(--text-muted);">4 Months</span>
+                        </div>
+                        <p class="transform-quote">"Coach Rajan adjusted my deadlift mechanics and periodized my strength splits. I lost 16kg of fat while adding 40kg to my squat. World-class mentorship."</p>
+                        <div class="transform-member-row">
+                            <div class="transform-avatar">&#x1F3CB;&#xFE0F;</div>
+                            <div>
+                                <div class="transform-name">Siddharth Rao</div>
+                                <div class="transform-coach-tag">Trained by Rajan Patil &bull; Dadar</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transformation-card">
+                        <div class="transform-header">
+                            <span class="transform-badge">+7 kg Lean Mass</span>
+                            <span style="font-size:12px;color:var(--text-muted);">6 Months</span>
+                        </div>
+                        <p class="transform-quote">"Dr. Sneha's macro blueprints and Priya's metabolic conditioning completely cured my digestive fatigue and helped me build clean athletic muscle."</p>
+                        <div class="transform-member-row">
+                            <div class="transform-avatar">&#x1F4AA;</div>
+                            <div>
+                                <div class="transform-name">Kavita Deshmukh</div>
+                                <div class="transform-coach-tag">Trained by Dr. Sneha &amp; Priya &bull; Thane</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transformation-card">
+                        <div class="transform-header">
+                            <span class="transform-badge">Deadlift PR: 220kg</span>
+                            <span style="font-size:12px;color:var(--text-muted);">5 Months</span>
+                        </div>
+                        <p class="transform-quote">"Coach Ankit's Olympic lifting velocity drills helped me shatter every personal record without a single lower-back injury. Best investment in my life."</p>
+                        <div class="transform-member-row">
+                            <div class="transform-avatar">&#x1F525;</div>
+                            <div>
+                                <div class="transform-name">Aditya Verma</div>
+                                <div class="transform-coach-tag">Trained by Ankit Desai &bull; Ambernath</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FIX #10: CERTIFICATION STANDARDS TRUST STRIP -->
+        <section class="certifications-strip">
+            <div class="container">
+                <div class="cert-grid">
+                    <div class="cert-box">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h4>NSCA &amp; CSCS Certified</h4>
+                        <p>Gold-standard collegiate strength &amp; conditioning accreditations.</p>
+                    </div>
+                    <div class="cert-box">
+                        <i class="fa-solid fa-shield-heart"></i>
+                        <h4>Clinical RD Nutritionists</h4>
+                        <p>Registered Dietitians designing medically tailored macro blueprints.</p>
+                    </div>
+                    <div class="cert-box">
+                        <i class="fa-solid fa-medal"></i>
+                        <h4>Olympic Lifting Level 2</h4>
+                        <p>USAW &amp; national level barbell velocity &amp; trajectory mentors.</p>
+                    </div>
+                    <div class="cert-box">
+                        <i class="fa-solid fa-kit-medical"></i>
+                        <h4>100% CPR &amp; AED Faculty</h4>
+                        <p>Emergency medical safety protocols active on the floor 24/7.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+    <script src="../shared/site-footer.js" defer></script>
+
+    <!-- FIX #7: 1-CLICK CONSULTATION & SLOT BOOKING MODAL -->
+    <div class="modal-overlay" id="consultationModal" onclick="handleConsultOverlayClick(event)" role="dialog" aria-modal="true" aria-labelledby="consultModalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="consultModalTitle">Book 1-on-1 Session with <span id="consultTrainerTitle">Master Coach</span></h3>
+                <button class="modal-close-btn" onclick="closeConsultationModal()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:13px;color:var(--text-secondary);margin-bottom:18px;">
+                    Reserve your private 60-minute consultation &amp; biometric form assessment. Our coach will contact you within 2 hours to confirm your slot.
+                </p>
+                <form id="consultationForm" onsubmit="handleConsultationSubmit(event)">
+                    <div class="form-group-modal">
+                        <label for="consultName">Full Name *</label>
+                        <input type="text" id="consultName" class="form-input-modal" placeholder="Rahul Sharma" required autocomplete="name">
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                        <div class="form-group-modal">
+                            <label for="consultPhone">Mobile Number *</label>
+                            <input type="tel" id="consultPhone" class="form-input-modal" placeholder="+91 98765 43210" required autocomplete="tel">
+                        </div>
+                        <div class="form-group-modal">
+                            <label for="consultEmail">Email Address *</label>
+                            <input type="email" id="consultEmail" class="form-input-modal" placeholder="rahul@example.com" required autocomplete="email">
+                        </div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                        <div class="form-group-modal">
+                            <label for="consultBranch">Preferred Branch *</label>
+                            <select id="consultBranch" class="form-input-modal" style="background:#08080c;color:#fff;" required>
+                                <option value="Ambernath">Ambernath Main Hub</option>
+                                <option value="Dadar">Dadar Olympic Zone</option>
+                                <option value="Thane">Thane Performance Lab</option>
+                                <option value="Kalyan">Kalyan Strength Hub</option>
+                                <option value="Karjat">Karjat Athletic Arena</option>
+                            </select>
+                        </div>
+                        <div class="form-group-modal">
+                            <label for="consultSlot">Preferred Time Slot *</label>
+                            <select id="consultSlot" class="form-input-modal" style="background:#08080c;color:#fff;" required>
+                                <option value="Morning (6 AM - 9 AM)">Morning (6 AM - 9 AM)</option>
+                                <option value="Mid-Day (9 AM - 1 PM)">Mid-Day (9 AM - 1 PM)</option>
+                                <option value="Evening (5 PM - 8 PM)">Evening (5 PM - 8 PM)</option>
+                                <option value="Night (8 PM - 10 PM)">Night (8 PM - 10 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-modal">
+                        <label for="consultGoal">Primary Fitness Goal</label>
+                        <select id="consultGoal" class="form-input-modal" style="background:#08080c;color:#fff;">
+                            <option value="Fat Loss & Body Recomposition">Fat Loss &amp; Body Recomposition</option>
+                            <option value="Hypertrophy & Muscle Mass">Hypertrophy &amp; Muscle Mass</option>
+                            <option value="Powerlifting & Heavy Strength">Powerlifting &amp; Heavy Strength</option>
+                            <option value="Olympic Weightlifting & Agility">Olympic Weightlifting &amp; Agility</option>
+                            <option value="Mobility & Rehab">Mobility, Flexibility &amp; Posture</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="btnConsultSubmit" class="modal-submit-btn">
+                        <i class="fa-solid fa-lock"></i> Confirm Consultation Slot
+                    </button>
+                    <div id="consultSuccessFeedback" style="font-size:13px;color:#22c55e;margin-top:14px;display:none;text-align:center;font-weight:700;">
+                        <i class="fa-solid fa-circle-check"></i> Consultation slot requested! Our head coach will WhatsApp/call you shortly.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIX #5: COACH MATCHMAKER QUIZ MODAL -->
+    <div class="modal-overlay" id="matchmakerModal" onclick="handleMatchmakerOverlayClick(event)" role="dialog" aria-modal="true" aria-labelledby="matchmakerTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="matchmakerTitle"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--accent-gold);margin-right:6px;"></i> Coach <span>Matchmaker</span></h3>
+                <button class="modal-close-btn" onclick="closeMatchmakerQuiz()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <!-- Step 1: Goal -->
+                <div class="quiz-step-panel" id="quizStep1">
+                    <p style="font-size:12px;color:var(--accent-gold);text-transform:uppercase;font-weight:800;letter-spacing:0.08em;margin-bottom:6px;">Step 1 of 3</p>
+                    <h4 style="font-family:var(--font-heading);font-size:19px;font-weight:800;color:#fff;margin-bottom:14px;">What is your primary fitness focus?</h4>
+                    <div class="quiz-options-grid">
+                        <button class="quiz-option-btn" onclick="selectQuizOption('goal', 'strength', this)"><i class="fa-solid fa-dumbbell"></i> Heavy Strength &amp; Muscle</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('goal', 'cardio', this)"><i class="fa-solid fa-fire"></i> Fat Loss &amp; HIIT</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('goal', 'yoga', this)"><i class="fa-solid fa-spa"></i> Mobility &amp; Spinal Rehab</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('goal', 'nutrition', this)"><i class="fa-solid fa-apple-whole"></i> Custom Macro Diet</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('goal', 'combat', this)"><i class="fa-solid fa-hand-fist"></i> Combat &amp; Boxing</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Branch -->
+                <div class="quiz-step-panel" id="quizStep2" style="display:none;">
+                    <p style="font-size:12px;color:var(--accent-gold);text-transform:uppercase;font-weight:800;letter-spacing:0.08em;margin-bottom:6px;">Step 2 of 3</p>
+                    <h4 style="font-family:var(--font-heading);font-size:19px;font-weight:800;color:#fff;margin-bottom:14px;">Which Hanuman Gym branch is closest to you?</h4>
+                    <div class="quiz-options-grid">
+                        <button class="quiz-option-btn" onclick="selectQuizOption('branch', 'Dadar', this)"><i class="fa-solid fa-location-dot"></i> Dadar Olympic Zone</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('branch', 'Thane', this)"><i class="fa-solid fa-location-dot"></i> Thane Performance Lab</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('branch', 'Ambernath', this)"><i class="fa-solid fa-location-dot"></i> Ambernath Main Hub</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('branch', 'Kalyan', this)"><i class="fa-solid fa-location-dot"></i> Kalyan Strength Hub</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('branch', 'Karjat', this)"><i class="fa-solid fa-location-dot"></i> Karjat Athletic Arena</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Experience -->
+                <div class="quiz-step-panel" id="quizStep3" style="display:none;">
+                    <p style="font-size:12px;color:var(--accent-gold);text-transform:uppercase;font-weight:800;letter-spacing:0.08em;margin-bottom:6px;">Step 3 of 3</p>
+                    <h4 style="font-family:var(--font-heading);font-size:19px;font-weight:800;color:#fff;margin-bottom:14px;">What is your training experience level?</h4>
+                    <div class="quiz-options-grid">
+                        <button class="quiz-option-btn" onclick="selectQuizOption('level', 'beginner', this)"><i class="fa-solid fa-seedling"></i> Beginner (0-6 months)</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('level', 'intermediate', this)"><i class="fa-solid fa-bolt"></i> Intermediate (1-3 years)</button>
+                        <button class="quiz-option-btn" onclick="selectQuizOption('level', 'advanced', this)"><i class="fa-solid fa-trophy"></i> Advanced / Competitor</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Result -->
+                <div class="quiz-step-panel" id="quizStep4" style="display:none;">
+                    <p style="font-size:12px;color:#22c55e;text-transform:uppercase;font-weight:800;letter-spacing:0.08em;margin-bottom:4px;"><i class="fa-solid fa-circle-check"></i> Perfect Match Found!</p>
+                    <h4 style="font-family:var(--font-heading);font-size:19px;font-weight:800;color:#fff;">Recommended Master Coach:</h4>
+                    
+                    <div id="quizResultCoachCard">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../shared/api-client.js"></script>
+    <script src="../shared/gym-trainers-catalog.js"></script>
+    <script src="js/trainers.js"></script>
+</body>
+</html>

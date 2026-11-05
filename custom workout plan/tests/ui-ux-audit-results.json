@@ -1,0 +1,555 @@
+{
+  "totalCssFiles": 29,
+  "canonicalTokens": {
+    "--onyx-base": "#0A0D14",
+    "--onyx-elevated": "#0D111A",
+    "--gold-primary": "#B3DD24",
+    "--gold-secondary": "#F59E0B",
+    "--cyan-accent": "#38BDF8",
+    "--crimson-alert": "#EF4444",
+    "--ease-canonical": "cubic-bezier(0.16, 1, 0.3, 1)"
+  },
+  "files": [
+    {
+      "file": "admin/admin-cloud.css",
+      "lines": 1352,
+      "totalColors": 97,
+      "easingsTotal": 10,
+      "nonCanonicalEasingsCount": 7,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.16, 1, 0.3, 1)",
+        "ease-in-out",
+        "ease-out",
+        "linear"
+      ],
+      "blursCount": 3,
+      "uniqueBlurs": [
+        "blur(20px)",
+        "blur(16px)",
+        "blur(8px)"
+      ],
+      "shadowsCount": 13,
+      "has12ColGrid": false,
+      "gridCount": 8,
+      "flexCount": 43
+    },
+    {
+      "file": "custom workout plan/workout-plan.css",
+      "lines": 13003,
+      "totalColors": 1714,
+      "easingsTotal": 325,
+      "nonCanonicalEasingsCount": 321,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.16, 1, 0.3, 1)",
+        "linear",
+        "cubic-bezier(0.4, 0, 0.2, 1)",
+        "ease-in-out",
+        "ease-out",
+        "cubic-bezier(0, 0, 0.2, 1)",
+        "ease-in",
+        "cubic-bezier(0.4, 0, 1, 1)",
+        "cubic-bezier(0.68, -0.55, 0.27, 1.55)"
+      ],
+      "blursCount": 18,
+      "uniqueBlurs": [
+        "blur(20px)",
+        "blur(10px)",
+        "blur(15px)",
+        "blur(16px)",
+        "blur(12px)",
+        "blur(6px)",
+        "blur(2px)",
+        "blur(18px)"
+      ],
+      "shadowsCount": 167,
+      "has12ColGrid": true,
+      "gridCount": 39,
+      "flexCount": 267
+    },
+    {
+      "file": "Form module/exercise-style.css",
+      "lines": 1105,
+      "totalColors": 137,
+      "easingsTotal": 36,
+      "nonCanonicalEasingsCount": 35,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.16, 1, 0.3, 1)",
+        "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "linear",
+        "ease-out"
+      ],
+      "blursCount": 4,
+      "uniqueBlurs": [
+        "blur(8px)",
+        "blur(14px)"
+      ],
+      "shadowsCount": 22,
+      "has12ColGrid": false,
+      "gridCount": 3,
+      "flexCount": 34
+    },
+    {
+      "file": "Locations/locations-style.css",
+      "lines": 834,
+      "totalColors": 100,
+      "easingsTotal": 10,
+      "nonCanonicalEasingsCount": 10,
+      "uniqueEasings": [
+        "linear",
+        "ease",
+        "cubic-bezier(0.4, 0, 0.2, 1)"
+      ],
+      "blursCount": 3,
+      "uniqueBlurs": [
+        "blur(8px)",
+        "blur(10px)"
+      ],
+      "shadowsCount": 8,
+      "has12ColGrid": false,
+      "gridCount": 3,
+      "flexCount": 17
+    },
+    {
+      "file": "login_register/dashboard-styles.css",
+      "lines": 1284,
+      "totalColors": 117,
+      "easingsTotal": 8,
+      "nonCanonicalEasingsCount": 8,
+      "uniqueEasings": [
+        "ease",
+        "linear",
+        "ease-out"
+      ],
+      "blursCount": 1,
+      "uniqueBlurs": [
+        "blur(8px)"
+      ],
+      "shadowsCount": 8,
+      "has12ColGrid": false,
+      "gridCount": 7,
+      "flexCount": 52
+    },
+    {
+      "file": "login_register/style.css",
+      "lines": 394,
+      "totalColors": 45,
+      "easingsTotal": 9,
+      "nonCanonicalEasingsCount": 9,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "linear",
+        "cubic-bezier(0.22, 1, 0.36, 1)"
+      ],
+      "blursCount": 4,
+      "uniqueBlurs": [
+        "blur(16px)",
+        "blur(6px)",
+        "blur(0)"
+      ],
+      "shadowsCount": 4,
+      "has12ColGrid": false,
+      "gridCount": 1,
+      "flexCount": 8
+    },
+    {
+      "file": "Memberships/memberships.css",
+      "lines": 1943,
+      "totalColors": 145,
+      "easingsTotal": 12,
+      "nonCanonicalEasingsCount": 8,
+      "uniqueEasings": [
+        "ease",
+        "linear",
+        "cubic-bezier(0.16, 1, 0.3, 1)"
+      ],
+      "blursCount": 9,
+      "uniqueBlurs": [
+        "blur(8px)",
+        "blur(10px)",
+        "blur(12px)",
+        "blur(14px)"
+      ],
+      "shadowsCount": 38,
+      "has12ColGrid": false,
+      "gridCount": 11,
+      "flexCount": 35
+    },
+    {
+      "file": "P About/about-style.css",
+      "lines": 1249,
+      "totalColors": 86,
+      "easingsTotal": 9,
+      "nonCanonicalEasingsCount": 8,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.4, 0, 0.2, 1)",
+        "linear",
+        "cubic-bezier(0.16, 1, 0.3, 1)"
+      ],
+      "blursCount": 5,
+      "uniqueBlurs": [
+        "blur(8px)",
+        "blur(10px)",
+        "blur(14px)"
+      ],
+      "shadowsCount": 19,
+      "has12ColGrid": false,
+      "gridCount": 9,
+      "flexCount": 22
+    },
+    {
+      "file": "P Home/style.css",
+      "lines": 1877,
+      "totalColors": 196,
+      "easingsTotal": 37,
+      "nonCanonicalEasingsCount": 36,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.16, 1, 0.3, 1)",
+        "linear",
+        "cubic-bezier(0.4, 0, 0.2, 1)"
+      ],
+      "blursCount": 2,
+      "uniqueBlurs": [
+        "blur(8px)"
+      ],
+      "shadowsCount": 18,
+      "has12ColGrid": false,
+      "gridCount": 10,
+      "flexCount": 29
+    },
+    {
+      "file": "P Recipe/Blackberry Popsicles/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/Classic Meatballs in Tomato Sauce/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/french-toast/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/Fresh Garden Salad/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/Kale and Chickpea Salad/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/Mediterranean Grazing Platter/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/Pan-Seared Steak with Red Wine Reduction/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/pancakes/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/Panzanella Caprese Salad/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/recipe-details-premium.css",
+      "lines": 635,
+      "totalColors": 66,
+      "easingsTotal": 10,
+      "nonCanonicalEasingsCount": 10,
+      "uniqueEasings": [
+        "ease",
+        "linear"
+      ],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 4,
+      "has12ColGrid": false,
+      "gridCount": 3,
+      "flexCount": 20
+    },
+    {
+      "file": "P Recipe/recipes-style.css",
+      "lines": 961,
+      "totalColors": 126,
+      "easingsTotal": 21,
+      "nonCanonicalEasingsCount": 20,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.16, 1, 0.3, 1)",
+        "linear",
+        "cubic-bezier(0.4, 0, 0.2, 1)"
+      ],
+      "blursCount": 2,
+      "uniqueBlurs": [
+        "blur(6px)"
+      ],
+      "shadowsCount": 9,
+      "has12ColGrid": false,
+      "gridCount": 2,
+      "flexCount": 21
+    },
+    {
+      "file": "P Recipe/Stuffed Avocado Salad (Mediterranean Style)/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/Sweet Potato and Chickpea Tacos/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P Recipe/Thai Peanut Buddha Bowl/french-toast-style.css",
+      "lines": 2,
+      "totalColors": 0,
+      "easingsTotal": 0,
+      "nonCanonicalEasingsCount": 0,
+      "uniqueEasings": [],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "P workout Program/workout-programs-style.css",
+      "lines": 1404,
+      "totalColors": 135,
+      "easingsTotal": 15,
+      "nonCanonicalEasingsCount": 11,
+      "uniqueEasings": [
+        "ease",
+        "linear",
+        "cubic-bezier(0.16, 1, 0.3, 1)"
+      ],
+      "blursCount": 3,
+      "uniqueBlurs": [
+        "blur(8px)",
+        "blur(12px)"
+      ],
+      "shadowsCount": 14,
+      "has12ColGrid": false,
+      "gridCount": 5,
+      "flexCount": 48
+    },
+    {
+      "file": "shared/design-tokens.css",
+      "lines": 120,
+      "totalColors": 31,
+      "easingsTotal": 7,
+      "nonCanonicalEasingsCount": 3,
+      "uniqueEasings": [
+        "linear",
+        "ease",
+        "cubic-bezier(0.16, 1, 0.3, 1)"
+      ],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 0,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 0
+    },
+    {
+      "file": "shared/site-footer.css",
+      "lines": 334,
+      "totalColors": 20,
+      "easingsTotal": 5,
+      "nonCanonicalEasingsCount": 5,
+      "uniqueEasings": [
+        "linear",
+        "ease"
+      ],
+      "blursCount": 0,
+      "uniqueBlurs": [],
+      "shadowsCount": 2,
+      "has12ColGrid": false,
+      "gridCount": 1,
+      "flexCount": 11
+    },
+    {
+      "file": "shared/site-header.css",
+      "lines": 484,
+      "totalColors": 71,
+      "easingsTotal": 13,
+      "nonCanonicalEasingsCount": 12,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.16, 1, 0.3, 1)"
+      ],
+      "blursCount": 4,
+      "uniqueBlurs": [
+        "blur(16px)",
+        "blur(8px)"
+      ],
+      "shadowsCount": 4,
+      "has12ColGrid": false,
+      "gridCount": 0,
+      "flexCount": 16
+    },
+    {
+      "file": "store/styles.css",
+      "lines": 2444,
+      "totalColors": 260,
+      "easingsTotal": 48,
+      "nonCanonicalEasingsCount": 35,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "linear",
+        "cubic-bezier(0.16, 1, 0.3, 1)",
+        "cubic-bezier(0.4, 0, 0.2, 1)"
+      ],
+      "blursCount": 11,
+      "uniqueBlurs": [
+        "blur(16px)",
+        "blur(10px)",
+        "blur(8px)",
+        "blur(14px)",
+        "blur(12px)"
+      ],
+      "shadowsCount": 49,
+      "has12ColGrid": false,
+      "gridCount": 8,
+      "flexCount": 65
+    },
+    {
+      "file": "Training_Section/css/styles.css",
+      "lines": 1167,
+      "totalColors": 85,
+      "easingsTotal": 5,
+      "nonCanonicalEasingsCount": 3,
+      "uniqueEasings": [
+        "ease",
+        "cubic-bezier(0.16, 1, 0.3, 1)",
+        "linear"
+      ],
+      "blursCount": 5,
+      "uniqueBlurs": [
+        "blur(8px)",
+        "blur(14px)"
+      ],
+      "shadowsCount": 15,
+      "has12ColGrid": false,
+      "gridCount": 7,
+      "flexCount": 23
+    }
+  ]
+}

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed — Hanuman Gym Official Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="../shared/site-header.css">
+    <link rel="stylesheet" href="../shared/site-footer.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --bg-black: #08080a;
+            --bg-card: #111116;
+            --gold: #B3DD24;
+            --gold-glow: rgba(179, 221, 36, 0.18);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(179, 221, 36, 0.28);
+        }
+        body {
+            background: var(--bg-black);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+        .conf-wrapper {
+            max-width: 860px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        .conf-header-card {
+            background: linear-gradient(180deg, #16161e 0%, #101015 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 40px var(--gold-glow);
+            margin-bottom: 30px;
+        }
+        .conf-icon-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(34, 197, 94, 0.15);
+            border: 2px solid #22c55e;
+            color: #22c55e;
+            font-size: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .conf-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+        }
+        .conf-subtitle {
+            color: #aaa;
+            font-size: 14.5px;
+            max-width: 540px;
+            margin: 0 auto 24px;
+        }
+        .order-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #08080a;
+            border: 1px solid var(--border-subtle);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13.5px;
+            color: #fff;
+        }
+        .order-meta-pill strong {
+            color: var(--gold);
+        }
+
+        /* Order Tracker Timeline */
+        .order-tracker {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 30px 0 10px;
+            position: relative;
+        }
+        .tracker-step {
+            text-align: center;
+            position: relative;
+        }
+        .tracker-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #1c1c26;
+            border: 2px solid var(--border-subtle);
+            color: #777;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-size: 13px;
+        }
+        .tracker-step.completed .tracker-dot {
+            background: #22c55e;
+            border-color: #22c55e;
+            color: #000;
+        }
+        .tracker-step.active .tracker-dot {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #000;
+            box-shadow: 0 0 16px var(--gold-glow);
+        }
+        .tracker-label {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .tracker-step.active .tracker-label, .tracker-step.completed .tracker-label {
+            color: #fff;
+        }
+
+        /* Invoice Breakdown Card */
+        .conf-details-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+        .details-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 14px;
+            margin-bottom: 20px;
+        }
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 14px;
+            color: #ccc;
+        }
+        .receipt-row strong {
+            color: #fff;
+        }
+        .receipt-row.total-row {
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: none;
+            padding-top: 16px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .receipt-row.total-row .total-price {
+            color: var(--gold);
+        }
+
+        /* Action Buttons */
+        .conf-actions-row {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-conf-primary {
+            background: var(--gold);
+            color: #000;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 13.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .btn-conf-primary:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+        .btn-conf-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--border-subtle);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 13.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 14px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .btn-conf-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        @media print {
+            .site-header, #site-footer, .conf-actions-row, .order-tracker {
+                display: none !important;
+            }
+            body {
+                background: #fff !important;
+                color: #000 !important;
+                padding: 0 !important;
+            }
+            .conf-header-card, .conf-details-card {
+                border: 1px solid #ccc !important;
+                background: #fff !important;
+                color: #000 !important;
+                box-shadow: none !important;
+            }
+            .conf-title, .receipt-row strong, .receipt-row.total-row, .receipt-row {
+                color: #000 !important;
+            }
+            .receipt-row.total-row .total-price {
+                color: #000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+    <script src="../shared/site-header.js" defer></script>
+
+    <div class="conf-wrapper">
+        <!-- Order Header Status Card -->
+        <div class="conf-header-card">
+            <div class="conf-icon-badge">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h1 class="conf-title">Order Confirmed!</h1>
+            <p class="conf-subtitle">Thank you for gearing up with Hanuman Gym. Your order has been placed successfully and is being prepped at our athletic fulfillment hub.</p>
+            
+            <div class="order-meta-pill">
+                <span>Order No: <strong id="orderNumberDisplay">#HN-884920</strong></span>
+                <span>&bull;</span>
+                <span>Est. Delivery: <strong id="estDeliveryDisplay">Thursday, 20 Aug</strong></span>
+            </div>
+
+            <!-- 4-Stage Dispatch Timeline -->
+            <div class="order-tracker">
+                <div class="tracker-step completed">
+                    <div class="tracker-dot"><i class="fa-solid fa-check"></i></div>
+                    <div class="tracker-label">Confirmed</div>
+                </div>
+                <div class="tracker-step active">
+                    <div class="tracker-dot"><i class="fa-solid fa-box"></i></div>
+                    <div class="tracker-label">Packing</div>
+                </div>
+                <div class="tracker-step">
+                    <div class="tracker-dot"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div class="tracker-label">Dispatched</div>
+                </div>
+                <div class="tracker-step">
+                    <div class="tracker-dot"><i class="fa-solid fa-house"></i></div>
+                    <div class="tracker-label">Delivered</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Itemized Receipt & Tax Breakdown -->
+        <div class="conf-details-card">
+            <div class="details-heading">
+                <span><i class="fa-solid fa-receipt" style="color:var(--gold);margin-right:8px;"></i> Official Tax Invoice Breakdown</span>
+                <span style="font-size:12px;color:var(--gold);font-weight:600;"><i class="fa-solid fa-circle-check"></i> Paid via Instant Gateway</span>
+            </div>
+
+            <div class="receipt-row">
+                <span>Purchased Item(s)</span>
+                <strong id="invoiceItemName">Hanuman Athletic Gear</strong>
+            </div>
+            <div class="receipt-row">
+                <span>Fulfillment Hub</span>
+                <strong>Hanuman Central Athletic Warehouse, Dadar</strong>
+            </div>
+            <div class="receipt-row">
+                <span>Shipping &amp; Handling</span>
+                <strong style="color:#22c55e;">FREE Express Delivery</strong>
+            </div>
+            <div class="receipt-row">
+                <span>GST / Tax (Included)</span>
+                <strong>18% Integrated GST</strong>
+            </div>
+            <div class="receipt-row total-row">
+                <span>Total Amount Paid</span>
+                <span class="total-price" id="invoiceTotalAmount">₹2,499</span>
+            </div>
+        </div>
+
+        <!-- Next Step CTAs -->
+        <div class="conf-actions-row">
+            <a href="index.html" class="btn-conf-primary"><i class="fa-solid fa-bag-shopping"></i> Continue Shopping</a>
+            <button type="button" class="btn-conf-outline" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Official Tax Invoice</button>
+            <a href="../P Home/myspace.html" class="btn-conf-outline"><i class="fa-solid fa-user"></i> View in My Space</a>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <div id="site-footer"></div>
+    <script src="../shared/site-footer.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const product = urlParams.get('product') || 'Hanuman Official Merchandise';
+            const price = urlParams.get('price') || '₹2,499';
+
+            document.getElementById('invoiceItemName').textContent = product;
+            document.getElementById('invoiceTotalAmount').textContent = price;
+
+            // Generate Random Order ID
+            const randomNum = Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('orderNumberDisplay').textContent = `#HN-${randomNum}`;
+
+            // Calculate Delivery Date (+3 days)
+            const d = new Date();
+            d.setDate(d.getDate() + 3);
+            const options = { weekday: 'long', day: 'numeric', month: 'short' };
+            document.getElementById('estDeliveryDisplay').textContent = d.toLocaleDateString('en-IN', options);
+        });
+    </script>
+</body>
+</html>

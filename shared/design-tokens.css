@@ -1,0 +1,119 @@
+/* ==============================================================================
+   HANUMAN GYM — AUTHORITATIVE DESIGN SYSTEM TOKENS (BLACK + WHITE + LIME)
+   High-Contrast Dark Athletic Interface Theme (#B3DD24 Accent)
+   ============================================================================== */
+
+:root {
+  /* 1. Core Surfaces & Backgrounds (70-75% visual balance) */
+  --color-bg: #101010;
+  --color-bg-black: #000000;
+  --color-surface: #202020;
+  --color-surface-elevated: #2A2A2A;
+  --color-surface-hover: #333333;
+  --color-border: #363636;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* 2. Typography & Content (15-20% visual balance) */
+  --color-text-primary: #F0F0F0;
+  --color-text-secondary: #B8B8B8;
+  --color-text-muted: #858585;
+  --color-text-dim: #606060;
+
+  /* 3. Signature Performance Lime Accent (5-10% visual signal) */
+  --color-accent: #B3DD24;
+  --color-accent-hover: #C4ED32;
+  --color-accent-dark: #8EAE18;
+  --color-accent-subtle: rgba(179, 221, 36, 0.09);
+  --color-accent-border: rgba(179, 221, 36, 0.40);
+  --color-accent-glow: rgba(179, 221, 36, 0.28);
+
+  /* 4. Overlays & Subtle Shadows */
+  --color-overlay: rgba(0, 0, 0, 0.55);
+  --color-overlay-heavy: rgba(0, 0, 0, 0.85);
+  --color-overlay-gradient: linear-gradient(90deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.50) 50%, rgba(0,0,0,0.75) 100%);
+  --color-card-gradient: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.85) 100%);
+  --shadow-subtle: 0 15px 40px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 18px 45px rgba(0, 0, 0, 0.55);
+
+  /* 5. Typography Scale & Fonts (HOME Page Authoritative System) */
+  --font-display: 'Syne', sans-serif;
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-label: 'Plus Jakarta Sans', sans-serif;
+
+  /* Compatibility Aliases — maps all module-specific vars to HOME page canonical fonts */
+  --font-jakarta: var(--font-label);
+  --font-syne: var(--font-display);
+  --mem-font-heading: var(--font-heading);
+  --mem-font-body: var(--font-body);
+  --font-fashion: var(--font-heading);
+  --font-editorial: var(--font-display);
+  --font-syncopate: var(--font-heading);
+  --font-nav: var(--font-heading);
+  --abt-font-heading: var(--font-heading);
+  --abt-font-body: var(--font-body);
+
+  /* 6. Restrained Athletic Radii (Avoid oversized capsules) */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-btn: 8px;
+  --radius-card: 10px;
+  --radius-img: 8px;
+  --radius-input: 6px;
+  --radius-full: 9999px;
+
+  /* 7. Spacing System */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 80px;
+  --space-9: 96px;
+
+  /* 8. Micro-Interactions & Motion */
+  --ease-canonical: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Functional Status Colors */
+  --crimson-alert: #EF4444;
+  --emerald-success: #22C55E;
+  --amber-warning: #F59E0B;
+
+  /* Compatibility & Legacy Aliases (Seamless fallback mapping) */
+  --bg-primary: var(--color-bg);
+  --bg-secondary: var(--color-surface);
+  --bg-tertiary: var(--color-surface-elevated);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --accent: var(--color-accent);
+  --accent-hover: var(--color-accent-hover);
+  --accent-dark: var(--color-accent-dark);
+  --accent-glow: var(--color-accent-glow);
+  --accent-subtle: var(--color-accent-subtle);
+  --border: var(--color-border);
+  --border-accent: var(--color-accent-border);
+  --gold-primary: var(--color-accent);
+  --gold-secondary: var(--color-accent-hover);
+  --gold-glow: var(--color-accent-glow);
+  --gold-subtle: var(--color-accent-subtle);
+  --gold-border: var(--color-accent-border);
+  --onyx-base: var(--color-bg);
+  --onyx-elevated: var(--color-surface);
+  --onyx-surface-2: var(--color-surface-elevated);
+  --onyx-surface-3: #303030;
+  --onyx-surface-hover: var(--color-surface-hover);
+  --cyan-electric: var(--color-accent);
+  --cyan-accent: var(--color-accent);
+  --cyan-glow: var(--color-accent-glow);
+  --cyan-subtle: var(--color-accent-subtle);
+  --cyan-border: var(--color-accent-border);
+}
